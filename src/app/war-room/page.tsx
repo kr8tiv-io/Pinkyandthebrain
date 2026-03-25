@@ -111,7 +111,7 @@ export default function WarRoomPage() {
 
         {/* Staking stub — dramatic classified section */}
         <SectionReveal>
-          <section className="w-full bg-[#0a0a0a] py-24 relative overflow-hidden wr-section-fade-top wr-section-fade-bottom">
+          <section className="w-full bg-[#0a0a0a] py-24 relative overflow-hidden wr-section-fade-top wr-section-fade-bottom wr-noise">
             {/* Layered diagonal pattern */}
             <div className="absolute inset-0 opacity-[0.02] pointer-events-none"
               style={{
@@ -120,6 +120,9 @@ export default function WarRoomPage() {
             />
             {/* Radial glow center */}
             <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_40%_40%_at_50%_50%,rgba(212,240,0,0.02),transparent_70%)]" />
+
+            {/* Scan line */}
+            <div className="wr-scan-line" style={{ animationDelay: '2s' }} />
 
             {/* Radar sweep */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
@@ -132,7 +135,7 @@ export default function WarRoomPage() {
               03
             </div>
 
-            <div className="relative flex flex-col items-center justify-center gap-6">
+            <div className="relative flex flex-col items-center justify-center gap-6 wr-brackets" style={{ padding: '2rem' }}>
               <div className="flex items-center gap-3">
                 <div className="w-8 h-px bg-[#333]/40" />
                 <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#333] font-bold">
