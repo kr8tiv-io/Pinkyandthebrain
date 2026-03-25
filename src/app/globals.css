@@ -626,7 +626,7 @@ body {
   height: 3px;
   border-radius: 50%;
   background: #d4f000;
-  animation: wr-data-pulse 2.2s ease-in-out infinite;
+  animation: wr-data-pulse 2.4s ease-in-out infinite;
 }
 .wr-data-dot-fire {
   background: #ff6b35;
@@ -690,7 +690,7 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  height: 50px;
+  height: 45px;
   background: linear-gradient(to bottom, #0a0a0a, transparent);
   pointer-events: none;
   z-index: 2;
@@ -701,7 +701,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 50px;
+  height: 45px;
   background: linear-gradient(to top, #0a0a0a, transparent);
   pointer-events: none;
   z-index: 2;
