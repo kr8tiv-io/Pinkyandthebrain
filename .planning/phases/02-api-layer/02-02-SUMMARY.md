@@ -83,7 +83,7 @@ Each task was committed atomically:
 1. **Task 1: Enrich investments.config.ts and create treasury.ts composite** - `e7a267f` (feat)
 2. **Task 2: Create burns.ts and reflections.ts composites** - `30133d5` (feat)
 
-**Plan metadata:** _(to be added with final docs commit)_
+**Plan metadata:** `abdccfa` (docs: complete plan)
 
 ## Files Created/Modified
 

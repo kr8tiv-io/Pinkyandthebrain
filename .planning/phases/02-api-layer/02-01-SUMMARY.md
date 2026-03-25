@@ -122,6 +122,20 @@ Each task was committed atomically:
 - Pagination helpers in solscan.ts prevent incomplete data for wallets with many transactions
 - Plan 02-02 (treasury composite) can immediately import from helius, birdeye, and solscan wrappers
 
+## Self-Check: PASSED
+
+- `src/lib/api/helius.ts` — EXISTS (104 lines)
+- `src/lib/api/birdeye.ts` — EXISTS (142 lines)
+- `src/lib/api/solscan.ts` — EXISTS (263 lines)
+- `.planning/phases/02-api-layer/02-01-SUMMARY.md` — EXISTS
+- `fc6c9a7` (helius.ts) — FOUND in git log
+- `cb45666` (birdeye.ts) — FOUND in git log
+- `89f28e3` (solscan.ts) — FOUND in git log
+- `4cdab90` (metadata) — FOUND in git log
+- TypeScript: `tsc --noEmit` exits 0 (zero errors)
+- No 'use client' directives — CONFIRMED
+- No NEXT_PUBLIC_ env vars — CONFIRMED
+
 ---
 *Phase: 02-api-layer*
 *Completed: 2026-03-25*
