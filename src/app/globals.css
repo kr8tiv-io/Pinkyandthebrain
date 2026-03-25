@@ -545,9 +545,9 @@ body {
 /* ── Classified Glitch Text ── */
 @keyframes wr-classified-glitch {
   0%, 94%, 100% { transform: translate(0); opacity: 1; }
-  95% { transform: translate(-3px, 1px); opacity: 0.8; }
+  95% { transform: translate(-2px, 1px); opacity: 0.85; }
   96% { transform: translate(2px, -1px); opacity: 0.9; }
-  97% { transform: translate(-1px, 2px); opacity: 0.85; }
+  97% { transform: translate(-1px, 1px); opacity: 0.88; }
   98% { transform: translate(1px, -1px); opacity: 0.95; }
 }
 .wr-classified-glitch {
@@ -1323,8 +1323,8 @@ section:hover > .wr-section-badge-fire {
 
 /* ── Grid Shimmer on Chart Hover ── */
 .wr-chart-frame:hover .recharts-cartesian-grid line {
-  stroke: rgba(212, 240, 0, 0.06);
-  transition: stroke 0.4s ease;
+  stroke: rgba(212, 240, 0, 0.05);
+  transition: stroke 0.5s ease;
 }
 
 /* ── Summary Divider Glow ── */
