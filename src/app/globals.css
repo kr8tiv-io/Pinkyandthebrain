@@ -577,7 +577,7 @@ body {
   height: 1px;
   background: linear-gradient(90deg, rgba(212, 240, 0, 0.08), transparent);
   transform-origin: left center;
-  animation: wr-radar-sweep 6s linear infinite;
+  animation: wr-radar-sweep 7s linear infinite;
 }
 
 /* ── Breathing Glow ── */
@@ -1484,7 +1484,7 @@ section:hover > .wr-section-badge-fire {
   transition: box-shadow 0.3s ease;
 }
 .wr-row-glow-intensity:hover {
-  box-shadow: inset 0 0 16px rgba(255, 107, 53, 0.015);
+  box-shadow: inset 0 0 14px rgba(255, 107, 53, 0.012);
 }
 
 /* ── Tooltip Entrance Scale ── */
