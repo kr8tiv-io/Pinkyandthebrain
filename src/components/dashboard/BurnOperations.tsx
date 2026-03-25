@@ -22,6 +22,173 @@ function formatPct(n: number): string {
   return `${n.toFixed(2)}%`
 }
 
+// ─── Supply Comparison Ring ─────────────────────────────────────────────────────
+
+function SupplyComparisonRing({
+  totalBurned,
+  totalSupply,
+  burnedPct,
+  burnSourceBalance,
+  isLoading,
+  isError,
+}: {
+  totalBurned: number
+  totalSupply: number
+  burnedPct: number
+  burnSourceBalance: number
+  isLoading: boolean
+  isError: boolean
+}) {
+  const ringRef = useRef<SVGCircleElement>(null)
+  const pendingRingRef = useRef<SVGCircleElement>(null)
+
+  const originalSupply = totalBurned + totalSupply
+  const pendingPct = originalSupply > 0 ? (burnSourceBalance / originalSupply) * 100 : 0
+
+  // Animate ring fill
+  useEffect(() => {
+    if (isLoading || isError || !ringRef.current) return
+    const circumference = 2 * Math.PI * 54
+    const burnOffset = circumference - (circumference * burnedPct) / 100
+    gsap.fromTo(
+      ringRef.current,
+      { strokeDashoffset: circumference },
+      { strokeDashoffset: burnOffset, duration: 2, ease: 'power2.out', delay: 0.3 }
+    )
+    if (pendingRingRef.current && pendingPct > 0) {
+      const pendingOffset = circumference - (circumference * pendingPct) / 100
+      gsap.fromTo(
+        pendingRingRef.current,
+        { strokeDashoffset: circumference },
+        { strokeDashoffset: pendingOffset, duration: 1.8, ease: 'power2.out', delay: 0.6 }
+      )
+    }
+  }, [burnedPct, pendingPct, isLoading, isError])
+
+  const circumference = 2 * Math.PI * 54
+
+  return (
+    <div className="px-5 lg:px-8 py-6 border-b border-[#333]/12">
+      <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#666] font-bold mb-5 flex items-center gap-3 wr-sub-header">
+        <span className="text-[#ff6b35]/30 text-[6px] wr-sub-diamond">◆</span>
+        <span>SUPPLY INCINERATION MAP</span>
+        <div className="flex-1 h-px bg-gradient-to-r from-[#ff6b35]/20 to-transparent" />
+      </div>
+
+      <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+        {/* SVG Ring */}
+        <div className="relative flex-shrink-0">
+          <svg width="148" height="148" viewBox="0 0 128 128" className="transform -rotate-90">
+            {/* Background track */}
+            <circle cx="64" cy="64" r="54" fill="none" stroke="#1a1a1a" strokeWidth="8" />
+            {/* Remaining supply (dark) */}
+            <circle cx="64" cy="64" r="54" fill="none" stroke="#222" strokeWidth="8"
+              strokeDasharray={circumference} strokeDashoffset={0} />
+            {/* Pending burn (amber) */}
+            {pendingPct > 0 && (
+              <circle ref={pendingRingRef} cx="64" cy="64" r="54" fill="none" stroke="#ff9e3d" strokeWidth="8"
+                strokeDasharray={circumference} strokeDashoffset={circumference}
+                strokeLinecap="round" opacity={0.5}
+                style={{ transform: `rotate(${burnedPct * 3.6}deg)`, transformOrigin: '64px 64px' }} />
+            )}
+            {/* Burned portion (fire) */}
+            <circle ref={ringRef} cx="64" cy="64" r="54" fill="none" stroke="url(#fireGrad)" strokeWidth="8"
+              strokeDasharray={circumference} strokeDashoffset={circumference}
+              strokeLinecap="round" filter="url(#fireGlow)" />
+            <defs>
+              <linearGradient id="fireGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#ff6b35" />
+                <stop offset="100%" stopColor="#ff3d00" />
+              </linearGradient>
+              <filter id="fireGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="3" result="glow" />
+                <feMerge>
+                  <feMergeNode in="glow" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+          </svg>
+          {/* Center text */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            {isLoading ? (
+              <div className="wr-skeleton h-6 w-12 rounded" />
+            ) : (
+              <>
+                <span className="font-mono text-2xl font-black text-[#ff6b35] tabular-nums wr-fire-text">
+                  {burnedPct.toFixed(1)}%
+                </span>
+                <span className="font-mono text-[7px] uppercase tracking-[0.2em] text-[#555] mt-0.5">burned</span>
+              </>
+            )}
+          </div>
+        </div>
+
+        {/* Supply breakdown */}
+        <div className="flex-1 grid grid-cols-1 gap-3 w-full">
+          {/* Original supply */}
+          <div className="flex items-center justify-between px-4 py-3 bg-[#111]/60 border border-[#222]/50 rounded-sm">
+            <div className="flex items-center gap-2.5">
+              <div className="w-2 h-2 rounded-full bg-[#444]" />
+              <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-[#666]">Original Supply</span>
+            </div>
+            <span className="font-mono text-sm font-bold text-[#888] tabular-nums">
+              {isLoading ? '—' : formatBurnAmount(originalSupply)}
+            </span>
+          </div>
+          {/* Burned */}
+          <div className="flex items-center justify-between px-4 py-3 bg-[#ff6b35]/[0.03] border border-[#ff6b35]/10 rounded-sm">
+            <div className="flex items-center gap-2.5">
+              <div className="w-2 h-2 rounded-full bg-[#ff6b35]" style={{ boxShadow: '0 0 6px rgba(255,107,53,0.4)' }} />
+              <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-[#ff6b35]/80">Incinerated</span>
+            </div>
+            <span className="font-mono text-sm font-bold text-[#ff6b35] tabular-nums wr-fire-text">
+              {isLoading ? '—' : formatBurnAmount(totalBurned)}
+            </span>
+          </div>
+          {/* Pending (in burn source wallet) */}
+          {burnSourceBalance > 0 && (
+            <div className="flex items-center justify-between px-4 py-3 bg-[#ff9e3d]/[0.02] border border-[#ff9e3d]/10 rounded-sm">
+              <div className="flex items-center gap-2.5">
+                <div className="w-2 h-2 rounded-full bg-[#ff9e3d]/50 animate-pulse" />
+                <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-[#ff9e3d]/70">Pending Burn</span>
+              </div>
+              <span className="font-mono text-sm font-bold text-[#ff9e3d]/80 tabular-nums">
+                {formatBurnAmount(burnSourceBalance)}
+              </span>
+            </div>
+          )}
+          {/* Circulating */}
+          <div className="flex items-center justify-between px-4 py-3 bg-[#111]/40 border border-[#222]/30 rounded-sm">
+            <div className="flex items-center gap-2.5">
+              <div className="w-2 h-2 rounded-full bg-[#333]" />
+              <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-[#555]">Circulating</span>
+            </div>
+            <span className="font-mono text-sm font-bold text-[#666] tabular-nums">
+              {isLoading ? '—' : formatBurnAmount(totalSupply)}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Incinerator address */}
+      <div className="mt-5 flex items-center justify-center gap-2 font-mono text-[8px] text-[#444]">
+        <span className="text-[#ff6b35]/25">●</span>
+        <span className="tracking-[0.1em]">INCINERATOR</span>
+        <a
+          href="https://solscan.io/account/1nc1nerator11111111111111111111111111111111"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#555] hover:text-[#ff6b35] transition-colors tabular-nums"
+        >
+          1nc1nerator...1111
+          <span className="text-[7px] ml-0.5">↗</span>
+        </a>
+      </div>
+    </div>
+  )
+}
+
 // ─── Burn Summary Bar ──────────────────────────────────────────────────────────
 
 function BurnSummaryBar({
@@ -254,7 +421,7 @@ function BurnTransactionsTable({
                 <circle cx="12" cy="18" r="0.5" fill="currentColor" />
               </svg>
             </div>
-            <span className="text-[#333] font-mono text-[10px] tracking-[0.2em]">
+            <span className="text-[#666] font-mono text-[10px] tracking-[0.2em]">
               NO BURN TRANSACTIONS RECORDED
             </span>
           </div>
@@ -383,6 +550,16 @@ export default function BurnOperations() {
         />
       </div>
 
+      {/* Supply comparison ring */}
+      <SupplyComparisonRing
+        totalBurned={data?.totalBurned ?? 0}
+        totalSupply={data?.totalSupply ?? 0}
+        burnedPct={data?.burnedPct ?? 0}
+        burnSourceBalance={data?.burnSourceBalance ?? 0}
+        isLoading={isLoading}
+        isError={isError}
+      />
+
       {/* Burn progress visualization */}
       <div className="px-5 lg:px-8 py-6 border-b border-[#333]/20">
         <div className="flex items-center justify-between mb-3 wr-sub-header">
@@ -423,13 +600,13 @@ export default function BurnOperations() {
           ))}
         </div>
         <div className="flex justify-between mt-1.5 relative">
-          <span className="font-mono text-[7px] text-[#333] uppercase tracking-[0.15em] tabular-nums">0%</span>
+          <span className="font-mono text-[7px] text-[#555] uppercase tracking-[0.15em] tabular-nums">0%</span>
           {[25, 50, 75].map(pct => (
-            <span key={pct} className="font-mono text-[6px] text-[#222] uppercase tracking-[0.15em] absolute" style={{ left: `${pct}%`, transform: 'translateX(-50%)' }}>
+            <span key={pct} className="font-mono text-[6px] text-[#555] uppercase tracking-[0.15em] absolute" style={{ left: `${pct}%`, transform: 'translateX(-50%)' }}>
               {pct}%
             </span>
           ))}
-          <span className="font-mono text-[7px] text-[#333] uppercase tracking-[0.15em]">100%</span>
+          <span className="font-mono text-[7px] text-[#555] uppercase tracking-[0.15em]">100%</span>
         </div>
       </div>
 

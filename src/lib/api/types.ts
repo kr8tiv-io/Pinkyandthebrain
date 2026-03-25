@@ -44,6 +44,7 @@ export interface BurnSummaryResponse {
   totalBurned: number
   totalSupply: number
   burnedPct: number
+  burnSourceBalance: number
   transactions: Array<{
     txHash: string
     timestamp: number

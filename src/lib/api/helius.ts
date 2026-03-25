@@ -104,6 +104,30 @@ export async function getTokenSupply(
 }
 
 /**
+ * Returns a specific token balance for an owner+mint pair.
+ * Queries getTokenAccountsByOwner filtered by mint, returns uiAmount (0 if not found).
+ */
+export async function getTokenBalanceForMint(
+  owner: string,
+  mint: string
+): Promise<{ uiAmount: number; amount: string; decimals: number }> {
+  const result = await rpc<{ value: RawTokenAccount[] }>('getTokenAccountsByOwner', [
+    owner,
+    { mint },
+    { encoding: 'jsonParsed' },
+  ])
+  if (result.value.length === 0) {
+    return { uiAmount: 0, amount: '0', decimals: 0 }
+  }
+  const info = result.value[0].account.data.parsed.info
+  return {
+    uiAmount: info.tokenAmount.uiAmount ?? 0,
+    amount: info.tokenAmount.amount,
+    decimals: info.tokenAmount.decimals,
+  }
+}
+
+/**
  * Returns the 20 largest token accounts for a given mint address.
  * Standard Solana RPC method — works on all tiers including free.
  */

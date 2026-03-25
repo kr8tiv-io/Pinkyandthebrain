@@ -36,9 +36,9 @@ function formatGainLoss(pct: number | undefined): { text: string; colorClass: st
 
 // ─── GSAP Stagger Reveal Hook ─────────────────────────────────────────────────
 
-function useStaggerReveal(containerRef: React.RefObject<HTMLElement | null>) {
+function useStaggerReveal(containerRef: React.RefObject<HTMLElement | null>, dataReady: boolean) {
   useEffect(() => {
-    if (!containerRef.current) return
+    if (!dataReady || !containerRef.current) return
     const cards = containerRef.current.querySelectorAll('[data-wr-reveal]')
     if (!cards.length) return
 
@@ -60,7 +60,7 @@ function useStaggerReveal(containerRef: React.RefObject<HTMLElement | null>) {
       )
     }, containerRef)
     return () => ctx.revert()
-  }, [containerRef])
+  }, [containerRef, dataReady])
 }
 
 // ─── Magnetic Hover Hook ─────────────────────────────────────────────────────
@@ -667,7 +667,7 @@ export default function TreasuryIntel() {
   const gridRef = useRef<HTMLDivElement>(null)
   const sectionRef = useRef<HTMLElement>(null)
   const spotlightRef = useRef<HTMLDivElement>(null)
-  useStaggerReveal(gridRef)
+  useStaggerReveal(gridRef, !isLoading && !!data)
 
   // Mouse-tracking lime spotlight
   const handleMouseMove = useCallback((e: ReactMouseEvent) => {

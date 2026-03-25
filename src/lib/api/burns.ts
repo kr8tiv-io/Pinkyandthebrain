@@ -1,15 +1,12 @@
 // src/lib/api/burns.ts
 // Server-side only — do NOT import in client components
 // Composite burns module: aggregates all BRAIN burn transactions and computes burn statistics
-// Primary: Solscan (paginated token transfers) + Helius (token supply)
-// Fallback: Helius-only (supply data, computed burns from known initial supply)
+// Primary: Helius (incinerator balance, token supply, parsed transaction history)
+// Fallback: Solscan for transaction history if Helius parsed API fails
 
 import { getAllTokenTransfers } from './solscan'
-import { getTokenSupply } from './helius'
-import { BRAIN_TOKEN_MINT, BURN_SOURCE, BURN_DESTINATION } from '@/lib/constants'
-
-// Known initial supply — used for fallback burn calculation when Solscan is unavailable
-const INITIAL_SUPPLY = 1_000_000_000
+import { getTokenSupply, getTokenBalanceForMint } from './helius'
+import { BRAIN_TOKEN_MINT, BURN_SOURCE, BURN_DESTINATION, HELIUS_API_URL } from '@/lib/constants'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -23,56 +20,112 @@ export interface BurnSummary {
   totalBurned: number       // total $BRAIN burned, human-readable
   totalSupply: number       // current total supply, human-readable
   burnedPct: number         // % of original supply burned
+  burnSourceBalance: number // BRAIN held by the burn source wallet (pending burn)
   transactions: BurnTransaction[]
+}
+
+// ─── Helius Parsed Transaction History ───────────────────────────────────────
+
+interface HeliusParsedTx {
+  signature: string
+  timestamp: number
+  type: string
+  tokenTransfers?: Array<{
+    fromUserAccount: string
+    toUserAccount: string
+    mint: string
+    tokenAmount: number
+  }>
+}
+
+/**
+ * Fetches parsed transaction history for the burn source wallet via Helius API.
+ * Filters for BRAIN token transfers to the incinerator.
+ */
+async function getHeliusBurnTransactions(): Promise<BurnTransaction[]> {
+  const apiKey = process.env.HELIUS_API_KEY
+  if (!apiKey) return []
+
+  const url = `${HELIUS_API_URL}/addresses/${BURN_SOURCE}/transactions/?api-key=${apiKey}`
+  const res = await fetch(url, { next: { revalidate: 300 } })
+  if (!res.ok) throw new Error(`Helius parsed tx API: ${res.status}`)
+
+  const txs = (await res.json()) as HeliusParsedTx[]
+  const burnTxs: BurnTransaction[] = []
+
+  for (const tx of txs) {
+    if (!tx.tokenTransfers) continue
+    for (const transfer of tx.tokenTransfers) {
+      if (
+        transfer.mint === BRAIN_TOKEN_MINT &&
+        transfer.toUserAccount === BURN_DESTINATION &&
+        transfer.tokenAmount > 0
+      ) {
+        burnTxs.push({
+          txHash: tx.signature,
+          timestamp: tx.timestamp,
+          amount: transfer.tokenAmount,
+        })
+      }
+    }
+  }
+
+  burnTxs.sort((a, b) => b.timestamp - a.timestamp)
+  return burnTxs
 }
 
 // ─── Exports ──────────────────────────────────────────────────────────────────
 
 /**
- * Fetches burn statistics. Primary: Solscan for individual transactions.
- * Fallback: computes totalBurned from initial supply minus current supply (Helius).
+ * Fetches burn statistics.
+ * Primary: Helius RPC for incinerator balance + token supply + parsed tx history.
+ * Fallback: Solscan for individual burn transaction history.
  */
 export async function getBurnSummary(): Promise<BurnSummary> {
-  // Always fetch current supply via Helius (reliable)
-  const supplyData = await getTokenSupply(BRAIN_TOKEN_MINT)
+  // Step 1: Query incinerator balance, burn source balance, and total supply in parallel
+  const [incineratorBalance, burnSourceBalance, supplyData] = await Promise.all([
+    getTokenBalanceForMint(BURN_DESTINATION, BRAIN_TOKEN_MINT),
+    getTokenBalanceForMint(BURN_SOURCE, BRAIN_TOKEN_MINT),
+    getTokenSupply(BRAIN_TOKEN_MINT),
+  ])
+
+  const totalBurned = incineratorBalance.uiAmount
   const currentSupply = supplyData.uiAmount
+  const originalSupply = totalBurned + currentSupply
+  const burnedPct = originalSupply > 0 ? (totalBurned / originalSupply) * 100 : 0
 
-  // Try Solscan for individual burn transactions
+  // Step 2: Try Helius parsed tx history first, then Solscan as fallback
+  let transactions: BurnTransaction[] = []
   try {
-    const burnTransfers = await getAllTokenTransfers(BRAIN_TOKEN_MINT, {
-      from: BURN_SOURCE,
-      to: BURN_DESTINATION,
-    })
-
-    const transactions: BurnTransaction[] = burnTransfers.map((transfer) => {
-      const decimals = transfer.token_decimals
-      const humanAmount = transfer.amount / Math.pow(10, decimals)
-      return {
-        txHash: transfer.trans_id,
-        timestamp: transfer.block_time,
-        amount: humanAmount,
-      }
-    })
-
-    transactions.sort((a, b) => b.timestamp - a.timestamp)
-
-    const totalBurned = transactions.reduce((sum, tx) => sum + tx.amount, 0)
-    const originalSupply = totalBurned + currentSupply
-    const burnedPct = originalSupply > 0 ? (totalBurned / originalSupply) * 100 : 0
-
-    return { totalBurned, totalSupply: currentSupply, burnedPct, transactions }
+    transactions = await getHeliusBurnTransactions()
   } catch (err) {
-    console.warn('[burns] Solscan unavailable, using supply-based calculation:', err)
-
-    // Fallback: compute from known initial supply
-    const totalBurned = Math.max(0, INITIAL_SUPPLY - currentSupply)
-    const burnedPct = INITIAL_SUPPLY > 0 ? (totalBurned / INITIAL_SUPPLY) * 100 : 0
-
-    return {
-      totalBurned,
-      totalSupply: currentSupply,
-      burnedPct,
-      transactions: [],
+    console.warn('[burns] Helius parsed tx API unavailable:', err)
+    // Fallback to Solscan
+    try {
+      const burnTransfers = await getAllTokenTransfers(BRAIN_TOKEN_MINT, {
+        from: BURN_SOURCE,
+        to: BURN_DESTINATION,
+      })
+      transactions = burnTransfers.map((transfer) => {
+        const decimals = transfer.token_decimals
+        const humanAmount = transfer.amount / Math.pow(10, decimals)
+        return {
+          txHash: transfer.trans_id,
+          timestamp: transfer.block_time,
+          amount: humanAmount,
+        }
+      })
+      transactions.sort((a, b) => b.timestamp - a.timestamp)
+    } catch (solscanErr) {
+      console.warn('[burns] Solscan also unavailable:', solscanErr)
     }
+  }
+
+  return {
+    totalBurned,
+    totalSupply: currentSupply,
+    burnedPct,
+    burnSourceBalance: burnSourceBalance.uiAmount,
+    transactions,
   }
 }

@@ -13,6 +13,7 @@ export const SOL_MINT = 'So11111111111111111111111111111111111111112'
 
 // API Configuration (server-side only — import in Route Handlers, not client components)
 export const HELIUS_RPC_URL = `https://mainnet.helius-rpc.com/?api-key=${process.env.HELIUS_API_KEY}`
+export const HELIUS_API_URL = `https://api-mainnet.helius-rpc.com/v0`
 export const BIRDEYE_BASE_URL = 'https://public-api.birdeye.so'
 export const SOLSCAN_API_BASE = 'https://pro-api.solscan.io/v2.0'
 
