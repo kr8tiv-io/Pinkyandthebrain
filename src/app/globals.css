@@ -1197,7 +1197,7 @@ section:hover > .wr-section-badge-fire {
   left: 50%;
   transform: translateX(-50%);
   font-family: var(--font-mono);
-  font-size: 6px;
+  font-size: 5px;
   color: rgba(212, 240, 0, 0);
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -1476,7 +1476,7 @@ section:hover > .wr-section-badge-fire {
   transition: border-color 0.4s ease;
 }
 .group\/card:hover .wr-desc-accent {
-  border-color: rgba(212, 240, 0, 0.08);
+  border-color: rgba(212, 240, 0, 0.06);
 }
 
 /* ── Row Glow Intensity ── */
