@@ -367,3 +367,103 @@ body {
 .wr-scroll::-webkit-scrollbar-thumb:hover {
   background: rgba(212, 240, 0, 0.4);
 }
+
+/* ── Burn Progress Bar ── */
+@keyframes wr-burn-sweep {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.wr-burn-bar {
+  position: relative;
+  height: 4px;
+  background: rgba(51, 51, 51, 0.3);
+  overflow: hidden;
+}
+
+.wr-burn-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff6b35 0%, #ff9e9e 40%, #ff6b35 60%, #ffadad 100%);
+  background-size: 200% 100%;
+  animation: wr-burn-sweep 3s ease-in-out infinite;
+  transition: width 2s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 0 12px rgba(255, 107, 53, 0.4), 0 0 4px rgba(255, 107, 53, 0.6);
+}
+
+/* ── Gradient Mesh Background (per-section) ── */
+.wr-bg-treasury {
+  background:
+    radial-gradient(ellipse 50% 40% at 15% 30%, rgba(212, 240, 0, 0.03) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 85% 70%, rgba(74, 144, 226, 0.02) 0%, transparent 70%);
+}
+
+.wr-bg-burn {
+  background:
+    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(255, 107, 53, 0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 20% 80%, rgba(255, 158, 158, 0.02) 0%, transparent 70%);
+}
+
+/* ── Animated Corner Brackets (awwwards-style) ── */
+.wr-brackets {
+  position: relative;
+}
+.wr-brackets::before,
+.wr-brackets::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: rgba(212, 240, 0, 0.2);
+  border-style: solid;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.wr-brackets::before {
+  top: -1px;
+  left: -1px;
+  border-width: 1px 0 0 1px;
+}
+.wr-brackets::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 1px 1px 0;
+}
+.wr-brackets:hover::before,
+.wr-brackets:hover::after {
+  width: 20px;
+  height: 20px;
+  border-color: rgba(212, 240, 0, 0.5);
+}
+
+.wr-brackets-fire::before,
+.wr-brackets-fire::after {
+  border-color: rgba(255, 107, 53, 0.2);
+}
+.wr-brackets-fire:hover::before,
+.wr-brackets-fire:hover::after {
+  border-color: rgba(255, 107, 53, 0.5);
+}
+
+/* ── Glitch Text Effect ── */
+@keyframes wr-glitch {
+  0%, 100% { clip-path: inset(0 0 0 0); transform: translateX(0); }
+  20% { clip-path: inset(20% 0 60% 0); transform: translateX(-2px); }
+  40% { clip-path: inset(60% 0 10% 0); transform: translateX(2px); }
+  60% { clip-path: inset(40% 0 30% 0); transform: translateX(-1px); }
+  80% { clip-path: inset(10% 0 70% 0); transform: translateX(1px); }
+}
+.wr-glitch-hover:hover {
+  animation: wr-glitch 0.3s ease-in-out;
+}
+
+/* ── Floating Particles (pseudo-element) ── */
+@keyframes wr-float-particle {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
+  50% { transform: translateY(-20px) scale(1.5); opacity: 0.6; }
+}
+
+/* ── Dot Grid Pattern (alternative to line grid) ── */
+.wr-dot-grid {
+  background-image: radial-gradient(circle, rgba(212, 240, 0, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}

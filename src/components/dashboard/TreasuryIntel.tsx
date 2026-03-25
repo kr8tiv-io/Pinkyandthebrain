@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useEffect, useCallback } from 'react'
+import { useState, useRef, useEffect, useCallback, type MouseEvent as ReactMouseEvent } from 'react'
 import { format, fromUnixTime } from 'date-fns'
 import {
   AreaChart,
@@ -60,6 +60,44 @@ function useStaggerReveal(containerRef: React.RefObject<HTMLElement | null>) {
     }, containerRef)
     return () => ctx.revert()
   }, [containerRef])
+}
+
+// ─── Magnetic Hover Hook ─────────────────────────────────────────────────────
+
+function useMagneticHover(ref: React.RefObject<HTMLElement | null>, strength = 0.3) {
+  const handleMouseMove = useCallback((e: globalThis.MouseEvent) => {
+    if (!ref.current) return
+    const rect = ref.current.getBoundingClientRect()
+    const x = e.clientX - rect.left - rect.width / 2
+    const y = e.clientY - rect.top - rect.height / 2
+    gsap.to(ref.current, {
+      x: x * strength,
+      y: y * strength,
+      duration: 0.4,
+      ease: 'power2.out',
+    })
+  }, [ref, strength])
+
+  const handleMouseLeave = useCallback(() => {
+    if (!ref.current) return
+    gsap.to(ref.current, {
+      x: 0,
+      y: 0,
+      duration: 0.7,
+      ease: 'elastic.out(1, 0.3)',
+    })
+  }, [ref])
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    el.addEventListener('mousemove', handleMouseMove)
+    el.addEventListener('mouseleave', handleMouseLeave)
+    return () => {
+      el.removeEventListener('mousemove', handleMouseMove)
+      el.removeEventListener('mouseleave', handleMouseLeave)
+    }
+  }, [ref, handleMouseMove, handleMouseLeave])
 }
 
 // ─── Chart utilities ──────────────────────────────────────────────────────────
@@ -271,6 +309,8 @@ function HoldingCard({
   solPriceUsd: number
 }) {
   const [copied, setCopied] = useState(false)
+  const cardRef = useRef<HTMLDivElement>(null)
+  useMagneticHover(cardRef, 0.15)
 
   const handleCopy = useCallback(async () => {
     await navigator.clipboard.writeText(holding.mint)
@@ -288,7 +328,7 @@ function HoldingCard({
     : 'UNKNOWN'
 
   return (
-    <div data-wr-reveal className="relative p-[1px] overflow-hidden group/card">
+    <div ref={cardRef} data-wr-reveal className="relative p-[1px] overflow-hidden group/card wr-brackets">
       {/* Conic gradient spinner — like Tokenomics cards */}
       <div
         className="absolute inset-[-100%] animate-spin opacity-0 group-hover/card:opacity-60 transition-opacity duration-700 pointer-events-none"
@@ -459,6 +499,10 @@ export default function TreasuryIntel() {
 
   return (
     <section className="w-full bg-[#0a0a0a] relative overflow-hidden">
+      {/* Unique section background — dot grid + gradient mesh */}
+      <div className="absolute inset-0 wr-dot-grid opacity-40 pointer-events-none" />
+      <div className="absolute inset-0 wr-bg-treasury pointer-events-none" />
+
       {/* Watermark section number */}
       <div className="absolute -right-4 -top-8 text-[12rem] font-black text-white/[0.015] leading-none select-none pointer-events-none font-sans">
         01

@@ -240,6 +240,9 @@ export default function BurnOperations() {
 
   return (
     <section ref={sectionRef} className="w-full bg-[#0a0a0a] relative overflow-hidden">
+      {/* Unique section background — ember gradient mesh */}
+      <div className="absolute inset-0 wr-bg-burn pointer-events-none" />
+
       {/* Watermark section number */}
       <div className="absolute -right-4 -top-8 text-[12rem] font-black text-white/[0.015] leading-none select-none pointer-events-none font-sans">
         02
@@ -284,6 +287,28 @@ export default function BurnOperations() {
           isLoading={isLoading}
           isError={isError}
         />
+      </div>
+
+      {/* Burn progress visualization */}
+      <div className="px-5 lg:px-8 py-4 border-b border-[#333]/20">
+        <div className="flex items-center justify-between mb-2">
+          <div className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#555] font-bold">
+            TOTAL SUPPLY INCINERATION
+          </div>
+          <div className="font-mono text-[9px] text-[#ff6b35] font-bold tabular-nums">
+            {isLoading ? '—' : `${(data?.burnedPct ?? 0).toFixed(2)}%`}
+          </div>
+        </div>
+        <div className="wr-burn-bar">
+          <div
+            className="wr-burn-bar-fill"
+            style={{ width: isLoading ? '0%' : `${Math.min(data?.burnedPct ?? 0, 100)}%` }}
+          />
+        </div>
+        <div className="flex justify-between mt-1.5">
+          <span className="font-mono text-[7px] text-[#333] uppercase tracking-[0.15em]">0%</span>
+          <span className="font-mono text-[7px] text-[#333] uppercase tracking-[0.15em]">100% SUPPLY</span>
+        </div>
       </div>
 
       {/* Transactions table */}
