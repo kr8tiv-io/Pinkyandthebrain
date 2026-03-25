@@ -85,7 +85,7 @@ body {
   89% { opacity: 1; }
 }
 .flicker {
-  animation: grain-flicker 3.5s infinite;
+  animation: grain-flicker 4s infinite;
 }
 
 /* ── Marquee Ticker ── */
@@ -360,8 +360,8 @@ body {
 }
 .wr-brackets:hover::before,
 .wr-brackets:hover::after {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   border-color: rgba(212, 240, 0, 0.6);
 }
 
@@ -541,7 +541,7 @@ body {
   animation: wr-cursor-blink 1s step-end infinite;
 }
 .wr-cursor-fire::after {
-  color: rgba(255, 107, 53, 0.3);
+  color: rgba(255, 107, 53, 0.25);
 }
 
 /* ── Classified Glitch Text ── */
