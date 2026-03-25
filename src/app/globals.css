@@ -136,6 +136,8 @@ body {
   .wr-border-shimmer::before,
   .wr-ember,
   .wr-classified-border,
+  .wr-empty-ring,
+  .wr-refresh-pulse,
   .animate-spin {
     animation: none !important;
   }
@@ -1092,6 +1094,25 @@ section:hover > .wr-section-badge-fire {
 /* ── Fire Summary Bar Bottom Accent ── */
 .wr-summary-accent-fire::after {
   background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.08), rgba(255, 107, 53, 0.04), transparent);
+}
+
+/* ── Empty State Pulse Ring ── */
+@keyframes wr-empty-ring {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(51, 51, 51, 0.2); }
+  50% { box-shadow: 0 0 0 8px rgba(51, 51, 51, 0); }
+}
+.wr-empty-ring {
+  animation: wr-empty-ring 3s ease-in-out infinite;
+}
+
+/* ── Data Refresh Pulse ── */
+@keyframes wr-refresh-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(212, 240, 0, 0.2); }
+  70% { box-shadow: 0 0 0 6px rgba(212, 240, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(212, 240, 0, 0); }
+}
+.wr-refresh-pulse {
+  animation: wr-refresh-pulse 0.6s ease-out;
 }
 
 /* ── Enhanced Grid Cell Separator ── */
