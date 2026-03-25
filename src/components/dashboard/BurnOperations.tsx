@@ -105,7 +105,7 @@ function BurnSummaryBar({
   ]
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#333]/20 border-b border-[#333]/20 wr-summary-accent wr-summary-accent-fire wr-summary-glow-divider" role="region" aria-label="Burn statistics summary">
+    <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#333]/15 border-b border-[#333]/15 wr-summary-accent wr-summary-accent-fire wr-summary-glow-divider" role="region" aria-label="Burn statistics summary">
       {cells.map(({ label, content }) => (
         <div key={label} className="px-5 lg:px-6 py-5 group/cell relative transition-colors duration-300 hover:bg-[#ff6b35]/[0.02] wr-stat-scale">
           {/* Hover accent */}
@@ -141,7 +141,7 @@ function TransactionRow({
     gsap.fromTo(
       rowRef.current,
       { opacity: 0, x: -8 },
-      { opacity: 1, x: 0, duration: 0.4, ease: 'power2.out', delay: index * 0.04 }
+      { opacity: 1, x: 0, duration: 0.35, ease: 'power2.out', delay: index * 0.04 }
     )
   }, [index])
 

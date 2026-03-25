@@ -87,7 +87,7 @@ function LiveIndicator({ status }: { status: 'live' | 'connecting' | 'offline' }
     <div className="flex items-center gap-2.5" role="status" aria-label={`Data feed ${status}`}>
       <div className="relative flex items-center justify-center w-4 h-4">
         <div className={`w-1.5 h-1.5 rounded-full ${colorMap[status]} relative z-10`}
-          style={status === 'live' ? { boxShadow: '0 0 6px #d4f000, 0 0 16px rgba(212, 240, 0, 0.5), 0 0 32px rgba(212, 240, 0, 0.15)' } : undefined}
+          style={status === 'live' ? { boxShadow: '0 0 5px #d4f000, 0 0 14px rgba(212, 240, 0, 0.45), 0 0 28px rgba(212, 240, 0, 0.12)' } : undefined}
         />
         {status === 'live' && (
           <div
