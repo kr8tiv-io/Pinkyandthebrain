@@ -184,9 +184,19 @@ body {
 /* ── Grid Background Pattern ── */
 .wr-grid-bg {
   background-image:
-    linear-gradient(rgba(212, 240, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(212, 240, 0, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(212, 240, 0, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 240, 0, 0.025) 1px, transparent 1px);
   background-size: 60px 60px;
+}
+/* Crosshair accent at grid intersections */
+.wr-grid-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle 1px, rgba(212, 240, 0, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
 }
 
 /* ── Horizontal Rule / Section Divider ── */

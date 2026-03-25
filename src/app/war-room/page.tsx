@@ -258,7 +258,7 @@ export default function WarRoomPage() {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center gap-4 md:gap-6 flex-wrap justify-center md:justify-end">
+              <div className="flex items-center gap-3 md:gap-5 flex-wrap justify-center md:justify-end">
                 <a
                   href="https://pinkyandthebrain.fun"
                   target="_blank"
