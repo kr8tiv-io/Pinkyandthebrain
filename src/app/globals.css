@@ -1271,7 +1271,7 @@ section:hover > .wr-section-badge-fire {
 /* ── Monogram Gradient ── */
 .wr-monogram {
   background: linear-gradient(135deg, rgba(212, 240, 0, 0.1) 0%, rgba(212, 240, 0, 0.04) 100%);
-  border: 1px solid rgba(212, 240, 0, 0.12);
+  border: 1px solid rgba(212, 240, 0, 0.1);
   transition: all 0.3s ease;
 }
 .group\/card:hover .wr-monogram {

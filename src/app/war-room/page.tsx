@@ -185,7 +185,7 @@ export default function WarRoomPage() {
                   <div key={item} className="flex items-center gap-3">
                     {i > 0 && <div className="hidden md:block w-px h-3 bg-[#222]" />}
                     <span className="font-mono text-[7px] md:text-[8px] uppercase tracking-[0.2em] text-[#222] font-black flex items-center gap-1.5">
-                      <span className="w-1 h-1 bg-[#333]/20 rounded-full" />
+                      <span className="w-1 h-1 bg-[#333]/20 rounded-full wr-breathe" style={{ animationDuration: `${4 + i}s` }} />
                       {item}
                     </span>
                   </div>
