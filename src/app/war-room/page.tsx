@@ -185,6 +185,10 @@ export default function WarRoomPage() {
                 <span>ETA:</span>
                 <span className="tabular-nums text-[#222] wr-classified-glitch">██:██:██</span>
               </div>
+              <div className="mt-3 flex items-center gap-4 font-mono text-[7px] text-[#1a1a1a]">
+                <span className="flex items-center gap-1"><span className="w-1 h-1 bg-[#d4f000]/5 rounded-full" /> AUTH REQUIRED</span>
+                <span className="flex items-center gap-1"><span className="w-1 h-1 bg-[#ff9e9e]/5 rounded-full" /> PENDING REVIEW</span>
+              </div>
             </div>
           </section>
         </SectionReveal>

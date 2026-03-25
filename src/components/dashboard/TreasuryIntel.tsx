@@ -197,8 +197,9 @@ function TreasuryValueChart({
             <AreaChart data={chartData} margin={{ top: 10, right: 4, left: 0, bottom: 0 }}>
               <defs>
                 <linearGradient id="treasuryGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#d4f000" stopOpacity={0.2} />
-                  <stop offset="50%" stopColor="#d4f000" stopOpacity={0.06} />
+                  <stop offset="0%" stopColor="#d4f000" stopOpacity={0.25} />
+                  <stop offset="30%" stopColor="#d4f000" stopOpacity={0.1} />
+                  <stop offset="70%" stopColor="#d4f000" stopOpacity={0.03} />
                   <stop offset="100%" stopColor="#d4f000" stopOpacity={0} />
                 </linearGradient>
                 <linearGradient id="treasuryStroke" x1="0" y1="0" x2="1" y2="0">
@@ -482,7 +483,7 @@ function HoldingCard({
               {holding.name}
             </div>
             {holding.symbol && holding.symbol !== holding.name && (
-              <div className="text-[#444] text-[10px] font-mono mt-0.5">${holding.symbol}</div>
+              <span className="wr-symbol-badge mt-1 inline-block">${holding.symbol}</span>
             )}
           </div>
         </div>
