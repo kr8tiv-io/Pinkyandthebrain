@@ -606,9 +606,12 @@ export default function TreasuryIntel() {
   }, [])
 
   return (
-    <section ref={sectionRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className="w-full bg-[#0a0a0a] relative overflow-hidden">
+    <section ref={sectionRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className="w-full bg-[#0a0a0a] relative overflow-hidden wr-noise">
       {/* Mouse-tracking lime spotlight */}
       <div ref={spotlightRef} className="absolute inset-0 pointer-events-none z-[1] transition-opacity duration-300" />
+
+      {/* Scanning line */}
+      <div className="wr-scan-line" />
 
       {/* Unique section background — dot grid + gradient mesh */}
       <div className="absolute inset-0 wr-dot-grid opacity-40 pointer-events-none" />

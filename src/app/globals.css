@@ -700,3 +700,63 @@ body {
 .wr-link-scale:active {
   transform: translateY(0) scale(0.98);
 }
+
+/* ── Section Fade Edges (top/bottom gradient overlays) ── */
+.wr-section-fade-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to bottom, #0a0a0a, transparent);
+  pointer-events: none;
+  z-index: 2;
+}
+.wr-section-fade-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to top, #0a0a0a, transparent);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── Card Depth Layers (z-based shadow intensity) ── */
+.wr-depth-1 { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); }
+.wr-depth-2 { box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); }
+.wr-depth-3 { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); }
+
+/* ── Noise Texture Overlay (for sections) ── */
+.wr-noise {
+  position: relative;
+}
+.wr-noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/noise.gif');
+  opacity: 0.02;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Horizontal Scan Line (animated) ── */
+@keyframes wr-scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+.wr-scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(212, 240, 0, 0.06) 50%, transparent 100%);
+  animation: wr-scan 8s linear infinite;
+  pointer-events: none;
+  z-index: 2;
+}
