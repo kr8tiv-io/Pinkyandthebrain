@@ -709,7 +709,14 @@ export default function TreasuryIntel() {
       {/* Summary bar */}
       <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[#333]/20 border-b border-[#333]/20">
         <SummaryCell label="Total Value (USD)" isLoading={isLoading} isError={isError}>
-          {formatUsd(data?.totalValueUsd ?? 0)}
+          <span className="flex items-center">
+            {formatUsd(data?.totalValueUsd ?? 0)}
+            <span className="wr-micro-spark text-[#d4f000]">
+              {[4, 6, 5, 8, 7, 10, 9, 12].map((h, i) => (
+                <span key={i} className="wr-micro-spark-bar" style={{ height: `${h}px` }} />
+              ))}
+            </span>
+          </span>
         </SummaryCell>
         <SummaryCell label="SOL Balance" isLoading={isLoading} isError={isError}>
           {formatSol(data?.solBalance ?? 0)}
@@ -721,7 +728,7 @@ export default function TreasuryIntel() {
           <span className="flex items-center gap-2">
             {data?.holdings.length ?? 0}
             {!isLoading && data && data.holdings.length > 0 && (
-              <span className="text-[8px] text-[#d4f000]/40 font-mono font-bold px-1.5 py-0.5 bg-[#d4f000]/[0.04] border border-[#d4f000]/10 rounded-sm">
+              <span className="text-[8px] text-[#d4f000]/40 font-mono font-bold px-1.5 py-0.5 bg-[#d4f000]/[0.04] border border-[#d4f000]/10 rounded-sm wr-count-badge">
                 LIVE
               </span>
             )}
