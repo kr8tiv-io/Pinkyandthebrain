@@ -202,7 +202,7 @@ export default function CommandHeader() {
       if (cells?.length) {
         gsap.fromTo(
           cells,
-          { y: 12, opacity: 0, filter: 'blur(3px)' },
+          { y: 12, opacity: 0, filter: 'blur(2px)' },
           {
             y: 0,
             opacity: 1,
@@ -226,7 +226,7 @@ export default function CommandHeader() {
       const flashColor = data.priceUsd > prevPriceRef.current ? '#d4f000' : '#ff9e9e'
       gsap.fromTo(
         priceUsdRef.current,
-        { textShadow: `0 0 8px ${flashColor}` },
+        { textShadow: `0 0 6px ${flashColor}` },
         { textShadow: '0 0 0px transparent', duration: 1.8, ease: 'power2.out' }
       )
     }
