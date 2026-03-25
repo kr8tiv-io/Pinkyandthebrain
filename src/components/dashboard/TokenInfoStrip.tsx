@@ -46,9 +46,9 @@ export default function TokenInfoStrip() {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className={`font-mono text-[9px] transition-all px-2.5 py-1 whitespace-nowrap rounded-sm wr-link-scale ${
+            className={`font-mono text-[9px] transition-all px-2.5 py-1 whitespace-nowrap rounded-sm wr-link-scale wr-link-hover ${
               accent
-                ? 'text-[#d4f000]/70 hover:text-[#d4f000] hover:bg-[#d4f000]/[0.05] border border-[#d4f000]/10 hover:border-[#d4f000]/20'
+                ? 'text-[#d4f000]/70 hover:text-[#d4f000] hover:bg-[#d4f000]/[0.05] border border-[#d4f000]/10 hover:border-[#d4f000]/20 hover:shadow-[0_0_12px_rgba(212,240,0,0.1)]'
                 : 'text-[#555] hover:text-[#d4f000] hover:bg-[#d4f000]/[0.03]'
             }`}
           >
