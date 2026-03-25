@@ -53,6 +53,11 @@ export default function TokenInfoStrip() {
             {label} <span className="text-[7px] opacity-50">↗</span>
           </a>
         ))}
+        <div className="w-px h-3 bg-[#333]/20 ml-1" />
+        <div className="flex items-center gap-1.5 px-2 py-1 whitespace-nowrap">
+          <div className="w-1 h-1 bg-[#d4f000]/30 rounded-full" />
+          <span className="font-mono text-[7px] uppercase tracking-[0.2em] text-[#333] font-bold">SOLANA MAINNET</span>
+        </div>
       </div>
 
       {/* Ticker tape with gradient fade edges */}

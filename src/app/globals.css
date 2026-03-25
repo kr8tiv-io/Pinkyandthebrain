@@ -824,6 +824,15 @@ button:focus-visible {
   -webkit-line-clamp: unset;
 }
 
+/* ── Clock Colon Blink ── */
+@keyframes wr-colon-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0.3; }
+}
+.wr-colon-blink {
+  animation: wr-colon-blink 1s step-end infinite;
+}
+
 /* ── Animated Fire Accent Line ── */
 @keyframes wr-fire-line {
   0% { background-position: 0% 50%; }

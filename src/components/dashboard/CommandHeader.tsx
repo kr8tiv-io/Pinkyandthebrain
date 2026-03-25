@@ -153,13 +153,15 @@ function LiveClock() {
     return () => clearInterval(interval)
   }, [])
 
+  const parts = time.split(':')
+
   return (
     <div className="flex items-center gap-2">
       <span className="font-mono text-[7px] uppercase tracking-[0.15em] text-[#333] tabular-nums hidden md:inline">
         {date}
       </span>
       <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#444] tabular-nums">
-        {time} <span className="text-[#333]">UTC</span>
+        {parts[0]}<span className="wr-colon-blink">:</span>{parts[1]}<span className="wr-colon-blink">:</span>{parts[2]} <span className="text-[#333]">UTC</span>
       </span>
     </div>
   )
