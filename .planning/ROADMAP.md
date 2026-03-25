@@ -70,6 +70,14 @@ Plans:
 - Treasury value over time chart (Recharts)
 - Sold tokens tracking
 
+**Goal:** Treasury Intel section live in /war-room with full holdings grid, CLASSIFIED cards, value chart, and divested section
+**Plans:** 2 plans
+**Requirements:** [R2, R10]
+
+Plans:
+- [ ] 05-01-PLAN.md — Build TreasuryIntel.tsx (summary bar, holdings grid, CLASSIFIED cards, Recharts chart, divested section)
+- [ ] 05-02-PLAN.md — Wire TreasuryIntel into war-room/page.tsx and human-verify visual quality
+
 ### Phase 6: Burn Operations Section
 - BurnOperations.tsx: fetch all burns from source → incinerator
 - Total burned, % of supply, % burned + LP locked
