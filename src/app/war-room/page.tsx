@@ -200,7 +200,7 @@ export default function WarRoomPage() {
               <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#1a1a1a] flex items-center gap-2">
                 <span className="text-[#d4f000]/10">◆</span>
                 <span>ETA:</span>
-                <span className="tabular-nums text-[#222] wr-classified-glitch">██:██:██</span>
+                <span className="tabular-nums text-[#222] wr-classified-glitch" style={{ animationDuration: '3s' }}>██:██:██</span>
               </div>
               <div className="mt-3 flex items-center gap-4 font-mono text-[7px] text-[#1a1a1a]">
                 <span className="flex items-center gap-1"><span className="w-1 h-1 bg-[#d4f000]/5 rounded-full" /> AUTH REQUIRED</span>

@@ -227,7 +227,7 @@ function TreasuryValueChart({
                 tick={{ fill: '#444', fontSize: 8, fontFamily: 'var(--font-mono)' }}
                 axisLine={false}
                 tickLine={false}
-                tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
+                tickFormatter={(v) => v >= 1000 ? `$${(v / 1000).toFixed(1)}k` : `$${v.toFixed(0)}`}
                 width={42}
               />
               <Tooltip content={(props) => <CustomChartTooltip {...(props as TooltipContentProps)} />} cursor={{ stroke: 'rgba(212, 240, 0, 0.2)', strokeDasharray: '3 3', strokeWidth: 1 }} />
@@ -571,13 +571,14 @@ function HoldingCard({
           { label: 'SOLSCAN', href: `https://solscan.io/token/${holding.mint}` },
           ...(holding.bagsLink ? [{ label: 'BAGS.FM', href: holding.bagsLink }] : []),
           ...(holding.xAccount ? [{ label: '𝕏', href: holding.xAccount }] : []),
-        ].map(({ label, href }) => (
+        ].map(({ label, href }, i) => (
           <a
             key={label}
             href={href}
             target="_blank"
             rel="noopener noreferrer"
             className="font-mono text-[9px] text-[#d4f000]/50 hover:text-[#d4f000] transition-all duration-200 wr-link-hover wr-arrow-hover flex items-center gap-1 group/link"
+            style={{ transitionDelay: `${i * 50}ms` }}
           >
             {label}
             <span className="text-[7px] opacity-50 wr-arrow">↗</span>
