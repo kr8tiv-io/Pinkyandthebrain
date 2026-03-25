@@ -69,7 +69,7 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 .page-enter {
-  animation: fadeInUp 1.4s ease-out forwards;
+  animation: fadeInUp 1.5s ease-out forwards;
 }
 
 /* ── Classified Flicker ── */
@@ -794,7 +794,7 @@ button:focus-visible {
 /* ── Divider Center Dot ── */
 @keyframes wr-dot-breathe {
   0%, 100% { opacity: 0.12; box-shadow: none; }
-  50% { opacity: 0.6; box-shadow: 0 0 5px currentColor; }
+  50% { opacity: 0.55; box-shadow: 0 0 4px currentColor; }
 }
 .wr-divider-dot {
   width: 3px;
@@ -1160,7 +1160,7 @@ section:hover > .wr-section-badge-fire {
   transition: background 0.2s ease;
 }
 .wr-row-accent:hover::before {
-  background: rgba(255, 107, 53, 0.3);
+  background: rgba(255, 107, 53, 0.25);
 }
 
 /* ── Burn Bar Glow Trail ── */
