@@ -856,7 +856,7 @@ button:focus-visible {
 /* ── Card Description Truncate ── */
 .wr-desc-clamp {
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);

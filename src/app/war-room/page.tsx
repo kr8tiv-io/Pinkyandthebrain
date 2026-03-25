@@ -225,7 +225,7 @@ export default function WarRoomPage() {
               {['WAR ROOM v2.0', '$BRAIN INTELLIGENCE COMMAND', 'ALL DATA LIVE ON-CHAIN', 'NARF!', 'DEFLATIONARY SPL TOKEN', 'COMMUNITY GOVERNED',
                 'WAR ROOM v2.0', '$BRAIN INTELLIGENCE COMMAND', 'ALL DATA LIVE ON-CHAIN', 'NARF!', 'DEFLATIONARY SPL TOKEN', 'COMMUNITY GOVERNED'].map((item, i) => (
                 <span key={i} className="font-mono text-[6px] md:text-[7px] uppercase tracking-[0.3em] text-[#222] mx-4 md:mx-6 whitespace-nowrap group/ticker-item">
-                  <span className="text-[#d4f000]/15 mr-2 inline-block transition-transform duration-300 group-hover/ticker-item:rotate-45">◆</span>
+                  <span className="text-[#d4f000]/15 mr-2.5 inline-block transition-transform duration-300 group-hover/ticker-item:rotate-45">◆</span>
                   {item}
                 </span>
               ))}

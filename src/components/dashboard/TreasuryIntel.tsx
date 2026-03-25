@@ -629,7 +629,7 @@ function DivestedSection() {
             </thead>
             <tbody>
               {soldTokens.map((h, i) => (
-                <tr key={h.mint} className={`border-b border-[#333]/10 transition-colors duration-200 hover:bg-[#ff9e9e]/[0.02] ${i % 2 === 1 ? 'bg-white/[0.008]' : ''}`}>
+                <tr key={h.mint} className={`border-b border-[#333]/10 transition-all duration-200 hover:bg-[#ff9e9e]/[0.02] hover:border-l-2 hover:border-l-[#ff9e9e]/20 ${i % 2 === 1 ? 'bg-white/[0.008]' : ''}`}>
                   <td className="py-3.5 pr-6">
                     <span className="flex items-center gap-2">
                       <span className="w-1 h-1 bg-[#ff9e9e]/20 rounded-full" />
