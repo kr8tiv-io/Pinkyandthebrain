@@ -121,7 +121,7 @@ function DataCell({
       style={{ transitionDelay: `${index * 50}ms` }}
     >
       {/* Hover accent line at top */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#d4f000] to-[#d4f000]/40 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-[#d4f000]/80 to-[#d4f000]/20 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
       {/* Corner index indicator */}
       <div className="absolute top-1.5 right-2 font-mono text-[6px] text-[#333]/25 tabular-nums opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         {String(index + 1).padStart(2, '0')}

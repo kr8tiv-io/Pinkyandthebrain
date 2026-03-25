@@ -319,8 +319,8 @@ body {
 /* ── Gradient Mesh Background (per-section) ── */
 .wr-bg-treasury {
   background:
-    radial-gradient(ellipse 50% 40% at 15% 30%, rgba(212, 240, 0, 0.03) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 50% at 85% 70%, rgba(74, 144, 226, 0.02) 0%, transparent 70%);
+    radial-gradient(ellipse 50% 40% at 15% 30%, rgba(212, 240, 0, 0.025) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 85% 70%, rgba(74, 144, 226, 0.015) 0%, transparent 70%);
 }
 
 .wr-bg-burn {
@@ -929,8 +929,8 @@ button:focus-visible {
   color: #888;
 }
 .wr-row-stripe:hover .wr-burn-amount {
-  transform: scale(1.05);
-  text-shadow: 0 0 12px rgba(255, 107, 53, 0.5);
+  transform: scale(1.03);
+  text-shadow: 0 0 10px rgba(255, 107, 53, 0.4);
 }
 
 /* ── Card Links Reveal ── */
