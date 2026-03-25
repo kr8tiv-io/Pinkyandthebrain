@@ -1277,9 +1277,9 @@ section:hover > .wr-section-badge-fire {
   transition: all 0.3s ease;
 }
 .group\/card:hover .wr-monogram {
-  background: linear-gradient(135deg, rgba(212, 240, 0, 0.15) 0%, rgba(212, 240, 0, 0.06) 100%);
-  border-color: rgba(212, 240, 0, 0.2);
-  box-shadow: 0 0 10px rgba(212, 240, 0, 0.1);
+  background: linear-gradient(135deg, rgba(212, 240, 0, 0.12) 0%, rgba(212, 240, 0, 0.05) 100%);
+  border-color: rgba(212, 240, 0, 0.18);
+  box-shadow: 0 0 8px rgba(212, 240, 0, 0.08);
 }
 
 /* ── Section Header Line Extend ── */
@@ -1304,9 +1304,9 @@ section:hover > .wr-section-badge-fire {
 /* ── Classified Border Flicker ── */
 @keyframes wr-classified-border {
   0%, 90%, 100% { border-color: rgba(255, 158, 158, 0.05); }
-  92% { border-color: rgba(255, 158, 158, 0.2); }
-  94% { border-color: rgba(255, 158, 158, 0.05); }
-  96% { border-color: rgba(255, 158, 158, 0.15); }
+  92% { border-color: rgba(255, 158, 158, 0.15); }
+  94% { border-color: rgba(255, 158, 158, 0.04); }
+  96% { border-color: rgba(255, 158, 158, 0.12); }
 }
 .wr-classified-border {
   animation: wr-classified-border 6s ease-in-out infinite;
