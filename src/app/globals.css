@@ -1030,7 +1030,7 @@ section:hover > .wr-section-badge-fire {
   right: 0;
   height: 1px;
   background: linear-gradient(90deg, transparent 0%, #d4f000 25%, #e4ff57 50%, #d4f000 75%, transparent 100%);
-  animation: wr-footer-breathe 5s ease-in-out infinite;
+  animation: wr-footer-breathe 5.5s ease-in-out infinite;
 }
 
 /* ── Card Stagger Index (per-card entrance delay) ── */
@@ -1588,7 +1588,7 @@ section:hover > .wr-section-badge-fire {
   opacity: 1;
 }
 .wr-section-enter-accent-fire::after {
-  background: linear-gradient(to bottom, transparent, rgba(255, 107, 53, 0.15), transparent);
+  background: linear-gradient(to bottom, transparent, rgba(255, 107, 53, 0.12), transparent);
 }
 
 /* ── Vignette Corners ── */

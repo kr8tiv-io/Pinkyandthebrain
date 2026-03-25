@@ -405,7 +405,7 @@ function ClassifiedCard({ mint }: { mint: string }) {
               REDACTED
             </div>
           </div>
-          <div className="pt-3 border-t border-[#333]/20">
+          <div className="pt-3 border-t border-[#333]/15">
             <a
               href={`https://solscan.io/token/${mint}`}
               target="_blank"
