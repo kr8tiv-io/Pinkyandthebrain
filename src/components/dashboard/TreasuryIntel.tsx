@@ -269,32 +269,65 @@ function LoadingCard() {
 
 function ClassifiedCard({ mint }: { mint: string }) {
   return (
-    <div data-wr-reveal className="wr-card p-5 relative overflow-hidden">
-      {/* Diagonal line pattern */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+    <div data-wr-reveal className="relative p-[1px] overflow-hidden group/classified">
+      {/* Conic gradient spinner — pulsing red/dark */}
+      <div
+        className="absolute inset-[-100%] animate-spin opacity-0 group-hover/classified:opacity-40 transition-opacity duration-700 pointer-events-none"
         style={{
-          backgroundImage: 'repeating-linear-gradient(-45deg, transparent, transparent 8px, rgba(255,255,255,0.1) 8px, rgba(255,255,255,0.1) 9px)',
+          background: 'conic-gradient(from 0deg, transparent 70%, #ff9e9e 85%, #333 100%)',
+          animationDuration: '8s',
         }}
       />
-      <div className="relative">
-        <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#444] mb-3 font-bold">
-          ASSET #{mint.slice(0, 8)}
+
+      {/* Inner card */}
+      <div className="relative h-full w-full bg-[#0d0d0d] p-5 overflow-hidden z-10">
+        {/* Diagonal line pattern */}
+        <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
+          style={{
+            backgroundImage: 'repeating-linear-gradient(-45deg, transparent, transparent 8px, rgba(255,158,158,0.1) 8px, rgba(255,158,158,0.1) 9px)',
+          }}
+        />
+
+        {/* Redaction bars — animated on hover */}
+        <div className="absolute inset-0 pointer-events-none z-20">
+          {[15, 35, 55, 75].map((top, i) => (
+            <div
+              key={i}
+              className="absolute left-2 right-2 h-[6px] bg-[#111] group-hover/classified:translate-x-[-110%] transition-transform duration-700"
+              style={{
+                top: `${top}%`,
+                transitionDelay: `${i * 80}ms`,
+                transitionTimingFunction: 'cubic-bezier(0.7, 0, 0.3, 1)',
+              }}
+            />
+          ))}
         </div>
-        <div className="text-xl font-black text-[#1a1a1a] tracking-widest select-none flicker mb-4 leading-none">
-          ████████████████
-        </div>
-        <div className="wr-tag border-[#333]/50 text-[#444] inline-block mb-4">
-          CLASSIFIED
-        </div>
-        <div className="pt-3 border-t border-[#333]/20">
-          <a
-            href={`https://solscan.io/token/${mint}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-[10px] text-[#d4f000]/60 hover:text-[#d4f000] transition-colors"
-          >
-            SOLSCAN ↗
-          </a>
+
+        <div className="relative">
+          <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#444] mb-3 font-bold">
+            ASSET #{mint.slice(0, 8)}
+          </div>
+          <div className="text-xl font-black text-[#1a1a1a] tracking-widest select-none flicker mb-4 leading-none">
+            ████████████████
+          </div>
+          <div className="flex items-center gap-2 mb-4">
+            <div className="wr-tag border-[#ff9e9e]/20 text-[#ff9e9e]/40">
+              CLASSIFIED
+            </div>
+            <div className="wr-tag border-[#333]/30 text-[#333]">
+              REDACTED
+            </div>
+          </div>
+          <div className="pt-3 border-t border-[#333]/20">
+            <a
+              href={`https://solscan.io/token/${mint}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-[10px] text-[#d4f000]/60 hover:text-[#d4f000] transition-colors"
+            >
+              SOLSCAN ↗
+            </a>
+          </div>
         </div>
       </div>
     </div>
