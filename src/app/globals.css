@@ -400,8 +400,8 @@ body {
 }
 @keyframes wr-orb-drift-2 {
   0%, 100% { transform: translate(0, 0); }
-  33% { transform: translate(-4vw, -3vh); }
-  66% { transform: translate(2vw, 3vh); }
+  33% { transform: translate(-4.5vw, -3.5vh); }
+  66% { transform: translate(2.5vw, 3.5vh); }
 }
 @keyframes wr-orb-drift-3 {
   0%, 100% { transform: translate(0, 0); }
