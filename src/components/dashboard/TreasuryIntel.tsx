@@ -165,7 +165,7 @@ function TreasuryValueChart({
   return (
     <div className="px-5 lg:px-8 py-6 relative">
       {/* Subtle glow behind chart */}
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_50%_at_50%_60%,rgba(212,240,0,0.015),transparent_70%)]" />
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_50%_at_50%_60%,rgba(212,240,0,0.012),transparent_70%)]" />
 
       <div className="relative font-mono text-[9px] uppercase tracking-[0.25em] text-[#666] font-bold mb-5 flex items-center gap-3 wr-sub-header">
         <span className="text-[#d4f000]/30 text-[6px] wr-sub-diamond">◆</span>
