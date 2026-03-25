@@ -1448,7 +1448,7 @@ section:hover > .wr-section-badge-fire {
 }
 .wr-chart-entrance {
   animation: wr-chart-fade-in 0.7s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-  animation-delay: 0.25s;
+  animation-delay: 0.3s;
   opacity: 0;
 }
 
@@ -1578,8 +1578,8 @@ section:hover > .wr-section-badge-fire {
   top: 10%;
   bottom: 10%;
   width: 1px;
-  background: linear-gradient(to bottom, transparent, rgba(212, 240, 0, 0.12), transparent);
-  opacity: 0.35;
+  background: linear-gradient(to bottom, transparent, rgba(212, 240, 0, 0.1), transparent);
+  opacity: 0.3;
   pointer-events: none;
   transition: opacity 0.5s ease;
   z-index: 2;
