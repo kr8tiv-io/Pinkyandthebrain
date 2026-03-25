@@ -161,50 +161,6 @@ body {
   }
 }
 
-/* ── Animated Conic Border (scanning radar effect) ── */
-@property --conic-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes conic-spin {
-  to { --conic-angle: 360deg; }
-}
-
-.wr-conic-border {
-  position: relative;
-}
-.wr-conic-border::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  background: conic-gradient(
-    from var(--conic-angle),
-    transparent 0%,
-    #d4f000 8%,
-    #d4f000aa 12%,
-    transparent 20%,
-    transparent 100%
-  );
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  padding: 1px;
-  animation: conic-spin 4s linear infinite;
-  pointer-events: none;
-}
-
-.wr-conic-border-fire::before {
-  background: conic-gradient(
-    from var(--conic-angle),
-    transparent 0%,
-    #ff6b35 8%,
-    #ff6b35aa 12%,
-    transparent 20%,
-    transparent 100%
-  );
-}
-
 /* ── Shimmer Loading Skeleton ── */
 @keyframes wr-shimmer {
   0% { background-position: 200% 50%; }
@@ -221,15 +177,6 @@ body {
   background-size: 400% 100%;
   animation: wr-shimmer 2s ease infinite;
   border-radius: 2px;
-}
-
-/* ── Enhanced skeleton with glow pulse ── */
-@keyframes wr-skeleton-glow {
-  0%, 100% { box-shadow: 0 0 0 transparent; }
-  50% { box-shadow: 0 0 8px rgba(212, 240, 0, 0.03); }
-}
-.wr-skeleton-glow {
-  animation: wr-skeleton-glow 2s ease-in-out infinite;
 }
 
 /* ── Scanline Overlay ── */
@@ -250,62 +197,6 @@ body {
     linear-gradient(rgba(212, 240, 0, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(212, 240, 0, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
-}
-
-/* ── Card Depth System ── */
-.wr-card {
-  position: relative;
-  background: rgba(13, 13, 13, 0.8);
-  border: 1px solid rgba(51, 51, 51, 0.6);
-  backdrop-filter: blur(12px);
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.wr-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.3);
-}
-/* Top edge light reflection */
-.wr-card::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 10%, rgba(255, 255, 255, 0.08) 50%, transparent 90%);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.wr-card:hover {
-  border-color: rgba(51, 51, 51, 0.9);
-  background: rgba(20, 20, 20, 0.9);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-}
-
-/* ── Fire Card Variant ── */
-.wr-card-fire {
-  border-color: rgba(255, 107, 53, 0.2);
-}
-.wr-card-fire::before {
-  background: linear-gradient(90deg, transparent 10%, rgba(255, 107, 53, 0.12) 50%, transparent 90%);
-}
-.wr-card-fire:hover {
-  border-color: rgba(255, 107, 53, 0.4);
-  box-shadow: 0 8px 32px rgba(255, 107, 53, 0.08);
-}
-
-/* ── Animated Number Flash (pulse on value change) ── */
-@keyframes wr-value-flash {
-  0% { color: #d4f000; text-shadow: 0 0 12px rgba(212, 240, 0, 0.5); }
-  100% { color: #ffffff; text-shadow: none; }
-}
-.wr-value-flash {
-  animation: wr-value-flash 1.2s ease-out forwards;
 }
 
 /* ── Horizontal Rule / Section Divider ── */
@@ -357,16 +248,6 @@ body {
   transform: translateY(16px);
 }
 
-/* ── War Room Tooltip ── */
-.wr-tooltip {
-  background: rgba(13, 13, 13, 0.95);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(51, 51, 51, 0.6);
-  box-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
-}
-
 /* ── Row Hover Shift ── */
 .wr-row-hover {
   transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
@@ -375,12 +256,6 @@ body {
   background: rgba(212, 240, 0, 0.03);
   padding-left: calc(1rem + 4px);
   border-left: 2px solid rgba(212, 240, 0, 0.2);
-}
-
-.wr-row-hover-fire:hover {
-  background: rgba(255, 107, 53, 0.03);
-  padding-left: calc(1rem + 4px);
-  border-left: 2px solid rgba(255, 107, 53, 0.2);
 }
 
 /* ── Section Header Tag ── */
@@ -532,22 +407,6 @@ body {
 .wr-orb-2 { animation: wr-orb-drift-2 25s ease-in-out infinite; will-change: transform; }
 .wr-orb-3 { animation: wr-orb-drift-3 18s ease-in-out infinite; will-change: transform; }
 
-/* ── Section Crosshair Markers ── */
-.wr-crosshair {
-  position: relative;
-}
-.wr-crosshair::before {
-  content: '+';
-  position: absolute;
-  top: -6px;
-  left: -6px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: rgba(212, 240, 0, 0.15);
-  line-height: 1;
-  pointer-events: none;
-}
-
 /* ── External Link Hover Underline ── */
 .wr-link-hover {
   position: relative;
@@ -566,21 +425,6 @@ body {
   width: 100%;
 }
 
-/* ── Data Cell Value Underline ── */
-.wr-value-underline {
-  position: relative;
-}
-.wr-value-underline::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, currentColor 0%, transparent 100%);
-  opacity: 0.1;
-}
-
 /* ── Gradient Text (section numbers, accents) ── */
 .wr-gradient-text-lime {
   background: linear-gradient(135deg, #d4f000 0%, #e4ff57 50%, #d4f000 100%);
@@ -588,13 +432,6 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.wr-gradient-text-fire {
-  background: linear-gradient(135deg, #ff6b35 0%, #ffadad 50%, #ff6b35 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 /* ── Alternating Row Stripes ── */
 .wr-row-stripe:nth-child(even) {
   background: rgba(255, 255, 255, 0.008);
@@ -633,15 +470,6 @@ body {
   right: 0;
   height: 2px;
   background: linear-gradient(90deg, transparent 0%, #d4f000 50%, transparent 100%);
-}
-
-/* ── Chart Active Dot Pulse ── */
-@keyframes wr-dot-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 240, 0, 0.4); }
-  50% { box-shadow: 0 0 0 6px rgba(212, 240, 0, 0); }
-}
-.wr-chart-dot {
-  animation: wr-dot-pulse 2s ease-in-out infinite;
 }
 
 /* ── Fire Amount Text Shadow ── */
@@ -749,11 +577,6 @@ body {
   z-index: 2;
 }
 
-/* ── Card Depth Layers (z-based shadow intensity) ── */
-.wr-depth-1 { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); }
-.wr-depth-2 { box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); }
-.wr-depth-3 { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); }
-
 /* ── Noise Texture Overlay (for sections) ── */
 .wr-noise {
   position: relative;
@@ -770,19 +593,6 @@ body {
 }
 
 /* ── Focus Ring (war room style) ── */
-.wr-focus:focus-visible {
-  outline: 1px solid rgba(212, 240, 0, 0.5);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 3px rgba(212, 240, 0, 0.1);
-}
-.wr-focus-fire:focus-visible {
-  outline: 1px solid rgba(255, 107, 53, 0.5);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
-}
-
-/* Apply focus ring to all interactive elements in war room */
-.wr-interactive:focus-visible,
 a:focus-visible,
 button:focus-visible {
   outline: 1px solid rgba(212, 240, 0, 0.4);
@@ -843,15 +653,6 @@ button:focus-visible {
 .wr-section-badge-fire {
   color: rgba(255, 107, 53, 0.1);
   border-left-color: rgba(255, 107, 53, 0.08);
-}
-
-/* ── Data Update Pulse ── */
-@keyframes wr-update-pulse {
-  0% { border-color: rgba(212, 240, 0, 0.3); }
-  100% { border-color: rgba(51, 51, 51, 0.2); }
-}
-.wr-update-flash {
-  animation: wr-update-pulse 1.5s ease-out;
 }
 
 /* ── Horizontal Scan Line (animated) ── */
