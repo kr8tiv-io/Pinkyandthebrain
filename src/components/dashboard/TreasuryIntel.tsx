@@ -143,7 +143,7 @@ function CustomChartTooltip({ active, payload, label }: TooltipContentProps) {
     <div className="wr-tooltip-enhanced wr-tooltip-caret wr-tooltip-entrance px-4 py-3.5 font-mono text-xs">
       <div className="flex items-center gap-2 mb-2.5">
         <div className="w-1.5 h-1.5 bg-[#d4f000] rounded-full" style={{ boxShadow: '0 0 3px #d4f000' }} />
-        <span className="text-[#666] text-[8px] uppercase tracking-[0.25em] font-black">{label}</span>
+        <span className="text-[#5a5a5a] text-[8px] uppercase tracking-[0.25em] font-black">{label}</span>
       </div>
       <div className="text-[#d4f000] font-black text-lg tabular-nums wr-gradient-text-lime leading-none">{formatUsd(numericValue)}</div>
       <div className="mt-1.5 font-mono text-[7px] text-[#333]/60 uppercase tracking-[0.2em]">PORTFOLIO VALUE</div>
@@ -372,7 +372,7 @@ function ClassifiedCard({ mint }: { mint: string }) {
           {[15, 35, 55, 75].map((top, i) => (
             <div
               key={i}
-              className="absolute left-2 right-2 h-[5px] bg-[#111]/90 group-hover/classified:translate-x-[-110%] transition-transform duration-[800ms]"
+              className="absolute left-2 right-2 h-[4px] bg-[#111]/90 group-hover/classified:translate-x-[-110%] transition-transform duration-[800ms]"
               style={{
                 top: `${top}%`,
                 transitionDelay: `${i * 100}ms`,
