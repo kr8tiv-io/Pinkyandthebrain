@@ -1,5 +1,8 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { getAllAccountTransfers } from '@/lib/api/solscan'
+import { getTokenAccountsByOwner } from '@/lib/api/helius'
+import { getJupiterPrices } from '@/lib/api/jupiter'
+import { BRAIN_TOKEN_MINT } from '@/lib/constants'
 import type { WalletActivityResponse } from '@/lib/api/types'
 
 export const revalidate = 300
@@ -12,6 +15,7 @@ export async function GET(
 ) {
   const { address } = await params
 
+  // Try Solscan for full transaction history
   try {
     const [inTransfers, outTransfers] = await Promise.all([
       getAllAccountTransfers(address, { flow: 'in' }),
@@ -45,7 +49,25 @@ export async function GET(
 
     return NextResponse.json(data)
   } catch (err) {
-    console.error(`[wallet API] ${address}`, err)
+    console.warn(`[wallet API] Solscan unavailable for ${address}, falling back to Helius:`, err)
+  }
+
+  // Fallback: Helius token accounts (current balance only, no tx history)
+  try {
+    const tokenAccounts = await getTokenAccountsByOwner(address)
+    const brainAccount = tokenAccounts.find((a) => a.mint === BRAIN_TOKEN_MINT)
+    const netBalance = brainAccount?.uiAmount ?? 0
+
+    const data: WalletActivityResponse = {
+      totalIn: 0,
+      totalOut: 0,
+      netBalance,
+      transactions: [],
+    }
+
+    return NextResponse.json(data)
+  } catch (err) {
+    console.error(`[wallet API] All sources failed for ${address}:`, err)
     return NextResponse.json(
       { error: 'Wallet data fetch failed' },
       { status: 500 }

@@ -102,3 +102,21 @@ export async function getTokenSupply(
     uiAmount: result.value.uiAmount ?? 0,
   }
 }
+
+/**
+ * Returns the 20 largest token accounts for a given mint address.
+ * Standard Solana RPC method — works on all tiers including free.
+ */
+export async function getTokenLargestAccounts(
+  mint: string
+): Promise<{ address: string; amount: string; decimals: number; uiAmount: number }[]> {
+  const result = await rpc<{
+    value: { address: string; amount: string; decimals: number; uiAmount: number | null }[]
+  }>('getTokenLargestAccounts', [mint])
+  return result.value.map((acct) => ({
+    address: acct.address,
+    amount: acct.amount,
+    decimals: acct.decimals,
+    uiAmount: acct.uiAmount ?? 0,
+  }))
+}

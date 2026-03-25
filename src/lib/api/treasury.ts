@@ -1,10 +1,11 @@
 // src/lib/api/treasury.ts
 // Server-side only — do NOT import in client components
 // Composite treasury module: SOL balance + SPL holdings, current prices, gain/loss computation
-// Combines helius, birdeye, and solscan foundational wrappers
+// Combines helius, jupiter (free prices), birdeye (optional historical), and solscan (optional transfers)
 
 import { getSolBalance, getTokenAccountsByOwner } from './helius'
-import { getMultiTokenPrices, getPriceAtTimestamp } from './birdeye'
+import { getJupiterPrices } from './jupiter'
+import { getPriceAtTimestamp } from './birdeye'
 import { getAccountTransfers } from './solscan'
 import { TREASURY_WALLET, SOL_MINT } from '@/lib/constants'
 import { HOLDINGS_BY_MINT } from '@/lib/investments.config'
@@ -43,7 +44,7 @@ export interface TreasuryResponse {
 
 /**
  * Enriches a single token holding with metadata, historical price, and gain/loss.
- * Wraps in try/catch so historical lookup failures don't break the whole response.
+ * Wraps Solscan and Birdeye historical calls in try/catch so failures don't break the response.
  */
 async function enrichHolding(
   mint: string,
@@ -74,7 +75,7 @@ async function enrichHolding(
 
   // Attempt to enrich with purchase date and historical price
   try {
-    // Get first inbound transfer to find purchase date — page 50 to get oldest available
+    // Get first inbound transfer to find purchase date (requires Solscan)
     const inboundTransfers = await getAccountTransfers(TREASURY_WALLET, {
       token: mint,
       flow: 'in',
@@ -82,33 +83,35 @@ async function enrichHolding(
     })
 
     if (inboundTransfers.length > 0) {
-      // Last item in ascending order is the oldest = purchase date
       const oldest = inboundTransfers[inboundTransfers.length - 1]
       const purchaseDate = oldest.block_time
 
-      // Fetch historical price at purchase date
-      const purchasePriceUsd = await getPriceAtTimestamp(mint, purchaseDate)
+      // Fetch historical price at purchase date (requires Birdeye OHLCV)
+      try {
+        const purchasePriceUsd = await getPriceAtTimestamp(mint, purchaseDate)
 
-      if (purchasePriceUsd !== null) {
-        const costBasisUsd = uiAmount * purchasePriceUsd
-        const gainLossUsd = currentValueUsd - costBasisUsd
-        const gainLossPct = costBasisUsd > 0 ? (gainLossUsd / costBasisUsd) * 100 : undefined
+        if (purchasePriceUsd !== null) {
+          const costBasisUsd = uiAmount * purchasePriceUsd
+          const gainLossUsd = currentValueUsd - costBasisUsd
+          const gainLossPct = costBasisUsd > 0 ? (gainLossUsd / costBasisUsd) * 100 : undefined
 
-        return {
-          ...base,
-          purchaseDate,
-          purchasePriceUsd,
-          costBasisUsd,
-          gainLossUsd,
-          gainLossPct,
+          return {
+            ...base,
+            purchaseDate,
+            purchasePriceUsd,
+            costBasisUsd,
+            gainLossUsd,
+            gainLossPct,
+          }
         }
+      } catch {
+        // Birdeye historical price unavailable — continue with purchase date only
       }
 
-      // Historical price unavailable — still record purchase date
       return { ...base, purchaseDate }
     }
   } catch {
-    // Historical enrichment failed — return base holding with current data only
+    // Solscan unavailable — return base holding with current data only
   }
 
   return base
@@ -118,36 +121,29 @@ async function enrichHolding(
 
 /**
  * Fetches full treasury valuation: SOL balance, all SPL token holdings with
- * current prices (batch fetched), and per-holding gain/loss vs purchase price.
- *
- * Uses Promise.all for all parallel-safe operations:
- *   - SOL balance, token accounts, and SOL price fetched in parallel
- *   - All per-holding historical enrichments run in parallel
- *
- * Handles missing prices gracefully — illiquid tokens default to 0 price.
+ * current prices (via Jupiter, free), and per-holding gain/loss vs purchase price.
  */
 export async function getTreasuryValuations(): Promise<TreasuryResponse> {
   // Step 1: Fetch SOL balance, token accounts, and SOL price in parallel
-  const [solBalance, tokenAccounts, solPriceMap] = await Promise.all([
+  const [solBalance, tokenAccounts, solPrices] = await Promise.all([
     getSolBalance(TREASURY_WALLET),
     getTokenAccountsByOwner(TREASURY_WALLET),
-    // SOL price via multi_price with just SOL mint
-    getMultiTokenPrices([SOL_MINT]),
+    getJupiterPrices([SOL_MINT]),
   ])
 
-  const solPriceUsd = solPriceMap[SOL_MINT]?.value ?? 0
+  const solPriceUsd = solPrices[SOL_MINT] ?? 0
 
   // Step 2: Filter to non-zero token accounts (ignore dust)
   const nonZeroAccounts = tokenAccounts.filter(acct => acct.uiAmount > 0)
 
-  // Step 3: Batch-fetch current prices for all non-zero mints in ONE call
+  // Step 3: Batch-fetch current prices for all non-zero mints via Jupiter (free)
   const mintList = nonZeroAccounts.map(acct => acct.mint)
-  const prices = mintList.length > 0 ? await getMultiTokenPrices(mintList) : {}
+  const prices = mintList.length > 0 ? await getJupiterPrices(mintList) : {}
 
   // Step 4: Enrich each holding in parallel — historical lookups run concurrently
   const holdings = await Promise.all(
     nonZeroAccounts.map(acct => {
-      const currentPriceUsd = prices[acct.mint]?.value ?? 0
+      const currentPriceUsd = prices[acct.mint] ?? 0
       return enrichHolding(acct.mint, acct.uiAmount, currentPriceUsd, solPriceUsd)
     })
   )

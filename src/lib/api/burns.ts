@@ -1,11 +1,15 @@
 // src/lib/api/burns.ts
 // Server-side only — do NOT import in client components
 // Composite burns module: aggregates all BRAIN burn transactions and computes burn statistics
-// Combines solscan (paginated token transfers) and helius (token supply) foundational wrappers
+// Primary: Solscan (paginated token transfers) + Helius (token supply)
+// Fallback: Helius-only (supply data, computed burns from known initial supply)
 
 import { getAllTokenTransfers } from './solscan'
 import { getTokenSupply } from './helius'
 import { BRAIN_TOKEN_MINT, BURN_SOURCE, BURN_DESTINATION } from '@/lib/constants'
+
+// Known initial supply — used for fallback burn calculation when Solscan is unavailable
+const INITIAL_SUPPLY = 1_000_000_000
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -25,55 +29,50 @@ export interface BurnSummary {
 // ─── Exports ──────────────────────────────────────────────────────────────────
 
 /**
- * Fetches all BRAIN burn transactions and computes aggregate burn statistics.
- *
- * Uses getAllTokenTransfers (paginated, up to 10 pages) to capture all burns —
- * not just the first page. Research warns burns may span multiple pages.
- *
- * Token decimals are read from each transfer's token_decimals field, NOT hardcoded,
- * per research pitfall #6 (decimals vary per token and should come from the API).
- *
- * burnedPct = totalBurned / (totalBurned + currentSupply) * 100
- * This represents the % of original supply that has been burned.
- *
- * Fetches burn transactions and current supply in parallel.
+ * Fetches burn statistics. Primary: Solscan for individual transactions.
+ * Fallback: computes totalBurned from initial supply minus current supply (Helius).
  */
 export async function getBurnSummary(): Promise<BurnSummary> {
-  // Fetch all burn transactions and current token supply in parallel
-  const [burnTransfers, supplyData] = await Promise.all([
-    getAllTokenTransfers(BRAIN_TOKEN_MINT, {
-      from: BURN_SOURCE,
-      to: BURN_DESTINATION,
-    }),
-    getTokenSupply(BRAIN_TOKEN_MINT),
-  ])
-
-  // Map raw transfers to BurnTransaction — read decimals from each transfer
-  const transactions: BurnTransaction[] = burnTransfers.map((transfer) => {
-    const decimals = transfer.token_decimals
-    const humanAmount = transfer.amount / Math.pow(10, decimals)
-    return {
-      txHash: transfer.trans_id,
-      timestamp: transfer.block_time,
-      amount: humanAmount,
-    }
-  })
-
-  // Sort most recent first
-  transactions.sort((a, b) => b.timestamp - a.timestamp)
-
-  // Compute totals
-  const totalBurned = transactions.reduce((sum, tx) => sum + tx.amount, 0)
+  // Always fetch current supply via Helius (reliable)
+  const supplyData = await getTokenSupply(BRAIN_TOKEN_MINT)
   const currentSupply = supplyData.uiAmount
 
-  // burnedPct: % of original (burned + current) supply that has been burned
-  const originalSupply = totalBurned + currentSupply
-  const burnedPct = originalSupply > 0 ? (totalBurned / originalSupply) * 100 : 0
+  // Try Solscan for individual burn transactions
+  try {
+    const burnTransfers = await getAllTokenTransfers(BRAIN_TOKEN_MINT, {
+      from: BURN_SOURCE,
+      to: BURN_DESTINATION,
+    })
 
-  return {
-    totalBurned,
-    totalSupply: currentSupply,
-    burnedPct,
-    transactions,
+    const transactions: BurnTransaction[] = burnTransfers.map((transfer) => {
+      const decimals = transfer.token_decimals
+      const humanAmount = transfer.amount / Math.pow(10, decimals)
+      return {
+        txHash: transfer.trans_id,
+        timestamp: transfer.block_time,
+        amount: humanAmount,
+      }
+    })
+
+    transactions.sort((a, b) => b.timestamp - a.timestamp)
+
+    const totalBurned = transactions.reduce((sum, tx) => sum + tx.amount, 0)
+    const originalSupply = totalBurned + currentSupply
+    const burnedPct = originalSupply > 0 ? (totalBurned / originalSupply) * 100 : 0
+
+    return { totalBurned, totalSupply: currentSupply, burnedPct, transactions }
+  } catch (err) {
+    console.warn('[burns] Solscan unavailable, using supply-based calculation:', err)
+
+    // Fallback: compute from known initial supply
+    const totalBurned = Math.max(0, INITIAL_SUPPLY - currentSupply)
+    const burnedPct = INITIAL_SUPPLY > 0 ? (totalBurned / INITIAL_SUPPLY) * 100 : 0
+
+    return {
+      totalBurned,
+      totalSupply: currentSupply,
+      burnedPct,
+      transactions: [],
+    }
   }
 }

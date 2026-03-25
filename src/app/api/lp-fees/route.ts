@@ -23,10 +23,15 @@ export async function GET() {
 
     return NextResponse.json(data)
   } catch (err) {
-    console.error('[lp-fees API]', err)
-    return NextResponse.json(
-      { error: 'LP fees data fetch failed' },
-      { status: 500 }
-    )
+    console.warn('[lp-fees API] Solscan unavailable, returning empty data:', err)
+
+    // Fallback: return empty inflows with zero distribution
+    const data: LpFeeResponse = {
+      totalFeeSol: 0,
+      inflows: [],
+      distribution: getFeeDistribution(0),
+    }
+
+    return NextResponse.json(data)
   }
 }
