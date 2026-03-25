@@ -1399,7 +1399,7 @@ section:hover > .wr-section-badge-fire {
   right: 6px;
   font-family: var(--font-mono);
   font-size: 6px;
-  color: rgba(51, 51, 51, 0.25);
+  color: rgba(51, 51, 51, 0.2);
   text-transform: uppercase;
   letter-spacing: 0.15em;
   opacity: 0;
