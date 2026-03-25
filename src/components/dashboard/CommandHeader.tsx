@@ -60,7 +60,7 @@ function LiveIndicator({ status }: { status: 'live' | 'connecting' | 'offline' }
     tl.fromTo(
       ringRef.current,
       { scale: 1, opacity: 0.6 },
-      { scale: 2.8, opacity: 0, duration: 1.5, ease: 'power1.out' }
+      { scale: 2.5, opacity: 0, duration: 1.5, ease: 'power1.out' }
     )
     return () => { tl.kill() }
   }, [status])

@@ -309,7 +309,7 @@ body {
 
 .wr-burn-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, #ff6b35 0%, #ff9e9e 40%, #ff6b35 60%, #ffadad 100%);
+  background: linear-gradient(90deg, #ff6b35 0%, #ff9e9e 35%, #ff6b35 65%, #ffadad 100%);
   background-size: 200% 100%;
   animation: wr-burn-sweep 3.5s ease-in-out infinite;
   transition: width 2s cubic-bezier(0.25, 1, 0.5, 1);
