@@ -1,13 +1,18 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server'
+import { getTop100Holders } from '@/lib/api/solscan'
+import { BRAIN_TOKEN_MINT } from '@/lib/constants'
+
+export const revalidate = 300 // 5-minute cache
 
 export async function GET() {
-  const holders = [
-    { rank: 1, wallet_address: "8x9...4V", balance: 842000 },
-    { rank: 2, wallet_address: "BrainWallet...SOL", balance: 612400 },
-    { rank: 3, wallet_address: "7r9...BAGS", balance: 320000 },
-    { rank: 4, wallet_address: "Degen...X1", balance: 150000 },
-    { rank: 5, wallet_address: "Fren...LUV", balance: 90000 },
-  ];
-
-  return NextResponse.json(holders);
+  try {
+    const holders = await getTop100Holders(BRAIN_TOKEN_MINT)
+    return NextResponse.json(holders)
+  } catch (err) {
+    console.error('[hall-of-fame API]', err)
+    return NextResponse.json(
+      { error: 'Holder data fetch failed' },
+      { status: 500 }
+    )
+  }
 }
