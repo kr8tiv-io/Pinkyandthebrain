@@ -597,7 +597,7 @@ body {
 }
 .wr-sub-header:hover .wr-sub-diamond {
   color: rgba(212, 240, 0, 0.5);
-  transform: scale(1.5);
+  transform: scale(1.5) rotate(45deg);
 }
 .wr-sub-diamond {
   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
