@@ -620,8 +620,8 @@ body {
   50% { opacity: 0.9; transform: scale(1.2); }
 }
 .wr-data-dot {
-  width: 4px;
-  height: 4px;
+  width: 3px;
+  height: 3px;
   border-radius: 50%;
   background: #d4f000;
   animation: wr-data-pulse 2s ease-in-out infinite;
