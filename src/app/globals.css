@@ -57,7 +57,7 @@ body {
 }
 ::-webkit-scrollbar-thumb {
   background: #333;
-  border-radius: 3px;
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #d4f000;
@@ -258,7 +258,7 @@ body {
 }
 .wr-row-hover:hover {
   background: rgba(212, 240, 0, 0.03);
-  padding-left: calc(1rem + 4px);
+  padding-left: calc(1rem + 3px);
   border-left: 2px solid rgba(212, 240, 0, 0.2);
 }
 
@@ -1372,7 +1372,7 @@ section:hover > .wr-section-badge-fire {
   position: absolute;
   inset: 0;
   padding: 1px;
-  background: linear-gradient(90deg, transparent 25%, rgba(212, 240, 0, 0.15) 50%, transparent 75%);
+  background: linear-gradient(90deg, transparent 20%, rgba(212, 240, 0, 0.15) 50%, transparent 80%);
   background-size: 200% 100%;
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
