@@ -95,7 +95,7 @@ export default function WarRoomPage() {
             <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_40%_40%_at_50%_50%,rgba(212,240,0,0.02),transparent_70%)]" />
 
             {/* Watermark */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[16rem] font-black text-white/[0.01] leading-none select-none pointer-events-none font-sans">
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[16rem] font-black text-white/[0.01] leading-none select-none pointer-events-none font-sans wr-breathe">
               03
             </div>
 
@@ -161,8 +161,8 @@ export default function WarRoomPage() {
           </div>
 
           <div className="relative px-5 lg:px-8 py-8">
-            {/* Big watermark */}
-            <div className="absolute right-8 bottom-4 text-[6rem] font-black text-white/[0.01] leading-none select-none pointer-events-none font-sans tracking-tighter">
+            {/* Big watermark — breathing glow */}
+            <div className="absolute right-8 bottom-4 text-[6rem] font-black text-white/[0.01] leading-none select-none pointer-events-none font-sans tracking-tighter wr-breathe">
               $BRAIN
             </div>
 

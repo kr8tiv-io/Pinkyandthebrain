@@ -284,7 +284,7 @@ export default function BurnOperations() {
             <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#555] font-bold mb-0.5">
               SECTION 02
             </div>
-            <h2 className="text-lg md:text-xl font-black uppercase tracking-tight text-[#cccccc] font-sans">
+            <h2 className="text-lg md:text-xl font-black uppercase tracking-tight text-[#cccccc] font-sans wr-cursor wr-cursor-fire">
               Burn <span className="text-[#ff6b35]">Operations</span>
             </h2>
           </div>

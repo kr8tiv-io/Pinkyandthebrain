@@ -390,7 +390,7 @@ function HoldingCard({
     : 'UNKNOWN'
 
   return (
-    <div ref={cardRef} data-wr-reveal className="relative p-[1px] overflow-hidden group/card wr-brackets">
+    <div ref={cardRef} data-wr-reveal className="relative p-[1px] overflow-hidden group/card wr-brackets wr-shine">
       {/* Conic gradient spinner — like Tokenomics cards */}
       <div
         className="absolute inset-[-100%] animate-spin opacity-0 group-hover/card:opacity-60 transition-opacity duration-700 pointer-events-none"
@@ -601,7 +601,7 @@ export default function TreasuryIntel() {
               <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#555] font-bold mb-0.5">
                 SECTION 01
               </div>
-              <h2 className="text-lg md:text-xl font-black uppercase tracking-tight text-[#cccccc] font-sans">
+              <h2 className="text-lg md:text-xl font-black uppercase tracking-tight text-[#cccccc] font-sans wr-cursor">
                 Treasury <span className="text-[#d4f000]">Intel</span>
               </h2>
             </div>

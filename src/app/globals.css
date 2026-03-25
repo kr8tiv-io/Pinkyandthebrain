@@ -638,3 +638,65 @@ body {
   height: 1px;
   background: linear-gradient(90deg, rgba(255, 107, 53, 0.3) 0%, rgba(51, 51, 51, 0.3) 50%, transparent 100%);
 }
+
+/* ── Card Hover Shine Sweep ── */
+@keyframes wr-shine-sweep {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(200%) skewX(-15deg); }
+}
+.wr-shine {
+  position: relative;
+  overflow: hidden;
+}
+.wr-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.wr-shine:hover::after {
+  opacity: 1;
+  animation: wr-shine-sweep 0.8s ease-out;
+}
+
+/* ── Blinking Cursor ── */
+@keyframes wr-cursor-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+.wr-cursor::after {
+  content: '▌';
+  color: rgba(212, 240, 0, 0.3);
+  font-size: 0.75em;
+  margin-left: 2px;
+  animation: wr-cursor-blink 1.2s step-end infinite;
+}
+.wr-cursor-fire::after {
+  color: rgba(255, 107, 53, 0.3);
+}
+
+/* ── Breathing Glow ── */
+@keyframes wr-breathe {
+  0%, 100% { opacity: 0.01; text-shadow: none; }
+  50% { opacity: 0.025; text-shadow: 0 0 40px rgba(212, 240, 0, 0.03); }
+}
+.wr-breathe {
+  animation: wr-breathe 4s ease-in-out infinite;
+}
+
+/* ── Link Hover Scale ── */
+.wr-link-scale {
+  transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.wr-link-scale:hover {
+  transform: translateY(-1px);
+}
+.wr-link-scale:active {
+  transform: translateY(0) scale(0.98);
+}
