@@ -96,7 +96,7 @@ function LiveIndicator({ status }: { status: 'live' | 'connecting' | 'offline' }
           />
         )}
       </div>
-      <span className={`font-mono text-[10px] font-bold uppercase tracking-[0.2em] ${textColorMap[status]}`}>
+      <span className={`font-mono text-[10px] font-bold uppercase tracking-[0.25em] ${textColorMap[status]}`}>
         {labelMap[status]}
       </span>
     </div>

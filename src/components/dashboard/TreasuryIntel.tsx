@@ -490,7 +490,7 @@ function HoldingCard({
           </div>
         </div>
         <div className="flex flex-col items-end gap-1">
-          <span className={`text-[10px] font-black tabular-nums font-mono px-2 py-0.5 rounded-sm flex items-center gap-1.5 transition-all duration-300 group-hover/card:shadow-sm ${gainLoss.colorClass} ${
+          <span className={`text-[10px] font-black tabular-nums font-mono px-2 py-1 rounded-sm flex items-center gap-1.5 transition-all duration-300 group-hover/card:shadow-sm ${gainLoss.colorClass} ${
             !holding.gainLossPct ? '' : holding.gainLossPct >= 0 ? 'bg-[#d4f000]/[0.06] group-hover/card:bg-[#d4f000]/[0.1]' : 'bg-[#ff9e9e]/[0.06] group-hover/card:bg-[#ff9e9e]/[0.1]'
           }`}>
             {/* Mini spark bars */}
@@ -697,7 +697,7 @@ export default function TreasuryIntel() {
       <div className="wr-scan-line" />
 
       {/* Unique section background — dot grid + gradient mesh */}
-      <div className="absolute inset-0 wr-dot-grid opacity-40 pointer-events-none" />
+      <div className="absolute inset-0 wr-dot-grid opacity-30 pointer-events-none" />
       <div className="absolute inset-0 wr-bg-treasury pointer-events-none" />
 
       {/* Watermark section number */}
