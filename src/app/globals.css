@@ -871,7 +871,7 @@ button:focus-visible {
 .wr-inner-shadow {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02),
               inset 0 -1px 0 rgba(0, 0, 0, 0.25),
-              inset 0 0 60px rgba(0, 0, 0, 0.1);
+              inset 0 0 50px rgba(0, 0, 0, 0.1);
 }
 
 /* ── Ticker Diamond Rotate ── */
@@ -998,8 +998,8 @@ section:hover > .wr-section-badge-fire {
 
 /* ── Burn Progress Live Marker ── */
 @keyframes wr-progress-pulse {
-  0%, 100% { box-shadow: 0 0 3px #ff6b35, 0 0 6px rgba(255, 107, 53, 0.3); }
-  50% { box-shadow: 0 0 6px #ff6b35, 0 0 12px rgba(255, 107, 53, 0.5); }
+  0%, 100% { box-shadow: 0 0 3px #ff6b35, 0 0 5px rgba(255, 107, 53, 0.25); }
+  50% { box-shadow: 0 0 5px #ff6b35, 0 0 10px rgba(255, 107, 53, 0.45); }
 }
 .wr-progress-marker {
   width: 7px;
@@ -1319,7 +1319,7 @@ section:hover > .wr-section-badge-fire {
   width: 240px;
   height: 240px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(212, 240, 0, 0.02) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(212, 240, 0, 0.015) 0%, transparent 70%);
   animation: wr-breathe 6s ease-in-out infinite;
 }
 
