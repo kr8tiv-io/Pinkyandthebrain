@@ -1053,7 +1053,7 @@ section:hover > .wr-section-badge-fire {
   gap: 1px;
   height: 12px;
   vertical-align: middle;
-  margin-left: 6px;
+  margin-left: 8px;
 }
 .wr-micro-spark-bar {
   width: 2px;
@@ -1084,11 +1084,11 @@ section:hover > .wr-section-badge-fire {
   bottom: -4px;
   left: 50%;
   transform: translateX(-50%);
-  width: 8px;
-  height: 4px;
+  width: 6px;
+  height: 3px;
   background: rgba(10, 10, 10, 0.97);
   clip-path: polygon(0 0, 100% 0, 50% 100%);
-  border-bottom: 1px solid rgba(51, 51, 51, 0.5);
+  border-bottom: 1px solid rgba(51, 51, 51, 0.4);
 }
 
 /* ── Fire Particle Dots ── */
