@@ -86,13 +86,13 @@ function LiveIndicator({ status }: { status: 'live' | 'connecting' | 'offline' }
   return (
     <div className="flex items-center gap-2.5" role="status" aria-label={`Data feed ${status}`}>
       <div className="relative flex items-center justify-center w-4 h-4">
-        <div className={`w-2 h-2 rounded-full ${colorMap[status]} relative z-10`}
+        <div className={`w-1.5 h-1.5 rounded-full ${colorMap[status]} relative z-10`}
           style={status === 'live' ? { boxShadow: '0 0 6px #d4f000, 0 0 16px rgba(212, 240, 0, 0.5), 0 0 32px rgba(212, 240, 0, 0.15)' } : undefined}
         />
         {status === 'live' && (
           <div
             ref={ringRef}
-            className={`absolute w-2 h-2 rounded-full ${colorMap[status]}`}
+            className={`absolute w-1.5 h-1.5 rounded-full ${colorMap[status]}`}
           />
         )}
       </div>
