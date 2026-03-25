@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScrolling from "@/components/SmoothScrolling";
+import { QueryProvider } from "@/providers/query-client";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -29,8 +30,10 @@ export default function RootLayout({
       className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <div className="noise-overlay"></div>
-        <SmoothScrolling>{children}</SmoothScrolling>
+        <QueryProvider>
+          <div className="noise-overlay"></div>
+          <SmoothScrolling>{children}</SmoothScrolling>
+        </QueryProvider>
       </body>
     </html>
   );
