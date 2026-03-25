@@ -206,7 +206,7 @@ body {
 /* ── Horizontal Rule / Section Divider ── */
 @keyframes wr-divider-pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  50% { opacity: 0.55; }
 }
 
 .wr-divider {
@@ -257,7 +257,7 @@ body {
   transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .wr-row-hover:hover {
-  background: rgba(212, 240, 0, 0.03);
+  background: rgba(212, 240, 0, 0.025);
   padding-left: calc(1rem + 2px);
   border-left: 2px solid rgba(212, 240, 0, 0.18);
 }

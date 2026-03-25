@@ -210,7 +210,7 @@ function TreasuryValueChart({
                   <stop offset="100%" stopColor="#d4f000" stopOpacity={0.6} />
                 </linearGradient>
                 <filter id="chartGlow">
-                  <feGaussianBlur stdDeviation="2" result="blur" />
+                  <feGaussianBlur stdDeviation="1.8" result="blur" />
                   <feMerge>
                     <feMergeNode in="blur" />
                     <feMergeNode in="SourceGraphic" />
