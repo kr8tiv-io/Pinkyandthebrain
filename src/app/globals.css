@@ -838,7 +838,7 @@ button:focus-visible {
   50% { opacity: 0.5; }
 }
 .wr-accent-bar-pulse:hover {
-  animation: wr-accent-pulse 2s ease-in-out infinite;
+  animation: wr-accent-pulse 2.5s ease-in-out infinite;
 }
 
 /* ── Section Accent Bar Entry ── */
@@ -1217,7 +1217,7 @@ section:hover > .wr-section-badge-fire {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 40px;
+  height: 35px;
   background: linear-gradient(to top, #0a0a0a, transparent);
   pointer-events: none;
 }
@@ -1436,7 +1436,7 @@ section:hover > .wr-section-badge-fire {
   100% { transform: scale(1); opacity: 1; }
 }
 .wr-count-badge {
-  animation: wr-count-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: wr-count-pop 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 /* ── Chart Entrance Fade ── */
