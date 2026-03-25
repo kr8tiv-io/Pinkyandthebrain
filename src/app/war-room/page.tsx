@@ -65,7 +65,7 @@ export default function WarRoomPage() {
         </div>
 
         {/* Decorative divider with label */}
-        <div className="relative py-2">
+        <div className="relative py-4">
           <div className="wr-divider" />
           <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/[0.06] to-transparent" />
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-5 flex items-center gap-2.5">
@@ -110,7 +110,7 @@ export default function WarRoomPage() {
         </SectionReveal>
 
         {/* Separator before classified zone */}
-        <div className="relative py-3">
+        <div className="relative py-4">
           <div className="wr-divider" />
           <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#333]/[0.08] to-transparent" />
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-6 flex items-center gap-3">
