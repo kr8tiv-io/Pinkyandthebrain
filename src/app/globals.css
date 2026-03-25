@@ -575,7 +575,7 @@ body {
   height: 1px;
   background: linear-gradient(90deg, rgba(212, 240, 0, 0.1), transparent);
   transform-origin: left center;
-  animation: wr-radar-sweep 4s linear infinite;
+  animation: wr-radar-sweep 5s linear infinite;
 }
 
 /* ── Breathing Glow ── */

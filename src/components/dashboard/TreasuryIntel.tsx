@@ -288,7 +288,7 @@ function SummaryCell({
       {/* Hover accent top */}
       <div className="absolute top-0 left-0 right-0 h-px bg-[#d4f000]/0 group-hover/cell:bg-[#d4f000]/10 transition-colors duration-300" />
       {/* Hover accent bottom gradient */}
-      <div className="absolute bottom-0 left-[10%] right-[10%] h-px bg-[#d4f000]/0 group-hover/cell:bg-[#d4f000]/[0.05] transition-colors duration-500" />
+      <div className="absolute bottom-0 left-[5%] right-[5%] h-px bg-[#d4f000]/0 group-hover/cell:bg-[#d4f000]/[0.06] transition-colors duration-500" />
       <div className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#555] mb-2 font-bold group-hover/cell:text-[#888] transition-colors flex items-center gap-1.5">
         <span className="text-[#d4f000]/20 text-[5px]" aria-hidden="true">◆</span>
         {label}
