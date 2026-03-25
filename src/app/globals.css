@@ -272,10 +272,10 @@ body {
   padding: 0.2rem 0.5rem;
   border: 1px solid;
   line-height: 1;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 .wr-tag:hover {
-  filter: brightness(1.2);
+  filter: brightness(1.15);
 }
 
 /* ── Custom scrollbar for war-room tables ── */
