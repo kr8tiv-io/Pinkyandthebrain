@@ -389,7 +389,7 @@ function ClassifiedCard({ mint }: { mint: string }) {
             </svg>
             ASSET #{mint.slice(0, 8)}
           </div>
-          <div className="text-xl font-black text-[#1a1a1a] tracking-widest select-none flicker mb-1 leading-none group-hover/classified:text-[#222] transition-colors duration-700">
+          <div className="text-xl font-black text-[#1a1a1a] tracking-[0.15em] select-none flicker mb-1 leading-none group-hover/classified:text-[#222] transition-colors duration-700">
             ████████████████
           </div>
           {/* Peek reveal — faded mint on hover */}

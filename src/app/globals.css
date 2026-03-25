@@ -1131,7 +1131,7 @@ section:hover > .wr-section-badge-fire {
   50% { box-shadow: 0 0 0 8px rgba(51, 51, 51, 0); }
 }
 .wr-empty-ring {
-  animation: wr-empty-ring 3s ease-in-out infinite;
+  animation: wr-empty-ring 3.5s ease-in-out infinite;
 }
 
 /* ── Classified Tag Glow ── */
