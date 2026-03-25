@@ -1538,7 +1538,7 @@ section:hover > .wr-section-badge-fire {
   cursor: default;
 }
 .wr-divider-label:hover {
-  letter-spacing: 0.8em;
+  letter-spacing: 0.85em;
 }
 
 /* ── Card Top Line Accent ── */
