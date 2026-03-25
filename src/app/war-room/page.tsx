@@ -268,7 +268,7 @@ export default function WarRoomPage() {
                   rel="noopener noreferrer"
                   className="font-mono text-[9px] uppercase tracking-[0.15em] text-[#444] hover:text-[#d4f000] transition-colors wr-glitch-hover wr-footer-link wr-footer-link-grow"
                 >
-                  PINKYANDTHEBRAIN.FUN ↗
+                  PINKYANDTHEBRAIN.FUN <span className="inline-block transition-transform duration-200 group-hover/footer-links:translate-x-0.5">↗</span>
                 </a>
                 <span className="w-px h-3.5 bg-[#333]/30 hidden md:block" />
                 <span className="font-mono text-[7px] uppercase tracking-[0.15em] text-[#222] flex items-center gap-1.5 hover:text-[#444] transition-colors duration-300 cursor-default">
