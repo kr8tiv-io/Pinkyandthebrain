@@ -179,8 +179,8 @@ body {
     0deg,
     transparent,
     transparent 3px,
-    rgba(0, 0, 0, 0.015) 3px,
-    rgba(0, 0, 0, 0.015) 6px
+    rgba(0, 0, 0, 0.012) 3px,
+    rgba(0, 0, 0, 0.012) 6px
   );
   pointer-events: none;
 }
@@ -257,7 +257,7 @@ body {
   transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .wr-row-hover:hover {
-  background: rgba(212, 240, 0, 0.02);
+  background: rgba(212, 240, 0, 0.018);
   padding-left: calc(1rem + 2px);
   border-left: 2px solid rgba(212, 240, 0, 0.15);
 }
