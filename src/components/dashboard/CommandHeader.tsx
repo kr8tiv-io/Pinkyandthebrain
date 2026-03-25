@@ -211,6 +211,21 @@ export default function CommandHeader() {
     return () => ctx.revert()
   }, [])
 
+  // Price flash on update
+  const prevPriceRef = useRef<number | null>(null)
+  useEffect(() => {
+    if (!isReady || !data || !priceUsdRef.current) return
+    if (prevPriceRef.current !== null && prevPriceRef.current !== data.priceUsd) {
+      const flashColor = data.priceUsd > prevPriceRef.current ? '#d4f000' : '#ff9e9e'
+      gsap.fromTo(
+        priceUsdRef.current,
+        { textShadow: `0 0 12px ${flashColor}` },
+        { textShadow: '0 0 0px transparent', duration: 1.5, ease: 'power2.out' }
+      )
+    }
+    prevPriceRef.current = data.priceUsd
+  }, [data?.priceUsd, isReady, data])
+
   // Count-up animations
   const fmtUsd = useCallback(formatUsd, [])
   const fmtSol = useCallback(formatSol, [])
@@ -228,6 +243,8 @@ export default function CommandHeader() {
 
   return (
     <header ref={headerRef} className="relative w-full bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-[#333]/40">
+      {/* Top gradient accent line */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#d4f000]/20 to-transparent z-10" />
       {/* Bottom gradient accent line */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/15 to-transparent z-10" />
 
