@@ -188,7 +188,7 @@ function TreasuryValueChart({
           <span className="text-[#333] font-mono text-[10px] tracking-[0.2em]">INSUFFICIENT DATA POINTS</span>
         </div>
       ) : (
-        <div className="h-[260px] relative border border-[#333]/10 bg-[#0a0a0a]/50 p-3 rounded-sm wr-chart-frame">
+        <div className="h-[260px] relative border border-[#333]/10 bg-[#0a0a0a]/50 p-3 rounded-sm wr-chart-frame wr-chart-entrance">
           {/* Animated corner brackets */}
           <div className="wr-chart-corner wr-chart-corner--tl" />
           <div className="wr-chart-corner wr-chart-corner--tr" />

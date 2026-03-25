@@ -137,6 +137,7 @@ body {
   .wr-ember,
   .wr-classified-border,
   .wr-empty-ring,
+  .wr-chart-entrance,
   .animate-spin {
     animation: none !important;
   }
@@ -1412,6 +1413,49 @@ section:hover > .wr-section-badge-fire {
 }
 .wr-count-badge {
   animation: wr-count-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ── Chart Entrance Fade ── */
+@keyframes wr-chart-fade-in {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.wr-chart-entrance {
+  animation: wr-chart-fade-in 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+/* ── Header Grid Separator Glow ── */
+.wr-header-grid-glow {
+  position: relative;
+}
+.wr-header-grid-glow > * + * {
+  position: relative;
+}
+.wr-header-grid-glow > * + *::before {
+  content: '';
+  position: absolute;
+  top: 30%;
+  left: -1px;
+  width: 1px;
+  bottom: 30%;
+  background: linear-gradient(to bottom, transparent, rgba(212, 240, 0, 0.08), transparent);
+  pointer-events: none;
+}
+
+/* ── Vignette Corners ── */
+.wr-vignette-corners::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 30% 30% at 0% 0%, rgba(0, 0, 0, 0.4), transparent 60%),
+    radial-gradient(ellipse 30% 30% at 100% 0%, rgba(0, 0, 0, 0.4), transparent 60%),
+    radial-gradient(ellipse 30% 30% at 0% 100%, rgba(0, 0, 0, 0.4), transparent 60%),
+    radial-gradient(ellipse 30% 30% at 100% 100%, rgba(0, 0, 0, 0.4), transparent 60%);
+  pointer-events: none;
+  z-index: 3;
 }
 
 /* ── Horizontal Scan Line (animated) ── */
