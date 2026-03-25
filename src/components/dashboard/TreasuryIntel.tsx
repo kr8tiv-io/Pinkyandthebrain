@@ -217,7 +217,7 @@ function TreasuryValueChart({
                   </feMerge>
                 </filter>
               </defs>
-              <CartesianGrid strokeDasharray="3 6" stroke="rgba(51,51,51,0.15)" vertical={false} />
+              <CartesianGrid strokeDasharray="4 8" stroke="rgba(51,51,51,0.12)" vertical={false} />
               <XAxis
                 dataKey="label"
                 tick={{ fill: '#444', fontSize: 9, fontFamily: 'var(--font-mono)' }}
@@ -564,7 +564,7 @@ function HoldingCard({
       <div className="wr-corner-ts">{purchaseDateStr}</div>
 
       {/* Hover cue */}
-      <div className="wr-hover-cue">EXPAND</div>
+      <div className="wr-hover-cue">● EXPAND ●</div>
 
       {/* External links — reveal on hover */}
       <div className="flex flex-wrap gap-3 pt-3 border-t border-[#333]/20 pl-2 wr-links-reveal">
