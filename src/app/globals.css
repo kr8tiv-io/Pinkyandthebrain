@@ -259,7 +259,7 @@ body {
 .wr-row-hover:hover {
   background: rgba(212, 240, 0, 0.018);
   padding-left: calc(1rem + 2px);
-  border-left: 2px solid rgba(212, 240, 0, 0.15);
+  border-left: 2px solid rgba(212, 240, 0, 0.12);
 }
 
 /* ── Section Header Tag ── */
@@ -1389,7 +1389,7 @@ section:hover > .wr-section-badge-fire {
 .group\/card:hover .wr-border-shimmer::before,
 .wr-border-shimmer:hover::before {
   opacity: 1;
-  animation: wr-border-shimmer 2.8s linear infinite;
+  animation: wr-border-shimmer 3s linear infinite;
 }
 
 /* ── Corner Timestamp ── */
@@ -1499,7 +1499,7 @@ section:hover > .wr-section-badge-fire {
 /* ── Skeleton Directional Shimmer ── */
 .wr-skeleton-diagonal {
   background: linear-gradient(
-    -45deg,
+    -50deg,
     #1a1a1a 25%,
     #262626 37%,
     #1a1a1a 63%
