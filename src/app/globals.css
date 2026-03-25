@@ -538,7 +538,7 @@ body {
   color: rgba(212, 240, 0, 0.25);
   font-size: 0.75em;
   margin-left: 2px;
-  animation: wr-cursor-blink 1s step-end infinite;
+  animation: wr-cursor-blink 1.2s step-end infinite;
 }
 .wr-cursor-fire::after {
   color: rgba(255, 107, 53, 0.25);
@@ -992,7 +992,7 @@ section:hover > .wr-section-badge-fire {
   background: rgba(212, 240, 0, 0.06);
 }
 .wr-data-cell:hover .wr-data-cell-value {
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.08);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.06);
   color: #fff;
 }
 
@@ -1448,7 +1448,7 @@ section:hover > .wr-section-badge-fire {
 }
 .wr-chart-entrance {
   animation: wr-chart-fade-in 0.7s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-  animation-delay: 0.3s;
+  animation-delay: 0.25s;
   opacity: 0;
 }
 
