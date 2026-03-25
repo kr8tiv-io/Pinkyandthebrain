@@ -188,8 +188,8 @@ body {
 /* ── Grid Background Pattern ── */
 .wr-grid-bg {
   background-image:
-    linear-gradient(rgba(212, 240, 0, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(212, 240, 0, 0.025) 1px, transparent 1px);
+    linear-gradient(rgba(212, 240, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 240, 0, 0.02) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 /* Crosshair accent at grid intersections */
@@ -829,7 +829,7 @@ button:focus-visible {
   50% { transform: translateY(-6px); }
 }
 .wr-float {
-  animation: wr-float 3s ease-in-out infinite;
+  animation: wr-float 3.5s ease-in-out infinite;
 }
 
 /* ── Section Accent Bar Pulse ── */
@@ -990,7 +990,7 @@ section:hover > .wr-section-badge-fire {
   background: rgba(212, 240, 0, 0.08);
 }
 .wr-data-cell:hover .wr-data-cell-value {
-  text-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.08);
   color: #fff;
 }
 
