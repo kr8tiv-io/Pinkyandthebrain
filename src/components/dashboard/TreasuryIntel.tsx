@@ -525,7 +525,7 @@ function HoldingCard({
             <path d="M1.5 5a.5.5 0 00-.5.5v9a.5.5 0 00.5.5h9a.5.5 0 00.5-.5v-9a.5.5 0 00-.5-.5h-9z" />
           </svg>
           {copied
-            ? <span className="text-[#d4f000] font-bold" style={{ textShadow: '0 0 8px rgba(212, 240, 0, 0.3)' }}>COPIED ✓</span>
+            ? <span className="text-[#d4f000] font-bold" style={{ textShadow: '0 0 6px rgba(212, 240, 0, 0.25)' }}>COPIED ✓</span>
             : `${holding.mint.slice(0, 4)}…${holding.mint.slice(-4)}`}
         </button>
       </div>
@@ -620,7 +620,7 @@ function DivestedSection() {
                 {['TOKEN', 'SOLD DATE', 'AMOUNT', 'STATUS'].map((h, i) => (
                   <th key={h} scope="col" className="text-left uppercase tracking-[0.15em] text-[#444] pb-2.5 pr-6 font-bold text-[9px]">
                     <span className="flex items-center gap-1.5">
-                      {i === 0 && <span className="text-[#ff9e9e]/20 text-[5px]" aria-hidden="true">◆</span>}
+                      {i === 0 && <span className="text-[#ff9e9e]/15 text-[6px]" aria-hidden="true">◆</span>}
                       {h}
                     </span>
                   </th>
