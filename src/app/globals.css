@@ -383,12 +383,12 @@ body {
   80% { clip-path: inset(10% 0 70% 0); transform: translateX(1px); }
 }
 .wr-glitch-hover:hover {
-  animation: wr-glitch 0.25s ease-in-out;
+  animation: wr-glitch 0.2s ease-in-out;
 }
 
 /* ── Dot Grid Pattern (alternative to line grid) ── */
 .wr-dot-grid {
-  background-image: radial-gradient(circle, rgba(212, 240, 0, 0.05) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(212, 240, 0, 0.04) 1px, transparent 1px);
   background-size: 22px 22px;
 }
 
@@ -1343,7 +1343,7 @@ section:hover > .wr-section-badge-fire {
   left: -1px;
   width: 1px;
   bottom: 15%;
-  background: linear-gradient(to bottom, transparent, rgba(212, 240, 0, 0.06), transparent);
+  background: linear-gradient(to bottom, transparent, rgba(212, 240, 0, 0.05), transparent);
   pointer-events: none;
 }
 
