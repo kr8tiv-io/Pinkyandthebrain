@@ -288,7 +288,18 @@ function HoldingCard({
     : 'UNKNOWN'
 
   return (
-    <div data-wr-reveal className="wr-card p-5 group/card">
+    <div data-wr-reveal className="relative p-[1px] overflow-hidden group/card">
+      {/* Conic gradient spinner — like Tokenomics cards */}
+      <div
+        className="absolute inset-[-100%] animate-spin opacity-0 group-hover/card:opacity-60 transition-opacity duration-700 pointer-events-none"
+        style={{
+          background: 'conic-gradient(from 0deg, transparent 60%, #e4ff57 80%, #ffadad 100%)',
+          animationDuration: '6s',
+        }}
+      />
+
+      {/* Inner card */}
+      <div className="relative h-full w-full bg-[#0d0d0d] p-5 overflow-hidden z-10">
       {/* Accent border left */}
       <div className="absolute top-0 left-0 w-[3px] h-full bg-gradient-to-b from-[#d4f000] via-[#d4f000]/50 to-transparent" />
 
@@ -379,6 +390,7 @@ function HoldingCard({
           </a>
         )}
       </div>
+      </div>{/* end inner card */}
     </div>
   )
 }
@@ -446,17 +458,29 @@ export default function TreasuryIntel() {
   useStaggerReveal(gridRef)
 
   return (
-    <section className="w-full bg-[#0a0a0a]">
+    <section className="w-full bg-[#0a0a0a] relative overflow-hidden">
+      {/* Watermark section number */}
+      <div className="absolute -right-4 -top-8 text-[12rem] font-black text-white/[0.015] leading-none select-none pointer-events-none font-sans">
+        01
+      </div>
+
       {/* Section header */}
-      <div className="flex justify-between items-center px-5 lg:px-8 py-4 border-b border-[#333]/20">
-        <div className="flex items-center gap-3">
-          <div className="w-1 h-4 bg-[#d4f000]" />
-          <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#888] font-bold">
-            Treasury Intel
+      <div className="px-5 lg:px-8 py-6 border-b border-[#333]/20">
+        <div className="flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            <div className="w-1 h-5 bg-[#d4f000]" />
+            <div>
+              <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#555] font-bold mb-0.5">
+                SECTION 01
+              </div>
+              <h2 className="text-lg md:text-xl font-black uppercase tracking-tight text-[#cccccc] font-sans">
+                Treasury <span className="text-[#d4f000]">Intel</span>
+              </h2>
+            </div>
           </div>
-        </div>
-        <div className="wr-tag border-[#d4f000]/20 text-[#d4f000]/60">
-          TS/SCI
+          <div className="wr-tag border-[#d4f000]/20 text-[#d4f000]/60">
+            TS/SCI
+          </div>
         </div>
       </div>
 

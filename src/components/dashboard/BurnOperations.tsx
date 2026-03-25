@@ -240,6 +240,11 @@ export default function BurnOperations() {
 
   return (
     <section ref={sectionRef} className="w-full bg-[#0a0a0a] relative overflow-hidden">
+      {/* Watermark section number */}
+      <div className="absolute -right-4 -top-8 text-[12rem] font-black text-white/[0.015] leading-none select-none pointer-events-none font-sans">
+        02
+      </div>
+
       {/* Fire glow at top */}
       <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#ff6b35]/[0.04] to-transparent pointer-events-none" />
 
@@ -247,11 +252,16 @@ export default function BurnOperations() {
       <div className="h-[2px] bg-gradient-to-r from-transparent via-[#ff6b35]/40 to-transparent" />
 
       {/* Section header */}
-      <div className="relative flex justify-between items-center px-5 lg:px-8 py-4 border-b border-[#333]/20">
+      <div className="relative flex justify-between items-center px-5 lg:px-8 py-6 border-b border-[#333]/20">
         <div className="flex items-center gap-3">
-          <div className="w-1 h-4 bg-[#ff6b35]" />
-          <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#888] font-bold">
-            Burn Operations
+          <div className="w-1 h-5 bg-[#ff6b35]" />
+          <div>
+            <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#555] font-bold mb-0.5">
+              SECTION 02
+            </div>
+            <h2 className="text-lg md:text-xl font-black uppercase tracking-tight text-[#cccccc] font-sans">
+              Burn <span className="text-[#ff6b35]">Operations</span>
+            </h2>
           </div>
         </div>
         <div className="flex items-center gap-2">
