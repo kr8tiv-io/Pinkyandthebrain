@@ -25,6 +25,18 @@ export default function WarRoomPage() {
         <div className="absolute bottom-[20%] left-[5%] w-[25vw] h-[20vw] max-w-lg bg-[#ff6b35] rounded-full mix-blend-screen filter blur-[200px] opacity-[0.015] wr-orb-2" />
       </div>
 
+      {/* ── Layer 1.5: Atmospheric video underlay ── */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover opacity-[0.03] mix-blend-screen"
+          src="/videos/war-room-bg.mp4"
+        />
+      </div>
+
       {/* ── Layer 2: Grid background ── */}
       <div className="fixed inset-0 z-0 pointer-events-none wr-grid-bg opacity-30" />
 
@@ -125,6 +137,19 @@ export default function WarRoomPage() {
         {/* Staking stub — dramatic classified section */}
         <SectionReveal>
           <section className="w-full bg-[#0a0a0a] py-24 relative overflow-hidden wr-section-fade-top wr-section-fade-bottom wr-noise wr-classified-border wr-vignette-corners">
+            {/* Atmospheric video background */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover opacity-[0.06] mix-blend-screen"
+                src="/videos/war-room-bg.mp4"
+              />
+              {/* Dark overlay to keep video ultra-subtle */}
+              <div className="absolute inset-0 bg-[#0a0a0a]/70" />
+            </div>
             {/* Layered diagonal pattern */}
             <div className="absolute inset-0 opacity-[0.025] pointer-events-none"
               style={{
@@ -283,7 +308,7 @@ export default function WarRoomPage() {
                 <span className="font-mono text-[7px] uppercase tracking-[0.1em] text-[#181818] hover:text-[#3a3a3a] transition-colors duration-300 flex items-center gap-1.5">
                   © 2025–2026 $BRAIN
                   <span className="text-[5px] text-[#333]/20">·</span>
-                  <span className="text-[6px] text-[#1a1a1a]/60">v2.0.370</span>
+                  <span className="text-[6px] text-[#1a1a1a]/60">v2.0.388</span>
                 </span>
               </div>
             </div>
