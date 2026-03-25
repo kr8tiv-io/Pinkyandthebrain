@@ -99,6 +99,12 @@ export default function WarRoomPage() {
             {/* Radial glow center */}
             <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_40%_40%_at_50%_50%,rgba(212,240,0,0.02),transparent_70%)]" />
 
+            {/* Radar sweep */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+              <div className="wr-radar" />
+              <div className="wr-radar" style={{ width: '300px', height: '300px', animationDelay: '1s' }} />
+            </div>
+
             {/* Watermark */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[16rem] font-black text-white/[0.01] leading-none select-none pointer-events-none font-sans wr-breathe">
               03
@@ -113,7 +119,7 @@ export default function WarRoomPage() {
                 <div className="w-8 h-px bg-[#333]/40" />
               </div>
 
-              <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-[#1a1a1a] font-sans flicker select-none">
+              <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-[#1a1a1a] font-sans wr-classified-glitch select-none">
                 ████████████████████████
               </h2>
 
