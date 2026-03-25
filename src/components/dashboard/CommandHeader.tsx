@@ -257,7 +257,7 @@ export default function CommandHeader() {
       {/* Top gradient accent line */}
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#d4f000]/3 via-[#d4f000]/12 to-[#d4f000]/3 z-10" />
       {/* Bottom gradient accent line */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/6 to-transparent z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/5 to-transparent z-10" />
 
       {/* Top bar */}
       <div className="flex justify-between items-center px-5 lg:px-8 py-2.5 border-b border-[#333]/15">
