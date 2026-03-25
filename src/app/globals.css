@@ -381,12 +381,6 @@ body {
   animation: wr-glitch 0.3s ease-in-out;
 }
 
-/* ── Floating Particles (pseudo-element) ── */
-@keyframes wr-float-particle {
-  0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
-  50% { transform: translateY(-20px) scale(1.5); opacity: 0.6; }
-}
-
 /* ── Dot Grid Pattern (alternative to line grid) ── */
 .wr-dot-grid {
   background-image: radial-gradient(circle, rgba(212, 240, 0, 0.06) 1px, transparent 1px);
@@ -665,12 +659,6 @@ body {
   padding: 1px 6px;
   border-radius: 2px;
   border: 1px solid rgba(212, 240, 0, 0.08);
-}
-
-/* ── Animated Horizontal Line ── */
-@keyframes wr-line-extend {
-  0% { width: 0; }
-  100% { width: 100%; }
 }
 
 /* ── Link Hover Scale ── */
