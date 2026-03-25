@@ -538,7 +538,7 @@ body {
   color: rgba(212, 240, 0, 0.25);
   font-size: 0.75em;
   margin-left: 2px;
-  animation: wr-cursor-blink 1.2s step-end infinite;
+  animation: wr-cursor-blink 1.4s step-end infinite;
 }
 .wr-cursor-fire::after {
   color: rgba(255, 107, 53, 0.25);
@@ -1070,7 +1070,7 @@ section:hover > .wr-section-badge-fire {
 
 /* ── Section Number Gradient ── */
 .wr-section-num {
-  background: linear-gradient(180deg, #4a4a4a 0%, #2a2a2a 100%);
+  background: linear-gradient(180deg, #444 0%, #282828 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1124,7 +1124,7 @@ section:hover > .wr-section-badge-fire {
 
 /* ── Fire Summary Bar Bottom Accent ── */
 .wr-summary-accent-fire::after {
-  background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.08), rgba(255, 107, 53, 0.04), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.07), rgba(255, 107, 53, 0.035), transparent);
 }
 
 /* ── Empty State Pulse Ring ── */
