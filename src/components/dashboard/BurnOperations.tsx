@@ -209,14 +209,14 @@ function BurnTransactionsTable({
           ))
         ) : isError ? (
           <div className="py-10 flex flex-col items-center justify-center gap-3">
-            <div className="w-8 h-8 border border-[#ff9e9e]/20 flex items-center justify-center">
+            <div className="w-8 h-8 border border-[#ff9e9e]/20 flex items-center justify-center wr-float">
               <span className="text-[#ff9e9e]/40 font-mono text-sm">!</span>
             </div>
             <span className="text-[#ff9e9e]/40 font-mono text-[10px] tracking-[0.2em]">DATA FEED OFFLINE</span>
           </div>
         ) : transactions.length === 0 ? (
           <div className="py-10 flex flex-col items-center justify-center gap-3">
-            <div className="w-8 h-8 border border-[#333]/30 flex items-center justify-center">
+            <div className="w-8 h-8 border border-[#333]/30 flex items-center justify-center wr-float">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#333]">
                 <path d="M12 2L2 22h20L12 2z" />
                 <path d="M12 10v5" />
@@ -289,7 +289,7 @@ export default function BurnOperations() {
       <div className="absolute inset-0 wr-bg-burn pointer-events-none" />
 
       {/* Watermark section number */}
-      <div className="absolute -right-4 -top-8 text-[12rem] font-black text-white/[0.02] leading-none select-none pointer-events-none font-sans" style={{ WebkitTextStroke: '1px rgba(255, 107, 53, 0.02)' }}>
+      <div className="absolute -right-4 -top-8 text-[12rem] font-black text-white/[0.02] leading-none select-none pointer-events-none font-sans wr-watermark" style={{ WebkitTextStroke: '1px rgba(255, 107, 53, 0.02)' }}>
         02
       </div>
 

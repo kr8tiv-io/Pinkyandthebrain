@@ -174,7 +174,7 @@ function TreasuryValueChart({
         </div>
       ) : chartData.length < 2 ? (
         <div className="h-[240px] flex flex-col items-center justify-center gap-3">
-          <div className="w-8 h-8 border border-[#333]/30 flex items-center justify-center">
+          <div className="w-8 h-8 border border-[#333]/30 flex items-center justify-center wr-float">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#333]">
               <path d="M3 3v18h18" />
               <path d="M7 16l4-4 4 4 5-5" />
@@ -653,7 +653,7 @@ export default function TreasuryIntel() {
       <div className="absolute inset-0 wr-bg-treasury pointer-events-none" />
 
       {/* Watermark section number */}
-      <div className="absolute -right-4 -top-8 text-[12rem] font-black text-white/[0.02] leading-none select-none pointer-events-none font-sans" style={{ WebkitTextStroke: '1px rgba(212, 240, 0, 0.02)' }}>
+      <div className="absolute -right-4 -top-8 text-[12rem] font-black text-white/[0.02] leading-none select-none pointer-events-none font-sans wr-watermark" style={{ WebkitTextStroke: '1px rgba(212, 240, 0, 0.02)' }}>
         01
       </div>
 

@@ -154,7 +154,9 @@ body {
   }
   .wr-data-dot,
   .wr-data-dot-fire,
-  .wr-divider-dot {
+  .wr-divider-dot,
+  .wr-float,
+  .wr-watermark {
     animation: none !important;
   }
   [data-wr-reveal] {
@@ -795,6 +797,26 @@ button:focus-visible {
   border-radius: 50%;
   background: currentColor;
   animation: wr-dot-breathe 3s ease-in-out infinite;
+}
+
+/* ── Watermark Parallax Drift ── */
+@keyframes wr-watermark-drift {
+  0% { transform: translate(-4px, 0); }
+  50% { transform: translate(4px, -8px); }
+  100% { transform: translate(-4px, 0); }
+}
+.wr-watermark {
+  animation: wr-watermark-drift 30s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ── Empty State Float ── */
+@keyframes wr-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.wr-float {
+  animation: wr-float 3s ease-in-out infinite;
 }
 
 /* ── Section Accent Bar Entry ── */
