@@ -26,7 +26,7 @@ export default function WarRoomPage() {
       </div>
 
       {/* ── Layer 2: Grid background ── */}
-      <div className="fixed inset-0 z-0 pointer-events-none wr-grid-bg opacity-40" />
+      <div className="fixed inset-0 z-0 pointer-events-none wr-grid-bg opacity-35" />
 
       {/* ── Layer 3: Scanlines ── */}
       <div className="fixed inset-0 z-0 pointer-events-none wr-scanlines" />
