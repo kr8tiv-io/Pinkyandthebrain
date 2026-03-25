@@ -28,7 +28,9 @@ const TICKER_ITEMS = [
 
 export default function TokenInfoStrip() {
   return (
-    <div className="w-full bg-[#0a0a0a] border-b border-[#333]/20">
+    <div className="w-full bg-[#0a0a0a] border-b border-[#333]/20 relative">
+      {/* Top gradient accent */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/[0.06] to-transparent" />
       {/* Quick links row */}
       <div className="flex items-center gap-1 px-5 lg:px-8 py-2.5 overflow-x-auto wr-scroll">
         <div className="flex items-center gap-2 mr-3">
@@ -68,7 +70,7 @@ export default function TokenInfoStrip() {
           {/* Duplicate full set for seamless scroll */}
           {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
             <span key={i} className={`font-mono text-[8px] uppercase tracking-[0.3em] mx-6 whitespace-nowrap ${item.color}`}>
-              <span className="text-[#d4f000]/15 mr-2">◆</span>
+              <span className="text-[#d4f000]/15 mr-2 wr-ticker-diamond">◆</span>
               {item.text}
             </span>
           ))}
