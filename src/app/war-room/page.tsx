@@ -126,9 +126,9 @@ export default function WarRoomPage() {
         <SectionReveal>
           <section className="w-full bg-[#0a0a0a] py-24 relative overflow-hidden wr-section-fade-top wr-section-fade-bottom wr-noise wr-classified-border wr-vignette-corners">
             {/* Layered diagonal pattern */}
-            <div className="absolute inset-0 opacity-[0.02] pointer-events-none"
+            <div className="absolute inset-0 opacity-[0.025] pointer-events-none"
               style={{
-                backgroundImage: 'repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(255,255,255,0.08) 20px, rgba(255,255,255,0.08) 21px)',
+                backgroundImage: 'repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(255,255,255,0.06) 20px, rgba(255,255,255,0.06) 21px)',
               }}
             />
             {/* Radial glow center — dual layer */}

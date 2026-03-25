@@ -213,7 +213,7 @@ function BurnTransactionsTable({
 
       {/* Table header */}
       <div className="grid grid-cols-[24px_1fr_1fr] md:grid-cols-[24px_1fr_1fr_1.2fr] gap-2 md:gap-3 px-3 md:px-4 pb-2 wr-table-header">
-        <div className="font-mono text-[7px] font-bold uppercase tracking-[0.2em] text-[#333]">#</div>
+        <div className="font-mono text-[7px] font-bold uppercase tracking-[0.2em] text-[#333] text-right">#</div>
         {['DATE', 'AMOUNT'].map(h => (
           <div key={h} className="font-mono text-[8px] font-bold uppercase tracking-[0.2em] text-[#444]">
             {h}

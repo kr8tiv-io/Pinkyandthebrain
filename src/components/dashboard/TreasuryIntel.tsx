@@ -310,7 +310,7 @@ function SummaryCell({
 
 function LoadingCard({ index = 0 }: { index?: number }) {
   return (
-    <div className="relative p-[1px] overflow-hidden">
+    <div className="relative p-[1px] overflow-hidden rounded-sm">
       {/* Subtle scanning border */}
       <div
         className="absolute inset-[-100%] animate-spin opacity-10 pointer-events-none"
@@ -347,7 +347,7 @@ function LoadingCard({ index = 0 }: { index?: number }) {
 
 function ClassifiedCard({ mint }: { mint: string }) {
   return (
-    <div data-wr-reveal className="relative p-[1px] overflow-hidden group/classified wr-card-lift">
+    <div data-wr-reveal className="relative p-[1px] overflow-hidden group/classified wr-card-lift rounded-sm">
       {/* Conic gradient spinner — pulsing red/dark */}
       <div
         className="absolute inset-[-100%] animate-spin opacity-[0.08] group-hover/classified:opacity-40 transition-opacity duration-700 pointer-events-none"
@@ -452,7 +452,7 @@ function HoldingCard({
     : 'UNKNOWN'
 
   return (
-    <div ref={cardRef} data-wr-reveal className="relative p-[1px] overflow-hidden group/card wr-brackets wr-shine wr-card-lift wr-card-spotlight">
+    <div ref={cardRef} data-wr-reveal className="relative p-[1px] overflow-hidden group/card wr-brackets wr-shine wr-card-lift wr-card-spotlight rounded-sm">
       {/* Mouse-tracking spotlight */}
       <div className="wr-spotlight-layer bg-[radial-gradient(300px_circle_at_var(--mouse-x,50%)_var(--mouse-y,50%),rgba(212,240,0,0.04),transparent_60%)]" />
       {/* Conic gradient spinner — like Tokenomics cards */}
