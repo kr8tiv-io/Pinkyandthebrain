@@ -98,7 +98,7 @@ function BurnSummaryBar({
           <span className="text-[#ff6b35]">{formatPct(burnedPct)}</span>
           <span className="text-[#666] mx-1.5">+</span>
           <span className="text-[#ff6b35]">{LP_LOCKED_PCT}%</span>
-          <span className="text-[#444] text-[9px] ml-1.5">LOCKED</span>
+          <span className="text-[#444] text-[8px] ml-1.5 tracking-[0.1em]">LOCKED</span>
         </span>
       ),
     },
@@ -285,7 +285,7 @@ export default function BurnOperations() {
       gsap.fromTo(
         sectionRef.current,
         { opacity: 0, y: 16 },
-        { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
+        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }
       )
     }, sectionRef)
     return () => ctx.revert()

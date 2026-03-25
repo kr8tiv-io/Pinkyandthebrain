@@ -460,7 +460,7 @@ function HoldingCard({
         className="absolute inset-[-100%] animate-spin opacity-0 group-hover/card:opacity-60 transition-opacity duration-700 pointer-events-none"
         style={{
           background: 'conic-gradient(from 0deg, transparent 60%, #e4ff57 80%, #ffadad 100%)',
-          animationDuration: '6s',
+          animationDuration: '7s',
         }}
       />
 
