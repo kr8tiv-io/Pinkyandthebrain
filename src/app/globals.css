@@ -743,7 +743,7 @@ button:focus-visible {
   padding: 0.5rem 1rem;
   background: #0a0a0a;
   color: #d4f000;
-  border: 1px solid rgba(212, 240, 0, 0.4);
+  border: 1px solid rgba(212, 240, 0, 0.3);
   transition: top 0.2s;
 }
 .wr-skip-link:focus {
@@ -989,7 +989,7 @@ section:hover > .wr-section-badge-fire {
   background-color: rgba(212, 240, 0, 0.015);
 }
 .wr-data-cell:hover::after {
-  background: rgba(212, 240, 0, 0.08);
+  background: rgba(212, 240, 0, 0.06);
 }
 .wr-data-cell:hover .wr-data-cell-value {
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.08);
@@ -1484,7 +1484,7 @@ section:hover > .wr-section-badge-fire {
   transition: box-shadow 0.3s ease;
 }
 .wr-row-glow-intensity:hover {
-  box-shadow: inset 0 0 20px rgba(255, 107, 53, 0.02);
+  box-shadow: inset 0 0 16px rgba(255, 107, 53, 0.015);
 }
 
 /* ── Tooltip Entrance Scale ── */
