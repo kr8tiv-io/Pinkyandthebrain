@@ -629,6 +629,9 @@ export default function TreasuryIntel() {
         <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#666] font-bold mb-5 flex items-center gap-3">
           <span>ACTIVE POSITIONS</span>
           <div className="flex-1 h-px bg-[#333]/30" />
+          {!isLoading && data && (
+            <span className="text-[#d4f000]/40 tabular-nums">{data.holdings.length} ASSETS</span>
+          )}
         </div>
         <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {isLoading

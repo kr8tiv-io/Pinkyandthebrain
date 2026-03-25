@@ -199,6 +199,15 @@ body {
   border-radius: 2px;
 }
 
+/* ── Enhanced skeleton with glow pulse ── */
+@keyframes wr-skeleton-glow {
+  0%, 100% { box-shadow: 0 0 0 transparent; }
+  50% { box-shadow: 0 0 8px rgba(212, 240, 0, 0.03); }
+}
+.wr-skeleton-glow {
+  animation: wr-skeleton-glow 2s ease-in-out infinite;
+}
+
 /* ── Scanline Overlay ── */
 .wr-scanlines {
   background: repeating-linear-gradient(

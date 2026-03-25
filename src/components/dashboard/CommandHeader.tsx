@@ -123,7 +123,7 @@ function DataCell({
       {/* Hover accent line at top */}
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#d4f000] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
 
-      <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#666] mb-2 font-bold">
+      <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#666] mb-2 font-bold group-hover:text-[#888] transition-colors">
         {label}
       </div>
       <div className="font-mono text-lg md:text-xl font-black text-white tabular-nums leading-none">
