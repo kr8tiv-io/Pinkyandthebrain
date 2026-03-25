@@ -60,7 +60,7 @@ body {
   border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(212, 240, 0, 0.7);
+  background: rgba(212, 240, 0, 0.65);
 }
 
 /* ── Page Load Fade-In ── */
@@ -287,7 +287,7 @@ body {
   background: transparent;
 }
 .wr-scroll::-webkit-scrollbar-thumb {
-  background: rgba(51, 51, 51, 0.55);
+  background: rgba(51, 51, 51, 0.5);
   border-radius: 2px;
 }
 .wr-scroll::-webkit-scrollbar-thumb:hover {
@@ -1017,7 +1017,7 @@ section:hover > .wr-section-badge-fire {
 /* ── Footer Breathing Border ── */
 @keyframes wr-footer-breathe {
   0%, 100% { opacity: 0.12; }
-  50% { opacity: 0.3; }
+  50% { opacity: 0.28; }
 }
 .wr-footer-border {
   position: relative;
