@@ -237,6 +237,7 @@ function TreasuryValueChart({
                 dataKey="valueUsd"
                 stroke="url(#treasuryStroke)"
                 strokeWidth={1.2}
+                strokeLinecap="round"
                 fill="url(#treasuryGradient)"
                 dot={false}
                 activeDot={{

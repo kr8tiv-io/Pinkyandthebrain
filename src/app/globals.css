@@ -478,7 +478,7 @@ body {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, #d4f000 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(212, 240, 0, 0.7) 50%, transparent 100%);
 }
 
 /* ── Fire Amount Text Shadow ── */
@@ -1372,7 +1372,7 @@ section:hover > .wr-section-badge-fire {
   position: absolute;
   inset: 0;
   padding: 1px;
-  background: linear-gradient(90deg, transparent 20%, rgba(212, 240, 0, 0.15) 50%, transparent 80%);
+  background: linear-gradient(90deg, transparent 15%, rgba(212, 240, 0, 0.15) 50%, transparent 85%);
   background-size: 200% 100%;
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
