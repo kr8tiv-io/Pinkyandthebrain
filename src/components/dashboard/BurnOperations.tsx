@@ -346,10 +346,12 @@ export default function BurnOperations() {
       </div>
 
       {/* Burn progress visualization */}
-      <div className="px-5 lg:px-8 py-4 border-b border-[#333]/20">
-        <div className="flex items-center justify-between mb-2">
-          <div className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#555] font-bold">
-            TOTAL SUPPLY INCINERATION
+      <div className="px-5 lg:px-8 py-5 border-b border-[#333]/20">
+        <div className="flex items-center justify-between mb-3 wr-sub-header">
+          <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#666] font-bold flex items-center gap-3">
+            <span className="text-[#ff6b35]/30 text-[6px] wr-sub-diamond">◆</span>
+            <span>TOTAL SUPPLY INCINERATION</span>
+            <div className="flex-1 h-px bg-gradient-to-r from-[#ff6b35]/20 to-transparent" />
           </div>
           <div className="font-mono text-[9px] text-[#ff6b35] font-bold tabular-nums">
             {isLoading ? '—' : `${(data?.burnedPct ?? 0).toFixed(2)}%`}
