@@ -320,7 +320,8 @@ export default function BurnOperations() {
           </div>
           <div className="flex items-center gap-3">
             {dataUpdatedAt > 0 && (
-              <span className="font-mono text-[7px] uppercase tracking-[0.15em] text-[#333] tabular-nums hidden md:inline">
+              <span className="font-mono text-[7px] uppercase tracking-[0.15em] text-[#333] tabular-nums hidden md:inline flex items-center gap-1.5">
+                <span className="wr-data-dot wr-data-dot-fire" />
                 {new Date(dataUpdatedAt).toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })}
               </span>
             )}
@@ -358,11 +359,10 @@ export default function BurnOperations() {
           />
           {/* Milestone markers */}
           {[25, 50, 75].map(pct => (
-            <div
-              key={pct}
-              className="absolute top-0 bottom-0 w-px bg-[#333]/40"
-              style={{ left: `${pct}%` }}
-            />
+            <div key={pct} className="absolute top-0 bottom-0" style={{ left: `${pct}%` }}>
+              <div className="w-px h-full bg-[#333]/40" />
+              <div className="absolute -top-[2px] left-1/2 -translate-x-1/2 w-1 h-1 bg-[#333]/30 rounded-full" />
+            </div>
           ))}
         </div>
         <div className="flex justify-between mt-1.5 relative">

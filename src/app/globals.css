@@ -152,6 +152,10 @@ body {
   .wr-shine:hover::after {
     animation: none !important;
   }
+  .wr-data-dot,
+  .wr-data-dot-fire {
+    animation: none !important;
+  }
   [data-wr-reveal] {
     opacity: 1 !important;
     transform: none !important;
@@ -593,6 +597,32 @@ body {
 .wr-sub-diamond {
   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
   display: inline-block;
+}
+
+/* ── Card Hover Lift ── */
+.wr-card-lift {
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.wr-card-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 1px rgba(212, 240, 0, 0.1);
+}
+
+/* ── Live Data Pulse Dot ── */
+@keyframes wr-data-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+.wr-data-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #d4f000;
+  animation: wr-data-pulse 2s ease-in-out infinite;
+}
+.wr-data-dot-fire {
+  background: #ff6b35;
 }
 
 /* ── Animated Horizontal Line ── */

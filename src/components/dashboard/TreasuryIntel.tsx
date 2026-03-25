@@ -338,7 +338,7 @@ function LoadingCard({ index = 0 }: { index?: number }) {
 
 function ClassifiedCard({ mint }: { mint: string }) {
   return (
-    <div data-wr-reveal className="relative p-[1px] overflow-hidden group/classified">
+    <div data-wr-reveal className="relative p-[1px] overflow-hidden group/classified wr-card-lift">
       {/* Conic gradient spinner — pulsing red/dark */}
       <div
         className="absolute inset-[-100%] animate-spin opacity-0 group-hover/classified:opacity-40 transition-opacity duration-700 pointer-events-none"
@@ -439,7 +439,7 @@ function HoldingCard({
     : 'UNKNOWN'
 
   return (
-    <div ref={cardRef} data-wr-reveal className="relative p-[1px] overflow-hidden group/card wr-brackets wr-shine">
+    <div ref={cardRef} data-wr-reveal className="relative p-[1px] overflow-hidden group/card wr-brackets wr-shine wr-card-lift">
       {/* Conic gradient spinner — like Tokenomics cards */}
       <div
         className="absolute inset-[-100%] animate-spin opacity-0 group-hover/card:opacity-60 transition-opacity duration-700 pointer-events-none"
@@ -664,7 +664,8 @@ export default function TreasuryIntel() {
           </div>
           <div className="flex items-center gap-3">
             {dataUpdatedAt > 0 && (
-              <span className="font-mono text-[7px] uppercase tracking-[0.15em] text-[#333] tabular-nums hidden md:inline">
+              <span className="font-mono text-[7px] uppercase tracking-[0.15em] text-[#333] tabular-nums hidden md:inline flex items-center gap-1.5">
+                <span className="wr-data-dot" />
                 {new Date(dataUpdatedAt).toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })} UTC
               </span>
             )}
