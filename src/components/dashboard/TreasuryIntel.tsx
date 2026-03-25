@@ -525,7 +525,7 @@ function HoldingCard({
           { label: 'COST (USD)', value: holding.purchasePriceUsd !== undefined ? formatUsd(holding.purchasePriceUsd) : '—', highlight: false },
           { label: '~PRICE (SOL)', value: purchasePriceSol !== undefined ? formatSol(purchasePriceSol) : '—', highlight: false },
         ].map(({ label, value, highlight }, i) => (
-          <div key={label} className={`py-2 ${i >= 2 ? 'border-t border-[#333]/10' : ''}`}>
+          <div key={label} className={`py-2 relative ${i >= 2 ? 'border-t border-[#333]/10' : ''}`}>
             <div className="uppercase tracking-[0.15em] text-[#444] mb-1 font-bold font-mono flex items-center gap-1.5">
               <span className="text-[#d4f000]/15 text-[6px]">▸</span>
               {label}
