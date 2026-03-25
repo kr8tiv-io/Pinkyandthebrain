@@ -40,16 +40,28 @@ export default function WarRoomPage() {
         {/* Quick intel strip with links + ticker */}
         <TokenInfoStrip />
 
-        {/* Decorative divider */}
-        <div className="wr-divider" />
+        {/* Decorative divider with label */}
+        <div className="relative">
+          <div className="wr-divider" />
+          <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-4">
+            <span className="font-mono text-[7px] uppercase tracking-[0.4em] text-[#333]">▼</span>
+          </div>
+        </div>
 
         {/* Treasury Intel — scroll-triggered reveal */}
         <SectionReveal>
           <TreasuryIntel />
         </SectionReveal>
 
-        {/* Decorative fire divider */}
-        <div className="wr-divider-fire" />
+        {/* Decorative fire divider with transition marker */}
+        <div className="relative py-4">
+          <div className="wr-divider-fire" />
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-6 flex items-center gap-3">
+            <div className="w-6 h-px bg-gradient-to-r from-transparent to-[#ff6b35]/20" />
+            <span className="font-mono text-[7px] uppercase tracking-[0.4em] text-[#ff6b35]/30">INCINERATION ZONE</span>
+            <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#ff6b35]/20" />
+          </div>
+        </div>
 
         {/* Burn Operations — scroll-triggered reveal */}
         <SectionReveal>

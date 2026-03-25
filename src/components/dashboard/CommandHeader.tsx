@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useEffect, useCallback } from 'react'
+import { useRef, useEffect, useCallback, useState } from 'react'
 import gsap from 'gsap'
 import { usePrice } from '@/hooks/usePrice'
 
@@ -133,6 +133,28 @@ function DataCell({
   )
 }
 
+// ─── Live UTC Clock ──────────────────────────────────────────────────────────
+
+function LiveClock() {
+  const [time, setTime] = useState('')
+
+  useEffect(() => {
+    const update = () => {
+      const now = new Date()
+      setTime(now.toISOString().slice(11, 19) + ' UTC')
+    }
+    update()
+    const interval = setInterval(update, 1000)
+    return () => clearInterval(interval)
+  }, [])
+
+  return (
+    <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#444] tabular-nums">
+      {time}
+    </span>
+  )
+}
+
 // ─── Main Component ─────────────────────────────────────────────────────────
 
 export default function CommandHeader() {
@@ -214,7 +236,11 @@ export default function CommandHeader() {
             Intelligence Dashboard v2.0
           </div>
         </div>
-        <LiveIndicator status={status} />
+        <div className="flex items-center gap-4">
+          <LiveClock />
+          <div className="w-px h-3 bg-[#333]/30" />
+          <LiveIndicator status={status} />
+        </div>
       </div>
 
       {/* Data grid */}
