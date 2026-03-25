@@ -214,7 +214,7 @@ export default function WarRoomPage() {
         {/* Footer */}
         <footer className="w-full bg-[#0a0a0a] relative overflow-hidden wr-footer-border" role="contentinfo" aria-label="War Room footer">
           {/* Subtle dot grid */}
-          <div className="absolute inset-0 wr-dot-grid opacity-15 pointer-events-none" />
+          <div className="absolute inset-0 wr-dot-grid opacity-12 pointer-events-none" />
 
           {/* Footer ticker with gradient fade edges */}
           <div className="border-b border-[#333]/10 overflow-hidden py-1.5 relative">
