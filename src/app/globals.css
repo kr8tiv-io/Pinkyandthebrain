@@ -188,8 +188,8 @@ body {
 /* ── Grid Background Pattern ── */
 .wr-grid-bg {
   background-image:
-    linear-gradient(rgba(212, 240, 0, 0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(212, 240, 0, 0.018) 1px, transparent 1px);
+    linear-gradient(rgba(212, 240, 0, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 240, 0, 0.015) 1px, transparent 1px);
   background-size: 64px 64px;
 }
 /* Crosshair accent at grid intersections */
@@ -314,7 +314,7 @@ body {
   background-size: 200% 100%;
   animation: wr-burn-sweep 4s ease-in-out infinite;
   transition: width 2.2s cubic-bezier(0.25, 1, 0.5, 1);
-  box-shadow: 0 0 8px rgba(255, 107, 53, 0.3), 0 0 3px rgba(255, 107, 53, 0.45);
+  box-shadow: 0 0 8px rgba(255, 107, 53, 0.3), 0 0 2.5px rgba(255, 107, 53, 0.4);
 }
 
 /* ── Gradient Mesh Background (per-section) ── */
@@ -1309,7 +1309,7 @@ section:hover > .wr-section-badge-fire {
   96% { border-color: rgba(255, 158, 158, 0.12); }
 }
 .wr-classified-border {
-  animation: wr-classified-border 7s ease-in-out infinite;
+  animation: wr-classified-border 7.5s ease-in-out infinite;
   border: 1px solid rgba(255, 158, 158, 0.05);
 }
 
