@@ -186,18 +186,22 @@ export default function WarRoomPage() {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center gap-6">
+              <div className="flex items-center gap-4 md:gap-6 flex-wrap justify-center md:justify-end">
                 <a
                   href="https://pinkyandthebrain.fun"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-[9px] uppercase tracking-[0.15em] text-[#444] hover:text-[#d4f000] transition-colors wr-glitch-hover"
+                  className="font-mono text-[9px] uppercase tracking-[0.15em] text-[#444] hover:text-[#d4f000] transition-colors wr-glitch-hover wr-link-hover"
                 >
                   PINKYANDTHEBRAIN.FUN ↗
                 </a>
-                <span className="w-px h-3 bg-[#333]/30" />
-                <span className="font-mono text-[8px] uppercase tracking-[0.15em] text-[#333]">
+                <span className="w-px h-3 bg-[#333]/30 hidden md:block" />
+                <span className="font-mono text-[7px] uppercase tracking-[0.15em] text-[#222]">
                   ALL DATA LIVE ON-CHAIN
+                </span>
+                <span className="w-px h-3 bg-[#333]/20 hidden md:block" />
+                <span className="font-mono text-[7px] uppercase tracking-[0.1em] text-[#1a1a1a]">
+                  © 2025 $BRAIN
                 </span>
               </div>
             </div>
