@@ -1028,7 +1028,7 @@ section:hover > .wr-section-badge-fire {
   right: 0;
   height: 1px;
   background: linear-gradient(90deg, transparent 0%, #d4f000 25%, #e4ff57 50%, #d4f000 75%, transparent 100%);
-  animation: wr-footer-breathe 4.5s ease-in-out infinite;
+  animation: wr-footer-breathe 5s ease-in-out infinite;
 }
 
 /* ── Card Stagger Index (per-card entrance delay) ── */
@@ -1560,8 +1560,8 @@ section:hover > .wr-section-badge-fire {
 
 /* ── Glass Surface ── */
 .wr-glass {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   background: rgba(10, 10, 10, 0.6);
 }
 
