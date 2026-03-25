@@ -36,7 +36,7 @@ function useCountUp(
     const obj = { val: prevValue.current }
     gsap.to(obj, {
       val: value,
-      duration: 1.6,
+      duration: 1.8,
       ease: 'power2.out',
       onUpdate: () => {
         if (ref.current) {
@@ -226,8 +226,8 @@ export default function CommandHeader() {
       const flashColor = data.priceUsd > prevPriceRef.current ? '#d4f000' : '#ff9e9e'
       gsap.fromTo(
         priceUsdRef.current,
-        { textShadow: `0 0 10px ${flashColor}` },
-        { textShadow: '0 0 0px transparent', duration: 1.6, ease: 'power2.out' }
+        { textShadow: `0 0 8px ${flashColor}` },
+        { textShadow: '0 0 0px transparent', duration: 1.8, ease: 'power2.out' }
       )
     }
     prevPriceRef.current = data.priceUsd
