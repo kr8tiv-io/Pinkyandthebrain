@@ -367,7 +367,7 @@ body {
 
 .wr-brackets-fire::before,
 .wr-brackets-fire::after {
-  border-color: rgba(255, 107, 53, 0.2);
+  border-color: rgba(255, 107, 53, 0.15);
 }
 .wr-brackets-fire:hover::before,
 .wr-brackets-fire:hover::after {
@@ -1036,7 +1036,7 @@ section:hover > .wr-section-badge-fire {
 /* ── Card Stagger Index (per-card entrance delay) ── */
 .wr-card-stagger {
   --stagger-i: 0;
-  animation-delay: calc(var(--stagger-i) * 100ms);
+  animation-delay: calc(var(--stagger-i) * 80ms);
 }
 
 /* ── Classified Peek Reveal ── */
@@ -1616,7 +1616,7 @@ section:hover > .wr-section-badge-fire {
   right: 0;
   height: 1px;
   background: linear-gradient(90deg, transparent 0%, rgba(212, 240, 0, 0.05) 50%, transparent 100%);
-  animation: wr-scan 8s linear infinite;
+  animation: wr-scan 9s linear infinite;
   pointer-events: none;
   z-index: 2;
   will-change: transform;
