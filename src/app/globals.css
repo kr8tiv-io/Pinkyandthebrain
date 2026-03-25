@@ -219,7 +219,7 @@ body {
     rgba(212, 240, 0, 0.15) 85%,
     transparent 100%
   );
-  animation: wr-divider-pulse 4.5s ease-in-out infinite;
+  animation: wr-divider-pulse 5s ease-in-out infinite;
   box-shadow: 0 0 5px rgba(212, 240, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
@@ -233,7 +233,7 @@ body {
     rgba(255, 107, 53, 0.15) 85%,
     transparent 100%
   );
-  animation: wr-divider-pulse 4.5s ease-in-out infinite;
+  animation: wr-divider-pulse 5s ease-in-out infinite;
   box-shadow: 0 0 5px rgba(255, 107, 53, 0.04), 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 

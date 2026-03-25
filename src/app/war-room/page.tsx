@@ -32,7 +32,7 @@ export default function WarRoomPage() {
       <div className="fixed inset-0 z-0 pointer-events-none wr-scanlines" />
 
       {/* ── Layer 4: Noise texture ── */}
-      <div className="fixed inset-0 z-0 pointer-events-none bg-[url('/noise.gif')] opacity-[0.025] mix-blend-overlay" />
+      <div className="fixed inset-0 z-0 pointer-events-none bg-[url('/noise.gif')] opacity-[0.02] mix-blend-overlay" />
 
       {/* ── Layer 5: Bottom depth gradient ── */}
       <div className="wr-depth-gradient" />
