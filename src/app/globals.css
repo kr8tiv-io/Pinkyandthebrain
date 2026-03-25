@@ -362,7 +362,7 @@ body {
 .wr-brackets:hover::after {
   width: 24px;
   height: 24px;
-  border-color: rgba(212, 240, 0, 0.6);
+  border-color: rgba(212, 240, 0, 0.5);
 }
 
 .wr-brackets-fire::before,
@@ -465,7 +465,7 @@ body {
 .wr-tooltip-enhanced {
   background: rgba(10, 10, 10, 0.97);
   backdrop-filter: blur(24px);
-  border: 1px solid rgba(51, 51, 51, 0.35);
+  border: 1px solid rgba(51, 51, 51, 0.3);
   box-shadow:
     0 8px 28px rgba(0, 0, 0, 0.55),
     0 0 1px rgba(212, 240, 0, 0.12),
@@ -955,7 +955,7 @@ button:focus-visible {
 section:hover > .wr-section-badge {
   opacity: 1;
   color: rgba(212, 240, 0, 0.2);
-  letter-spacing: 0.25em;
+  letter-spacing: 0.22em;
 }
 section:hover > .wr-section-badge-fire {
   color: rgba(255, 107, 53, 0.2);
