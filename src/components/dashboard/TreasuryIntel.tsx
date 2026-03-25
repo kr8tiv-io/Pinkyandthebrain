@@ -236,7 +236,7 @@ function TreasuryValueChart({
                 type="monotone"
                 dataKey="valueUsd"
                 stroke="url(#treasuryStroke)"
-                strokeWidth={1.2}
+                strokeWidth={1.1}
                 strokeLinecap="round"
                 fill="url(#treasuryGradient)"
                 dot={false}
