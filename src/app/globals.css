@@ -1277,7 +1277,7 @@ section:hover > .wr-section-badge-fire {
 .group\/card:hover .wr-monogram {
   background: linear-gradient(135deg, rgba(212, 240, 0, 0.15) 0%, rgba(212, 240, 0, 0.06) 100%);
   border-color: rgba(212, 240, 0, 0.2);
-  box-shadow: 0 0 12px rgba(212, 240, 0, 0.1);
+  box-shadow: 0 0 10px rgba(212, 240, 0, 0.1);
 }
 
 /* ── Section Header Line Extend ── */
@@ -1413,11 +1413,11 @@ section:hover > .wr-section-badge-fire {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100px;
+  height: 90px;
   background: linear-gradient(to top, rgba(10, 10, 10, 0.8), transparent);
   pointer-events: none;
   z-index: 5;
-  opacity: 0.5;
+  opacity: 0.45;
 }
 
 /* ── Row Flash Entrance ── */
@@ -1550,7 +1550,7 @@ section:hover > .wr-section-badge-fire {
   left: 0;
   width: 0;
   height: 1px;
-  background: linear-gradient(90deg, #d4f000, #e4ff57 60%, transparent);
+  background: linear-gradient(90deg, #d4f000, #e4ff57 55%, transparent);
   transition: width 0.7s cubic-bezier(0.25, 1, 0.5, 1);
   z-index: 20;
 }
