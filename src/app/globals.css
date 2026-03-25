@@ -553,7 +553,7 @@ body {
   98% { transform: translate(1px, -1px); opacity: 0.95; }
 }
 .wr-classified-glitch {
-  animation: wr-classified-glitch 5s ease-in-out infinite;
+  animation: wr-classified-glitch 5.5s ease-in-out infinite;
 }
 
 /* ── Radar Sweep ── */
@@ -1428,7 +1428,7 @@ section:hover > .wr-section-badge-fire {
   100% { background-color: transparent; }
 }
 .wr-row-flash {
-  animation: wr-row-flash 1.4s ease-out;
+  animation: wr-row-flash 1.2s ease-out;
 }
 
 /* ── Count Badge Pulse ── */
