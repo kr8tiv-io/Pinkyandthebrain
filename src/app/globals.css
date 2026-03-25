@@ -801,7 +801,7 @@ button:focus-visible {
   height: 3px;
   border-radius: 50%;
   background: currentColor;
-  animation: wr-dot-breathe 3s ease-in-out infinite;
+  animation: wr-dot-breathe 3.5s ease-in-out infinite;
 }
 
 /* ── Scroll Indicator ── */

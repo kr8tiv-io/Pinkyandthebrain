@@ -435,7 +435,7 @@ function HoldingCard({
 }) {
   const [copied, setCopied] = useState(false)
   const cardRef = useRef<HTMLDivElement>(null)
-  useMagneticHover(cardRef, 0.15)
+  useMagneticHover(cardRef, 0.12)
 
   const handleCopy = useCallback(async () => {
     await navigator.clipboard.writeText(holding.mint)
