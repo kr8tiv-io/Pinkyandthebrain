@@ -79,8 +79,8 @@ function useMagneticHover(ref: React.RefObject<HTMLElement | null>, strength = 0
     gsap.to(ref.current, {
       x: x * strength,
       y: y * strength,
-      rotationY: normalX * 3,
-      rotationX: -normalY * 3,
+      rotationY: normalX * 2.5,
+      rotationX: -normalY * 2.5,
       duration: 0.4,
       ease: 'power2.out',
       transformPerspective: 800,
