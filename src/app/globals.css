@@ -220,7 +220,7 @@ body {
     transparent 100%
   );
   animation: wr-divider-pulse 4s ease-in-out infinite;
-  box-shadow: 0 0 8px rgba(212, 240, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 6px rgba(212, 240, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .wr-divider-fire {
@@ -1191,7 +1191,7 @@ section:hover > .wr-section-badge-fire {
 /* ── Card Hover Cue ── */
 .wr-hover-cue {
   position: absolute;
-  bottom: 6px;
+  bottom: 8px;
   left: 50%;
   transform: translateX(-50%);
   font-family: var(--font-mono);
