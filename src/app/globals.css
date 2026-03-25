@@ -179,8 +179,8 @@ body {
     0deg,
     transparent,
     transparent 3px,
-    rgba(0, 0, 0, 0.02) 3px,
-    rgba(0, 0, 0, 0.02) 6px
+    rgba(0, 0, 0, 0.018) 3px,
+    rgba(0, 0, 0, 0.018) 6px
   );
   pointer-events: none;
 }
@@ -829,7 +829,7 @@ button:focus-visible {
   50% { transform: translateY(-6px); }
 }
 .wr-float {
-  animation: wr-float 3.5s ease-in-out infinite;
+  animation: wr-float 4s ease-in-out infinite;
 }
 
 /* ── Section Accent Bar Pulse ── */
@@ -895,7 +895,7 @@ button:focus-visible {
 /* ── Clock Colon Blink ── */
 @keyframes wr-colon-blink {
   0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0.15; }
+  50%, 100% { opacity: 0.18; }
 }
 .wr-colon-blink {
   animation: wr-colon-blink 1s step-end infinite;
