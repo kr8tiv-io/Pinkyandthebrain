@@ -831,7 +831,7 @@ button:focus-visible {
   50% { transform: translateY(-6px); }
 }
 .wr-float {
-  animation: wr-float 4s ease-in-out infinite;
+  animation: wr-float 4.5s ease-in-out infinite;
 }
 
 /* ── Section Accent Bar Pulse ── */
@@ -1415,7 +1415,7 @@ section:hover > .wr-section-badge-fire {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 90px;
+  height: 80px;
   background: linear-gradient(to top, rgba(10, 10, 10, 0.8), transparent);
   pointer-events: none;
   z-index: 5;
@@ -1552,7 +1552,7 @@ section:hover > .wr-section-badge-fire {
   left: 0;
   width: 0;
   height: 1px;
-  background: linear-gradient(90deg, #d4f000, #e4ff57 50%, transparent);
+  background: linear-gradient(90deg, #d4f000, #e4ff57 45%, transparent);
   transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   z-index: 20;
 }
