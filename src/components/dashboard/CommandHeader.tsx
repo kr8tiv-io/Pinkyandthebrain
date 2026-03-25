@@ -36,7 +36,7 @@ function useCountUp(
     const obj = { val: prevValue.current }
     gsap.to(obj, {
       val: value,
-      duration: 1.8,
+      duration: 2.0,
       ease: 'power2.out',
       onUpdate: () => {
         if (ref.current) {
