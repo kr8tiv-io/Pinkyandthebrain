@@ -387,7 +387,7 @@ function ClassifiedCard({ mint }: { mint: string }) {
             ████████████████
           </div>
           {/* Peek reveal — faded mint on hover */}
-          <div className="font-mono text-[8px] text-transparent group-hover/classified:text-[#333]/40 transition-colors duration-1000 mb-4 truncate">
+          <div className="font-mono text-[8px] text-[#333]/40 mb-4 truncate wr-peek-reveal">
             {mint}
           </div>
           <div className="flex items-center gap-2 mb-4">
@@ -742,11 +742,15 @@ export default function TreasuryIntel() {
         <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {isLoading
             ? Array.from({ length: 3 }).map((_, i) => <LoadingCard key={i} index={i} />)
-            : (data?.holdings ?? []).map(h =>
+            : (data?.holdings ?? []).map((h, idx) =>
                 h.category === 'unknown' ? (
-                  <ClassifiedCard key={h.mint} mint={h.mint} />
+                  <div key={h.mint} style={{ '--stagger-i': idx } as React.CSSProperties} className="wr-card-stagger">
+                    <ClassifiedCard mint={h.mint} />
+                  </div>
                 ) : (
-                  <HoldingCard key={h.mint} holding={h} solPriceUsd={data?.solPriceUsd ?? 0} />
+                  <div key={h.mint} style={{ '--stagger-i': idx } as React.CSSProperties} className="wr-card-stagger">
+                    <HoldingCard holding={h} solPriceUsd={data?.solPriceUsd ?? 0} />
+                  </div>
                 )
               )}
         </div>

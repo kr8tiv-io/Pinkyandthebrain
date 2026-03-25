@@ -995,6 +995,26 @@ section:hover > .wr-section-badge-fire {
   animation: wr-footer-breathe 4s ease-in-out infinite;
 }
 
+/* ── Card Stagger Index (per-card entrance delay) ── */
+.wr-card-stagger {
+  --stagger-i: 0;
+  animation-delay: calc(var(--stagger-i) * 80ms);
+}
+
+/* ── Classified Peek Reveal ── */
+.wr-peek-reveal {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.group\/classified:hover .wr-peek-reveal {
+  clip-path: inset(0 0 0 0);
+}
+
+/* ── Chart Active Dot Ring ── */
+.wr-chart-active-ring {
+  filter: drop-shadow(0 0 8px rgba(212, 240, 0, 0.6));
+}
+
 /* ── Horizontal Scan Line (animated) ── */
 @keyframes wr-scan {
   0% { transform: translateY(-100%); }
