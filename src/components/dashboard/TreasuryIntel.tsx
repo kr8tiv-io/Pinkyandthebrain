@@ -173,8 +173,14 @@ function TreasuryValueChart({
           <div className="wr-skeleton h-[200px] w-full rounded" />
         </div>
       ) : chartData.length < 2 ? (
-        <div className="h-[240px] flex items-center justify-center">
-          <span className="text-[#333] font-mono text-xs tracking-[0.2em]">INSUFFICIENT DATA</span>
+        <div className="h-[240px] flex flex-col items-center justify-center gap-3">
+          <div className="w-8 h-8 border border-[#333]/30 flex items-center justify-center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#333]">
+              <path d="M3 3v18h18" />
+              <path d="M7 16l4-4 4 4 5-5" />
+            </svg>
+          </div>
+          <span className="text-[#333] font-mono text-[10px] tracking-[0.2em]">INSUFFICIENT DATA POINTS</span>
         </div>
       ) : (
         <div className="h-[240px] relative">
@@ -271,21 +277,36 @@ function SummaryCell({
 
 // ─── Loading Card ─────────────────────────────────────────────────────────────
 
-function LoadingCard() {
+function LoadingCard({ index = 0 }: { index?: number }) {
   return (
-    <div className="wr-card p-5">
-      <div className="flex justify-between items-start mb-4">
-        <div className="wr-skeleton h-4 w-24" />
-        <div className="wr-skeleton h-4 w-12" />
-      </div>
-      <div className="wr-skeleton h-3 w-32 mb-4" />
-      <div className="grid grid-cols-2 gap-x-4 gap-y-4">
-        {Array.from({ length: 6 }).map((_, i) => (
-          <div key={i}>
-            <div className="wr-skeleton h-2 w-16 mb-1.5" />
-            <div className="wr-skeleton h-3 w-20" />
+    <div className="relative p-[1px] overflow-hidden">
+      {/* Subtle scanning border */}
+      <div
+        className="absolute inset-[-100%] animate-spin opacity-10 pointer-events-none"
+        style={{
+          background: 'conic-gradient(from 0deg, transparent 80%, #333 95%, transparent 100%)',
+          animationDuration: '4s',
+          animationDelay: `${index * 0.3}s`,
+        }}
+      />
+      <div className="relative bg-[#0d0d0d] p-5">
+        {/* Accent bar */}
+        <div className="absolute top-0 left-0 w-[3px] h-full bg-gradient-to-b from-[#333]/40 via-[#333]/20 to-transparent" />
+        <div className="pl-2">
+          <div className="flex justify-between items-start mb-4">
+            <div className="wr-skeleton h-4 w-24" style={{ animationDelay: `${index * 150}ms` }} />
+            <div className="wr-skeleton h-4 w-12" style={{ animationDelay: `${index * 150 + 100}ms` }} />
           </div>
-        ))}
+          <div className="wr-skeleton h-3 w-32 mb-4" style={{ animationDelay: `${index * 150 + 200}ms` }} />
+          <div className="grid grid-cols-2 gap-x-4 gap-y-4">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={i}>
+                <div className="wr-skeleton h-2 w-16 mb-1.5" style={{ animationDelay: `${index * 150 + 300 + i * 80}ms` }} />
+                <div className="wr-skeleton h-3 w-20" style={{ animationDelay: `${index * 150 + 340 + i * 80}ms` }} />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   )
@@ -646,7 +667,7 @@ export default function TreasuryIntel() {
         </div>
         <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {isLoading
-            ? Array.from({ length: 3 }).map((_, i) => <LoadingCard key={i} />)
+            ? Array.from({ length: 3 }).map((_, i) => <LoadingCard key={i} index={i} />)
             : (data?.holdings ?? []).map(h =>
                 h.category === 'unknown' ? (
                   <ClassifiedCard key={h.mint} mint={h.mint} />

@@ -198,19 +198,29 @@ function BurnTransactionsTable({
         {isLoading ? (
           Array.from({ length: 5 }).map((_, i) => (
             <div key={i} className="grid grid-cols-[24px_1fr_1fr_1.2fr] gap-3 py-3 px-4 border-b border-[#333]/10">
-              <div className="wr-skeleton h-3 w-4" />
-              <div className="wr-skeleton h-3 w-28" />
-              <div className="wr-skeleton h-3 w-24" />
-              <div className="wr-skeleton h-3 w-32" />
+              <div className="wr-skeleton h-3 w-4" style={{ animationDelay: `${i * 120}ms` }} />
+              <div className="wr-skeleton h-3 w-28" style={{ animationDelay: `${i * 120 + 50}ms` }} />
+              <div className="wr-skeleton h-3 w-24" style={{ animationDelay: `${i * 120 + 100}ms` }} />
+              <div className="wr-skeleton h-3 w-32" style={{ animationDelay: `${i * 120 + 150}ms` }} />
             </div>
           ))
         ) : isError ? (
-          <div className="py-8 text-center">
-            <span className="text-[#ff9e9e] font-mono text-xs tracking-[0.2em]">&mdash;</span>
+          <div className="py-10 flex flex-col items-center justify-center gap-3">
+            <div className="w-8 h-8 border border-[#ff9e9e]/20 flex items-center justify-center">
+              <span className="text-[#ff9e9e]/40 font-mono text-sm">!</span>
+            </div>
+            <span className="text-[#ff9e9e]/40 font-mono text-[10px] tracking-[0.2em]">DATA FEED OFFLINE</span>
           </div>
         ) : transactions.length === 0 ? (
-          <div className="py-8 text-center">
-            <span className="text-[#333] font-mono text-xs tracking-[0.2em]">
+          <div className="py-10 flex flex-col items-center justify-center gap-3">
+            <div className="w-8 h-8 border border-[#333]/30 flex items-center justify-center">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#333]">
+                <path d="M12 2L2 22h20L12 2z" />
+                <path d="M12 10v5" />
+                <circle cx="12" cy="18" r="0.5" fill="currentColor" />
+              </svg>
+            </div>
+            <span className="text-[#333] font-mono text-[10px] tracking-[0.2em]">
               NO BURN TRANSACTIONS RECORDED
             </span>
           </div>
