@@ -63,7 +63,7 @@ function BurnSummaryBar({
     {
       label: 'TOTAL INCINERATED',
       content: isLoading ? (
-        <div className="wr-skeleton h-6 w-32" />
+        <div className="wr-skeleton h-6 w-28" />
       ) : isError ? (
         <span className="text-[#ff9e9e]">&mdash;</span>
       ) : (
