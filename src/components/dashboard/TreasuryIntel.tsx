@@ -279,8 +279,10 @@ function SummaryCell({
 
   return (
     <div className="px-5 lg:px-6 py-5 group/cell relative transition-colors duration-300 hover:bg-white/[0.015]">
-      {/* Hover accent */}
+      {/* Hover accent top */}
       <div className="absolute top-0 left-0 right-0 h-px bg-[#d4f000]/0 group-hover/cell:bg-[#d4f000]/10 transition-colors duration-300" />
+      {/* Hover accent bottom gradient */}
+      <div className="absolute bottom-0 left-[10%] right-[10%] h-px bg-[#d4f000]/0 group-hover/cell:bg-[#d4f000]/[0.05] transition-colors duration-500" />
       <div className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#555] mb-2 font-bold group-hover/cell:text-[#888] transition-colors flex items-center gap-1.5">
         <span className="text-[#d4f000]/20 text-[5px]">◆</span>
         {label}
@@ -716,7 +718,14 @@ export default function TreasuryIntel() {
           {formatSol(data?.totalValueSol ?? 0)}
         </SummaryCell>
         <SummaryCell label="Active Holdings" isLoading={isLoading} isError={isError}>
-          {data?.holdings.length ?? 0}
+          <span className="flex items-center gap-2">
+            {data?.holdings.length ?? 0}
+            {!isLoading && data && data.holdings.length > 0 && (
+              <span className="text-[8px] text-[#d4f000]/40 font-mono font-bold px-1.5 py-0.5 bg-[#d4f000]/[0.04] border border-[#d4f000]/10 rounded-sm">
+                LIVE
+              </span>
+            )}
+          </span>
         </SummaryCell>
       </div>
 
