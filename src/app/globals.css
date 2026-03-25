@@ -65,7 +65,7 @@ body {
 
 /* ── Page Load Fade-In ── */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 .page-enter {
@@ -206,7 +206,7 @@ body {
 /* ── Horizontal Rule / Section Divider ── */
 @keyframes wr-divider-pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  50% { opacity: 0.45; }
 }
 
 .wr-divider {
@@ -821,7 +821,7 @@ button:focus-visible {
   100% { transform: translate(-3px, 0); }
 }
 .wr-watermark {
-  animation: wr-watermark-drift 38s ease-in-out infinite;
+  animation: wr-watermark-drift 40s ease-in-out infinite;
   will-change: transform;
 }
 
