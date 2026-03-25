@@ -121,9 +121,11 @@ function BurnSummaryBar({
 function TransactionRow({
   tx,
   index,
+  maxAmount = 1,
 }: {
   tx: { txHash: string; timestamp: number; amount: number }
   index: number
+  maxAmount?: number
 }) {
   const rowRef = useRef<HTMLDivElement>(null)
 
@@ -136,11 +138,18 @@ function TransactionRow({
     )
   }, [index])
 
+  const intensity = maxAmount > 0 ? (tx.amount / maxAmount) * 100 : 0
+
   return (
     <div
       ref={rowRef}
-      className="grid grid-cols-[24px_1fr_1fr] md:grid-cols-[24px_1fr_1fr_1.2fr] gap-2 md:gap-3 items-center py-3 px-3 md:px-4 wr-row-stripe border-b border-[#333]/10 font-mono text-[10px] transition-colors duration-200"
+      className="grid grid-cols-[24px_1fr_1fr] md:grid-cols-[24px_1fr_1fr_1.2fr] gap-2 md:gap-3 items-center py-3 px-3 md:px-4 wr-row-stripe border-b border-[#333]/10 font-mono text-[10px] transition-colors duration-200 relative"
     >
+      {/* Burn intensity bar (background) */}
+      <div
+        className="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-[#ff6b35]/[0.03] to-transparent pointer-events-none"
+        style={{ width: `${intensity}%` }}
+      />
       <div className="wr-row-num">{String(index + 1).padStart(2, '0')}</div>
       <div className="text-[#666] tabular-nums flex items-center gap-2">
         <span className="text-[#ff6b35]/30 text-[8px]">●</span>
@@ -231,9 +240,12 @@ function BurnTransactionsTable({
             </span>
           </div>
         ) : (
-          transactions.map((tx, i) => (
-            <TransactionRow key={tx.txHash} tx={tx} index={i} />
-          ))
+          (() => {
+            const maxAmount = Math.max(...transactions.map(t => t.amount))
+            return transactions.map((tx, i) => (
+              <TransactionRow key={tx.txHash} tx={tx} index={i} maxAmount={maxAmount} />
+            ))
+          })()
         )}
       </div>
     </div>
