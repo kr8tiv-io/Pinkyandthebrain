@@ -410,7 +410,7 @@ body {
 }
 
 .wr-orb-1 { animation: wr-orb-drift-1 24s ease-in-out infinite; will-change: transform; }
-.wr-orb-2 { animation: wr-orb-drift-2 28s ease-in-out infinite; will-change: transform; }
+.wr-orb-2 { animation: wr-orb-drift-2 30s ease-in-out infinite; will-change: transform; }
 .wr-orb-3 { animation: wr-orb-drift-3 21s ease-in-out infinite; will-change: transform; }
 
 /* ── External Link Hover Underline ── */
@@ -1017,7 +1017,7 @@ section:hover > .wr-section-badge-fire {
 /* ── Footer Breathing Border ── */
 @keyframes wr-footer-breathe {
   0%, 100% { opacity: 0.12; }
-  50% { opacity: 0.35; }
+  50% { opacity: 0.3; }
 }
 .wr-footer-border {
   position: relative;
