@@ -19,6 +19,14 @@
 - reflections.ts — fetch SOL distribution transactions
 - All calls go through Next.js API routes, never client-side with secret keys
 
+**Plans:** 3 plans
+**Requirements:** [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11]
+
+Plans:
+- [ ] 02-01-PLAN.md — Foundational API wrappers (helius.ts, birdeye.ts, solscan.ts)
+- [ ] 02-02-PLAN.md — Composite API functions (treasury.ts, burns.ts, reflections.ts)
+- [ ] 02-03-PLAN.md — Shared types, upgrade treasury route, real hall-of-fame route
+
 ### Phase 3: Next.js API Routes & React Query Setup
 - /app/api/price/route.ts — $BRAIN and SOL prices (60s revalidate)
 - /app/api/treasury/route.ts — upgrade existing: full SPL holdings with valuations
