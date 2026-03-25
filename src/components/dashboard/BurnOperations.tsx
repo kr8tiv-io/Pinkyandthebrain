@@ -297,7 +297,7 @@ export default function BurnOperations() {
     const rect = sectionRef.current.getBoundingClientRect()
     const x = e.clientX - rect.left
     const y = e.clientY - rect.top
-    glowRef.current.style.background = `radial-gradient(300px circle at ${x}px ${y}px, rgba(255, 107, 53, 0.06), transparent 60%)`
+    glowRef.current.style.background = `radial-gradient(280px circle at ${x}px ${y}px, rgba(255, 107, 53, 0.06), transparent 60%)`
   }, [])
 
   const handleMouseLeave = useCallback(() => {
