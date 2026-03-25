@@ -325,7 +325,7 @@ export default function BurnOperations() {
       </div>
 
       {/* Fire glow at top */}
-      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#ff6b35]/[0.04] to-transparent pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#ff6b35]/[0.03] to-transparent pointer-events-none" />
 
       {/* Fire ember particles */}
       <div className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none overflow-hidden">

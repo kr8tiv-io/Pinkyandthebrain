@@ -145,7 +145,7 @@ function CustomChartTooltip({ active, payload, label }: TooltipContentProps) {
         <div className="w-1.5 h-1.5 bg-[#d4f000] rounded-full" style={{ boxShadow: '0 0 6px #d4f000' }} />
         <span className="text-[#666] text-[9px] uppercase tracking-[0.2em] font-bold">{label}</span>
       </div>
-      <div className="text-[#d4f000] font-black text-base tabular-nums wr-gradient-text-lime">{formatUsd(numericValue)}</div>
+      <div className="text-[#d4f000] font-black text-lg tabular-nums wr-gradient-text-lime leading-tight">{formatUsd(numericValue)}</div>
       <div className="mt-1.5 font-mono text-[7px] text-[#333] uppercase tracking-[0.15em]">PORTFOLIO VALUE</div>
     </div>
   )
@@ -477,8 +477,8 @@ function HoldingCard({
       <div className="flex justify-between items-start mb-3 pl-2">
         <div className="flex items-center gap-2.5">
           {/* Monogram avatar */}
-          <div className="w-8 h-8 flex items-center justify-center text-[#d4f000] font-black text-xs font-mono shrink-0 wr-monogram">
-            {(holding.symbol || holding.name).charAt(0)}
+          <div className="w-8 h-8 flex items-center justify-center font-black text-xs font-mono shrink-0 wr-monogram">
+            <span className="wr-gradient-text-lime">{(holding.symbol || holding.name).charAt(0)}</span>
           </div>
           <div>
             <div className="text-[#d4f000] font-black text-sm uppercase tracking-wider font-mono transition-all duration-300 group-hover/card:text-shadow-[0_0_12px_rgba(212,240,0,0.3)]">
