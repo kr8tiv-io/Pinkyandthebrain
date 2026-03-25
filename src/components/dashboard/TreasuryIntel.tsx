@@ -141,11 +141,12 @@ function CustomChartTooltip({ active, payload, label }: TooltipContentProps) {
   const numericValue = typeof rawValue === 'number' ? rawValue : 0
   return (
     <div className="wr-tooltip-enhanced wr-tooltip-caret px-5 py-4 font-mono text-xs">
-      <div className="flex items-center gap-2 mb-2">
+      <div className="flex items-center gap-2 mb-2.5">
         <div className="w-1.5 h-1.5 bg-[#d4f000] rounded-full" style={{ boxShadow: '0 0 6px #d4f000' }} />
         <span className="text-[#666] text-[9px] uppercase tracking-[0.2em] font-bold">{label}</span>
       </div>
       <div className="text-[#d4f000] font-black text-base tabular-nums wr-gradient-text-lime">{formatUsd(numericValue)}</div>
+      <div className="mt-1.5 font-mono text-[7px] text-[#333] uppercase tracking-[0.15em]">PORTFOLIO VALUE</div>
     </div>
   )
 }
