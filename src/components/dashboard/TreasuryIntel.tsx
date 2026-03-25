@@ -614,13 +614,13 @@ function DivestedSection() {
         </div>
       ) : (
         <div className="overflow-x-auto wr-scroll">
-          <table className="w-full font-mono text-[10px]">
+          <table className="w-full font-mono text-[10px]" aria-label="Divested assets">
             <thead>
               <tr className="border-b border-[#ff9e9e]/10 relative">
                 {['TOKEN', 'SOLD DATE', 'AMOUNT', 'STATUS'].map((h, i) => (
-                  <th key={h} className="text-left uppercase tracking-[0.15em] text-[#444] pb-2.5 pr-6 font-bold text-[9px]">
+                  <th key={h} scope="col" className="text-left uppercase tracking-[0.15em] text-[#444] pb-2.5 pr-6 font-bold text-[9px]">
                     <span className="flex items-center gap-1.5">
-                      {i === 0 && <span className="text-[#ff9e9e]/20 text-[5px]">◆</span>}
+                      {i === 0 && <span className="text-[#ff9e9e]/20 text-[5px]" aria-hidden="true">◆</span>}
                       {h}
                     </span>
                   </th>
