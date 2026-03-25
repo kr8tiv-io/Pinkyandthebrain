@@ -836,15 +836,6 @@ button:focus-visible {
   animation: wr-accent-pulse 2s ease-in-out infinite;
 }
 
-/* ── External Link Icon Shift ── */
-.wr-ext-link-icon {
-  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), color 0.2s ease;
-  display: inline-block;
-}
-.wr-ext-link-icon:hover {
-  transform: translate(1px, -1px) scale(1.1);
-}
-
 /* ── Section Accent Bar Entry ── */
 @keyframes wr-accent-grow {
   0% { height: 0; opacity: 0; }
