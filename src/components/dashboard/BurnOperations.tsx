@@ -107,7 +107,7 @@ function BurnSummaryBar({
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#333]/15 border-b border-[#333]/15 wr-summary-accent wr-summary-accent-fire wr-summary-glow-divider" role="region" aria-label="Burn statistics summary">
       {cells.map(({ label, content }) => (
-        <div key={label} className="px-5 lg:px-6 py-5 group/cell relative transition-colors duration-300 hover:bg-[#ff6b35]/[0.02] wr-stat-scale">
+        <div key={label} className="px-5 lg:px-6 py-5 group/cell relative transition-colors duration-300 hover:bg-[#ff6b35]/[0.015] wr-stat-scale">
           {/* Hover accent */}
           <div className="absolute top-0 left-0 right-0 h-px bg-[#ff6b35]/0 group-hover/cell:bg-[#ff6b35]/10 transition-all duration-300 origin-left scale-x-0 group-hover/cell:scale-x-100" />
           <div className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#555] mb-2 font-bold group-hover/cell:text-[#888] transition-colors flex items-center gap-1.5">

@@ -86,7 +86,7 @@ export default function WarRoomPage() {
         <div className="flex justify-center py-1">
           <div className="flex items-center gap-1.5">
             {[1, 2, 3].map(i => (
-              <div key={i} className="w-[2px] h-[2px] bg-[#333]/25 rounded-full" />
+              <div key={i} className="w-[2px] h-[2px] bg-[#333]/20 rounded-full" />
             ))}
           </div>
         </div>
