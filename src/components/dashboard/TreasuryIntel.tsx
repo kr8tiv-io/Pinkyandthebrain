@@ -719,7 +719,7 @@ export default function TreasuryIntel() {
                 {new Date(dataUpdatedAt).toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })} UTC
               </span>
             )}
-            <div className="wr-tag border-[#d4f000]/20 text-[#d4f000]/60">
+            <div className="wr-tag wr-tag-glow border-[#d4f000]/20 text-[#d4f000]/60">
               TS/SCI
             </div>
           </div>

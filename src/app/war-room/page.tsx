@@ -171,10 +171,10 @@ export default function WarRoomPage() {
               </h2>
 
               <div className="flex items-center gap-3">
-                <div className="wr-tag border-[#333]/40 text-[#333]">
+                <div className="wr-tag wr-tag-glow border-[#333]/40 text-[#333]">
                   CLASSIFIED
                 </div>
-                <div className="wr-tag border-[#d4f000]/10 text-[#d4f000]/20">
+                <div className="wr-tag wr-tag-glow border-[#d4f000]/10 text-[#d4f000]/20">
                   TS/SCI
                 </div>
               </div>
