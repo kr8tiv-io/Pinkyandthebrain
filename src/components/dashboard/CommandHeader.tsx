@@ -128,7 +128,7 @@ function DataCell({
       </div>
 
       {/* Subtle bottom glow on hover */}
-      <div className="absolute bottom-0 left-[10%] right-[10%] h-px bg-[#d4f000]/0 group-hover:bg-[#d4f000]/[0.06] transition-colors duration-500" />
+      <div className="absolute bottom-0 left-[10%] right-[10%] h-px bg-[#d4f000]/0 group-hover:bg-[#d4f000]/[0.05] transition-colors duration-500" />
 
       <div className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#555] mb-2 font-bold group-hover:text-[#888] transition-colors duration-300 flex items-center gap-1.5">
         <span className="text-[#d4f000]/15 text-[5px]">◆</span>

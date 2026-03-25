@@ -600,7 +600,7 @@ body {
   transform: scale(1.5) rotate(45deg);
 }
 .wr-sub-diamond {
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
   display: inline-block;
 }
 
@@ -1217,7 +1217,7 @@ section:hover > .wr-section-badge-fire {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 35px;
+  height: 30px;
   background: linear-gradient(to top, #0a0a0a, transparent);
   pointer-events: none;
 }
