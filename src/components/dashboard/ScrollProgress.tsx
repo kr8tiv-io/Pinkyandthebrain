@@ -30,7 +30,7 @@ export default function ScrollProgress() {
           style={{
             transform: 'scaleX(0)',
             willChange: 'transform',
-            boxShadow: '0 0 8px rgba(212, 240, 0, 0.4), 0 0 3px rgba(212, 240, 0, 0.7)',
+            boxShadow: '0 0 6px rgba(212, 240, 0, 0.35), 0 0 2px rgba(212, 240, 0, 0.6)',
             borderRadius: '0 1px 1px 0',
           }}
         />
