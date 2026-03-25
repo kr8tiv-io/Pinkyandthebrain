@@ -578,6 +578,29 @@ body {
   animation: wr-breathe 4s ease-in-out infinite;
 }
 
+/* ── Sub-header Hover Effect ── */
+.wr-sub-header {
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: default;
+}
+.wr-sub-header:hover {
+  padding-left: 4px;
+}
+.wr-sub-header:hover .wr-sub-diamond {
+  color: rgba(212, 240, 0, 0.5);
+  transform: scale(1.5);
+}
+.wr-sub-diamond {
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  display: inline-block;
+}
+
+/* ── Animated Horizontal Line ── */
+@keyframes wr-line-extend {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
 /* ── Link Hover Scale ── */
 .wr-link-scale {
   transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
