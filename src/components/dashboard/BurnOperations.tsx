@@ -109,7 +109,7 @@ function BurnSummaryBar({
       {cells.map(({ label, content }) => (
         <div key={label} className="px-5 lg:px-6 py-5 group/cell relative transition-colors duration-300 hover:bg-[#ff6b35]/[0.02] wr-stat-scale">
           {/* Hover accent */}
-          <div className="absolute top-0 left-0 right-0 h-px bg-[#ff6b35]/0 group-hover/cell:bg-[#ff6b35]/10 transition-colors duration-300" />
+          <div className="absolute top-0 left-0 right-0 h-px bg-[#ff6b35]/0 group-hover/cell:bg-[#ff6b35]/10 transition-all duration-300 origin-left scale-x-0 group-hover/cell:scale-x-100" />
           <div className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#555] mb-2 font-bold group-hover/cell:text-[#888] transition-colors flex items-center gap-1.5">
             <span className="text-[#ff6b35]/20 text-[5px]" aria-hidden="true">◆</span>
             {label}
