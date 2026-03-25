@@ -94,7 +94,7 @@ function useMagneticHover(ref: React.RefObject<HTMLElement | null>, strength = 0
       y: 0,
       rotationY: 0,
       rotationX: 0,
-      duration: 0.6,
+      duration: 0.55,
       ease: 'elastic.out(1, 0.55)',
     })
   }, [ref])

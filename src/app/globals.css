@@ -944,7 +944,7 @@ button:focus-visible {
               opacity 0.3s ease;
 }
 .group\/card:hover .wr-links-reveal {
-  max-height: 45px;
+  max-height: 40px;
   opacity: 1;
 }
 
@@ -1304,9 +1304,9 @@ section:hover > .wr-section-badge-fire {
 /* ── Classified Border Flicker ── */
 @keyframes wr-classified-border {
   0%, 90%, 100% { border-color: rgba(255, 158, 158, 0.05); }
-  92% { border-color: rgba(255, 158, 158, 0.15); }
-  94% { border-color: rgba(255, 158, 158, 0.04); }
-  96% { border-color: rgba(255, 158, 158, 0.12); }
+  92% { border-color: rgba(255, 158, 158, 0.12); }
+  94% { border-color: rgba(255, 158, 158, 0.035); }
+  96% { border-color: rgba(255, 158, 158, 0.1); }
 }
 .wr-classified-border {
   animation: wr-classified-border 7.5s ease-in-out infinite;
