@@ -268,8 +268,9 @@ export default function CommandHeader() {
             </div>
           </div>
           <div className="w-px h-3 bg-[#333]/50" />
-          <div className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#444] font-medium">
-            War Room
+          <div className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#444] font-medium flex items-center gap-2">
+            <span>War Room</span>
+            <span className="w-1 h-1 bg-[#d4f000]/10 rounded-full hidden sm:block" />
           </div>
           <div className="hidden md:block w-px h-3 bg-[#333]/30" />
           <div className="hidden md:flex md:items-center md:gap-2 font-mono text-[8px] uppercase tracking-[0.2em] text-[#333]">

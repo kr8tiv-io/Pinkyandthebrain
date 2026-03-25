@@ -573,10 +573,10 @@ function HoldingCard({
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-[9px] text-[#d4f000]/50 hover:text-[#d4f000] transition-all duration-200 wr-link-hover flex items-center gap-1 group/link"
+            className="font-mono text-[9px] text-[#d4f000]/50 hover:text-[#d4f000] transition-all duration-200 wr-link-hover wr-arrow-hover flex items-center gap-1 group/link"
           >
             {label}
-            <span className="text-[7px] opacity-50 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 transition-all duration-200">↗</span>
+            <span className="text-[7px] opacity-50 wr-arrow">↗</span>
           </a>
         ))}
       </div>
