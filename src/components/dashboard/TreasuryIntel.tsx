@@ -73,6 +73,9 @@ function useMagneticHover(ref: React.RefObject<HTMLElement | null>, strength = 0
     const y = e.clientY - rect.top - rect.height / 2
     const normalX = x / (rect.width / 2)
     const normalY = y / (rect.height / 2)
+    // Set CSS custom props for spotlight
+    ref.current.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`)
+    ref.current.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`)
     gsap.to(ref.current, {
       x: x * strength,
       y: y * strength,
@@ -391,10 +394,10 @@ function ClassifiedCard({ mint }: { mint: string }) {
             {mint}
           </div>
           <div className="flex items-center gap-2 mb-4">
-            <div className="wr-tag border-[#ff9e9e]/20 text-[#ff9e9e]/40">
+            <div className="wr-tag wr-tag-glow border-[#ff9e9e]/20 text-[#ff9e9e]/40">
               CLASSIFIED
             </div>
-            <div className="wr-tag border-[#333]/30 text-[#333]">
+            <div className="wr-tag wr-tag-glow border-[#333]/30 text-[#333]">
               REDACTED
             </div>
           </div>
@@ -446,7 +449,9 @@ function HoldingCard({
     : 'UNKNOWN'
 
   return (
-    <div ref={cardRef} data-wr-reveal className="relative p-[1px] overflow-hidden group/card wr-brackets wr-shine wr-card-lift">
+    <div ref={cardRef} data-wr-reveal className="relative p-[1px] overflow-hidden group/card wr-brackets wr-shine wr-card-lift wr-card-spotlight">
+      {/* Mouse-tracking spotlight */}
+      <div className="wr-spotlight-layer bg-[radial-gradient(300px_circle_at_var(--mouse-x,50%)_var(--mouse-y,50%),rgba(212,240,0,0.04),transparent_60%)]" />
       {/* Conic gradient spinner — like Tokenomics cards */}
       <div
         className="absolute inset-[-100%] animate-spin opacity-0 group-hover/card:opacity-60 transition-opacity duration-700 pointer-events-none"

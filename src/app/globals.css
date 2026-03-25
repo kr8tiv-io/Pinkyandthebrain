@@ -1105,6 +1105,32 @@ section:hover > .wr-section-badge-fire {
   animation: wr-empty-ring 3s ease-in-out infinite;
 }
 
+/* ── Classified Tag Glow ── */
+.wr-tag-glow {
+  transition: all 0.3s ease;
+}
+.wr-tag-glow:hover {
+  text-shadow: 0 0 8px currentColor;
+  border-color: currentColor;
+}
+
+/* ── Card Spotlight Gradient ── */
+.wr-card-spotlight {
+  position: relative;
+}
+.wr-card-spotlight .wr-spotlight-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+.wr-card-spotlight:hover .wr-spotlight-layer {
+  opacity: 1;
+}
+
 /* ── Data Refresh Pulse ── */
 @keyframes wr-refresh-pulse {
   0% { box-shadow: 0 0 0 0 rgba(212, 240, 0, 0.2); }
