@@ -225,7 +225,7 @@ function TreasuryValueChart({
                 tickLine={false}
               />
               <YAxis
-                tick={{ fill: '#555', fontSize: 8, fontFamily: 'var(--font-mono)' }}
+                tick={{ fill: '#4a4a4a', fontSize: 8, fontFamily: 'var(--font-mono)' }}
                 axisLine={false}
                 tickLine={false}
                 tickFormatter={(v) => v >= 1000 ? `$${(v / 1000).toFixed(1)}k` : `$${v.toFixed(0)}`}

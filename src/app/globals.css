@@ -258,7 +258,7 @@ body {
 }
 .wr-row-hover:hover {
   background: rgba(212, 240, 0, 0.03);
-  padding-left: calc(1rem + 3px);
+  padding-left: calc(1rem + 2px);
   border-left: 2px solid rgba(212, 240, 0, 0.2);
 }
 
@@ -551,7 +551,7 @@ body {
   98% { transform: translate(1px, -1px); opacity: 0.95; }
 }
 .wr-classified-glitch {
-  animation: wr-classified-glitch 4.5s ease-in-out infinite;
+  animation: wr-classified-glitch 5s ease-in-out infinite;
 }
 
 /* ── Radar Sweep ── */
