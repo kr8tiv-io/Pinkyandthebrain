@@ -198,7 +198,7 @@ body {
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(circle 1px, rgba(212, 240, 0, 0.03) 1px, transparent 1px);
+    radial-gradient(circle 1px, rgba(212, 240, 0, 0.025) 1px, transparent 1px);
   background-size: 60px 60px;
   pointer-events: none;
 }
@@ -650,7 +650,7 @@ body {
   position: absolute;
   width: 6px;
   height: 6px;
-  opacity: 0.4;
+  opacity: 0.35;
   transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   pointer-events: none;
 }
@@ -1615,7 +1615,7 @@ section:hover > .wr-section-badge-fire {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(212, 240, 0, 0.06) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(212, 240, 0, 0.05) 50%, transparent 100%);
   animation: wr-scan 8s linear infinite;
   pointer-events: none;
   z-index: 2;
