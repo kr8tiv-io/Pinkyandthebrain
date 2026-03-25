@@ -179,8 +179,8 @@ body {
     0deg,
     transparent,
     transparent 2px,
-    rgba(0, 0, 0, 0.03) 2px,
-    rgba(0, 0, 0, 0.03) 4px
+    rgba(0, 0, 0, 0.025) 2px,
+    rgba(0, 0, 0, 0.025) 4px
   );
   pointer-events: none;
 }
@@ -1224,10 +1224,10 @@ section:hover > .wr-section-badge-fire {
 
 /* ── External Link Arrow Animation ── */
 .wr-arrow-hover .wr-arrow {
-  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.25s ease;
 }
 .wr-arrow-hover:hover .wr-arrow {
-  transform: translate(1px, -1px);
+  transform: translate(2px, -2px);
   opacity: 1;
 }
 

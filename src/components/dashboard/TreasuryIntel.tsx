@@ -721,7 +721,7 @@ export default function TreasuryIntel() {
           </div>
           <div className="flex items-center gap-3">
             {dataUpdatedAt > 0 && (
-              <span className="font-mono text-[7px] uppercase tracking-[0.15em] text-[#333] tabular-nums hidden md:inline flex items-center gap-1.5">
+              <span className="font-mono text-[7px] uppercase tracking-[0.15em] text-[#333] hover:text-[#555] tabular-nums hidden md:inline flex items-center gap-1.5 transition-colors duration-300 cursor-default">
                 <span className="wr-data-dot" />
                 {new Date(dataUpdatedAt).toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })} UTC
               </span>
