@@ -34,7 +34,10 @@ export default function WarRoomPage() {
       {/* ── Layer 4: Noise texture ── */}
       <div className="fixed inset-0 z-0 pointer-events-none bg-[url('/noise.gif')] opacity-[0.03] mix-blend-overlay" />
 
-      {/* ── Layer 5: Top vignette ── */}
+      {/* ── Layer 5: Bottom depth gradient ── */}
+      <div className="wr-depth-gradient" />
+
+      {/* ── Layer 6: Top vignette ── */}
       <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(212,240,0,0.04),transparent_70%)]" />
 
       {/* ── Layer 6: Corner vignettes ── */}
@@ -127,8 +130,10 @@ export default function WarRoomPage() {
 
             {/* Radar sweep */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+              <div className="wr-radar-glow" />
               <div className="wr-radar" />
               <div className="wr-radar" style={{ width: '300px', height: '300px', animationDelay: '1s' }} />
+              <div className="wr-radar" style={{ width: '400px', height: '400px', animationDelay: '2s' }} />
             </div>
 
             {/* Watermark */}

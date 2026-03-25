@@ -1057,6 +1057,35 @@ section:hover > .wr-section-badge-fire {
   border-bottom: 1px solid rgba(51, 51, 51, 0.5);
 }
 
+/* ── Classified Radar Enhancement ── */
+.wr-radar-glow {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 240, 0, 0.02) 0%, transparent 70%);
+  animation: wr-breathe 6s ease-in-out infinite;
+}
+
+/* ── Grid Shimmer on Chart Hover ── */
+.wr-chart-frame:hover .recharts-cartesian-grid line {
+  stroke: rgba(212, 240, 0, 0.06);
+  transition: stroke 0.4s ease;
+}
+
+/* ── Scroll Depth Gradient ── */
+.wr-depth-gradient {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to top, rgba(10, 10, 10, 0.8), transparent);
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0.6;
+}
+
 /* ── Row Flash Entrance ── */
 @keyframes wr-row-flash {
   0% { background-color: rgba(255, 107, 53, 0.06); }
