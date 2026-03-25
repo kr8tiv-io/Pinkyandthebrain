@@ -142,7 +142,7 @@ function CustomChartTooltip({ active, payload, label }: TooltipContentProps) {
   return (
     <div className="wr-tooltip-enhanced wr-tooltip-caret wr-tooltip-entrance px-4 py-3.5 font-mono text-xs">
       <div className="flex items-center gap-2 mb-2.5">
-        <div className="w-1.5 h-1.5 bg-[#d4f000] rounded-full" style={{ boxShadow: '0 0 3px #d4f000' }} />
+        <div className="w-1.5 h-1.5 bg-[#d4f000] rounded-full" style={{ boxShadow: '0 0 2.5px #d4f000' }} />
         <span className="text-[#5a5a5a] text-[8px] uppercase tracking-[0.25em] font-black">{label}</span>
       </div>
       <div className="text-[#d4f000] font-black text-lg tabular-nums wr-gradient-text-lime leading-none">{formatUsd(numericValue)}</div>
@@ -200,7 +200,7 @@ function TreasuryValueChart({
                 <linearGradient id="treasuryGradient" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor="#d4f000" stopOpacity={0.25} />
                   <stop offset="20%" stopColor="#d4f000" stopOpacity={0.1} />
-                  <stop offset="50%" stopColor="#d4f000" stopOpacity={0.03} />
+                  <stop offset="50%" stopColor="#d4f000" stopOpacity={0.025} />
                   <stop offset="100%" stopColor="#d4f000" stopOpacity={0} />
                 </linearGradient>
                 <linearGradient id="treasuryStroke" x1="0" y1="0" x2="1" y2="0">
