@@ -20,7 +20,7 @@ export default function SectionReveal({
     if (!sectionRef.current) return
 
     const ctx = gsap.context(() => {
-      // Main content reveal — subtle scale + blur + fade
+      // Main content reveal — subtle scale + blur + fade + clip
       gsap.fromTo(
         sectionRef.current,
         {
@@ -28,12 +28,14 @@ export default function SectionReveal({
           opacity: 0,
           scale: 0.98,
           filter: 'blur(3px)',
+          clipPath: 'inset(4% 2% 4% 2%)',
         },
         {
           y: 0,
           opacity: 1,
           scale: 1,
           filter: 'blur(0px)',
+          clipPath: 'inset(0% 0% 0% 0%)',
           duration: 1,
           ease: 'power3.out',
           scrollTrigger: {
