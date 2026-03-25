@@ -1575,7 +1575,7 @@ section:hover > .wr-section-badge-fire {
   left: 0;
   top: 10%;
   bottom: 10%;
-  width: 2px;
+  width: 1px;
   background: linear-gradient(to bottom, transparent, rgba(212, 240, 0, 0.15), transparent);
   opacity: 0.4;
   pointer-events: none;
