@@ -619,7 +619,10 @@ function DivestedSection() {
               {soldTokens.map((h, i) => (
                 <tr key={h.mint} className={`border-b border-[#333]/10 transition-colors duration-200 hover:bg-[#ff9e9e]/[0.02] ${i % 2 === 1 ? 'bg-white/[0.008]' : ''}`}>
                   <td className="py-3.5 pr-6">
-                    <span className="text-[#ff9e9e]/80 font-black uppercase">{h.symbol}</span>
+                    <span className="flex items-center gap-2">
+                      <span className="w-1 h-1 bg-[#ff9e9e]/20 rounded-full" />
+                      <span className="text-[#ff9e9e]/80 font-black uppercase">{h.symbol}</span>
+                    </span>
                   </td>
                   <td className="py-3.5 pr-6 text-[#555] tabular-nums">
                     {h.soldDate ? format(fromUnixTime(h.soldDate), 'yyyy-MM-dd') : '—'}

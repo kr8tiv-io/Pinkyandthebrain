@@ -399,7 +399,16 @@ export default function BurnOperations() {
           />
           {/* Live position marker */}
           {!isLoading && (data?.burnedPct ?? 0) > 0 && (
-            <div className="wr-progress-marker" style={{ left: `${Math.min(data?.burnedPct ?? 0, 100)}%` }} />
+            <>
+              <div className="wr-progress-marker" style={{ left: `${Math.min(data?.burnedPct ?? 0, 100)}%` }} />
+              {/* Floating percentage label above marker */}
+              <div
+                className="absolute -top-5 font-mono text-[7px] text-[#ff6b35] font-bold tabular-nums"
+                style={{ left: `${Math.min(data?.burnedPct ?? 0, 100)}%`, transform: 'translateX(-50%)' }}
+              >
+                {(data?.burnedPct ?? 0).toFixed(1)}%
+              </div>
+            </>
           )}
           {/* Milestone markers */}
           {[25, 50, 75].map(pct => (
