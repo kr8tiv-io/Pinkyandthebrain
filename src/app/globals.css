@@ -581,7 +581,7 @@ body {
 /* ── Breathing Glow ── */
 @keyframes wr-breathe {
   0%, 100% { opacity: 0.01; text-shadow: none; }
-  50% { opacity: 0.02; text-shadow: 0 0 35px rgba(212, 240, 0, 0.025); }
+  50% { opacity: 0.018; text-shadow: 0 0 30px rgba(212, 240, 0, 0.02); }
 }
 .wr-breathe {
   animation: wr-breathe 4.5s ease-in-out infinite;
