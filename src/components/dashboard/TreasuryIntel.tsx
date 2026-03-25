@@ -290,7 +290,7 @@ function SummaryCell({
       {/* Hover accent bottom gradient */}
       <div className="absolute bottom-0 left-[10%] right-[10%] h-px bg-[#d4f000]/0 group-hover/cell:bg-[#d4f000]/[0.05] transition-colors duration-500" />
       <div className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#555] mb-2 font-bold group-hover/cell:text-[#888] transition-colors flex items-center gap-1.5">
-        <span className="text-[#d4f000]/20 text-[5px]">◆</span>
+        <span className="text-[#d4f000]/20 text-[5px]" aria-hidden="true">◆</span>
         {label}
       </div>
       <div ref={valueRef} className="font-mono text-xl lg:text-2xl font-black text-white tabular-nums leading-none">
@@ -526,7 +526,7 @@ function HoldingCard({
           </svg>
           {copied
             ? <span className="text-[#d4f000] font-bold" style={{ textShadow: '0 0 8px rgba(212, 240, 0, 0.3)' }}>COPIED ✓</span>
-            : `${holding.mint.slice(0, 6)}…${holding.mint.slice(-4)}`}
+            : `${holding.mint.slice(0, 4)}…${holding.mint.slice(-4)}`}
         </button>
       </div>
 
