@@ -48,10 +48,12 @@ export default function WarRoomPage() {
         <TokenInfoStrip />
 
         {/* Decorative divider with label */}
-        <div className="relative">
+        <div className="relative py-1">
           <div className="wr-divider" />
-          <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-4">
-            <span className="font-mono text-[7px] uppercase tracking-[0.4em] text-[#333]">▼</span>
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-4 flex items-center gap-2">
+            <div className="w-4 h-px bg-[#d4f000]/10" />
+            <span className="font-mono text-[7px] uppercase tracking-[0.4em] text-[#d4f000]/20">▼ INTEL</span>
+            <div className="w-4 h-px bg-[#d4f000]/10" />
           </div>
         </div>
 

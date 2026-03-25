@@ -269,9 +269,15 @@ export default function BurnOperations() {
   }, [])
 
   return (
-    <section ref={sectionRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className="w-full bg-[#0a0a0a] relative overflow-hidden wr-noise">
+    <section ref={sectionRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className="w-full bg-[#0a0a0a] relative overflow-hidden wr-noise" aria-label="Burn Operations">
       {/* Mouse-tracking fire glow */}
       <div ref={glowRef} className="absolute inset-0 pointer-events-none z-[1] transition-opacity duration-300" />
+
+      {/* Edge marker */}
+      <div className="wr-edge-marker text-[#ff6b35]" />
+
+      {/* Section badge */}
+      <div className="wr-section-badge wr-section-badge-fire hidden lg:block">SEC 02</div>
 
       {/* Scanning line */}
       <div className="wr-scan-line" style={{ animationDelay: '4s' }} />

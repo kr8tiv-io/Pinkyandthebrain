@@ -810,6 +810,41 @@ button:focus-visible {
   top: 8px;
 }
 
+/* ── Section Edge Marker ── */
+.wr-edge-marker {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, currentColor, transparent);
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+/* ── Section Number Badge ── */
+.wr-section-badge {
+  position: absolute;
+  left: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  font-size: 7px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  color: rgba(212, 240, 0, 0.1);
+  padding: 8px 3px;
+  border-left: 1px solid rgba(212, 240, 0, 0.08);
+}
+.wr-section-badge-fire {
+  color: rgba(255, 107, 53, 0.1);
+  border-left-color: rgba(255, 107, 53, 0.08);
+}
+
 /* ── Data Update Pulse ── */
 @keyframes wr-update-pulse {
   0% { border-color: rgba(212, 240, 0, 0.3); }
