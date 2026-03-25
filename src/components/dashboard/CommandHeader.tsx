@@ -268,7 +268,7 @@ export default function CommandHeader() {
               $BRAIN
             </div>
           </div>
-          <div className="w-px h-3 bg-[#333]/50" />
+          <div className="w-px h-3 bg-gradient-to-b from-transparent via-[#333]/50 to-transparent" />
           <div className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#444] font-medium flex items-center gap-2">
             <span>War Room</span>
             <span className="w-1 h-1 bg-[#d4f000]/10 rounded-full hidden sm:block" />
@@ -281,7 +281,7 @@ export default function CommandHeader() {
         </div>
         <div className="flex items-center gap-4">
           <LiveClock />
-          <div className="w-px h-3 bg-[#333]/30" />
+          <div className="w-px h-3 bg-gradient-to-b from-transparent via-[#333]/30 to-transparent" />
           <LiveIndicator status={status} />
         </div>
       </div>
