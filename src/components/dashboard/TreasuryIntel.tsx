@@ -200,7 +200,7 @@ function TreasuryValueChart({
                 <linearGradient id="treasuryGradient" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor="#d4f000" stopOpacity={0.25} />
                   <stop offset="20%" stopColor="#d4f000" stopOpacity={0.1} />
-                  <stop offset="50%" stopColor="#d4f000" stopOpacity={0.04} />
+                  <stop offset="50%" stopColor="#d4f000" stopOpacity={0.03} />
                   <stop offset="100%" stopColor="#d4f000" stopOpacity={0} />
                 </linearGradient>
                 <linearGradient id="treasuryStroke" x1="0" y1="0" x2="1" y2="0">
