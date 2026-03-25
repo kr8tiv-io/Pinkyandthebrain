@@ -540,7 +540,7 @@ function HoldingCard({
           { label: 'COST (USD)', value: holding.purchasePriceUsd !== undefined ? formatUsd(holding.purchasePriceUsd) : '—', highlight: false },
           { label: '~PRICE (SOL)', value: purchasePriceSol !== undefined ? formatSol(purchasePriceSol) : '—', highlight: false },
         ].map(({ label, value, highlight }, i) => (
-          <div key={label} className={`py-2 relative wr-data-cell ${i >= 2 ? 'border-t border-[#333]/8' : ''}`}>
+          <div key={label} className={`py-2.5 relative wr-data-cell ${i >= 2 ? 'border-t border-[#333]/8' : ''}`}>
             <div className="uppercase tracking-[0.15em] text-[#444] mb-1 font-bold font-mono flex items-center gap-1.5">
               <span className="text-[#d4f000]/10 text-[6px] group-hover/card:text-[#d4f000]/25 transition-colors duration-300">▸</span>
               {label}

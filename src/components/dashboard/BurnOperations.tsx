@@ -356,7 +356,7 @@ export default function BurnOperations() {
         <div className="flex items-center gap-2">
           {/* Pulsing fire dot */}
           <div className="relative flex items-center justify-center w-3 h-3">
-            <div className="w-1.5 h-1.5 rounded-full bg-[#ff6b35]" style={{ boxShadow: '0 0 4px #ff6b35, 0 0 10px rgba(255, 107, 53, 0.4)' }} />
+            <div className="w-1.5 h-1.5 rounded-full bg-[#ff6b35]" style={{ boxShadow: '0 0 3px #ff6b35, 0 0 8px rgba(255, 107, 53, 0.35)' }} />
             <div className="absolute w-1.5 h-1.5 rounded-full bg-[#ff6b35] wr-pulse-ring" />
           </div>
           <div className="flex items-center gap-3">
