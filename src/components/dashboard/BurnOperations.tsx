@@ -100,8 +100,8 @@ function BurnSummaryBar({
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#333]/20 border-b border-[#333]/20">
       {cells.map(({ label, content }) => (
-        <div key={label} className="px-5 lg:px-6 py-5">
-          <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#666] mb-2 font-bold">
+        <div key={label} className="px-5 lg:px-6 py-5 group/cell transition-colors duration-300 hover:bg-[#ff6b35]/[0.01]">
+          <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#666] mb-2 font-bold group-hover/cell:text-[#888] transition-colors">
             {label}
           </div>
           <div className="font-mono text-xl lg:text-2xl font-black tabular-nums leading-none">
@@ -138,11 +138,12 @@ function TransactionRow({
       ref={rowRef}
       className="grid grid-cols-[1fr_1fr_1.2fr] gap-4 items-center py-3 px-4 wr-row-hover-fire border-b border-[#333]/10 font-mono text-[10px]"
     >
-      <div className="text-[#666] tabular-nums">
+      <div className="text-[#666] tabular-nums flex items-center gap-2">
+        <span className="text-[#ff6b35]/30 text-[8px]">●</span>
         {format(fromUnixTime(tx.timestamp), 'yyyy-MM-dd HH:mm')}
       </div>
       <div className="text-[#ff6b35] font-black tabular-nums">
-        {formatBurnAmount(tx.amount)}
+        −{formatBurnAmount(tx.amount)}
       </div>
       <div className="flex items-center gap-2">
         <a

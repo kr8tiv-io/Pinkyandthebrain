@@ -499,10 +499,13 @@ function DivestedSection() {
   const soldTokens = TREASURY_HOLDINGS.filter(h => h.soldDate !== undefined)
 
   return (
-    <div className="px-5 lg:px-8 py-6">
+    <div className="px-5 lg:px-8 py-6 border-t border-[#333]/10">
       <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#666] font-bold mb-4 flex items-center gap-3">
-        <span>DIVESTED ASSETS</span>
-        <div className="flex-1 h-px bg-[#333]/30" />
+        <span className="text-[#ff9e9e]/50">DIVESTED ASSETS</span>
+        <div className="flex-1 h-px bg-[#ff9e9e]/10" />
+        {soldTokens.length > 0 && (
+          <span className="text-[#444] tabular-nums">{soldTokens.length} EXITED</span>
+        )}
       </div>
       {soldTokens.length === 0 ? (
         <div className="text-center py-6">
