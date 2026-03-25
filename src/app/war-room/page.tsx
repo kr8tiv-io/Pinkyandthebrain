@@ -201,6 +201,9 @@ export default function WarRoomPage() {
             </div>
           </div>
 
+          {/* Gradient separator */}
+          <div className="h-px bg-gradient-to-r from-transparent via-[#d4f000]/[0.06] to-transparent" />
+
           <div className="relative px-5 lg:px-8 py-8">
             {/* Big watermark — breathing glow */}
             <div className="absolute right-8 bottom-4 text-[6rem] font-black text-white/[0.01] leading-none select-none pointer-events-none font-sans tracking-tighter wr-breathe wr-watermark" style={{ WebkitTextStroke: '1px rgba(212, 240, 0, 0.015)' }}>
@@ -229,6 +232,10 @@ export default function WarRoomPage() {
                   PINKYANDTHEBRAIN.FUN ↗
                 </a>
                 <span className="w-px h-3 bg-[#333]/30 hidden md:block" />
+                <span className="font-mono text-[7px] uppercase tracking-[0.15em] text-[#222] flex items-center gap-1.5">
+                  <span className="text-[#d4f000]/20">◎</span> BUILT ON SOLANA
+                </span>
+                <span className="w-px h-3 bg-[#333]/20 hidden md:block" />
                 <span className="font-mono text-[7px] uppercase tracking-[0.15em] text-[#222]">
                   ALL DATA LIVE ON-CHAIN
                 </span>
