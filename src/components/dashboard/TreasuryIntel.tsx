@@ -714,7 +714,7 @@ export default function TreasuryIntel() {
               <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#555] font-bold mb-0.5 wr-section-num">
                 SECTION 01
               </div>
-              <h2 className="text-lg md:text-xl font-black uppercase tracking-tight text-[#cccccc] font-sans wr-cursor">
+              <h2 className="text-lg md:text-xl font-black uppercase tracking-wide text-[#cccccc] font-sans wr-cursor">
                 Treasury <span className="wr-gradient-text-lime">Intel</span>
               </h2>
             </div>

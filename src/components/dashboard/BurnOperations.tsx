@@ -348,7 +348,7 @@ export default function BurnOperations() {
             <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#555] font-bold mb-0.5 wr-section-num">
               SECTION 02
             </div>
-            <h2 className="text-lg md:text-xl font-black uppercase tracking-tight text-[#cccccc] font-sans wr-cursor wr-cursor-fire">
+            <h2 className="text-lg md:text-xl font-black uppercase tracking-wide text-[#cccccc] font-sans wr-cursor wr-cursor-fire">
               Burn <span className="wr-gradient-text-fire">Operations</span>
             </h2>
           </div>
@@ -356,7 +356,7 @@ export default function BurnOperations() {
         <div className="flex items-center gap-2">
           {/* Pulsing fire dot */}
           <div className="relative flex items-center justify-center w-3 h-3">
-            <div className="w-1.5 h-1.5 rounded-full bg-[#ff6b35]" style={{ boxShadow: '0 0 6px #ff6b35, 0 0 12px rgba(255, 107, 53, 0.3)' }} />
+            <div className="w-1.5 h-1.5 rounded-full bg-[#ff6b35]" style={{ boxShadow: '0 0 4px #ff6b35, 0 0 10px rgba(255, 107, 53, 0.4)' }} />
             <div className="absolute w-1.5 h-1.5 rounded-full bg-[#ff6b35] wr-pulse-ring" />
           </div>
           <div className="flex items-center gap-3">
