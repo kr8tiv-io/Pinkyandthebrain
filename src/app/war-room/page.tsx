@@ -251,8 +251,9 @@ export default function WarRoomPage() {
               <div className="flex items-center gap-4">
                 <div className="w-1 h-4 bg-[#d4f000]/20" />
                 <div>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#444] font-bold">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#444] font-bold flex items-center gap-2">
                     $BRAIN INTELLIGENCE COMMAND
+                    <span className="w-1.5 h-1.5 bg-[#d4f000]/10 rounded-full" />
                   </div>
                   <div className="font-mono text-[8px] uppercase tracking-[0.15em] text-[#222] mt-0.5">
                     WAR ROOM — LIVE TREASURY ANALYTICS
