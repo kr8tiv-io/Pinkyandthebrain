@@ -554,7 +554,7 @@ function HoldingCard({
       {/* Description */}
       {holding.description && (
         <div className="relative border-t border-[#333]/15 pt-3 pl-4 mb-3 wr-desc-accent rounded-b-sm">
-          <div className="absolute top-3 left-0 w-[2px] h-[calc(100%-16px)] bg-gradient-to-b from-[#d4f000]/20 via-[#d4f000]/10 to-transparent" />
+          <div className="absolute top-3 left-0 w-[1px] h-[calc(100%-16px)] bg-gradient-to-b from-[#d4f000]/20 via-[#d4f000]/10 to-transparent" />
           <div className="text-[#5a5a5a] text-[10px] italic leading-normal font-mono tracking-wide wr-desc-clamp group-hover/card:text-[#666] transition-colors duration-300">
             <span className="text-[#d4f000]/18 not-italic group-hover/card:text-[#d4f000]/45 transition-colors duration-300">&ldquo;</span>{holding.description}<span className="text-[#d4f000]/18 not-italic group-hover/card:text-[#d4f000]/45 transition-colors duration-300">&rdquo;</span>
           </div>

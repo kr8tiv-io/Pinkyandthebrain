@@ -50,7 +50,7 @@ function BurnSummaryBar({
       const obj = { val: 0 }
       gsap.to(obj, {
         val: end,
-        duration: 2,
+        duration: 2.2,
         ease: 'power2.out',
         onUpdate: () => {
           if (ref.current) ref.current.textContent = fmt(obj.val)
