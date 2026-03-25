@@ -85,7 +85,7 @@ body {
   89% { opacity: 1; }
 }
 .flicker {
-  animation: grain-flicker 4s infinite;
+  animation: grain-flicker 4.5s infinite;
 }
 
 /* ── Marquee Ticker ── */
@@ -586,7 +586,7 @@ body {
   50% { opacity: 0.018; text-shadow: 0 0 25px rgba(212, 240, 0, 0.018); }
 }
 .wr-breathe {
-  animation: wr-breathe 5s ease-in-out infinite;
+  animation: wr-breathe 5.5s ease-in-out infinite;
 }
 
 /* ── Sub-header Hover Effect ── */
@@ -840,7 +840,7 @@ button:focus-visible {
   50% { opacity: 0.55; }
 }
 .wr-accent-bar-pulse:hover {
-  animation: wr-accent-pulse 2.5s ease-in-out infinite;
+  animation: wr-accent-pulse 3s ease-in-out infinite;
 }
 
 /* ── Section Accent Bar Entry ── */
