@@ -654,7 +654,7 @@ export default function TreasuryIntel() {
   }, [])
 
   return (
-    <section ref={sectionRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className="w-full bg-[#0a0a0a] relative overflow-hidden wr-noise" aria-label="Treasury Intelligence">
+    <section ref={sectionRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className="w-full bg-[#0a0a0a] relative overflow-hidden wr-noise wr-section-tint" aria-label="Treasury Intelligence">
       {/* Mouse-tracking lime spotlight */}
       <div ref={spotlightRef} className="absolute inset-0 pointer-events-none z-[1] transition-opacity duration-300" />
 
