@@ -217,7 +217,7 @@ function TreasuryValueChart({
                   </feMerge>
                 </filter>
               </defs>
-              <CartesianGrid strokeDasharray="4 8" stroke="rgba(51,51,51,0.12)" vertical={false} />
+              <CartesianGrid strokeDasharray="4 10" stroke="rgba(51,51,51,0.12)" vertical={false} />
               <XAxis
                 dataKey="label"
                 tick={{ fill: '#555', fontSize: 8, fontFamily: 'var(--font-mono)' }}
@@ -393,7 +393,7 @@ function ClassifiedCard({ mint }: { mint: string }) {
             ████████████████
           </div>
           {/* Peek reveal — faded mint on hover */}
-          <div className="font-mono text-[8px] text-[#333]/40 mb-4 truncate wr-peek-reveal">
+          <div className="font-mono text-[8px] text-[#333]/30 mb-4 truncate wr-peek-reveal">
             {mint}
           </div>
           <div className="flex items-center gap-2 mb-4">
