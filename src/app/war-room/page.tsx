@@ -244,7 +244,7 @@ export default function WarRoomPage() {
             {/* Disclaimer */}
             <div className="text-center mb-4 relative">
               <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-24 h-px bg-gradient-to-r from-transparent via-[#333]/10 to-transparent" />
-              <span className="font-mono text-[6px] uppercase tracking-[0.3em] text-[#1a1a1a]/70 font-bold">
+              <span className="font-mono text-[6px] uppercase tracking-[0.3em] text-[#1a1a1a]/60 font-bold">
                 NOT FINANCIAL ADVICE — DYOR — ALL DATA FOR INFORMATIONAL PURPOSES ONLY
               </span>
             </div>
