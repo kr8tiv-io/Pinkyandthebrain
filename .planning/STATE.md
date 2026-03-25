@@ -1,15 +1,18 @@
 # Project State
 
 ## Current Phase
-Phase 3: Next.js API Routes & React Query Setup — IN PROGRESS
+Phase 4: War Room Page Shell & Command Header — IN PROGRESS
 
 ## Current Plan
-03-02 COMPLETE — Phase 3 complete, next: Phase 4
+04-01 COMPLETE — awaiting human visual verification (checkpoint:human-verify)
 
 ## Completed Phases
 - Phase 1: Project Setup & Dependencies (commit 04c6c1c)
 - Phase 2: API Layer (02-01, 02-02, 02-03 all complete)
 - Phase 3: Next.js API Routes & React Query Setup (03-01, 03-02 all complete)
+
+## Completed Plans (Phase 4)
+- 04-01: War Room page shell + CommandHeader + landing navigation — commits 7173cef, 65e5642 (awaiting human verify)
 
 ## Completed Plans (Phase 2)
 - 02-01: Foundational API wrappers (helius.ts, birdeye.ts, solscan.ts) — commits fc6c9a7, cb45666, 89f28e3
@@ -50,9 +53,14 @@ Phase 3: Next.js API Routes & React Query Setup — IN PROGRESS
 - usePrice staleTime=30s (below global 60s) so price feels live; refetchInterval=60s caps network load
 - React Query v5: no onError callbacks — error surfaces via result.isError/result.error
 - HolderResponse[] returned as array (not wrapped object) matching /api/holders route output
+- CommandHeader is 'use client' leaf; page.tsx is Server Component — canonical Next.js 16 split
+- marketCap and volume24h always show CLASSIFIED badge (Birdeye limitation — fields always undefined)
+- Connection status derived from usePrice hook state: isError=OFFLINE, isLoading=CONNECTING..., data=LIVE
+- Dashboard components directory: src/components/dashboard/ (CommandHeader.tsx is first)
+- War Room CommandHeader: full viewport width (no max-width) for command bar aesthetic
 
 ## Last Session
-- Stopped at: Completed 03-02-PLAN.md (React Query hooks — usePrice, useTreasury, useBurns, useHolders, useWallet, useLpFees)
+- Stopped at: 04-01-PLAN.md Task 3 checkpoint:human-verify (CommandHeader, War Room page shell, HeroMenu + WarRoom nav links complete — awaiting visual confirmation)
 - Date: 2026-03-25
 
 ## API Keys Configured

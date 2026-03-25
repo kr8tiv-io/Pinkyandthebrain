@@ -60,7 +60,7 @@ Plans:
 **Requirements:** [R1, R10]
 
 Plans:
-- [ ] 04-01-PLAN.md — Page shell, CommandHeader with live price, landing page navigation
+- [x] 04-01-PLAN.md — Page shell, CommandHeader with live price, landing page navigation ✓ 2026-03-25
 
 ### Phase 5: Treasury Intel Section
 - TreasuryIntel.tsx: SOL balance + all SPL token holdings
