@@ -76,7 +76,7 @@ Plans:
 
 Plans:
 - [x] 05-01-PLAN.md — Build TreasuryIntel.tsx (summary bar, holdings grid, CLASSIFIED cards, Recharts chart, divested section) ✓ 2026-03-25
-- [ ] 05-02-PLAN.md — Wire TreasuryIntel into war-room/page.tsx and human-verify visual quality
+- [x] 05-02-PLAN.md — Wire TreasuryIntel into war-room/page.tsx and human-verify visual quality ✓ 2026-03-25
 
 ### Phase 6: Burn Operations Section
 - BurnOperations.tsx: fetch all burns from source → incinerator

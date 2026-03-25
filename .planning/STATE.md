@@ -1,19 +1,21 @@
 # Project State
 
 ## Current Phase
-Phase 5: Treasury Intel Section — IN PROGRESS (05-01 complete)
+Phase 5: Treasury Intel Section — COMPLETE
 
 ## Current Plan
-05-01 COMPLETE — TreasuryIntel.tsx built and wired into war-room/page.tsx
+05-02 COMPLETE — Phase 5 complete, next: Phase 6
 
 ## Completed Phases
 - Phase 1: Project Setup & Dependencies (commit 04c6c1c)
 - Phase 2: API Layer (02-01, 02-02, 02-03 all complete)
 - Phase 3: Next.js API Routes & React Query Setup (03-01, 03-02 all complete)
 - Phase 4: War Room Page Shell & Command Header (04-01 complete)
+- Phase 5: Treasury Intel Section (05-01, 05-02 all complete)
 
 ## Completed Plans (Phase 5)
 - 05-01: TreasuryIntel.tsx (summary bar, holdings grid, CLASSIFIED cards, Recharts chart, divested section) — commits e5998b0, 86b7de8
+- 05-02: Wire TreasuryIntel into page.tsx + human visual verification — approved
 
 ## Completed Plans (Phase 4)
 - 04-01: War Room page shell + CommandHeader + landing navigation — commits 7173cef, 65e5642
@@ -67,7 +69,7 @@ Phase 5: Treasury Intel Section — IN PROGRESS (05-01 complete)
 - purchasePriceSol derived in UI as purchasePriceUsd / solPriceUsd — labeled "~PRICE (SOL) AT PURCHASE" to indicate approximation
 
 ## Last Session
-- Stopped at: Phase 5, 05-01 complete — TreasuryIntel.tsx built, TypeScript clean, wired into war-room/page.tsx
+- Stopped at: Phase 5 complete — verification passed, human-approved visual check
 - Date: 2026-03-25
 
 ## API Keys Configured
