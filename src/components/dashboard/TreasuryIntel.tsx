@@ -373,7 +373,11 @@ function ClassifiedCard({ mint }: { mint: string }) {
         </div>
 
         <div className="relative">
-          <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#444] mb-3 font-bold">
+          <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#444] mb-3 font-bold flex items-center gap-2">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[#ff9e9e]/30">
+              <rect x="3" y="11" width="18" height="11" rx="2" />
+              <path d="M7 11V7a5 5 0 0110 0v4" />
+            </svg>
             ASSET #{mint.slice(0, 8)}
           </div>
           <div className="text-xl font-black text-[#1a1a1a] tracking-widest select-none flicker mb-1 leading-none group-hover/classified:text-[#222] transition-colors duration-700">
@@ -456,18 +460,32 @@ function HoldingCard({
 
       {/* Header: token name + gain/loss */}
       <div className="flex justify-between items-start mb-3 pl-2">
-        <div>
-          <div className="text-[#d4f000] font-black text-sm uppercase tracking-wider font-mono">
-            {holding.name}
+        <div className="flex items-center gap-2.5">
+          {/* Monogram avatar */}
+          <div className="w-8 h-8 flex items-center justify-center bg-[#d4f000]/[0.06] border border-[#d4f000]/10 text-[#d4f000] font-black text-xs font-mono shrink-0">
+            {(holding.symbol || holding.name).charAt(0)}
           </div>
-          {holding.symbol && holding.symbol !== holding.name && (
-            <div className="text-[#444] text-[10px] font-mono mt-0.5">${holding.symbol}</div>
-          )}
+          <div>
+            <div className="text-[#d4f000] font-black text-sm uppercase tracking-wider font-mono">
+              {holding.name}
+            </div>
+            {holding.symbol && holding.symbol !== holding.name && (
+              <div className="text-[#444] text-[10px] font-mono mt-0.5">${holding.symbol}</div>
+            )}
+          </div>
         </div>
         <div className="flex flex-col items-end gap-1">
-          <span className={`text-[10px] font-black tabular-nums font-mono px-2 py-0.5 rounded-sm ${gainLoss.colorClass} ${
+          <span className={`text-[10px] font-black tabular-nums font-mono px-2 py-0.5 rounded-sm flex items-center gap-1.5 ${gainLoss.colorClass} ${
             !holding.gainLossPct ? '' : holding.gainLossPct >= 0 ? 'bg-[#d4f000]/[0.06]' : 'bg-[#ff9e9e]/[0.06]'
           }`}>
+            {/* Mini spark bars */}
+            {holding.gainLossPct !== undefined && (
+              <span className="flex items-end gap-[1px]">
+                {[3, 5, holding.gainLossPct >= 0 ? 7 : 2].map((h, i) => (
+                  <span key={i} className={`w-[2px] rounded-sm ${holding.gainLossPct! >= 0 ? 'bg-[#d4f000]/40' : 'bg-[#ff9e9e]/40'}`} style={{ height: `${h}px` }} />
+                ))}
+              </span>
+            )}
             {gainLoss.text}
           </span>
           {holding.gainLossPct !== undefined && (
