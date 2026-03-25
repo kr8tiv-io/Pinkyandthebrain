@@ -13,7 +13,10 @@ export const metadata: Metadata = {
 
 export default function WarRoomPage() {
   return (
-    <main className="relative w-full min-h-screen bg-[#0a0a0a] text-[#cccccc] overflow-x-hidden">
+    <main className="relative w-full min-h-screen bg-[#0a0a0a] text-[#cccccc] overflow-x-hidden" role="main">
+      {/* Skip to content */}
+      <a href="#war-room-content" className="wr-skip-link">Skip to content</a>
+
       {/* ── Layer 1: Ambient glow orbs (drifting) ── */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-10%] left-[15%] w-[50vw] h-[40vw] max-w-3xl bg-[#d4f000] rounded-full mix-blend-screen filter blur-[200px] opacity-[0.04] wr-orb-1" />
@@ -37,7 +40,7 @@ export default function WarRoomPage() {
       <ScrollProgress />
 
       {/* ── Content ── */}
-      <div className="relative z-10">
+      <div id="war-room-content" className="relative z-10">
         {/* Command bar */}
         <CommandHeader />
 
@@ -143,7 +146,7 @@ export default function WarRoomPage() {
         </SectionReveal>
 
         {/* Footer */}
-        <footer className="w-full border-t border-[#333]/15 bg-[#0a0a0a] relative overflow-hidden">
+        <footer className="w-full border-t border-[#333]/15 bg-[#0a0a0a] relative overflow-hidden" role="contentinfo" aria-label="War Room footer">
           {/* Subtle dot grid */}
           <div className="absolute inset-0 wr-dot-grid opacity-20 pointer-events-none" />
 

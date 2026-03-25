@@ -745,6 +745,47 @@ body {
   z-index: 1;
 }
 
+/* ── Focus Ring (war room style) ── */
+.wr-focus:focus-visible {
+  outline: 1px solid rgba(212, 240, 0, 0.5);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(212, 240, 0, 0.1);
+}
+.wr-focus-fire:focus-visible {
+  outline: 1px solid rgba(255, 107, 53, 0.5);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+/* Apply focus ring to all interactive elements in war room */
+.wr-interactive:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  outline: 1px solid rgba(212, 240, 0, 0.4);
+  outline-offset: 2px;
+}
+
+/* ── Skip to Content ── */
+.wr-skip-link {
+  position: fixed;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  padding: 0.5rem 1rem;
+  background: #0a0a0a;
+  color: #d4f000;
+  border: 1px solid rgba(212, 240, 0, 0.4);
+  transition: top 0.2s;
+}
+.wr-skip-link:focus {
+  top: 8px;
+}
+
 /* ── Horizontal Scan Line (animated) ── */
 @keyframes wr-scan {
   0% { transform: translateY(-100%); }
