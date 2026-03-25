@@ -932,7 +932,7 @@ button:focus-visible {
 }
 .wr-row-stripe:hover .wr-burn-amount {
   transform: scale(1.03);
-  text-shadow: 0 0 10px rgba(255, 107, 53, 0.4);
+  text-shadow: 0 0 8px rgba(255, 107, 53, 0.35);
 }
 
 /* ── Card Links Reveal ── */
@@ -1389,7 +1389,7 @@ section:hover > .wr-section-badge-fire {
 .group\/card:hover .wr-border-shimmer::before,
 .wr-border-shimmer:hover::before {
   opacity: 1;
-  animation: wr-border-shimmer 2.5s linear infinite;
+  animation: wr-border-shimmer 2.8s linear infinite;
 }
 
 /* ── Corner Timestamp ── */
