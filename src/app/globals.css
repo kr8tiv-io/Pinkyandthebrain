@@ -784,7 +784,7 @@ button:focus-visible {
   text-orientation: mixed;
   color: rgba(212, 240, 0, 0.1);
   padding: 6px 3px;
-  border-left: 1px solid rgba(212, 240, 0, 0.08);
+  border-left: 1px solid rgba(212, 240, 0, 0.06);
 }
 .wr-section-badge-fire {
   color: rgba(255, 107, 53, 0.08);
@@ -1141,7 +1141,7 @@ section:hover > .wr-section-badge-fire {
   transition: all 0.3s ease;
 }
 .wr-tag-glow:hover {
-  text-shadow: 0 0 8px currentColor;
+  text-shadow: 0 0 6px currentColor;
   border-color: currentColor;
 }
 
