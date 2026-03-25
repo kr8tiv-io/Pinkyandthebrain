@@ -243,7 +243,7 @@ body {
   100% { transform: scale(2.8); opacity: 0; }
 }
 .wr-pulse-ring {
-  animation: wr-pulse-ring 1.5s ease-out infinite;
+  animation: wr-pulse-ring 1.8s ease-out infinite;
 }
 
 /* ── Stagger Reveal Base State ── */
@@ -1295,7 +1295,7 @@ section:hover > .wr-section-badge-fire {
   width: 0;
   height: 1px;
   background: linear-gradient(90deg, currentColor, transparent 80%);
-  transition: width 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: width 1s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .wr-header-line:hover::after {
   width: 100%;
@@ -1552,7 +1552,7 @@ section:hover > .wr-section-badge-fire {
   left: 0;
   width: 0;
   height: 1px;
-  background: linear-gradient(90deg, #d4f000, #e4ff57 55%, transparent);
+  background: linear-gradient(90deg, #d4f000, #e4ff57 50%, transparent);
   transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   z-index: 20;
 }
