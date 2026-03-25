@@ -147,7 +147,7 @@ function TransactionRow({
         {format(fromUnixTime(tx.timestamp), 'yyyy-MM-dd HH:mm')}
       </div>
       <div className="text-[#ff6b35] font-black tabular-nums wr-fire-text">
-        −{formatBurnAmount(tx.amount)}
+        <span className="wr-burn-amount">−{formatBurnAmount(tx.amount)}</span>
       </div>
       <div className="hidden md:flex items-center gap-2">
         <a

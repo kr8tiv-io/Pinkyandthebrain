@@ -521,7 +521,7 @@ function HoldingCard({
       {holding.description && (
         <div className="relative border-t border-[#333]/20 pt-3 pl-4 mb-3">
           <div className="absolute top-3 left-0 w-[2px] h-[calc(100%-12px)] bg-gradient-to-b from-[#d4f000]/20 to-transparent" />
-          <div className="text-[#555] text-[10px] italic leading-relaxed font-mono">
+          <div className="text-[#555] text-[10px] italic leading-relaxed font-mono wr-desc-clamp">
             &ldquo;{holding.description}&rdquo;
           </div>
         </div>
