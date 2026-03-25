@@ -141,7 +141,7 @@ function TransactionRow({
     gsap.fromTo(
       rowRef.current,
       { opacity: 0, x: -8 },
-      { opacity: 1, x: 0, duration: 0.35, ease: 'power2.out', delay: index * 0.04 }
+      { opacity: 1, x: 0, duration: 0.35, ease: 'power2.out', delay: index * 0.05 }
     )
   }, [index])
 
