@@ -202,7 +202,7 @@ export default function CommandHeader() {
       if (cells?.length) {
         gsap.fromTo(
           cells,
-          { y: 12, opacity: 0, filter: 'blur(4px)' },
+          { y: 12, opacity: 0, filter: 'blur(3px)' },
           {
             y: 0,
             opacity: 1,
