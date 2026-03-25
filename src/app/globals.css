@@ -109,33 +109,37 @@ body {
 
 /* ── Reduced Motion Support ── */
 @media (prefers-reduced-motion: reduce) {
+  /* Disable all war room animations */
   .ticker-track,
   .wr-orb-1, .wr-orb-2, .wr-orb-3,
   .wr-scan-line,
   .wr-pulse-ring,
   .wr-burn-bar-fill,
   .flicker,
-  .wr-breathe {
-    animation: none !important;
-  }
-  .wr-shine:hover::after {
-    animation: none !important;
-  }
+  .wr-breathe,
   .wr-data-dot,
   .wr-data-dot-fire,
   .wr-divider-dot,
   .wr-float,
   .wr-watermark,
   .wr-scroll-hint,
-  .wr-fire-line {
+  .wr-fire-line,
+  .wr-classified-glitch,
+  .wr-colon-blink,
+  .wr-divider,
+  .wr-divider-fire,
+  .wr-skeleton,
+  .animate-spin {
+    animation: none !important;
+  }
+  .wr-shine:hover::after,
+  .wr-cursor::after,
+  .wr-radar::after {
     animation: none !important;
   }
   [data-wr-reveal] {
     opacity: 1 !important;
     transform: none !important;
-  }
-  .animate-spin {
-    animation: none !important;
   }
 }
 
