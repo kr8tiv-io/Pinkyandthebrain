@@ -1197,7 +1197,7 @@ section:hover > .wr-section-badge-fire {
   font-family: var(--font-mono);
   font-size: 6px;
   color: rgba(212, 240, 0, 0);
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   transition: color 0.4s ease;
   pointer-events: none;

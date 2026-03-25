@@ -198,7 +198,7 @@ function TreasuryValueChart({
             <AreaChart data={chartData} margin={{ top: 8, right: 8, left: 0, bottom: 4 }}>
               <defs>
                 <linearGradient id="treasuryGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#d4f000" stopOpacity={0.3} />
+                  <stop offset="0%" stopColor="#d4f000" stopOpacity={0.25} />
                   <stop offset="20%" stopColor="#d4f000" stopOpacity={0.1} />
                   <stop offset="50%" stopColor="#d4f000" stopOpacity={0.04} />
                   <stop offset="100%" stopColor="#d4f000" stopOpacity={0} />
