@@ -95,7 +95,7 @@ function useMagneticHover(ref: React.RefObject<HTMLElement | null>, strength = 0
       rotationY: 0,
       rotationX: 0,
       duration: 0.6,
-      ease: 'elastic.out(1, 0.5)',
+      ease: 'elastic.out(1, 0.55)',
     })
   }, [ref])
 
@@ -204,7 +204,7 @@ function TreasuryValueChart({
                   <stop offset="100%" stopColor="#d4f000" stopOpacity={0} />
                 </linearGradient>
                 <linearGradient id="treasuryStroke" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stopColor="#d4f000" stopOpacity={0.2} />
+                  <stop offset="0%" stopColor="#d4f000" stopOpacity={0.18} />
                   <stop offset="30%" stopColor="#d4f000" stopOpacity={0.75} />
                   <stop offset="60%" stopColor="#e4ff57" stopOpacity={1} />
                   <stop offset="100%" stopColor="#d4f000" stopOpacity={0.6} />
@@ -314,7 +314,7 @@ function LoadingCard({ index = 0 }: { index?: number }) {
     <div className="relative p-[1px] overflow-hidden rounded-sm">
       {/* Subtle scanning border */}
       <div
-        className="absolute inset-[-100%] animate-spin opacity-[0.08] pointer-events-none"
+        className="absolute inset-[-100%] animate-spin opacity-[0.06] pointer-events-none"
         style={{
           background: 'conic-gradient(from 0deg, transparent 80%, #333 95%, transparent 100%)',
           animationDuration: '5s',
