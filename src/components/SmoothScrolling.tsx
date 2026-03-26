@@ -10,11 +10,13 @@ export default function SmoothScrolling({ children }: { children: ReactNode }) {
       duration: 1.2,
       smoothWheel: true,
       prevent: (node: HTMLElement) => {
-        // Let nested scrollable containers (terminals, charts) scroll natively
+        // Let nested scrollable containers (terminals, charts, tables) scroll natively
         if (node.classList.contains('custom-scrollbar')) return true;
         if (node.classList.contains('wr-chart-frame')) return true;
+        if (node.classList.contains('wr-scroll')) return true;
         if (node.closest('.custom-scrollbar')) return true;
         if (node.closest('.wr-chart-frame')) return true;
+        if (node.closest('.wr-scroll')) return true;
         if (node.closest('.recharts-wrapper')) return true;
         return false;
       },

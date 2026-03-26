@@ -69,10 +69,10 @@ function SupplyComparisonRing({
 
   return (
     <div className="px-5 lg:px-8 py-6 border-b border-[#333]/12">
-      <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#666] font-bold mb-5 flex items-center gap-3 wr-sub-header">
-        <span className="text-[#ff6b35]/30 text-[12px] wr-sub-diamond">◆</span>
+      <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#999] font-bold mb-5 flex items-center gap-3 wr-sub-header">
+        <span className="text-[#ff6b35]/50 text-[12px] wr-sub-diamond">◆</span>
         <span>SUPPLY INCINERATION MAP</span>
-        <div className="flex-1 h-px bg-gradient-to-r from-[#ff6b35]/20 to-transparent" />
+        <div className="flex-1 h-px bg-gradient-to-r from-[#ff6b35]/35 to-transparent" />
       </div>
 
       <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
@@ -277,8 +277,8 @@ function BurnSummaryBar({
         <div key={label} className="px-5 lg:px-6 py-5 group/cell relative transition-colors duration-300 hover:bg-[#ff6b35]/[0.015] wr-stat-scale">
           {/* Hover accent */}
           <div className="absolute top-0 left-0 right-0 h-px bg-[#ff6b35]/0 group-hover/cell:bg-[#ff6b35]/10 transition-all duration-300 origin-left scale-x-0 group-hover/cell:scale-x-100" />
-          <div className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#555] mb-2 font-bold group-hover/cell:text-[#888] transition-colors flex items-center gap-1.5">
-            <span className="text-[#ff6b35]/20 text-[11px]" aria-hidden="true">◆</span>
+          <div className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#888] mb-2 font-bold group-hover/cell:text-[#aaa] transition-colors flex items-center gap-1.5">
+            <span className="text-[#ff6b35]/40 text-[11px]" aria-hidden="true">◆</span>
             {label}
           </div>
           <div className="font-mono text-xl lg:text-2xl font-black tabular-nums leading-none">
@@ -369,10 +369,10 @@ function BurnTransactionsTable({
 }) {
   return (
     <div className="px-5 lg:px-8 py-6">
-      <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#666] font-bold mb-4 flex items-center gap-3 wr-sub-header">
-        <span className="text-[#ff6b35]/30 text-[12px] wr-sub-diamond">◆</span>
+      <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#999] font-bold mb-4 flex items-center gap-3 wr-sub-header">
+        <span className="text-[#ff6b35]/50 text-[12px] wr-sub-diamond">◆</span>
         <span>BURN LEDGER</span>
-        <div className="flex-1 h-px bg-gradient-to-r from-[#ff6b35]/20 to-transparent" />
+        <div className="flex-1 h-px bg-gradient-to-r from-[#ff6b35]/35 to-transparent" />
         {!isLoading && !isError && transactions.length > 0 && (
           <span className="text-[#444] tabular-nums flex items-center gap-1.5">
             <span className="text-[12px] text-[#ff6b35]/40 font-black px-1.5 py-0.5 bg-[#ff6b35]/[0.04] border border-[#ff6b35]/10 rounded-sm">{transactions.length}</span>
@@ -473,7 +473,7 @@ export default function BurnOperations() {
   }, [])
 
   return (
-    <section ref={sectionRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className="w-full bg-[#0a0a0a] relative overflow-hidden wr-noise wr-section-tint wr-section-tint-fire wr-inner-shadow wr-section-enter-accent wr-section-enter-accent-fire" aria-label="Burn Operations">
+    <section ref={sectionRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className="w-full bg-[#0a0a0a] relative overflow-clip wr-noise wr-section-tint wr-section-tint-fire wr-inner-shadow wr-section-enter-accent wr-section-enter-accent-fire" aria-label="Burn Operations">
       {/* Mouse-tracking fire glow */}
       <div ref={glowRef} className="absolute inset-0 pointer-events-none z-[1] transition-opacity duration-300" />
 
@@ -508,11 +508,11 @@ export default function BurnOperations() {
       <div className="h-[2px] wr-fire-line" aria-hidden="true" />
 
       {/* Section header */}
-      <div className="relative flex justify-between items-center px-5 lg:px-8 py-6 border-b border-[#ff6b35]/10 wr-brackets wr-brackets-fire wr-header-line text-[#ff6b35] wr-glass">
+      <div className="relative flex justify-between items-center px-5 lg:px-8 py-6 border-b border-[#ff6b35]/25 wr-brackets wr-brackets-fire wr-header-line text-[#ff6b35] wr-glass">
         <div className="flex items-center gap-4">
-          <div className="w-1.5 bg-[#ff6b35] wr-accent-bar wr-accent-bar-pulse" style={{ boxShadow: '0 0 8px rgba(255,107,53,0.3)' }} />
+          <div className="w-1.5 bg-[#ff6b35] wr-accent-bar wr-accent-bar-pulse" style={{ boxShadow: '0 0 8px rgba(255,107,53,0.5)' }} />
           <div>
-            <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#666] font-bold mb-1 wr-section-num">
+            <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#999] font-bold mb-1 wr-section-num">
               SECTION 02
             </div>
             <h2 className="text-xl md:text-2xl font-black uppercase tracking-tight text-white font-sans wr-cursor wr-cursor-fire">
@@ -533,7 +533,7 @@ export default function BurnOperations() {
                 {new Date(dataUpdatedAt).toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })}
               </span>
             )}
-            <span className="wr-tag wr-tag-glow border-[#ff6b35]/25 text-[#ff6b35]/70">
+            <span className="wr-tag wr-tag-glow border-[#ff6b35]/40 text-[#ff6b35]/90">
               INCINERATED
             </span>
           </div>
@@ -563,10 +563,10 @@ export default function BurnOperations() {
       {/* Burn progress visualization */}
       <div className="px-5 lg:px-8 py-6 border-b border-[#333]/20">
         <div className="flex items-center justify-between mb-3 wr-sub-header">
-          <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#666] font-bold flex items-center gap-3">
-            <span className="text-[#ff6b35]/30 text-[12px] wr-sub-diamond">◆</span>
+          <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#999] font-bold flex items-center gap-3">
+            <span className="text-[#ff6b35]/50 text-[12px] wr-sub-diamond">◆</span>
             <span>TOTAL SUPPLY INCINERATION</span>
-            <div className="flex-1 h-px bg-gradient-to-r from-[#ff6b35]/20 to-transparent" />
+            <div className="flex-1 h-px bg-gradient-to-r from-[#ff6b35]/35 to-transparent" />
           </div>
           <div className="font-mono text-[12px] text-[#ff6b35] font-black tabular-nums wr-fire-text">
             {isLoading ? '—' : `${(data?.burnedPct ?? 0).toFixed(2)}%`}

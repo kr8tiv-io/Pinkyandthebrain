@@ -131,8 +131,8 @@ function DataCell({
       {/* Subtle bottom glow on hover */}
       <div className="absolute bottom-0 left-[10%] right-[10%] h-px bg-[#d4f000]/0 group-hover:bg-[#d4f000]/[0.04] transition-colors duration-500" />
 
-      <div className="font-mono text-[12px] uppercase tracking-[0.22em] text-[#666] mb-2 font-bold group-hover:text-[#d4f000]/60 transition-colors duration-300 flex items-center gap-1.5">
-        <span className="text-[#d4f000]/30 text-[11px] group-hover:text-[#d4f000]/60 transition-colors">◆</span>
+      <div className="font-mono text-[12px] uppercase tracking-[0.22em] text-[#999] mb-2 font-bold group-hover:text-[#d4f000]/80 transition-colors duration-300 flex items-center gap-1.5">
+        <span className="text-[#d4f000]/50 text-[11px] group-hover:text-[#d4f000]/80 transition-colors">◆</span>
         {label}
       </div>
       <div className="font-mono text-sm md:text-lg font-black text-white tabular-nums leading-none group-hover:drop-shadow-[0_0_12px_rgba(212,240,0,0.12)] transition-all duration-300">
@@ -163,11 +163,11 @@ function LiveClock() {
 
   return (
     <div className="flex items-center gap-2">
-      <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#333]/80 tabular-nums hidden md:inline">
+      <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#666] tabular-nums hidden md:inline">
         {date}
       </span>
-      <span className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#444] tabular-nums">
-        {parts[0]}<span className="wr-colon-blink">:</span>{parts[1]}<span className="wr-colon-blink">:</span>{parts[2]} <span className="text-[#333]">UTC</span>
+      <span className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#777] tabular-nums">
+        {parts[0]}<span className="wr-colon-blink">:</span>{parts[1]}<span className="wr-colon-blink">:</span>{parts[2]} <span className="text-[#555]">UTC</span>
       </span>
     </div>
   )
@@ -250,18 +250,18 @@ export default function CommandHeader() {
     : 'text-white'
 
   return (
-    <header ref={headerRef} className="relative w-full bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-[#d4f000]/10 overflow-hidden">
+    <header ref={headerRef} className="relative w-full bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-[#d4f000]/25 overflow-hidden">
       {/* Ambient mesh glow — warmer, more visible */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: 'radial-gradient(ellipse 40% 60% at 20% 50%, rgba(212, 240, 0, 0.04), transparent 70%), radial-gradient(ellipse 30% 50% at 80% 50%, rgba(255, 158, 158, 0.025), transparent 70%)',
       }} />
       {/* Top gradient accent line — bold lime */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#d4f000]/10 via-[#d4f000]/40 to-[#ff9e9e]/15 z-10" />
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#d4f000]/25 via-[#d4f000]/65 to-[#ff9e9e]/30 z-10" />
       {/* Bottom gradient accent line */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/12 to-transparent z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/25 to-transparent z-10" />
 
       {/* Top bar */}
-      <div className="flex justify-between items-center px-5 lg:px-8 py-2.5 border-b border-[#333]/15">
+      <div className="flex justify-between items-center px-5 lg:px-8 py-2.5 border-b border-[#333]/30">
         <div className="flex items-center gap-4">
           <Link
             href="/"
@@ -281,12 +281,12 @@ export default function CommandHeader() {
             </div>
           </div>
           <div className="w-px h-3 bg-gradient-to-b from-transparent via-[#333]/40 to-transparent" />
-          <div className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#444] font-medium flex items-center gap-2">
+          <div className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#888] font-medium flex items-center gap-2">
             <span>War Room</span>
             <span className="w-1 h-1 bg-[#d4f000]/10 rounded-full hidden sm:block" />
           </div>
           <div className="hidden md:block w-px h-3 bg-[#333]/30" />
-          <div className="hidden md:flex md:items-center md:gap-2 font-mono text-[12px] uppercase tracking-[0.2em] text-[#3a3a3a]">
+          <div className="hidden md:flex md:items-center md:gap-2 font-mono text-[12px] uppercase tracking-[0.2em] text-[#666]">
             <span>Intelligence Dashboard</span>
             <span className="text-[#d4f000]/18 font-black px-1.5 py-0.5 bg-[#d4f000]/[0.025] border border-[#d4f000]/[0.05] text-[11px] tracking-[0.1em]">v2.0</span>
           </div>

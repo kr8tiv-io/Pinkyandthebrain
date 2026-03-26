@@ -219,7 +219,7 @@ export default function Governance() {
   return (
     <section
       ref={sectionRef}
-      className="w-full bg-[#0a0a0a] py-16 relative overflow-hidden wr-section-fade-top wr-section-fade-bottom wr-noise wr-classified-border wr-vignette-corners"
+      className="w-full bg-[#0a0a0a] py-16 relative overflow-clip wr-section-fade-top wr-section-fade-bottom wr-noise wr-classified-border wr-vignette-corners"
       aria-label="Governance voting"
     >
       {/* Atmospheric layers */}
@@ -254,11 +254,11 @@ export default function Governance() {
         {/* Section Header */}
         <div className="px-5 lg:px-8 mb-8" data-wr-reveal>
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-px bg-[#d4f000]/40" />
-            <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-[#d4f000]/70 font-bold wr-section-num">
+            <div className="w-8 h-px bg-[#d4f000]/65" />
+            <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-[#d4f000] font-bold wr-section-num">
               SECTION 03 — GOVERNANCE
             </div>
-            <div className="w-8 h-px bg-[#d4f000]/40" />
+            <div className="w-8 h-px bg-[#d4f000]/65" />
           </div>
 
           {round ? (
@@ -270,9 +270,9 @@ export default function Governance() {
               <div className="flex flex-wrap items-center gap-2 mb-4">
                 <div className={`wr-tag wr-tag-glow ${
                   isActive
-                    ? 'border-[#d4f000]/30 text-[#d4f000]/70'
+                    ? 'border-[#d4f000]/45 text-[#d4f000]'
                     : round.status === 'closed'
-                      ? 'border-[#ff9e9e]/30 text-[#ff9e9e]/70'
+                      ? 'border-[#ff9e9e]/45 text-[#ff9e9e]'
                       : 'border-[#555]/30 text-[#555]'
                 }`}>
                   {round.status === 'active' ? 'ACTIVE' : round.status === 'closed' ? 'CLOSED' : 'UPCOMING'}
@@ -333,10 +333,10 @@ export default function Governance() {
           <>
             {/* Candidate Grid */}
             <div className="px-5 lg:px-8">
-              <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#666] font-bold mb-4 flex items-center gap-3">
-                <span className="text-[#d4f000]/30 text-[12px]">◆</span>
+              <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#999] font-bold mb-4 flex items-center gap-3">
+                <span className="text-[#d4f000]/50 text-[12px]">◆</span>
                 <span>CANDIDATES</span>
-                <div className="flex-1 h-px bg-gradient-to-r from-[#d4f000]/15 to-transparent" />
+                <div className="flex-1 h-px bg-gradient-to-r from-[#d4f000]/30 to-transparent" />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">

@@ -78,13 +78,13 @@ export default function WarRoomPage() {
         {/* Governance divider */}
         <div className="relative py-4">
           <div className="wr-divider" />
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/[0.08] to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/[0.20] to-transparent" />
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-6 flex items-center gap-3">
-            <div className="w-6 h-px bg-gradient-to-r from-transparent to-[#d4f000]/20" />
+            <div className="w-6 h-px bg-gradient-to-r from-transparent to-[#d4f000]/40" />
             <div className="wr-divider-dot text-[#d4f000]" />
-            <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#d4f000]/70 font-bold wr-divider-label drop-shadow-[0_0_8px_rgba(212,240,0,0.15)]">GOVERNANCE</span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#d4f000] font-bold wr-divider-label drop-shadow-[0_0_10px_rgba(212,240,0,0.4)]">GOVERNANCE</span>
             <div className="wr-divider-dot text-[#d4f000]" />
-            <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#d4f000]/20" />
+            <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#d4f000]/40" />
           </div>
         </div>
 
@@ -98,8 +98,8 @@ export default function WarRoomPage() {
 
         {/* Scroll indicator */}
         <div className="flex flex-col items-center py-4 wr-scroll-hint md:py-5">
-          <span className="font-mono text-[11px] uppercase tracking-[0.35em] text-[#888]/60 mb-1.5">SCROLL TO EXPLORE</span>
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#d4f000]/45">
+          <span className="font-mono text-[11px] uppercase tracking-[0.35em] text-[#999] mb-1.5">SCROLL TO EXPLORE</span>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#d4f000]/70">
             <path d="M12 5v14" />
             <path d="M5 12l7 7 7-7" />
           </svg>
@@ -108,13 +108,13 @@ export default function WarRoomPage() {
         {/* Decorative divider with label */}
         <div className="relative py-4">
           <div className="wr-divider" />
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/[0.05] to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/[0.18] to-transparent" />
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-5 flex items-center gap-2.5">
-            <div className="w-5 h-px bg-[#d4f000]/10" />
+            <div className="w-5 h-px bg-[#d4f000]/25" />
             <div className="wr-divider-dot text-[#d4f000]" style={{ animationDelay: '0s' }} />
-            <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#d4f000]/70 font-bold wr-divider-label drop-shadow-[0_0_8px_rgba(212,240,0,0.15)]">▼ INTEL</span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#d4f000] font-bold wr-divider-label drop-shadow-[0_0_10px_rgba(212,240,0,0.4)]">▼ INTEL</span>
             <div className="wr-divider-dot text-[#d4f000]" style={{ animationDelay: '1.5s' }} />
-            <div className="w-5 h-px bg-[#d4f000]/10" />
+            <div className="w-5 h-px bg-[#d4f000]/25" />
           </div>
         </div>
 
@@ -135,13 +135,13 @@ export default function WarRoomPage() {
         {/* Decorative fire divider with transition marker */}
         <div className="relative py-5">
           <div className="wr-divider-fire" />
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#ff6b35]/[0.06] to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#ff6b35]/[0.18] to-transparent" />
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-6 flex items-center gap-3">
-            <div className="w-6 h-px bg-gradient-to-r from-transparent to-[#ff6b35]/20" />
+            <div className="w-6 h-px bg-gradient-to-r from-transparent to-[#ff6b35]/40" />
             <div className="wr-divider-dot text-[#ff6b35]" />
-            <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#ff6b35]/75 font-bold wr-divider-label drop-shadow-[0_0_8px_rgba(255,107,53,0.2)]">INCINERATION ZONE</span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#ff6b35] font-bold wr-divider-label drop-shadow-[0_0_10px_rgba(255,107,53,0.5)]">INCINERATION ZONE</span>
             <div className="wr-divider-dot text-[#ff6b35]" />
-            <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#ff6b35]/20" />
+            <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#ff6b35]/40" />
           </div>
         </div>
 
@@ -163,8 +163,8 @@ export default function WarRoomPage() {
             <div className="ticker-track">
               {['WAR ROOM v2.0', '$BRAIN INTELLIGENCE COMMAND', 'ALL DATA LIVE ON-CHAIN', 'NARF!', 'DEFLATIONARY SPL TOKEN', 'COMMUNITY GOVERNED',
                 'WAR ROOM v2.0', '$BRAIN INTELLIGENCE COMMAND', 'ALL DATA LIVE ON-CHAIN', 'NARF!', 'DEFLATIONARY SPL TOKEN', 'COMMUNITY GOVERNED'].map((item, i) => (
-                <span key={i} className="font-mono text-[12px] md:text-[11px] uppercase tracking-[0.3em] text-[#666] mx-5 md:mx-7 whitespace-nowrap group/ticker-item">
-                  <span className="text-[#d4f000]/12 mr-2.5 inline-block transition-transform duration-300 group-hover/ticker-item:rotate-45 text-[11px]">◆</span>
+                <span key={i} className="font-mono text-[12px] md:text-[11px] uppercase tracking-[0.3em] text-[#888] mx-5 md:mx-7 whitespace-nowrap group/ticker-item">
+                  <span className="text-[#d4f000]/30 mr-2.5 inline-block transition-transform duration-300 group-hover/ticker-item:rotate-45 text-[11px]">◆</span>
                   {item}
                 </span>
               ))}
@@ -172,7 +172,7 @@ export default function WarRoomPage() {
           </div>
 
           {/* Gradient separator */}
-          <div className="h-px bg-gradient-to-r from-transparent via-[#d4f000]/[0.06] to-transparent" />
+          <div className="h-px bg-gradient-to-r from-transparent via-[#d4f000]/[0.14] to-transparent" />
 
           <div className="relative px-5 lg:px-8 py-8">
             {/* Big watermark — breathing glow */}
@@ -190,11 +190,11 @@ export default function WarRoomPage() {
 
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
               <div className="flex items-center gap-4">
-                <div className="w-1 h-4 bg-[#d4f000]/20" />
+                <div className="w-1 h-4 bg-[#d4f000]/40" />
                 <div>
-                  <div className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#444] font-bold flex items-center gap-2">
+                  <div className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#777] font-bold flex items-center gap-2">
                     $BRAIN INTELLIGENCE COMMAND
-                    <span className="w-1.5 h-1.5 bg-[#d4f000]/10 rounded-full" />
+                    <span className="w-1.5 h-1.5 bg-[#d4f000]/25 rounded-full" />
                   </div>
                   <div className="font-mono text-[12px] uppercase tracking-[0.15em] text-[#555] mt-0.5">
                     WAR ROOM — LIVE TREASURY ANALYTICS

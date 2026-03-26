@@ -207,10 +207,10 @@ function PortfolioAllocationRing({
       {/* Subtle glow behind chart */}
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_50%_at_50%_60%,rgba(212,240,0,0.015),transparent_70%)]" />
 
-      <div className="relative font-mono text-[11px] uppercase tracking-[0.25em] text-[#666] font-bold mb-6 flex items-center gap-3 wr-sub-header">
-        <span className="text-[#d4f000]/30 text-[12px] wr-sub-diamond">◆</span>
+      <div className="relative font-mono text-[11px] uppercase tracking-[0.25em] text-[#999] font-bold mb-6 flex items-center gap-3 wr-sub-header">
+        <span className="text-[#d4f000]/50 text-[12px] wr-sub-diamond">◆</span>
         <span>PORTFOLIO ALLOCATION</span>
-        <div className="flex-1 h-px bg-gradient-to-r from-[#333]/30 to-transparent" />
+        <div className="flex-1 h-px bg-gradient-to-r from-[#555]/40 to-transparent" />
         <span className="text-[#333]">BREAKDOWN</span>
       </div>
 
@@ -413,10 +413,10 @@ function TreasuryValueChart({
     <div className="px-5 lg:px-8 py-6 relative border-t border-[#333]/10">
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_50%_at_50%_60%,rgba(212,240,0,0.01),transparent_70%)]" />
 
-      <div className="relative font-mono text-[11px] uppercase tracking-[0.25em] text-[#666] font-bold mb-5 flex items-center gap-3 wr-sub-header">
-        <span className="text-[#d4f000]/30 text-[12px] wr-sub-diamond">◆</span>
+      <div className="relative font-mono text-[11px] uppercase tracking-[0.25em] text-[#999] font-bold mb-5 flex items-center gap-3 wr-sub-header">
+        <span className="text-[#d4f000]/50 text-[12px] wr-sub-diamond">◆</span>
         <span>TREASURY VALUE OVER TIME</span>
-        <div className="flex-1 h-px bg-gradient-to-r from-[#333]/30 to-transparent" />
+        <div className="flex-1 h-px bg-gradient-to-r from-[#555]/40 to-transparent" />
         {/* P&L summary inline */}
         <span className={`tabular-nums font-black ${isUp ? 'text-[#d4f000]' : 'text-[#ff9e9e]'}`}>
           {isUp ? '▲' : '▼'} {isUp ? '+' : ''}{formatUsd(pnl.pnlUsd)} ({pnl.pnlPct >= 0 ? '+' : ''}{pnl.pnlPct.toFixed(1)}%)
@@ -541,8 +541,8 @@ function SummaryCell({
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#d4f000]/0 group-hover/cell:bg-[#d4f000]/15 transition-colors duration-300" />
       {/* Hover accent bottom gradient */}
       <div className="absolute bottom-0 left-[5%] right-[5%] h-px bg-[#d4f000]/0 group-hover/cell:bg-[#d4f000]/10 transition-colors duration-500" />
-      <div className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#666] mb-2 font-bold group-hover/cell:text-[#d4f000]/60 transition-colors flex items-center gap-1.5">
-        <span className="text-[#d4f000]/30 text-[11px] group-hover/cell:text-[#d4f000]/60 transition-colors" aria-hidden="true">◆</span>
+      <div className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#999] mb-2 font-bold group-hover/cell:text-[#d4f000]/80 transition-colors flex items-center gap-1.5">
+        <span className="text-[#d4f000]/50 text-[11px] group-hover/cell:text-[#d4f000]/80 transition-colors" aria-hidden="true">◆</span>
         {label}
       </div>
       <div ref={valueRef} className="font-mono text-xl lg:text-2xl font-black text-white tabular-nums leading-none">
@@ -938,7 +938,7 @@ export default function TreasuryIntel() {
   }, [])
 
   return (
-    <section ref={sectionRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className="w-full bg-[#0a0a0a] relative overflow-hidden wr-noise wr-section-tint wr-inner-shadow wr-section-enter-accent" aria-label="Treasury Intelligence">
+    <section ref={sectionRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className="w-full bg-[#0a0a0a] relative overflow-clip wr-noise wr-section-tint wr-inner-shadow wr-section-enter-accent" aria-label="Treasury Intelligence">
       {/* Mouse-tracking lime spotlight */}
       <div ref={spotlightRef} className="absolute inset-0 pointer-events-none z-[1] transition-opacity duration-300" />
 
@@ -961,16 +961,16 @@ export default function TreasuryIntel() {
       </div>
 
       {/* Section header */}
-      <div className="px-5 lg:px-8 py-6 border-b border-[#d4f000]/10 wr-brackets wr-header-line text-[#d4f000] wr-glass">
+      <div className="px-5 lg:px-8 py-6 border-b border-[#d4f000]/25 wr-brackets wr-header-line text-[#d4f000] wr-glass">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-4">
-            <div className="w-1.5 bg-[#d4f000] wr-accent-bar wr-accent-bar-pulse" style={{ boxShadow: '0 0 8px rgba(212,240,0,0.3)' }} />
+            <div className="w-1.5 bg-[#d4f000] wr-accent-bar wr-accent-bar-pulse" style={{ boxShadow: '0 0 8px rgba(212,240,0,0.5)' }} />
             <div>
-              <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#666] font-bold mb-1 wr-section-num">
+              <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#999] font-bold mb-1 wr-section-num">
                 SECTION 01
               </div>
               <h2 className="text-xl md:text-2xl font-black uppercase tracking-tight text-white font-sans wr-cursor">
-                Treasury <span className="wr-gradient-text-lime drop-shadow-[0_0_10px_rgba(212,240,0,0.2)]">Intel</span>
+                Treasury <span className="wr-gradient-text-lime drop-shadow-[0_0_10px_rgba(212,240,0,0.4)]">Intel</span>
               </h2>
             </div>
           </div>
@@ -981,7 +981,7 @@ export default function TreasuryIntel() {
                 {new Date(dataUpdatedAt).toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })} UTC
               </span>
             )}
-            <div className="wr-tag wr-tag-glow border-[#d4f000]/20 text-[#d4f000]/60">
+            <div className="wr-tag wr-tag-glow border-[#d4f000]/35 text-[#d4f000]/80">
               TS/SCI
             </div>
           </div>
@@ -1037,10 +1037,10 @@ export default function TreasuryIntel() {
 
       {/* Holdings grid */}
       <div className="px-5 lg:px-8 py-6">
-        <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#666] font-bold mb-5 flex items-center gap-3 wr-sub-header">
-          <span className="text-[#d4f000]/30 text-[12px] wr-sub-diamond">◆</span>
+        <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#999] font-bold mb-5 flex items-center gap-3 wr-sub-header">
+          <span className="text-[#d4f000]/50 text-[12px] wr-sub-diamond">◆</span>
           <span>ACTIVE POSITIONS</span>
-          <div className="flex-1 h-px bg-gradient-to-r from-[#333]/30 to-transparent" />
+          <div className="flex-1 h-px bg-gradient-to-r from-[#555]/40 to-transparent" />
           {!isLoading && data && (
             <span className="text-[#d4f000]/40 tabular-nums">{data.holdings.length} ASSETS</span>
           )}

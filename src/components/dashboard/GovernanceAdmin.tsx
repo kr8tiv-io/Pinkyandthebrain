@@ -107,10 +107,10 @@ function NewRoundForm({
 
   return (
     <div className="space-y-4">
-      <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#666] font-bold flex items-center gap-3">
-        <span className="text-[#d4f000]/30 text-[12px]">◆</span>
+      <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#999] font-bold flex items-center gap-3">
+        <span className="text-[#d4f000]/50 text-[12px]">◆</span>
         <span>DEPLOY NEW ROUND</span>
-        <div className="flex-1 h-px bg-gradient-to-r from-[#d4f000]/15 to-transparent" />
+        <div className="flex-1 h-px bg-gradient-to-r from-[#d4f000]/30 to-transparent" />
       </div>
 
       {/* Title */}
@@ -243,11 +243,11 @@ export default function GovernanceAdmin() {
       <div className="relative z-10 px-5 lg:px-8">
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-6 h-px bg-[#ff9e9e]/30" />
-          <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#ff9e9e]/50 font-bold">
+          <div className="w-6 h-px bg-[#ff9e9e]/50" />
+          <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#ff9e9e]/80 font-bold">
             ADMIN CONTROL
           </div>
-          <div className="w-6 h-px bg-[#ff9e9e]/30" />
+          <div className="w-6 h-px bg-[#ff9e9e]/50" />
         </div>
 
         {!authenticated ? (
