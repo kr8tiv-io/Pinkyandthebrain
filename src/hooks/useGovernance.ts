@@ -28,12 +28,17 @@ export function useGovernanceResults(walletAddress: string | null) {
     queryKey: ['governance-results', walletAddress],
     queryFn: async () => {
       const params = walletAddress ? `?wallet=${walletAddress}` : ''
-      const res = await fetch(`/api/governance/results${params}`)
-      if (!res.ok) throw new Error('Governance results fetch failed')
-      return res.json() as Promise<GovernanceResultsResponse>
+      try {
+        const res = await fetch(`/api/governance/results${params}`)
+        if (!res.ok) return { round: null, candidates: [], totalVoters: 0, totalWeight: 0, userVote: null }
+        return res.json() as Promise<GovernanceResultsResponse>
+      } catch {
+        return { round: null, candidates: [], totalVoters: 0, totalWeight: 0, userVote: null }
+      }
     },
     staleTime: 30_000,
     refetchInterval: 30_000,
+    retry: false,
   })
 }
 
