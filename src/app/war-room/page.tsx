@@ -26,11 +26,11 @@ export default function WarRoomPage() {
 
       {/* ── Layer 1: Ambient glow orbs (vibrant, drifting) ── */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[15%] w-[50vw] h-[40vw] max-w-3xl bg-[#d4f000] rounded-full mix-blend-screen filter blur-[120px] opacity-[0.10] animate-pulse wr-orb-1" style={{ animationDuration: '8s' }} />
-        <div className="absolute bottom-[-5%] right-[10%] w-[40vw] h-[35vw] max-w-2xl bg-[#ff9e9e] rounded-full mix-blend-screen filter blur-[150px] opacity-[0.08] wr-orb-2" />
-        <div className="absolute top-[40%] left-[60%] w-[30vw] h-[25vw] max-w-xl bg-[#4a90e2] rounded-full mix-blend-screen filter blur-[160px] opacity-[0.06] wr-orb-3" />
-        <div className="absolute bottom-[20%] left-[5%] w-[25vw] h-[20vw] max-w-lg bg-[#ff6b35] rounded-full mix-blend-screen filter blur-[140px] opacity-[0.05] animate-pulse wr-orb-2" style={{ animationDuration: '6s' }} />
-        <div className="absolute top-[60%] right-[30%] w-[20vw] h-[15vw] max-w-md bg-[#e4ff57] rounded-full mix-blend-screen filter blur-[180px] opacity-[0.04] wr-orb-1" />
+        <div className="absolute top-[-10%] left-[15%] w-[50vw] h-[40vw] max-w-3xl bg-[#d4f000] rounded-full mix-blend-screen filter blur-[120px] opacity-[0.15] animate-pulse wr-orb-1" style={{ animationDuration: '8s' }} />
+        <div className="absolute bottom-[-5%] right-[10%] w-[40vw] h-[35vw] max-w-2xl bg-[#ff9e9e] rounded-full mix-blend-screen filter blur-[150px] opacity-[0.12] wr-orb-2" />
+        <div className="absolute top-[40%] left-[60%] w-[30vw] h-[25vw] max-w-xl bg-[#4a90e2] rounded-full mix-blend-screen filter blur-[160px] opacity-[0.10] wr-orb-3" />
+        <div className="absolute bottom-[20%] left-[5%] w-[25vw] h-[20vw] max-w-lg bg-[#ff6b35] rounded-full mix-blend-screen filter blur-[140px] opacity-[0.08] animate-pulse wr-orb-2" style={{ animationDuration: '6s' }} />
+        <div className="absolute top-[60%] right-[30%] w-[20vw] h-[15vw] max-w-md bg-[#e4ff57] rounded-full mix-blend-screen filter blur-[180px] opacity-[0.07] wr-orb-1" />
       </div>
 
       {/* ── Layer 1.5: Atmospheric video underlay ── */}
@@ -58,7 +58,7 @@ export default function WarRoomPage() {
       <div className="wr-depth-gradient" />
 
       {/* ── Layer 6: Top vignette — warm lime glow ── */}
-      <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(212,240,0,0.06),transparent_70%)]" />
+      <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(212,240,0,0.10),transparent_70%)]" />
 
       {/* ── Layer 6: Corner vignettes ── */}
       <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(ellipse_50%_50%_at_0%_0%,rgba(0,0,0,0.15),transparent_70%)]" />
@@ -78,13 +78,13 @@ export default function WarRoomPage() {
         {/* Governance divider */}
         <div className="relative py-4">
           <div className="wr-divider" />
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/[0.20] to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/[0.35] to-transparent" />
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-6 flex items-center gap-3">
-            <div className="w-6 h-px bg-gradient-to-r from-transparent to-[#d4f000]/40" />
+            <div className="w-6 h-px bg-gradient-to-r from-transparent to-[#d4f000]/60" />
             <div className="wr-divider-dot text-[#d4f000]" />
-            <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#d4f000] font-bold wr-divider-label drop-shadow-[0_0_10px_rgba(212,240,0,0.4)]">GOVERNANCE</span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#d4f000] font-bold wr-divider-label drop-shadow-[0_0_12px_rgba(212,240,0,0.6)]">GOVERNANCE</span>
             <div className="wr-divider-dot text-[#d4f000]" />
-            <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#d4f000]/40" />
+            <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#d4f000]/60" />
           </div>
         </div>
 
@@ -98,8 +98,8 @@ export default function WarRoomPage() {
 
         {/* Scroll indicator */}
         <div className="flex flex-col items-center py-4 wr-scroll-hint md:py-5">
-          <span className="font-mono text-[11px] uppercase tracking-[0.35em] text-[#999] mb-1.5">SCROLL TO EXPLORE</span>
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#d4f000]/70">
+          <span className="font-mono text-[11px] uppercase tracking-[0.35em] text-[#bbb] mb-1.5">SCROLL TO EXPLORE</span>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#d4f000]/90">
             <path d="M12 5v14" />
             <path d="M5 12l7 7 7-7" />
           </svg>
@@ -108,13 +108,13 @@ export default function WarRoomPage() {
         {/* Decorative divider with label */}
         <div className="relative py-4">
           <div className="wr-divider" />
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/[0.18] to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/[0.35] to-transparent" />
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-5 flex items-center gap-2.5">
-            <div className="w-5 h-px bg-[#d4f000]/25" />
+            <div className="w-5 h-px bg-[#d4f000]/45" />
             <div className="wr-divider-dot text-[#d4f000]" style={{ animationDelay: '0s' }} />
-            <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#d4f000] font-bold wr-divider-label drop-shadow-[0_0_10px_rgba(212,240,0,0.4)]">▼ INTEL</span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#d4f000] font-bold wr-divider-label drop-shadow-[0_0_12px_rgba(212,240,0,0.6)]">▼ INTEL</span>
             <div className="wr-divider-dot text-[#d4f000]" style={{ animationDelay: '1.5s' }} />
-            <div className="w-5 h-px bg-[#d4f000]/25" />
+            <div className="w-5 h-px bg-[#d4f000]/45" />
           </div>
         </div>
 
@@ -127,7 +127,7 @@ export default function WarRoomPage() {
         <div className="flex justify-center py-1">
           <div className="flex items-center gap-1.5">
             {[1, 2, 3].map(i => (
-              <div key={i} className="w-[2px] h-[2px] bg-[#333]/20 rounded-full" />
+              <div key={i} className="w-[2px] h-[2px] bg-[#555]/40 rounded-full" />
             ))}
           </div>
         </div>
@@ -135,13 +135,13 @@ export default function WarRoomPage() {
         {/* Decorative fire divider with transition marker */}
         <div className="relative py-5">
           <div className="wr-divider-fire" />
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#ff6b35]/[0.18] to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#ff6b35]/[0.35] to-transparent" />
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-6 flex items-center gap-3">
-            <div className="w-6 h-px bg-gradient-to-r from-transparent to-[#ff6b35]/40" />
+            <div className="w-6 h-px bg-gradient-to-r from-transparent to-[#ff6b35]/60" />
             <div className="wr-divider-dot text-[#ff6b35]" />
-            <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#ff6b35] font-bold wr-divider-label drop-shadow-[0_0_10px_rgba(255,107,53,0.5)]">INCINERATION ZONE</span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#ff6b35] font-bold wr-divider-label drop-shadow-[0_0_12px_rgba(255,107,53,0.65)]">INCINERATION ZONE</span>
             <div className="wr-divider-dot text-[#ff6b35]" />
-            <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#ff6b35]/40" />
+            <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#ff6b35]/60" />
           </div>
         </div>
 
@@ -163,8 +163,8 @@ export default function WarRoomPage() {
             <div className="ticker-track">
               {['WAR ROOM v2.0', '$BRAIN INTELLIGENCE COMMAND', 'ALL DATA LIVE ON-CHAIN', 'NARF!', 'DEFLATIONARY SPL TOKEN', 'COMMUNITY GOVERNED',
                 'WAR ROOM v2.0', '$BRAIN INTELLIGENCE COMMAND', 'ALL DATA LIVE ON-CHAIN', 'NARF!', 'DEFLATIONARY SPL TOKEN', 'COMMUNITY GOVERNED'].map((item, i) => (
-                <span key={i} className="font-mono text-[12px] md:text-[11px] uppercase tracking-[0.3em] text-[#888] mx-5 md:mx-7 whitespace-nowrap group/ticker-item">
-                  <span className="text-[#d4f000]/30 mr-2.5 inline-block transition-transform duration-300 group-hover/ticker-item:rotate-45 text-[11px]">◆</span>
+                <span key={i} className="font-mono text-[12px] md:text-[11px] uppercase tracking-[0.3em] text-[#bbb] mx-5 md:mx-7 whitespace-nowrap group/ticker-item">
+                  <span className="text-[#d4f000]/50 mr-2.5 inline-block transition-transform duration-300 group-hover/ticker-item:rotate-45 text-[11px]">◆</span>
                   {item}
                 </span>
               ))}
@@ -172,7 +172,7 @@ export default function WarRoomPage() {
           </div>
 
           {/* Gradient separator */}
-          <div className="h-px bg-gradient-to-r from-transparent via-[#d4f000]/[0.14] to-transparent" />
+          <div className="h-px bg-gradient-to-r from-transparent via-[#d4f000]/[0.25] to-transparent" />
 
           <div className="relative px-5 lg:px-8 py-8">
             {/* Big watermark — breathing glow */}
@@ -183,20 +183,20 @@ export default function WarRoomPage() {
             {/* Disclaimer */}
             <div className="text-center mb-4 relative">
               <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-24 h-px bg-gradient-to-r from-transparent via-[#333]/10 to-transparent" />
-              <span className="font-mono text-[12px] uppercase tracking-[0.3em] text-[#555]/80 font-bold">
+              <span className="font-mono text-[12px] uppercase tracking-[0.3em] text-[#999] font-bold">
                 NOT FINANCIAL ADVICE — DYOR — ALL DATA FOR INFORMATIONAL PURPOSES ONLY
               </span>
             </div>
 
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
               <div className="flex items-center gap-4">
-                <div className="w-1 h-4 bg-[#d4f000]/40" />
+                <div className="w-1 h-4 bg-[#d4f000]/60" />
                 <div>
-                  <div className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#777] font-bold flex items-center gap-2">
+                  <div className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#bbb] font-bold flex items-center gap-2">
                     $BRAIN INTELLIGENCE COMMAND
-                    <span className="w-1.5 h-1.5 bg-[#d4f000]/25 rounded-full" />
+                    <span className="w-1.5 h-1.5 bg-[#d4f000]/45 rounded-full" />
                   </div>
-                  <div className="font-mono text-[12px] uppercase tracking-[0.15em] text-[#555] mt-0.5">
+                  <div className="font-mono text-[12px] uppercase tracking-[0.15em] text-[#999] mt-0.5">
                     WAR ROOM — LIVE TREASURY ANALYTICS
                   </div>
                 </div>
@@ -206,23 +206,23 @@ export default function WarRoomPage() {
                   href="https://pinkyandthebrain.fun"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-[11px] uppercase tracking-[0.15em] text-[#444] hover:text-[#d4f000] transition-colors wr-glitch-hover wr-footer-link wr-footer-link-grow"
+                  className="font-mono text-[11px] uppercase tracking-[0.15em] text-[#999] hover:text-[#d4f000] transition-colors wr-glitch-hover wr-footer-link wr-footer-link-grow"
                 >
                   PINKYANDTHEBRAIN.FUN <span className="inline-block transition-transform duration-200 group-hover/footer-links:translate-x-0.5">↗</span>
                 </a>
-                <span className="w-px h-3.5 bg-[#333]/25 hidden md:block" />
-                <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-[#555] flex items-center gap-1.5 hover:text-[#888] transition-colors duration-300 cursor-default">
-                  <span className="text-[#d4f000]/25 text-[11px] transition-all duration-300 group-hover/footer-links:text-[#d4f000]/40">◎</span> BUILT ON SOLANA
+                <span className="w-px h-3.5 bg-[#333]/35 hidden md:block" />
+                <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-[#999] flex items-center gap-1.5 hover:text-[#bbb] transition-colors duration-300 cursor-default">
+                  <span className="text-[#d4f000]/45 text-[11px] transition-all duration-300 group-hover/footer-links:text-[#d4f000]/60">◎</span> BUILT ON SOLANA
                 </span>
-                <span className="w-px h-3.5 bg-[#333]/25 hidden md:block" />
-                <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-[#555]">
+                <span className="w-px h-3.5 bg-[#333]/35 hidden md:block" />
+                <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-[#999]">
                   ALL DATA LIVE ON-CHAIN
                 </span>
-                <span className="w-px h-3.5 bg-[#333]/25 hidden md:block" />
-                <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-[#555] hover:text-[#888] transition-colors duration-300 flex items-center gap-1.5">
+                <span className="w-px h-3.5 bg-[#333]/35 hidden md:block" />
+                <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-[#999] hover:text-[#bbb] transition-colors duration-300 flex items-center gap-1.5">
                   © 2025–2026 $BRAIN
-                  <span className="text-[11px] text-[#333]/50">·</span>
-                  <span className="text-[12px] text-[#555]/80">v2.0.389</span>
+                  <span className="text-[11px] text-[#555]/70">·</span>
+                  <span className="text-[12px] text-[#999]">v2.0.389</span>
                 </span>
               </div>
             </div>

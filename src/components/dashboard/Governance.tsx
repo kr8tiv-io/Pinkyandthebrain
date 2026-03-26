@@ -97,12 +97,12 @@ function CandidateCard({
           <span className="font-mono text-[14px] font-black text-white tracking-wide">
             {candidate.symbol}
           </span>
-          <span className="font-mono text-[11px] text-[#666] ml-2 tracking-wide">
+          <span className="font-mono text-[11px] text-[#aaa] ml-2 tracking-wide">
             {candidate.name}
           </span>
         </div>
         {isUserVote && (
-          <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4f000]/70 border border-[#d4f000]/25 px-2 py-0.5">
+          <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4f000]/90 border border-[#d4f000]/25 px-2 py-0.5">
             YOUR VOTE
           </div>
         )}
@@ -110,7 +110,7 @@ function CandidateCard({
 
       {/* Description */}
       {candidate.description && (
-        <p className="font-mono text-[10px] text-[#555] mb-3 leading-relaxed">
+        <p className="font-mono text-[10px] text-[#999] mb-3 leading-relaxed">
           {candidate.description}
         </p>
       )}
@@ -122,12 +122,12 @@ function CandidateCard({
 
       {/* Stats row */}
       <div className="flex items-center justify-between mb-3">
-        <div className="font-mono text-[10px] text-[#666] tracking-wide">
-          <span className="text-[#d4f000]/60 font-bold">{formatWeight(candidate.voteWeight)}</span>
-          <span className="text-[#444] mx-1">·</span>
+        <div className="font-mono text-[10px] text-[#aaa] tracking-wide">
+          <span className="text-[#d4f000]/80 font-bold">{formatWeight(candidate.voteWeight)}</span>
+          <span className="text-[#999] mx-1">·</span>
           <span>{pct.toFixed(1)}%</span>
         </div>
-        <div className="font-mono text-[10px] text-[#555]">
+        <div className="font-mono text-[10px] text-[#999]">
           {candidate.voteCount} wallet{candidate.voteCount !== 1 ? 's' : ''}
         </div>
       </div>
@@ -151,13 +151,13 @@ function CandidateCard({
 function NoActiveRound() {
   return (
     <div className="flex flex-col items-center justify-center gap-4 py-16">
-      <div className="font-mono text-[12px] uppercase tracking-[0.3em] text-[#555]">
+      <div className="font-mono text-[12px] uppercase tracking-[0.3em] text-[#999]">
         NO ACTIVE VOTING ROUND
       </div>
       <div className="wr-burn-bar w-36" style={{ height: '3px' }}>
         <div className="wr-burn-bar-fill" style={{ width: '0%' }} />
       </div>
-      <div className="font-mono text-[10px] text-[#444] tracking-[0.2em]">
+      <div className="font-mono text-[10px] text-[#999] tracking-[0.2em]">
         NEXT ROUND PENDING DEPLOYMENT
       </div>
     </div>
@@ -244,21 +244,21 @@ export default function Governance() {
       </div>
 
       {/* Registration marks */}
-      <div className="absolute top-4 left-4 text-[#333]/35 text-[11px] font-mono select-none pointer-events-none">+</div>
-      <div className="absolute top-4 right-4 text-[#333]/35 text-[11px] font-mono select-none pointer-events-none">+</div>
-      <div className="absolute bottom-4 left-4 text-[#333]/35 text-[11px] font-mono select-none pointer-events-none">+</div>
-      <div className="absolute bottom-4 right-4 text-[#333]/35 text-[11px] font-mono select-none pointer-events-none">+</div>
+      <div className="absolute top-4 left-4 text-[#555]/50 text-[11px] font-mono select-none pointer-events-none">+</div>
+      <div className="absolute top-4 right-4 text-[#555]/50 text-[11px] font-mono select-none pointer-events-none">+</div>
+      <div className="absolute bottom-4 left-4 text-[#555]/50 text-[11px] font-mono select-none pointer-events-none">+</div>
+      <div className="absolute bottom-4 right-4 text-[#555]/50 text-[11px] font-mono select-none pointer-events-none">+</div>
 
       {/* Content */}
       <div className="relative z-10">
         {/* Section Header */}
         <div className="px-5 lg:px-8 mb-8" data-wr-reveal>
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-px bg-[#d4f000]/65" />
+            <div className="w-8 h-px bg-[#d4f000]/80" />
             <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-[#d4f000] font-bold wr-section-num">
               SECTION 03 — GOVERNANCE
             </div>
-            <div className="w-8 h-px bg-[#d4f000]/65" />
+            <div className="w-8 h-px bg-[#d4f000]/80" />
           </div>
 
           {round ? (
@@ -270,23 +270,23 @@ export default function Governance() {
               <div className="flex flex-wrap items-center gap-2 mb-4">
                 <div className={`wr-tag wr-tag-glow ${
                   isActive
-                    ? 'border-[#d4f000]/45 text-[#d4f000]'
+                    ? 'border-[#d4f000]/65 text-[#d4f000]'
                     : round.status === 'closed'
-                      ? 'border-[#ff9e9e]/45 text-[#ff9e9e]'
-                      : 'border-[#555]/30 text-[#555]'
+                      ? 'border-[#ff9e9e]/65 text-[#ff9e9e]'
+                      : 'border-[#555]/30 text-[#999]'
                 }`}>
                   {round.status === 'active' ? 'ACTIVE' : round.status === 'closed' ? 'CLOSED' : 'UPCOMING'}
                 </div>
                 <span className="w-1 h-px bg-[#555]/25" />
-                <div className="wr-tag wr-tag-glow border-[#ff9e9e]/30 text-[#ff9e9e]/60">
+                <div className="wr-tag wr-tag-glow border-[#ff9e9e]/30 text-[#ff9e9e]/80">
                   {round.treasuryAmount}
                 </div>
               </div>
 
               {/* Countdown */}
               {isActive && (
-                <div className="font-mono text-[12px] uppercase tracking-[0.25em] text-[#888] flex items-center gap-2">
-                  <span className="text-[#d4f000]/30 wr-breathe" style={{ animationDuration: '4s' }}>◆</span>
+                <div className="font-mono text-[12px] uppercase tracking-[0.25em] text-[#ccc] flex items-center gap-2">
+                  <span className="text-[#d4f000]/55 wr-breathe" style={{ animationDuration: '4s' }}>◆</span>
                   <span>TIME REMAINING:</span>
                   <span className="tabular-nums text-[#d4f000] font-bold tracking-wider">
                     {countdown}
@@ -295,7 +295,7 @@ export default function Governance() {
               )}
             </>
           ) : (
-            <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-[#555] font-sans">
+            <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-[#999] font-sans">
               Treasury Purchase Vote
             </h2>
           )}
@@ -308,11 +308,11 @@ export default function Governance() {
               <div className="flex flex-wrap items-center gap-3 font-mono text-[11px] uppercase tracking-[0.2em]">
                 <div className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#d4f000] wr-breathe" style={{ boxShadow: '0 0 5px #d4f000', animationDuration: '3s' }} />
-                  <span className="text-[#d4f000]/70">CONNECTED</span>
+                  <span className="text-[#d4f000]/90">CONNECTED</span>
                 </div>
-                <span className="text-[#555]">{walletAddress?.slice(0, 4)}...{walletAddress?.slice(-4)}</span>
+                <span className="text-[#999]">{walletAddress?.slice(0, 4)}...{walletAddress?.slice(-4)}</span>
                 {userHasVoted && (
-                  <span className="wr-tag border-[#d4f000]/25 text-[#d4f000]/60 text-[9px]">VOTED</span>
+                  <span className="wr-tag border-[#d4f000]/25 text-[#d4f000]/80 text-[9px]">VOTED</span>
                 )}
               </div>
             ) : (
@@ -333,10 +333,10 @@ export default function Governance() {
           <>
             {/* Candidate Grid */}
             <div className="px-5 lg:px-8">
-              <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#999] font-bold mb-4 flex items-center gap-3">
-                <span className="text-[#d4f000]/50 text-[12px]">◆</span>
+              <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#ccc] font-bold mb-4 flex items-center gap-3">
+                <span className="text-[#d4f000]/90 text-[12px]">◆</span>
                 <span>CANDIDATES</span>
-                <div className="flex-1 h-px bg-gradient-to-r from-[#d4f000]/30 to-transparent" />
+                <div className="flex-1 h-px bg-gradient-to-r from-[#d4f000]/50 to-transparent" />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -356,17 +356,17 @@ export default function Governance() {
 
             {/* Results Summary */}
             <div className="px-5 lg:px-8 mt-6" data-wr-reveal>
-              <div className="flex flex-wrap items-center gap-5 font-mono text-[11px] uppercase tracking-[0.15em] text-[#666] py-3 border-t border-[#333]/10">
+              <div className="flex flex-wrap items-center gap-5 font-mono text-[11px] uppercase tracking-[0.15em] text-[#aaa] py-3 border-t border-[#333]/10">
                 <span className="flex items-center gap-1.5">
-                  <span className="w-1 h-1 bg-[#d4f000]/25 rounded-full" />
+                  <span className="w-1 h-1 bg-[#d4f000]/45 rounded-full" />
                   {data?.totalVoters ?? 0} WALLETS
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <span className="w-1 h-1 bg-[#d4f000]/25 rounded-full" />
+                  <span className="w-1 h-1 bg-[#d4f000]/45 rounded-full" />
                   {formatWeight(data?.totalWeight ?? 0)} TOTAL VOTES
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <span className="w-1 h-1 bg-[#ff9e9e]/20 rounded-full" />
+                  <span className="w-1 h-1 bg-[#ff9e9e]/40 rounded-full" />
                   1 BRAIN = 1 VOTE
                 </span>
               </div>

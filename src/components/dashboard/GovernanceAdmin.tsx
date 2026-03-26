@@ -28,7 +28,7 @@ function ResultsTable({ candidates, totalWeight }: { candidates: CandidateWithTa
 
   return (
     <div className="border border-[#333]/15 divide-y divide-[#333]/10">
-      <div className="grid grid-cols-4 gap-2 px-4 py-2 font-mono text-[9px] uppercase tracking-[0.2em] text-[#555]">
+      <div className="grid grid-cols-4 gap-2 px-4 py-2 font-mono text-[9px] uppercase tracking-[0.2em] text-[#999]">
         <span>TOKEN</span>
         <span className="text-right">WALLETS</span>
         <span className="text-right">WEIGHT</span>
@@ -39,12 +39,12 @@ function ResultsTable({ candidates, totalWeight }: { candidates: CandidateWithTa
         return (
           <div
             key={c.id}
-            className={`grid grid-cols-4 gap-2 px-4 py-2.5 font-mono text-[11px] ${i === 0 && c.voteWeight > 0 ? 'bg-[#d4f000]/[0.03] text-white' : 'text-[#888]'}`}
+            className={`grid grid-cols-4 gap-2 px-4 py-2.5 font-mono text-[11px] ${i === 0 && c.voteWeight > 0 ? 'bg-[#d4f000]/[0.03] text-white' : 'text-[#bbb]'}`}
           >
             <span className="font-bold tracking-wide">{c.symbol}</span>
             <span className="text-right tabular-nums">{c.voteCount}</span>
             <span className="text-right tabular-nums">{formatWeight(c.voteWeight)}</span>
-            <span className="text-right tabular-nums text-[#d4f000]/60">{pct.toFixed(1)}%</span>
+            <span className="text-right tabular-nums text-[#d4f000]/80">{pct.toFixed(1)}%</span>
           </div>
         )
       })}
@@ -107,10 +107,10 @@ function NewRoundForm({
 
   return (
     <div className="space-y-4">
-      <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#999] font-bold flex items-center gap-3">
-        <span className="text-[#d4f000]/50 text-[12px]">◆</span>
+      <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#ccc] font-bold flex items-center gap-3">
+        <span className="text-[#d4f000]/70 text-[12px]">◆</span>
         <span>DEPLOY NEW ROUND</span>
-        <div className="flex-1 h-px bg-gradient-to-r from-[#d4f000]/30 to-transparent" />
+        <div className="flex-1 h-px bg-gradient-to-r from-[#d4f000]/50 to-transparent" />
       </div>
 
       {/* Title */}
@@ -119,23 +119,23 @@ function NewRoundForm({
         placeholder="Round title (optional)"
         value={title}
         onChange={e => setTitle(e.target.value)}
-        className="w-full bg-transparent border border-[#333]/20 px-3 py-2 font-mono text-[11px] text-[#888] placeholder-[#444] focus:border-[#d4f000]/30 focus:outline-none transition-colors"
+        className="w-full bg-transparent border border-[#333]/20 px-3 py-2 font-mono text-[11px] text-[#bbb] placeholder-[#666] focus:border-[#d4f000]/30 focus:outline-none transition-colors"
       />
 
       {/* Mint inputs */}
       <div className="space-y-2">
         {mints.map((mint, i) => (
           <div key={i} className="flex items-center gap-2">
-            <span className="font-mono text-[10px] text-[#555] w-3">{i + 1}</span>
+            <span className="font-mono text-[10px] text-[#999] w-3">{i + 1}</span>
             <input
               type="text"
               placeholder={`Token mint address ${i + 1}${i >= 2 ? ' (optional)' : ''}`}
               value={mint}
               onChange={e => updateMint(i, e.target.value)}
-              className="flex-1 bg-transparent border border-[#333]/20 px-3 py-1.5 font-mono text-[10px] text-[#888] placeholder-[#444] focus:border-[#d4f000]/30 focus:outline-none transition-colors"
+              className="flex-1 bg-transparent border border-[#333]/20 px-3 py-1.5 font-mono text-[10px] text-[#bbb] placeholder-[#666] focus:border-[#d4f000]/30 focus:outline-none transition-colors"
             />
             {resolvedTokens.find(t => t.mint === mint) && (
-              <span className="font-mono text-[10px] text-[#d4f000]/60 font-bold min-w-[60px]">
+              <span className="font-mono text-[10px] text-[#d4f000]/80 font-bold min-w-[60px]">
                 {resolvedTokens.find(t => t.mint === mint)?.symbol}
               </span>
             )}
@@ -154,7 +154,7 @@ function NewRoundForm({
 
       {/* Duration selector */}
       <div className="flex items-center gap-2">
-        <span className="font-mono text-[10px] text-[#555] tracking-wide">DURATION:</span>
+        <span className="font-mono text-[10px] text-[#999] tracking-wide">DURATION:</span>
         {DURATIONS.map(d => (
           <button
             key={d.seconds}
@@ -162,7 +162,7 @@ function NewRoundForm({
             className={`font-mono text-[10px] px-2 py-1 border transition-all duration-200 ${
               duration === d.seconds
                 ? 'border-[#d4f000]/30 text-[#d4f000] bg-[#d4f000]/[0.05]'
-                : 'border-[#333]/15 text-[#555] hover:border-[#555]/30'
+                : 'border-[#333]/15 text-[#999] hover:border-[#555]/30'
             }`}
           >
             {d.label}
@@ -243,11 +243,11 @@ export default function GovernanceAdmin() {
       <div className="relative z-10 px-5 lg:px-8">
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-6 h-px bg-[#ff9e9e]/50" />
-          <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#ff9e9e]/80 font-bold">
+          <div className="w-6 h-px bg-[#ff9e9e]/70" />
+          <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#ff9e9e] font-bold">
             ADMIN CONTROL
           </div>
-          <div className="w-6 h-px bg-[#ff9e9e]/50" />
+          <div className="w-6 h-px bg-[#ff9e9e]/70" />
         </div>
 
         {!authenticated ? (
@@ -260,7 +260,7 @@ export default function GovernanceAdmin() {
                 value={passwordInput}
                 onChange={e => setPasswordInput(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && handleAuth()}
-                className="flex-1 bg-transparent border border-[#333]/20 px-3 py-2 font-mono text-[11px] text-[#888] placeholder-[#444] focus:border-[#ff9e9e]/30 focus:outline-none transition-colors"
+                className="flex-1 bg-transparent border border-[#333]/20 px-3 py-2 font-mono text-[11px] text-[#bbb] placeholder-[#666] focus:border-[#ff9e9e]/30 focus:outline-none transition-colors"
               />
               <button onClick={handleAuth} className="wr-vote-btn border-[#ff9e9e]/20 text-[#ff9e9e]/70 hover:border-[#ff9e9e]/40 hover:text-[#ff9e9e]">
                 AUTHENTICATE
@@ -281,11 +281,11 @@ export default function GovernanceAdmin() {
                     <div className="font-mono text-[12px] text-white font-bold tracking-wide">
                       {data.round.title}
                     </div>
-                    <div className="font-mono text-[10px] text-[#555] mt-1">
+                    <div className="font-mono text-[10px] text-[#999] mt-1">
                       Status: <span className={data.round.status === 'active' ? 'text-[#d4f000]' : 'text-[#ff9e9e]'}>{data.round.status.toUpperCase()}</span>
-                      <span className="mx-2 text-[#333]">·</span>
+                      <span className="mx-2 text-[#888]">·</span>
                       {data.totalVoters} voters
-                      <span className="mx-2 text-[#333]">·</span>
+                      <span className="mx-2 text-[#888]">·</span>
                       {formatWeight(data.totalWeight)} weight
                     </div>
                   </div>
@@ -304,7 +304,7 @@ export default function GovernanceAdmin() {
                 <ResultsTable candidates={data.candidates} totalWeight={data.totalWeight} />
               </div>
             ) : (
-              <div className="font-mono text-[11px] text-[#555] tracking-wide">
+              <div className="font-mono text-[11px] text-[#999] tracking-wide">
                 NO ACTIVE ROUND
               </div>
             )}
@@ -320,7 +320,7 @@ export default function GovernanceAdmin() {
                 setPasswordInput('')
                 sessionStorage.removeItem('gov-admin')
               }}
-              className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#555] hover:text-[#ff9e9e] transition-colors"
+              className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#999] hover:text-[#ff9e9e] transition-colors"
             >
               DISCONNECT ADMIN
             </button>

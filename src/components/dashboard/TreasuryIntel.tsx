@@ -28,7 +28,7 @@ function formatSol(n: number): string {
 }
 
 function formatGainLoss(pct: number | undefined): { text: string; colorClass: string } {
-  if (pct === undefined) return { text: '—', colorClass: 'text-[#666]' }
+  if (pct === undefined) return { text: '—', colorClass: 'text-[#aaa]' }
   const sign = pct >= 0 ? '+' : ''
   return { text: `${sign}${pct.toFixed(2)}%`, colorClass: pct >= 0 ? 'text-[#d4f000]' : 'text-[#ff9e9e]' }
 }
@@ -207,11 +207,11 @@ function PortfolioAllocationRing({
       {/* Subtle glow behind chart */}
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_50%_at_50%_60%,rgba(212,240,0,0.015),transparent_70%)]" />
 
-      <div className="relative font-mono text-[11px] uppercase tracking-[0.25em] text-[#999] font-bold mb-6 flex items-center gap-3 wr-sub-header">
-        <span className="text-[#d4f000]/50 text-[12px] wr-sub-diamond">◆</span>
+      <div className="relative font-mono text-[11px] uppercase tracking-[0.25em] text-[#ccc] font-bold mb-6 flex items-center gap-3 wr-sub-header">
+        <span className="text-[#d4f000]/70 text-[12px] wr-sub-diamond">◆</span>
         <span>PORTFOLIO ALLOCATION</span>
-        <div className="flex-1 h-px bg-gradient-to-r from-[#555]/40 to-transparent" />
-        <span className="text-[#333]">BREAKDOWN</span>
+        <div className="flex-1 h-px bg-gradient-to-r from-[#888]/50 to-transparent" />
+        <span className="text-[#888]">BREAKDOWN</span>
       </div>
 
       {isLoading ? (
@@ -220,7 +220,7 @@ function PortfolioAllocationRing({
         </div>
       ) : slices.length === 0 ? (
         <div className="h-[240px] flex flex-col items-center justify-center gap-3">
-          <span className="text-[#666] font-mono text-[12px] tracking-[0.2em]">NO HOLDINGS DATA</span>
+          <span className="text-[#aaa] font-mono text-[12px] tracking-[0.2em]">NO HOLDINGS DATA</span>
         </div>
       ) : (
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
@@ -289,7 +289,7 @@ function PortfolioAllocationRing({
                   <div className="font-mono text-[12px] text-white font-bold truncate leading-tight">
                     {slice.symbol}
                   </div>
-                  <div className="font-mono text-[12px] text-[#555] truncate leading-tight">
+                  <div className="font-mono text-[12px] text-[#999] truncate leading-tight">
                     {slice.name}
                   </div>
                 </div>
@@ -309,7 +309,7 @@ function PortfolioAllocationRing({
                   {slice.pct.toFixed(1)}%
                 </div>
                 {/* Value */}
-                <div className="font-mono text-[11px] text-[#666] tabular-nums w-20 text-right hidden md:block">
+                <div className="font-mono text-[11px] text-[#aaa] tabular-nums w-20 text-right hidden md:block">
                   {formatUsd(slice.valueUsd)}
                 </div>
               </div>
@@ -413,10 +413,10 @@ function TreasuryValueChart({
     <div className="px-5 lg:px-8 py-6 relative border-t border-[#333]/10">
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_50%_at_50%_60%,rgba(212,240,0,0.01),transparent_70%)]" />
 
-      <div className="relative font-mono text-[11px] uppercase tracking-[0.25em] text-[#999] font-bold mb-5 flex items-center gap-3 wr-sub-header">
-        <span className="text-[#d4f000]/50 text-[12px] wr-sub-diamond">◆</span>
+      <div className="relative font-mono text-[11px] uppercase tracking-[0.25em] text-[#ccc] font-bold mb-5 flex items-center gap-3 wr-sub-header">
+        <span className="text-[#d4f000]/70 text-[12px] wr-sub-diamond">◆</span>
         <span>TREASURY VALUE OVER TIME</span>
-        <div className="flex-1 h-px bg-gradient-to-r from-[#555]/40 to-transparent" />
+        <div className="flex-1 h-px bg-gradient-to-r from-[#888]/50 to-transparent" />
         {/* P&L summary inline */}
         <span className={`tabular-nums font-black ${isUp ? 'text-[#d4f000]' : 'text-[#ff9e9e]'}`}>
           {isUp ? '▲' : '▼'} {isUp ? '+' : ''}{formatUsd(pnl.pnlUsd)} ({pnl.pnlPct >= 0 ? '+' : ''}{pnl.pnlPct.toFixed(1)}%)
@@ -474,7 +474,7 @@ function TreasuryValueChart({
                   <div className="bg-[#0d0d0d] border border-[#333]/30 px-4 py-3 font-mono text-xs rounded shadow-xl">
                     <div className="flex items-center gap-2 mb-2">
                       <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: isUp ? '#d4f000' : '#ff9e9e', boxShadow: `0 0 4px ${isUp ? '#d4f000' : '#ff9e9e'}` }} />
-                      <span className="text-[#666] text-[12px] uppercase tracking-[0.2em] font-bold">{label}</span>
+                      <span className="text-[#aaa] text-[12px] uppercase tracking-[0.2em] font-bold">{label}</span>
                     </div>
                     <div className={`font-black text-lg tabular-nums ${isUp ? 'text-[#d4f000]' : 'text-[#ff9e9e]'}`}>
                       {formatUsd(val)}
@@ -541,8 +541,8 @@ function SummaryCell({
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#d4f000]/0 group-hover/cell:bg-[#d4f000]/15 transition-colors duration-300" />
       {/* Hover accent bottom gradient */}
       <div className="absolute bottom-0 left-[5%] right-[5%] h-px bg-[#d4f000]/0 group-hover/cell:bg-[#d4f000]/10 transition-colors duration-500" />
-      <div className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#999] mb-2 font-bold group-hover/cell:text-[#d4f000]/80 transition-colors flex items-center gap-1.5">
-        <span className="text-[#d4f000]/50 text-[11px] group-hover/cell:text-[#d4f000]/80 transition-colors" aria-hidden="true">◆</span>
+      <div className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#ccc] mb-2 font-bold group-hover/cell:text-[#d4f000]/300 transition-colors flex items-center gap-1.5">
+        <span className="text-[#d4f000]/70 text-[11px] group-hover/cell:text-[#d4f000]/300 transition-colors" aria-hidden="true">◆</span>
         {label}
       </div>
       <div ref={valueRef} className="font-mono text-xl lg:text-2xl font-black text-white tabular-nums leading-none">
@@ -634,25 +634,25 @@ function ClassifiedCard({ mint }: { mint: string }) {
         </div>
 
         <div className="relative">
-          <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#444] mb-3 font-bold flex items-center gap-2">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[#ff9e9e]/15">
+          <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#999] mb-3 font-bold flex items-center gap-2">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[#ff9e9e]/65">
               <rect x="3" y="11" width="18" height="11" rx="2" />
               <path d="M7 11V7a5 5 0 0110 0v4" />
             </svg>
             ASSET #{mint.slice(0, 8)}
           </div>
-          <div className="text-xl font-black text-[#1a1a1a] tracking-[0.15em] select-none flicker mb-1 leading-none group-hover/classified:text-[#222] transition-colors duration-700">
+          <div className="text-xl font-black text-[#555] tracking-[0.15em] select-none flicker mb-1 leading-none group-hover/classified:text-[#222] transition-colors duration-700">
             ████████████████
           </div>
           {/* Peek reveal — faded mint on hover */}
-          <div className="font-mono text-[11px] text-[#333]/30 mb-4 truncate wr-peek-reveal">
+          <div className="font-mono text-[11px] text-[#888]/30 mb-4 truncate wr-peek-reveal">
             {mint}
           </div>
           <div className="flex items-center gap-2.5 mb-4">
-            <div className="wr-tag wr-tag-glow border-[#ff9e9e]/20 text-[#ff9e9e]/40">
+            <div className="wr-tag wr-tag-glow border-[#ff9e9e]/20 text-[#ff9e9e]/65">
               CLASSIFIED
             </div>
-            <div className="wr-tag wr-tag-glow border-[#333]/25 text-[#333]">
+            <div className="wr-tag wr-tag-glow border-[#333]/25 text-[#888]">
               REDACTED
             </div>
           </div>
@@ -661,7 +661,7 @@ function ClassifiedCard({ mint }: { mint: string }) {
               href={`https://solscan.io/token/${mint}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-[11px] text-[#d4f000]/40 hover:text-[#d4f000] transition-all duration-200 wr-link-hover flex items-center gap-1 group/link"
+              className="font-mono text-[11px] text-[#d4f000]/65 hover:text-[#d4f000] transition-all duration-200 wr-link-hover flex items-center gap-1 group/link"
             >
               SOLSCAN
               <span className="text-[11px] opacity-40 group-hover/link:opacity-100 transition-opacity">↗</span>
@@ -760,7 +760,7 @@ function HoldingCard({
           </span>
           {holding.gainLossPct !== undefined && (
             <span className={`text-[11px] font-bold font-mono uppercase tracking-[0.2em] transition-opacity duration-300 ${
-              holding.gainLossPct >= 0 ? 'text-[#d4f000]/30 group-hover/card:text-[#d4f000]/50' : 'text-[#ff9e9e]/30 group-hover/card:text-[#ff9e9e]/50'
+              holding.gainLossPct >= 0 ? 'text-[#d4f000]/55 group-hover/card:text-[#d4f000]/70' : 'text-[#ff9e9e]/55 group-hover/card:text-[#ff9e9e]/80'
             }`}>
               {holding.gainLossPct > 5 ? '▲ RISING' : holding.gainLossPct < -5 ? '▼ DECLINING' : '● STABLE'}
             </span>
@@ -772,7 +772,7 @@ function HoldingCard({
       <div className="flex items-center gap-2 mb-4 pl-2">
         <button
           onClick={handleCopy}
-          className="font-mono text-[12px] text-[#444] hover:text-[#d4f000] transition-all duration-200 flex items-center gap-1.5 group/copy active:scale-95"
+          className="font-mono text-[12px] text-[#999] hover:text-[#d4f000] transition-all duration-200 flex items-center gap-1.5 group/copy active:scale-95"
           title="Copy full address"
         >
           <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor" className="opacity-40 group-hover/copy:opacity-100 group-hover/copy:drop-shadow-[0_0_3px_rgba(212,240,0,0.2)] transition-all duration-200">
@@ -796,8 +796,8 @@ function HoldingCard({
           { label: 'P&L (%)', value: holding.gainLossPct !== undefined ? `${holding.gainLossPct >= 0 ? '+' : ''}${holding.gainLossPct.toFixed(1)}%` : '—', highlight: false, color: holding.gainLossPct !== undefined ? (holding.gainLossPct >= 0 ? 'text-[#d4f000]' : 'text-[#ff9e9e]') : '' },
         ].map(({ label, value, highlight, color }, i) => (
           <div key={label} className={`py-2.5 relative wr-data-cell ${i >= 2 ? 'border-t border-[#333]/8' : ''}`}>
-            <div className="uppercase tracking-[0.15em] text-[#444] mb-1 font-bold font-mono flex items-center gap-1.5">
-              <span className="text-[#d4f000]/8 text-[12px] group-hover/card:text-[#d4f000]/20 transition-colors duration-300">▸</span>
+            <div className="uppercase tracking-[0.15em] text-[#999] mb-1 font-bold font-mono flex items-center gap-1.5">
+              <span className="text-[#d4f000]/30 text-[12px] group-hover/card:text-[#d4f000]/20 transition-colors duration-300">▸</span>
               {label}
             </div>
             <div className={`tabular-nums font-bold font-mono wr-data-cell-value ${color || (highlight ? 'text-[#d4f000] wr-value-highlight' : 'text-white')}`}>{value}</div>
@@ -809,8 +809,8 @@ function HoldingCard({
       {holding.description && (
         <div className="relative border-t border-[#333]/15 pt-3 pl-4 mb-3 wr-desc-accent rounded-b-sm">
           <div className="absolute top-3 left-0 w-[1px] h-[calc(100%-16px)] bg-gradient-to-b from-[#d4f000]/20 via-[#d4f000]/10 to-transparent" />
-          <div className="text-[#5a5a5a] text-[12px] italic leading-normal font-mono tracking-wide wr-desc-clamp group-hover/card:text-[#666] transition-colors duration-300">
-            <span className="text-[#d4f000]/18 not-italic group-hover/card:text-[#d4f000]/45 transition-colors duration-300">&ldquo;</span>{holding.description}<span className="text-[#d4f000]/18 not-italic group-hover/card:text-[#d4f000]/45 transition-colors duration-300">&rdquo;</span>
+          <div className="text-[#aaa] text-[12px] italic leading-normal font-mono tracking-wide wr-desc-clamp group-hover/card:text-[#aaa] transition-colors duration-300">
+            <span className="text-[#d4f000]/45 not-italic group-hover/card:text-[#d4f000]/45 transition-colors duration-300">&ldquo;</span>{holding.description}<span className="text-[#d4f000]/45 not-italic group-hover/card:text-[#d4f000]/45 transition-colors duration-300">&rdquo;</span>
           </div>
         </div>
       )}
@@ -833,7 +833,7 @@ function HoldingCard({
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-[11px] text-[#d4f000]/50 hover:text-[#d4f000] transition-all duration-200 wr-link-hover wr-arrow-hover flex items-center gap-1 group/link"
+            className="font-mono text-[11px] text-[#d4f000]/70 hover:text-[#d4f000] transition-all duration-200 wr-link-hover wr-arrow-hover flex items-center gap-1 group/link"
             style={{ transitionDelay: `${i * 50}ms` }}
           >
             {label}
@@ -853,17 +853,17 @@ function DivestedSection() {
 
   return (
     <div className="px-5 lg:px-8 py-6 border-t border-[#333]/10 wr-divested-gradient">
-      <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#666] font-bold mb-4 flex items-center gap-3 wr-sub-header">
-        <span className="text-[#ff9e9e]/30 text-[12px] wr-sub-diamond">◆</span>
-        <span className="text-[#ff9e9e]/50">DIVESTED ASSETS</span>
+      <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#aaa] font-bold mb-4 flex items-center gap-3 wr-sub-header">
+        <span className="text-[#ff9e9e]/55 text-[12px] wr-sub-diamond">◆</span>
+        <span className="text-[#ff9e9e]/80">DIVESTED ASSETS</span>
         <div className="flex-1 h-px bg-gradient-to-r from-[#ff9e9e]/10 to-transparent" />
         {soldTokens.length > 0 && (
-          <span className="text-[#444] tabular-nums">{soldTokens.length} EXITED</span>
+          <span className="text-[#999] tabular-nums">{soldTokens.length} EXITED</span>
         )}
       </div>
       {soldTokens.length === 0 ? (
         <div className="text-center py-6">
-          <span className="text-[#333]/80 font-mono text-xs tracking-[0.25em]">
+          <span className="text-[#888]/80 font-mono text-xs tracking-[0.25em]">
             NO DIVESTED POSITIONS RECORDED
           </span>
         </div>
@@ -873,9 +873,9 @@ function DivestedSection() {
             <thead>
               <tr className="border-b border-[#ff9e9e]/10 relative">
                 {['TOKEN', 'SOLD DATE', 'AMOUNT', 'STATUS'].map((h, i) => (
-                  <th key={h} scope="col" className="text-left uppercase tracking-[0.15em] text-[#444] pb-2.5 pr-6 font-bold text-[11px]">
+                  <th key={h} scope="col" className="text-left uppercase tracking-[0.15em] text-[#999] pb-2.5 pr-6 font-bold text-[11px]">
                     <span className="flex items-center gap-1.5">
-                      {i === 0 && <span className="text-[#ff9e9e]/15 text-[12px]" aria-hidden="true">◆</span>}
+                      {i === 0 && <span className="text-[#ff9e9e]/65 text-[12px]" aria-hidden="true">◆</span>}
                       {h}
                     </span>
                   </th>
@@ -891,10 +891,10 @@ function DivestedSection() {
                       <span className="text-[#ff9e9e]/80 font-black uppercase">{h.symbol}</span>
                     </span>
                   </td>
-                  <td className="py-3.5 pr-6 text-[#666] tabular-nums">
+                  <td className="py-3.5 pr-6 text-[#aaa] tabular-nums">
                     {h.soldDate ? format(fromUnixTime(h.soldDate), 'yyyy-MM-dd') : '—'}
                   </td>
-                  <td className="py-3.5 pr-6 text-[#555] tabular-nums">
+                  <td className="py-3.5 pr-6 text-[#999] tabular-nums">
                     {h.soldAmount !== undefined
                       ? h.soldAmount.toLocaleString(undefined, { maximumFractionDigits: 4 })
                       : '—'}
@@ -961,12 +961,12 @@ export default function TreasuryIntel() {
       </div>
 
       {/* Section header */}
-      <div className="px-5 lg:px-8 py-6 border-b border-[#d4f000]/25 wr-brackets wr-header-line text-[#d4f000] wr-glass">
+      <div className="px-5 lg:px-8 py-6 border-b border-[#d4f000]/40 wr-brackets wr-header-line text-[#d4f000] wr-glass">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-4">
             <div className="w-1.5 bg-[#d4f000] wr-accent-bar wr-accent-bar-pulse" style={{ boxShadow: '0 0 8px rgba(212,240,0,0.5)' }} />
             <div>
-              <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#999] font-bold mb-1 wr-section-num">
+              <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#ccc] font-bold mb-1 wr-section-num">
                 SECTION 01
               </div>
               <h2 className="text-xl md:text-2xl font-black uppercase tracking-tight text-white font-sans wr-cursor">
@@ -976,12 +976,12 @@ export default function TreasuryIntel() {
           </div>
           <div className="flex items-center gap-3">
             {dataUpdatedAt > 0 && (
-              <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-[#333] hover:text-[#555] tabular-nums hidden md:inline flex items-center gap-1.5 transition-colors duration-300 cursor-default">
+              <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-[#888] hover:text-[#999] tabular-nums hidden md:inline flex items-center gap-1.5 transition-colors duration-300 cursor-default">
                 <span className="wr-data-dot" />
                 {new Date(dataUpdatedAt).toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })} UTC
               </span>
             )}
-            <div className="wr-tag wr-tag-glow border-[#d4f000]/35 text-[#d4f000]/80">
+            <div className="wr-tag wr-tag-glow border-[#d4f000]/50 text-[#d4f000]/300">
               TS/SCI
             </div>
           </div>
@@ -1017,7 +1017,7 @@ export default function TreasuryIntel() {
             <SummaryCell label="W / L Ratio" isLoading={isLoading} isError={isError}>
               <span className="flex items-center gap-2">
                 <span className="text-[#d4f000]">{pnl?.wins ?? 0}W</span>
-                <span className="text-[#555]">/</span>
+                <span className="text-[#999]">/</span>
                 <span className="text-[#ff9e9e]">{pnl?.losses ?? 0}L</span>
               </span>
             </SummaryCell>
@@ -1025,7 +1025,7 @@ export default function TreasuryIntel() {
               <span className="flex items-center gap-2">
                 {data?.holdings.length ?? 0}
                 {!isLoading && data && data.holdings.length > 0 && (
-                  <span className="text-[12px] text-[#d4f000]/40 font-mono font-bold px-1.5 py-0.5 bg-[#d4f000]/[0.04] border border-[#d4f000]/10 rounded-sm wr-count-badge">
+                  <span className="text-[12px] text-[#d4f000]/65 font-mono font-bold px-1.5 py-0.5 bg-[#d4f000]/[0.04] border border-[#d4f000]/10 rounded-sm wr-count-badge">
                     LIVE
                   </span>
                 )}
@@ -1037,12 +1037,12 @@ export default function TreasuryIntel() {
 
       {/* Holdings grid */}
       <div className="px-5 lg:px-8 py-6">
-        <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#999] font-bold mb-5 flex items-center gap-3 wr-sub-header">
-          <span className="text-[#d4f000]/50 text-[12px] wr-sub-diamond">◆</span>
+        <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#ccc] font-bold mb-5 flex items-center gap-3 wr-sub-header">
+          <span className="text-[#d4f000]/70 text-[12px] wr-sub-diamond">◆</span>
           <span>ACTIVE POSITIONS</span>
-          <div className="flex-1 h-px bg-gradient-to-r from-[#555]/40 to-transparent" />
+          <div className="flex-1 h-px bg-gradient-to-r from-[#888]/50 to-transparent" />
           {!isLoading && data && (
-            <span className="text-[#d4f000]/40 tabular-nums">{data.holdings.length} ASSETS</span>
+            <span className="text-[#d4f000]/65 tabular-nums">{data.holdings.length} ASSETS</span>
           )}
         </div>
         <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-3">

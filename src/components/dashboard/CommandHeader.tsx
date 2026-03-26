@@ -124,15 +124,15 @@ function DataCell({
       {/* Hover accent line at top */}
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-[#d4f000]/60 to-[#d4f000]/12 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
       {/* Corner index indicator */}
-      <div className="absolute top-1.5 right-2 font-mono text-[12px] text-[#333]/20 tabular-nums opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <div className="absolute top-1.5 right-2 font-mono text-[12px] text-[#555]/40 tabular-nums opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         {String(index + 1).padStart(2, '0')}
       </div>
 
       {/* Subtle bottom glow on hover */}
       <div className="absolute bottom-0 left-[10%] right-[10%] h-px bg-[#d4f000]/0 group-hover:bg-[#d4f000]/[0.04] transition-colors duration-500" />
 
-      <div className="font-mono text-[12px] uppercase tracking-[0.22em] text-[#999] mb-2 font-bold group-hover:text-[#d4f000]/80 transition-colors duration-300 flex items-center gap-1.5">
-        <span className="text-[#d4f000]/50 text-[11px] group-hover:text-[#d4f000]/80 transition-colors">◆</span>
+      <div className="font-mono text-[12px] uppercase tracking-[0.22em] text-[#ccc] mb-2 font-bold group-hover:text-[#d4f000] transition-colors duration-300 flex items-center gap-1.5">
+        <span className="text-[#d4f000]/70 text-[11px] group-hover:text-[#d4f000] transition-colors">◆</span>
         {label}
       </div>
       <div className="font-mono text-sm md:text-lg font-black text-white tabular-nums leading-none group-hover:drop-shadow-[0_0_12px_rgba(212,240,0,0.12)] transition-all duration-300">
@@ -163,11 +163,11 @@ function LiveClock() {
 
   return (
     <div className="flex items-center gap-2">
-      <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#666] tabular-nums hidden md:inline">
+      <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#aaa] tabular-nums hidden md:inline">
         {date}
       </span>
-      <span className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#777] tabular-nums">
-        {parts[0]}<span className="wr-colon-blink">:</span>{parts[1]}<span className="wr-colon-blink">:</span>{parts[2]} <span className="text-[#555]">UTC</span>
+      <span className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#bbb] tabular-nums">
+        {parts[0]}<span className="wr-colon-blink">:</span>{parts[1]}<span className="wr-colon-blink">:</span>{parts[2]} <span className="text-[#999]">UTC</span>
       </span>
     </div>
   )
@@ -250,22 +250,22 @@ export default function CommandHeader() {
     : 'text-white'
 
   return (
-    <header ref={headerRef} className="relative w-full bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-[#d4f000]/25 overflow-hidden">
+    <header ref={headerRef} className="relative w-full bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-[#d4f000]/40 overflow-hidden">
       {/* Ambient mesh glow — warmer, more visible */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: 'radial-gradient(ellipse 40% 60% at 20% 50%, rgba(212, 240, 0, 0.04), transparent 70%), radial-gradient(ellipse 30% 50% at 80% 50%, rgba(255, 158, 158, 0.025), transparent 70%)',
       }} />
       {/* Top gradient accent line — bold lime */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#d4f000]/25 via-[#d4f000]/65 to-[#ff9e9e]/30 z-10" />
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#d4f000]/40 via-[#d4f000]/80 to-[#ff9e9e]/50 z-10" />
       {/* Bottom gradient accent line */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/25 to-transparent z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4f000]/40 to-transparent z-10" />
 
       {/* Top bar */}
-      <div className="flex justify-between items-center px-5 lg:px-8 py-2.5 border-b border-[#333]/30">
+      <div className="flex justify-between items-center px-5 lg:px-8 py-2.5 border-b border-[#333]/40">
         <div className="flex items-center gap-4">
           <Link
             href="/"
-            className="flex items-center gap-1.5 px-2.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-[#666] hover:text-[#d4f000] border border-[#333]/20 hover:border-[#d4f000]/30 transition-all duration-300 rounded-sm group/back hover:bg-[#d4f000]/[0.03]"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-[#aaa] hover:text-[#d4f000] border border-[#333]/30 hover:border-[#d4f000]/40 transition-all duration-300 rounded-sm group/back hover:bg-[#d4f000]/[0.05]"
           >
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="group-hover/back:drop-shadow-[0_0_4px_rgba(212,240,0,0.3)] transition-all">
               <path d="M19 12H5" />
@@ -273,33 +273,33 @@ export default function CommandHeader() {
             </svg>
             <span className="hidden sm:inline">Back</span>
           </Link>
-          <div className="w-px h-3 bg-gradient-to-b from-transparent via-[#333]/30 to-transparent" />
+          <div className="w-px h-3 bg-gradient-to-b from-transparent via-[#333]/50 to-transparent" />
           <div className="flex items-center gap-2 group/logo cursor-default">
             <div className="w-2 h-2 bg-[#d4f000] shadow-[0_0_6px_#d4f000,0_0_12px_rgba(212,240,0,0.25)] transition-shadow duration-300 group-hover/logo:shadow-[0_0_10px_#d4f000,0_0_24px_rgba(212,240,0,0.4)]" />
             <div className="font-mono text-[12px] uppercase tracking-[0.3em] text-[#d4f000] font-black transition-all duration-300 drop-shadow-[0_0_8px_rgba(212,240,0,0.2)] wr-logo-pulse">
               $BRAIN
             </div>
           </div>
-          <div className="w-px h-3 bg-gradient-to-b from-transparent via-[#333]/40 to-transparent" />
-          <div className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#888] font-medium flex items-center gap-2">
+          <div className="w-px h-3 bg-gradient-to-b from-transparent via-[#333]/50 to-transparent" />
+          <div className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#bbb] font-medium flex items-center gap-2">
             <span>War Room</span>
-            <span className="w-1 h-1 bg-[#d4f000]/10 rounded-full hidden sm:block" />
+            <span className="w-1 h-1 bg-[#d4f000]/30 rounded-full hidden sm:block" />
           </div>
-          <div className="hidden md:block w-px h-3 bg-[#333]/30" />
-          <div className="hidden md:flex md:items-center md:gap-2 font-mono text-[12px] uppercase tracking-[0.2em] text-[#666]">
+          <div className="hidden md:block w-px h-3 bg-[#333]/40" />
+          <div className="hidden md:flex md:items-center md:gap-2 font-mono text-[12px] uppercase tracking-[0.2em] text-[#aaa]">
             <span>Intelligence Dashboard</span>
-            <span className="text-[#d4f000]/18 font-black px-1.5 py-0.5 bg-[#d4f000]/[0.025] border border-[#d4f000]/[0.05] text-[11px] tracking-[0.1em]">v2.0</span>
+            <span className="text-[#d4f000]/40 font-black px-1.5 py-0.5 bg-[#d4f000]/[0.06] border border-[#d4f000]/[0.12] text-[11px] tracking-[0.1em]">v2.0</span>
           </div>
         </div>
         <div className="flex items-center gap-4">
           <LiveClock />
-          <div className="w-px h-4 bg-gradient-to-b from-transparent via-[#333]/25 to-transparent" />
+          <div className="w-px h-4 bg-gradient-to-b from-transparent via-[#333]/40 to-transparent" />
           <LiveIndicator status={status} />
         </div>
       </div>
 
       {/* Data grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 divide-x divide-[#333]/12 wr-header-grid-glow" role="region" aria-label="Live price data" aria-live="polite">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 divide-x divide-[#333]/20 wr-header-grid-glow" role="region" aria-label="Live price data" aria-live="polite">
         <DataCell label="Price (USD)" index={0}>
           {isLoading ? (
             <div className="wr-skeleton h-5 w-24" style={{ animationDelay: '0ms' }} />
@@ -337,7 +337,7 @@ export default function CommandHeader() {
           ) : data?.marketCap != null ? (
             formatUsd(data.marketCap)
           ) : (
-            <span className="wr-tag border-[#333]/50 text-[#444]">CLASSIFIED</span>
+            <span className="wr-tag border-[#333]/60 text-[#888]">CLASSIFIED</span>
           )}
         </DataCell>
 
@@ -347,7 +347,7 @@ export default function CommandHeader() {
           ) : data?.volume24h != null ? (
             formatUsd(data.volume24h)
           ) : (
-            <span className="wr-tag border-[#333]/50 text-[#444]">CLASSIFIED</span>
+            <span className="wr-tag border-[#333]/60 text-[#888]">CLASSIFIED</span>
           )}
         </DataCell>
       </div>
