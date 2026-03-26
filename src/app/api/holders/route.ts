@@ -1,15 +1,21 @@
 import { NextResponse } from 'next/server'
-import { getTop100Holders } from '@/lib/api/solscan'
+import { getTokenHolders, getTop100Holders } from '@/lib/api/solscan'
 import { getTokenLargestAccounts } from '@/lib/api/helius'
 import { BRAIN_TOKEN_MINT } from '@/lib/constants'
 
 export const revalidate = 300
 
 export async function GET() {
-  // Try Solscan first (full 100 holders)
+  // Try Solscan first (full 100 holders + total count)
   try {
-    const holders = await getTop100Holders(BRAIN_TOKEN_MINT)
-    return NextResponse.json(holders)
+    const [page1, holders] = await Promise.all([
+      getTokenHolders(BRAIN_TOKEN_MINT, 1, 10),
+      getTop100Holders(BRAIN_TOKEN_MINT),
+    ])
+    return NextResponse.json({
+      total: page1.total,
+      items: holders,
+    })
   } catch (err) {
     console.warn('[holders API] Solscan unavailable, falling back to Helius:', err)
   }
@@ -24,7 +30,10 @@ export async function GET() {
       owner: acct.address,
       rank: i + 1,
     }))
-    return NextResponse.json(holders)
+    return NextResponse.json({
+      total: holders.length,
+      items: holders,
+    })
   } catch (err) {
     console.error('[holders API] All sources failed:', err)
     return NextResponse.json(

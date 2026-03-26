@@ -37,6 +37,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# deploy scripts with credentials
+deploy-ftp.mjs
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

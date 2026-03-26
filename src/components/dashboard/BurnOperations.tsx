@@ -69,8 +69,8 @@ function SupplyComparisonRing({
 
   return (
     <div className="px-5 lg:px-8 py-6 border-b border-[#333]/12">
-      <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#666] font-bold mb-5 flex items-center gap-3 wr-sub-header">
-        <span className="text-[#ff6b35]/30 text-[6px] wr-sub-diamond">◆</span>
+      <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#666] font-bold mb-5 flex items-center gap-3 wr-sub-header">
+        <span className="text-[#ff6b35]/30 text-[12px] wr-sub-diamond">◆</span>
         <span>SUPPLY INCINERATION MAP</span>
         <div className="flex-1 h-px bg-gradient-to-r from-[#ff6b35]/20 to-transparent" />
       </div>
@@ -118,7 +118,7 @@ function SupplyComparisonRing({
                 <span className="font-mono text-2xl font-black text-[#ff6b35] tabular-nums wr-fire-text">
                   {burnedPct.toFixed(1)}%
                 </span>
-                <span className="font-mono text-[7px] uppercase tracking-[0.2em] text-[#555] mt-0.5">burned</span>
+                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#555] mt-0.5">burned</span>
               </>
             )}
           </div>
@@ -130,7 +130,7 @@ function SupplyComparisonRing({
           <div className="flex items-center justify-between px-4 py-3 bg-[#111]/60 border border-[#222]/50 rounded-sm">
             <div className="flex items-center gap-2.5">
               <div className="w-2 h-2 rounded-full bg-[#444]" />
-              <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-[#666]">Original Supply</span>
+              <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-[#666]">Original Supply</span>
             </div>
             <span className="font-mono text-sm font-bold text-[#888] tabular-nums">
               {isLoading ? '—' : formatBurnAmount(originalSupply)}
@@ -140,7 +140,7 @@ function SupplyComparisonRing({
           <div className="flex items-center justify-between px-4 py-3 bg-[#ff6b35]/[0.03] border border-[#ff6b35]/10 rounded-sm">
             <div className="flex items-center gap-2.5">
               <div className="w-2 h-2 rounded-full bg-[#ff6b35]" style={{ boxShadow: '0 0 6px rgba(255,107,53,0.4)' }} />
-              <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-[#ff6b35]/80">Incinerated</span>
+              <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-[#ff6b35]/80">Incinerated</span>
             </div>
             <span className="font-mono text-sm font-bold text-[#ff6b35] tabular-nums wr-fire-text">
               {isLoading ? '—' : formatBurnAmount(totalBurned)}
@@ -151,7 +151,7 @@ function SupplyComparisonRing({
             <div className="flex items-center justify-between px-4 py-3 bg-[#ff9e3d]/[0.02] border border-[#ff9e3d]/10 rounded-sm">
               <div className="flex items-center gap-2.5">
                 <div className="w-2 h-2 rounded-full bg-[#ff9e3d]/50 animate-pulse" />
-                <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-[#ff9e3d]/70">Pending Burn</span>
+                <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-[#ff9e3d]/70">Pending Burn</span>
               </div>
               <span className="font-mono text-sm font-bold text-[#ff9e3d]/80 tabular-nums">
                 {formatBurnAmount(burnSourceBalance)}
@@ -162,7 +162,7 @@ function SupplyComparisonRing({
           <div className="flex items-center justify-between px-4 py-3 bg-[#111]/40 border border-[#222]/30 rounded-sm">
             <div className="flex items-center gap-2.5">
               <div className="w-2 h-2 rounded-full bg-[#333]" />
-              <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-[#555]">Circulating</span>
+              <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-[#555]">Circulating</span>
             </div>
             <span className="font-mono text-sm font-bold text-[#666] tabular-nums">
               {isLoading ? '—' : formatBurnAmount(totalSupply)}
@@ -172,7 +172,7 @@ function SupplyComparisonRing({
       </div>
 
       {/* Incinerator address */}
-      <div className="mt-5 flex items-center justify-center gap-2 font-mono text-[8px] text-[#444]">
+      <div className="mt-5 flex items-center justify-center gap-2 font-mono text-[12px] text-[#444]">
         <span className="text-[#ff6b35]/25">●</span>
         <span className="tracking-[0.1em]">INCINERATOR</span>
         <a
@@ -182,7 +182,7 @@ function SupplyComparisonRing({
           className="text-[#555] hover:text-[#ff6b35] transition-colors tabular-nums"
         >
           1nc1nerator...1111
-          <span className="text-[7px] ml-0.5">↗</span>
+          <span className="text-[11px] ml-0.5">↗</span>
         </a>
       </div>
     </div>
@@ -265,7 +265,7 @@ function BurnSummaryBar({
           <span className="text-[#ff6b35]">{formatPct(burnedPct)}</span>
           <span className="text-[#555] mx-2">+</span>
           <span className="text-[#ff6b35]">{LP_LOCKED_PCT}%</span>
-          <span className="text-[#444] text-[8px] ml-1.5 tracking-[0.15em]">LOCKED</span>
+          <span className="text-[#444] text-[12px] ml-1.5 tracking-[0.15em]">LOCKED</span>
         </span>
       ),
     },
@@ -277,8 +277,8 @@ function BurnSummaryBar({
         <div key={label} className="px-5 lg:px-6 py-5 group/cell relative transition-colors duration-300 hover:bg-[#ff6b35]/[0.015] wr-stat-scale">
           {/* Hover accent */}
           <div className="absolute top-0 left-0 right-0 h-px bg-[#ff6b35]/0 group-hover/cell:bg-[#ff6b35]/10 transition-all duration-300 origin-left scale-x-0 group-hover/cell:scale-x-100" />
-          <div className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#555] mb-2 font-bold group-hover/cell:text-[#888] transition-colors flex items-center gap-1.5">
-            <span className="text-[#ff6b35]/20 text-[5px]" aria-hidden="true">◆</span>
+          <div className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#555] mb-2 font-bold group-hover/cell:text-[#888] transition-colors flex items-center gap-1.5">
+            <span className="text-[#ff6b35]/20 text-[11px]" aria-hidden="true">◆</span>
             {label}
           </div>
           <div className="font-mono text-xl lg:text-2xl font-black tabular-nums leading-none">
@@ -317,7 +317,7 @@ function TransactionRow({
   return (
     <div
       ref={rowRef}
-      className="grid grid-cols-[24px_1fr_1fr] md:grid-cols-[24px_1fr_1fr_1.2fr] gap-3 md:gap-4 items-center py-3.5 px-3 md:px-4 wr-row-stripe wr-row-flash wr-row-accent wr-row-glow-intensity border-b border-[#333]/8 font-mono text-[9px] md:text-[10px] transition-colors duration-300 relative"
+      className="grid grid-cols-[24px_1fr_1fr] md:grid-cols-[24px_1fr_1fr_1.2fr] gap-3 md:gap-4 items-center py-3.5 px-3 md:px-4 wr-row-stripe wr-row-flash wr-row-accent wr-row-glow-intensity border-b border-[#333]/8 font-mono text-[11px] md:text-[12px] transition-colors duration-300 relative"
     >
       {/* Burn intensity bar (background) */}
       <div
@@ -326,7 +326,7 @@ function TransactionRow({
       />
       <div className="wr-row-num">{String(index + 1).padStart(2, '0')}</div>
       <div className="text-[#5a5a5a] tabular-nums flex items-center gap-2">
-        <span className="text-[#ff6b35]/35 text-[8px]">●</span>
+        <span className="text-[#ff6b35]/35 text-[12px]">●</span>
         <span className="wr-row-date transition-colors duration-200">{format(fromUnixTime(tx.timestamp), 'yyyy-MM-dd HH:mm')}</span>
       </div>
       <div className="text-[#ff6b35] font-black tabular-nums wr-fire-text">
@@ -340,7 +340,7 @@ function TransactionRow({
           className="text-[#ff6b35]/60 hover:text-[#ff6b35] transition-colors flex items-center gap-1 wr-link-hover"
         >
           <span className="tabular-nums">{tx.txHash.slice(0, 6)}<span className="text-[#333] mx-0.5">···</span>{tx.txHash.slice(-4)}</span>
-          <span className="text-[7px]">↗</span>
+          <span className="text-[11px]">↗</span>
         </a>
         <button
           onClick={() => navigator.clipboard.writeText(tx.txHash)}
@@ -369,13 +369,13 @@ function BurnTransactionsTable({
 }) {
   return (
     <div className="px-5 lg:px-8 py-6">
-      <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#666] font-bold mb-4 flex items-center gap-3 wr-sub-header">
-        <span className="text-[#ff6b35]/30 text-[6px] wr-sub-diamond">◆</span>
+      <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#666] font-bold mb-4 flex items-center gap-3 wr-sub-header">
+        <span className="text-[#ff6b35]/30 text-[12px] wr-sub-diamond">◆</span>
         <span>BURN LEDGER</span>
         <div className="flex-1 h-px bg-gradient-to-r from-[#ff6b35]/20 to-transparent" />
         {!isLoading && !isError && transactions.length > 0 && (
           <span className="text-[#444] tabular-nums flex items-center gap-1.5">
-            <span className="text-[8px] text-[#ff6b35]/40 font-black px-1.5 py-0.5 bg-[#ff6b35]/[0.04] border border-[#ff6b35]/10 rounded-sm">{transactions.length}</span>
+            <span className="text-[12px] text-[#ff6b35]/40 font-black px-1.5 py-0.5 bg-[#ff6b35]/[0.04] border border-[#ff6b35]/10 rounded-sm">{transactions.length}</span>
             RECORDS
           </span>
         )}
@@ -383,13 +383,13 @@ function BurnTransactionsTable({
 
       {/* Table header */}
       <div className="grid grid-cols-[24px_1fr_1fr] md:grid-cols-[24px_1fr_1fr_1.2fr] gap-2 md:gap-3 px-3 md:px-4 pb-2 wr-table-header">
-        <div className="font-mono text-[7px] font-bold uppercase tracking-[0.2em] text-[#333] text-right">#</div>
+        <div className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-[#333] text-right">#</div>
         {['DATE', 'AMOUNT'].map(h => (
-          <div key={h} className="font-mono text-[8px] font-bold uppercase tracking-[0.2em] text-[#444]">
+          <div key={h} className="font-mono text-[12px] font-bold uppercase tracking-[0.2em] text-[#444]">
             {h}
           </div>
         ))}
-        <div className="hidden md:block font-mono text-[8px] font-bold uppercase tracking-[0.2em] text-[#444]">
+        <div className="hidden md:block font-mono text-[12px] font-bold uppercase tracking-[0.2em] text-[#444]">
           TX HASH
         </div>
       </div>
@@ -410,7 +410,7 @@ function BurnTransactionsTable({
             <div className="w-8 h-8 border border-[#ff9e9e]/20 flex items-center justify-center wr-float wr-empty-ring">
               <span className="text-[#ff9e9e]/40 font-mono text-sm">!</span>
             </div>
-            <span className="text-[#ff9e9e]/50 font-mono text-[10px] tracking-[0.25em]">DATA FEED OFFLINE</span>
+            <span className="text-[#ff9e9e]/50 font-mono text-[12px] tracking-[0.25em]">DATA FEED OFFLINE</span>
           </div>
         ) : transactions.length === 0 ? (
           <div className="py-10 flex flex-col items-center justify-center gap-3">
@@ -421,7 +421,7 @@ function BurnTransactionsTable({
                 <circle cx="12" cy="18" r="0.5" fill="currentColor" />
               </svg>
             </div>
-            <span className="text-[#666] font-mono text-[10px] tracking-[0.2em]">
+            <span className="text-[#666] font-mono text-[12px] tracking-[0.2em]">
               NO BURN TRANSACTIONS RECORDED
             </span>
           </div>
@@ -512,7 +512,7 @@ export default function BurnOperations() {
         <div className="flex items-center gap-4">
           <div className="w-1.5 bg-[#ff6b35] wr-accent-bar wr-accent-bar-pulse" style={{ boxShadow: '0 0 8px rgba(255,107,53,0.3)' }} />
           <div>
-            <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#666] font-bold mb-1 wr-section-num">
+            <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#666] font-bold mb-1 wr-section-num">
               SECTION 02
             </div>
             <h2 className="text-xl md:text-2xl font-black uppercase tracking-tight text-white font-sans wr-cursor wr-cursor-fire">
@@ -528,7 +528,7 @@ export default function BurnOperations() {
           </div>
           <div className="flex items-center gap-3">
             {dataUpdatedAt > 0 && (
-              <span className="font-mono text-[7px] uppercase tracking-[0.15em] text-[#333] hover:text-[#555] tabular-nums hidden md:inline flex items-center gap-1.5 transition-colors duration-300 cursor-default">
+              <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-[#333] hover:text-[#555] tabular-nums hidden md:inline flex items-center gap-1.5 transition-colors duration-300 cursor-default">
                 <span className="wr-data-dot wr-data-dot-fire" />
                 {new Date(dataUpdatedAt).toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })}
               </span>
@@ -563,12 +563,12 @@ export default function BurnOperations() {
       {/* Burn progress visualization */}
       <div className="px-5 lg:px-8 py-6 border-b border-[#333]/20">
         <div className="flex items-center justify-between mb-3 wr-sub-header">
-          <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#666] font-bold flex items-center gap-3">
-            <span className="text-[#ff6b35]/30 text-[6px] wr-sub-diamond">◆</span>
+          <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#666] font-bold flex items-center gap-3">
+            <span className="text-[#ff6b35]/30 text-[12px] wr-sub-diamond">◆</span>
             <span>TOTAL SUPPLY INCINERATION</span>
             <div className="flex-1 h-px bg-gradient-to-r from-[#ff6b35]/20 to-transparent" />
           </div>
-          <div className="font-mono text-[10px] text-[#ff6b35] font-black tabular-nums wr-fire-text">
+          <div className="font-mono text-[12px] text-[#ff6b35] font-black tabular-nums wr-fire-text">
             {isLoading ? '—' : `${(data?.burnedPct ?? 0).toFixed(2)}%`}
           </div>
         </div>
@@ -583,7 +583,7 @@ export default function BurnOperations() {
               <div className="wr-progress-marker" style={{ left: `${Math.min(data?.burnedPct ?? 0, 100)}%` }} />
               {/* Floating percentage label above marker */}
               <div
-                className="absolute -top-5 font-mono text-[7px] text-[#ff6b35] font-bold tabular-nums"
+                className="absolute -top-5 font-mono text-[11px] text-[#ff6b35] font-bold tabular-nums"
                 style={{ left: `${Math.min(data?.burnedPct ?? 0, 100)}%`, transform: 'translateX(-50%)' }}
               >
                 {(data?.burnedPct ?? 0).toFixed(1)}%
@@ -595,18 +595,18 @@ export default function BurnOperations() {
             <div key={pct} className="absolute top-0 bottom-0 group/milestone" style={{ left: `${pct}%` }}>
               <div className="w-px h-full bg-[#333]/40 group-hover/milestone:bg-[#ff6b35]/20 transition-colors duration-300" />
               <div className="absolute -top-[2px] left-1/2 -translate-x-1/2 w-1 h-1 bg-[#333]/25 group-hover/milestone:bg-[#ff6b35]/35 rounded-full transition-colors duration-300" />
-              <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 font-mono text-[5px] text-[#333]/0 group-hover/milestone:text-[#ff6b35]/30 transition-colors duration-300 tabular-nums tracking-wider">{pct}</div>
+              <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 font-mono text-[11px] text-[#333]/0 group-hover/milestone:text-[#ff6b35]/30 transition-colors duration-300 tabular-nums tracking-wider">{pct}</div>
             </div>
           ))}
         </div>
         <div className="flex justify-between mt-1.5 relative">
-          <span className="font-mono text-[7px] text-[#555] uppercase tracking-[0.15em] tabular-nums">0%</span>
+          <span className="font-mono text-[11px] text-[#555] uppercase tracking-[0.15em] tabular-nums">0%</span>
           {[25, 50, 75].map(pct => (
-            <span key={pct} className="font-mono text-[6px] text-[#555] uppercase tracking-[0.15em] absolute" style={{ left: `${pct}%`, transform: 'translateX(-50%)' }}>
+            <span key={pct} className="font-mono text-[12px] text-[#555] uppercase tracking-[0.15em] absolute" style={{ left: `${pct}%`, transform: 'translateX(-50%)' }}>
               {pct}%
             </span>
           ))}
-          <span className="font-mono text-[7px] text-[#555] uppercase tracking-[0.15em]">100%</span>
+          <span className="font-mono text-[11px] text-[#555] uppercase tracking-[0.15em]">100%</span>
         </div>
       </div>
 

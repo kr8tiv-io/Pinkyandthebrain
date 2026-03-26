@@ -59,9 +59,15 @@ interface HeliusParsedTx {
   }>
 }
 
-interface AcquisitionInfo {
+interface AcquisitionTx {
   timestamp: number
-  solSpent: number // SOL (not lamports), 0 if transferred for free
+  solSpent: number // SOL (not lamports)
+}
+
+interface AcquisitionInfo {
+  firstTimestamp: number        // Earliest buy — used for "Acquired" display
+  transactions: AcquisitionTx[] // All buy transactions — for per-date cost basis
+  totalSolSpent: number         // Sum of SOL across all buys
 }
 
 /**
@@ -94,9 +100,9 @@ async function getTreasuryHistory(): Promise<HeliusParsedTx[]> {
 }
 
 /**
- * From transaction history, finds the first acquisition of each token.
- * Looks for the earliest transaction where the token was received by the treasury wallet.
- * Also captures SOL spent in the same transaction (swap cost).
+ * From transaction history, finds ALL acquisitions of each token.
+ * Aggregates SOL spent across multiple buy transactions (e.g. DCA or multiple swaps).
+ * Keeps the earliest timestamp for display purposes.
  */
 function findAcquisitions(
   txHistory: HeliusParsedTx[],
@@ -105,7 +111,7 @@ function findAcquisitions(
   const mintSet = new Set(mints)
   const result: Record<string, AcquisitionInfo> = {}
 
-  // Sort oldest-first to find the actual first acquisition
+  // Sort oldest-first so firstTimestamp is set correctly on first encounter
   const sorted = [...txHistory].sort((a, b) => a.timestamp - b.timestamp)
 
   for (const tx of sorted) {
@@ -115,8 +121,7 @@ function findAcquisitions(
       if (
         transfer.toUserAccount === TREASURY_WALLET &&
         mintSet.has(transfer.mint) &&
-        transfer.tokenAmount > 0 &&
-        !result[transfer.mint]
+        transfer.tokenAmount > 0
       ) {
         // Sum SOL outflows from treasury in this transaction (swap cost)
         let solSpent = 0
@@ -128,7 +133,20 @@ function findAcquisitions(
           }
         }
 
-        result[transfer.mint] = { timestamp: tx.timestamp, solSpent }
+        const txInfo: AcquisitionTx = { timestamp: tx.timestamp, solSpent }
+
+        if (!result[transfer.mint]) {
+          // First buy for this token
+          result[transfer.mint] = {
+            firstTimestamp: tx.timestamp,
+            transactions: [txInfo],
+            totalSolSpent: solSpent,
+          }
+        } else {
+          // Additional buy — accumulate
+          result[transfer.mint].transactions.push(txInfo)
+          result[transfer.mint].totalSolSpent += solSpent
+        }
       }
     }
   }
@@ -207,7 +225,7 @@ function enrichHolding(
   solPriceUsd: number,
   dexMeta?: DexTokenMeta,
   acquisition?: AcquisitionInfo,
-  historicalSolPrice?: number
+  historicalSolPrices?: Record<number, number>
 ): HoldingValuation {
   const metadata = HOLDINGS_BY_MINT[mint]
   const currentValueUsd = uiAmount * currentPriceUsd
@@ -231,19 +249,30 @@ function enrichHolding(
 
   // Enrich with acquisition data if available
   if (acquisition) {
-    base.purchaseDate = acquisition.timestamp
+    base.purchaseDate = acquisition.firstTimestamp
 
-    // Calculate cost basis from SOL spent × historical SOL price
-    if (acquisition.solSpent > 0 && historicalSolPrice) {
-      const costBasisUsd = acquisition.solSpent * historicalSolPrice
-      const purchasePriceUsd = costBasisUsd / uiAmount
-      const gainLossUsd = currentValueUsd - costBasisUsd
-      const gainLossPct = costBasisUsd > 0 ? (gainLossUsd / costBasisUsd) * 100 : undefined
+    // Calculate cost basis: sum of (SOL spent per tx × SOL price on that date)
+    if (acquisition.totalSolSpent > 0 && historicalSolPrices) {
+      let costBasisUsd = 0
+      for (const tx of acquisition.transactions) {
+        if (tx.solSpent > 0) {
+          const solPrice = historicalSolPrices[tx.timestamp]
+          if (solPrice) {
+            costBasisUsd += tx.solSpent * solPrice
+          }
+        }
+      }
 
-      base.purchasePriceUsd = purchasePriceUsd
-      base.costBasisUsd = costBasisUsd
-      base.gainLossUsd = gainLossUsd
-      base.gainLossPct = gainLossPct
+      if (costBasisUsd > 0) {
+        const purchasePriceUsd = costBasisUsd / uiAmount
+        const gainLossUsd = currentValueUsd - costBasisUsd
+        const gainLossPct = (gainLossUsd / costBasisUsd) * 100
+
+        base.purchasePriceUsd = purchasePriceUsd
+        base.costBasisUsd = costBasisUsd
+        base.gainLossUsd = gainLossUsd
+        base.gainLossPct = gainLossPct
+      }
     }
   }
 
@@ -279,19 +308,17 @@ export async function getTreasuryValuations(): Promise<TreasuryResponse> {
   // Step 4: Find acquisition info for each holding from Helius tx history
   const acquisitions = findAcquisitions(txHistory, mintList)
 
-  // Step 5: Fetch historical SOL prices for all acquisition dates
-  const acqTimestamps = Object.values(acquisitions)
-    .filter(a => a.solSpent > 0)
-    .map(a => a.timestamp)
-  const historicalPrices = acqTimestamps.length > 0
-    ? await getHistoricalSolPrices(acqTimestamps)
+  // Step 5: Fetch historical SOL prices for all acquisition transaction dates
+  const allAcqTimestamps = Object.values(acquisitions)
+    .flatMap(a => a.transactions.filter(tx => tx.solSpent > 0).map(tx => tx.timestamp))
+  const historicalPrices = allAcqTimestamps.length > 0
+    ? await getHistoricalSolPrices(allAcqTimestamps)
     : {}
 
   // Step 6: Enrich each holding (synchronous now — all data pre-fetched)
   const holdings = nonZeroAccounts.map(acct => {
     const currentPriceUsd = prices[acct.mint] ?? 0
     const acq = acquisitions[acct.mint]
-    const histSolPrice = acq ? historicalPrices[acq.timestamp] : undefined
     return enrichHolding(
       acct.mint,
       acct.uiAmount,
@@ -299,7 +326,7 @@ export async function getTreasuryValuations(): Promise<TreasuryResponse> {
       solPriceUsd,
       dexMetadata[acct.mint],
       acq,
-      histSolPrice
+      historicalPrices
     )
   })
 

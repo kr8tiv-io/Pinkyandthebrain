@@ -3,26 +3,36 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+function formatBalance(raw: number, decimals: number): string {
+  const adjusted = decimals > 0 ? raw / Math.pow(10, decimals) : raw;
+  return adjusted.toLocaleString(undefined, { maximumFractionDigits: 0 });
+}
+
+function shortenAddress(addr: string): string {
+  if (addr.length <= 12) return addr;
+  return `${addr.slice(0, 4)}...${addr.slice(-4)}`;
+}
+
 export default function HallOfFame() {
-  const [topHolders, setTopHolders] = useState<any[]>([
-    { rank: 1, wallet_address: "8x9...4V", balance: 842000 },
-    { rank: 2, wallet_address: "BrainWallet...SOL", balance: 612400 },
-    { rank: 3, wallet_address: "7r9...BAGS", balance: 320000 },
-    { rank: 4, wallet_address: "Degen...X1", balance: 150000 },
-    { rank: 5, wallet_address: "Fren...LUV", balance: 90000 },
-  ]);
+  const [topHolders, setTopHolders] = useState<any[]>([]);
+  const [totalHolders, setTotalHolders] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch('/api/hall-of-fame')
       .then(res => res.json())
       .then(data => {
-        if (data && data.length > 0) {
-          // ensure rank is attached
-          const mapped = data.map((d: any, i: number) => ({ ...d, rank: i + 1 }));
+        if (data.items && data.items.length > 0) {
+          const mapped = data.items.map((d: any, i: number) => ({ ...d, rank: d.rank ?? i + 1 }));
           setTopHolders(mapped);
         }
+        if (data.total != null) setTotalHolders(data.total);
+        setIsLoading(false);
       })
-      .catch(err => console.error("API error", err));
+      .catch(err => {
+        console.error("API error", err);
+        setIsLoading(false);
+      });
   }, []);
 
   return (
@@ -35,10 +45,10 @@ export default function HallOfFame() {
           muted
           loop
           playsInline
-          className="absolute top-1/2 left-1/2 w-auto h-auto min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 object-cover mix-blend-screen opacity-30"
+          className="absolute top-1/2 left-1/2 w-auto h-auto min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 object-cover mix-blend-screen opacity-20"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-[#1a1a1a]/80 to-[#1a1a1a]/40" />
-        <div className="absolute inset-0 opacity-10 bg-[url('/noise.png')] mix-blend-overlay" />
+        <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay" style={{ backgroundImage: 'url(/noise.gif)', backgroundSize: '200px 200px', backgroundRepeat: 'repeat' }} />
       </div>
       <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16">
 
@@ -47,31 +57,43 @@ export default function HallOfFame() {
           <h2 className="text-[4rem] md:text-[6.5rem] leading-[0.85] font-black tracking-tighter uppercase font-sans mb-8 text-[#e4ff57]">
             Hall of <span className="text-white">Fame</span>
           </h2>
-          <p className="font-mono text-sm opacity-60 uppercase tracking-widest mb-8">
+          <p className="font-mono text-sm opacity-60 uppercase tracking-widest mb-4">
             The Top 100 believers receiving SOL reflections.
           </p>
+          {totalHolders > 0 && (
+            <p className="font-mono text-xs text-[#d4f000]/70 uppercase tracking-widest mb-8">
+              {totalHolders.toLocaleString()} unique holders on-chain
+            </p>
+          )}
 
-          <div className="border-4 border-[#cccccc]/20 bg-[#1a1a1a] p-1">
-            <div className="grid grid-cols-12 gap-4 border-b-2 border-[#cccccc]/20 p-4 font-mono text-xs uppercase tracking-widest text-[#cccccc]/60">
+          <div className="border-4 border-[#cccccc]/20 bg-[#1a1a1a] p-1 max-h-[600px] overflow-y-auto custom-scrollbar">
+            <div className="grid grid-cols-12 gap-4 border-b-2 border-[#cccccc]/20 p-4 font-mono text-xs uppercase tracking-widest text-[#cccccc]/60 sticky top-0 bg-[#1a1a1a] z-10">
               <div className="col-span-2">Rank</div>
               <div className="col-span-6">Address</div>
               <div className="col-span-4 text-right">Balance ($BRAIN)</div>
             </div>
 
-            {topHolders.map((holder, idx) => (
-              <div
+            {isLoading ? (
+              <div className="p-8 text-center font-mono text-sm text-[#d4f000] animate-pulse">
+                [ Fetching holder data from Solana... ]
+              </div>
+            ) : topHolders.length === 0 ? (
+              <div className="p-8 text-center font-mono text-sm text-[#ffadad]">
+                [ No holder data available ]
+              </div>
+            ) : topHolders.map((holder, idx) => (
+              <a
                 key={holder.rank}
-                className={`grid grid-cols-12 gap-4 p-4 font-mono items-center border-b border-[#cccccc]/5 hover:bg-[#cccccc]/5 transition-colors ${idx === 0 ? 'text-[#e4ff57]' : ''}`}
+                href={`https://solscan.io/account/${holder.owner || holder.address}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`grid grid-cols-12 gap-4 p-4 font-mono items-center border-b border-[#cccccc]/5 hover:bg-[#cccccc]/5 transition-colors cursor-pointer ${idx === 0 ? 'text-[#e4ff57]' : idx < 3 ? 'text-[#d4f000]/80' : ''}`}
               >
                 <div className="col-span-2 font-black text-xl">#{holder.rank}</div>
-                <div className="col-span-6 truncate">{holder.wallet_address || holder.address}</div>
-                <div className="col-span-4 text-right font-black">{Number(holder.balance).toLocaleString()}</div>
-              </div>
+                <div className="col-span-6 truncate text-sm">{shortenAddress(holder.owner || holder.address)}</div>
+                <div className="col-span-4 text-right font-black">{formatBalance(holder.amount, holder.decimals ?? 0)}</div>
+              </a>
             ))}
-
-            <div className="p-4 text-center font-mono text-sm text-[#ffadad] animate-pulse">
-              [ Fetching Remaining 95 Rows from Postgres Indexer... ]
-            </div>
           </div>
         </div>
 

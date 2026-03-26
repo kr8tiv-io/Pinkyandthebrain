@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useEffect, useCallback, useState } from 'react'
+import Link from 'next/link'
 import gsap from 'gsap'
 import { usePrice } from '@/hooks/usePrice'
 
@@ -96,7 +97,7 @@ function LiveIndicator({ status }: { status: 'live' | 'connecting' | 'offline' }
           />
         )}
       </div>
-      <span className={`font-mono text-[10px] font-bold uppercase tracking-[0.25em] ${textColorMap[status]}`}>
+      <span className={`font-mono text-[12px] font-bold uppercase tracking-[0.25em] ${textColorMap[status]}`}>
         {labelMap[status]}
       </span>
     </div>
@@ -123,15 +124,15 @@ function DataCell({
       {/* Hover accent line at top */}
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-[#d4f000]/60 to-[#d4f000]/12 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
       {/* Corner index indicator */}
-      <div className="absolute top-1.5 right-2 font-mono text-[6px] text-[#333]/20 tabular-nums opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <div className="absolute top-1.5 right-2 font-mono text-[12px] text-[#333]/20 tabular-nums opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         {String(index + 1).padStart(2, '0')}
       </div>
 
       {/* Subtle bottom glow on hover */}
       <div className="absolute bottom-0 left-[10%] right-[10%] h-px bg-[#d4f000]/0 group-hover:bg-[#d4f000]/[0.04] transition-colors duration-500" />
 
-      <div className="font-mono text-[8px] uppercase tracking-[0.22em] text-[#666] mb-2 font-bold group-hover:text-[#d4f000]/60 transition-colors duration-300 flex items-center gap-1.5">
-        <span className="text-[#d4f000]/30 text-[5px] group-hover:text-[#d4f000]/60 transition-colors">◆</span>
+      <div className="font-mono text-[12px] uppercase tracking-[0.22em] text-[#666] mb-2 font-bold group-hover:text-[#d4f000]/60 transition-colors duration-300 flex items-center gap-1.5">
+        <span className="text-[#d4f000]/30 text-[11px] group-hover:text-[#d4f000]/60 transition-colors">◆</span>
         {label}
       </div>
       <div className="font-mono text-sm md:text-lg font-black text-white tabular-nums leading-none group-hover:drop-shadow-[0_0_12px_rgba(212,240,0,0.12)] transition-all duration-300">
@@ -162,10 +163,10 @@ function LiveClock() {
 
   return (
     <div className="flex items-center gap-2">
-      <span className="font-mono text-[7px] uppercase tracking-[0.2em] text-[#333]/80 tabular-nums hidden md:inline">
+      <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#333]/80 tabular-nums hidden md:inline">
         {date}
       </span>
-      <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#444] tabular-nums">
+      <span className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#444] tabular-nums">
         {parts[0]}<span className="wr-colon-blink">:</span>{parts[1]}<span className="wr-colon-blink">:</span>{parts[2]} <span className="text-[#333]">UTC</span>
       </span>
     </div>
@@ -262,6 +263,17 @@ export default function CommandHeader() {
       {/* Top bar */}
       <div className="flex justify-between items-center px-5 lg:px-8 py-2.5 border-b border-[#333]/15">
         <div className="flex items-center gap-4">
+          <Link
+            href="/"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-[#666] hover:text-[#d4f000] border border-[#333]/20 hover:border-[#d4f000]/30 transition-all duration-300 rounded-sm group/back hover:bg-[#d4f000]/[0.03]"
+          >
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="group-hover/back:drop-shadow-[0_0_4px_rgba(212,240,0,0.3)] transition-all">
+              <path d="M19 12H5" />
+              <path d="M12 19l-7-7 7-7" />
+            </svg>
+            <span className="hidden sm:inline">Back</span>
+          </Link>
+          <div className="w-px h-3 bg-gradient-to-b from-transparent via-[#333]/30 to-transparent" />
           <div className="flex items-center gap-2 group/logo cursor-default">
             <div className="w-2 h-2 bg-[#d4f000] shadow-[0_0_6px_#d4f000,0_0_12px_rgba(212,240,0,0.25)] transition-shadow duration-300 group-hover/logo:shadow-[0_0_10px_#d4f000,0_0_24px_rgba(212,240,0,0.4)]" />
             <div className="font-mono text-[12px] uppercase tracking-[0.3em] text-[#d4f000] font-black transition-all duration-300 drop-shadow-[0_0_8px_rgba(212,240,0,0.2)] wr-logo-pulse">
@@ -269,14 +281,14 @@ export default function CommandHeader() {
             </div>
           </div>
           <div className="w-px h-3 bg-gradient-to-b from-transparent via-[#333]/40 to-transparent" />
-          <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#444] font-medium flex items-center gap-2">
+          <div className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#444] font-medium flex items-center gap-2">
             <span>War Room</span>
             <span className="w-1 h-1 bg-[#d4f000]/10 rounded-full hidden sm:block" />
           </div>
           <div className="hidden md:block w-px h-3 bg-[#333]/30" />
-          <div className="hidden md:flex md:items-center md:gap-2 font-mono text-[8px] uppercase tracking-[0.2em] text-[#3a3a3a]">
+          <div className="hidden md:flex md:items-center md:gap-2 font-mono text-[12px] uppercase tracking-[0.2em] text-[#3a3a3a]">
             <span>Intelligence Dashboard</span>
-            <span className="text-[#d4f000]/18 font-black px-1.5 py-0.5 bg-[#d4f000]/[0.025] border border-[#d4f000]/[0.05] text-[7px] tracking-[0.1em]">v2.0</span>
+            <span className="text-[#d4f000]/18 font-black px-1.5 py-0.5 bg-[#d4f000]/[0.025] border border-[#d4f000]/[0.05] text-[11px] tracking-[0.1em]">v2.0</span>
           </div>
         </div>
         <div className="flex items-center gap-4">
@@ -310,7 +322,7 @@ export default function CommandHeader() {
           ) : (
             <span className={`flex items-center gap-1.5 ${changeColor}`}>
               {data && data.priceChange24h !== 0 && (
-                <span className="text-[10px]">{data.priceChange24h > 0 ? '▲' : '▼'}</span>
+                <span className="text-[12px]">{data.priceChange24h > 0 ? '▲' : '▼'}</span>
               )}
               <span ref={changeRef}>
                 {formatChange(data?.priceChange24h ?? 0)}

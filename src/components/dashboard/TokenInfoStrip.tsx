@@ -35,7 +35,7 @@ export default function TokenInfoStrip() {
       <div className="flex items-center gap-1 px-5 lg:px-8 py-2.5 overflow-x-auto wr-scroll">
         <div className="flex items-center gap-2 mr-3">
           <div className="w-0.5 h-3 bg-[#d4f000]/20" />
-          <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#444] font-bold whitespace-nowrap">
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#444] font-bold whitespace-nowrap">
             QUICK INTEL
           </span>
         </div>
@@ -46,19 +46,19 @@ export default function TokenInfoStrip() {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className={`font-mono text-[9px] transition-all px-2.5 py-1 whitespace-nowrap rounded-sm wr-link-scale wr-link-hover ${
+            className={`font-mono text-[11px] transition-all px-2.5 py-1 whitespace-nowrap rounded-sm wr-link-scale wr-link-hover ${
               accent
                 ? 'text-[#d4f000]/70 hover:text-[#d4f000] hover:bg-[#d4f000]/[0.05] border border-[#d4f000]/10 hover:border-[#d4f000]/20 hover:shadow-[0_0_12px_rgba(212,240,0,0.1)]'
                 : 'text-[#555] hover:text-[#d4f000] hover:bg-[#d4f000]/[0.03]'
             }`}
           >
-            {label} <span className="text-[7px] opacity-50">↗</span>
+            {label} <span className="text-[11px] opacity-50">↗</span>
           </a>
         ))}
         <div className="w-px h-3 bg-[#333]/20 ml-1" />
         <div className="flex items-center gap-1.5 px-2 py-1 whitespace-nowrap">
           <div className="w-1 h-1 bg-[#d4f000]/30 rounded-full" />
-          <span className="font-mono text-[7px] uppercase tracking-[0.2em] text-[#333] font-bold">SOLANA MAINNET</span>
+          <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#333] font-bold">SOLANA MAINNET</span>
         </div>
       </div>
 
@@ -69,7 +69,7 @@ export default function TokenInfoStrip() {
         <div className="ticker-track">
           {/* Duplicate full set for seamless scroll */}
           {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
-            <span key={i} className={`font-mono text-[8px] uppercase tracking-[0.3em] mx-6 whitespace-nowrap ${item.color}`}>
+            <span key={i} className={`font-mono text-[10px] uppercase tracking-[0.3em] mx-6 whitespace-nowrap ${item.color}`}>
               <span className="text-[#d4f000]/15 mr-2 wr-ticker-diamond">◆</span>
               {item.text}
             </span>

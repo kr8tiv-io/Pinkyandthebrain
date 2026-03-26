@@ -103,10 +103,13 @@ export default function Hero() {
           muted
           loop
           playsInline
-          className="absolute top-1/2 left-1/2 w-auto h-auto min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 object-cover mix-blend-screen opacity-50"
+          className="absolute top-1/2 left-1/2 w-auto h-auto min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 object-cover mix-blend-screen opacity-30"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/60 to-[#0d0d0d]/20" />
-        <img src="/noise.gif" alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.03] mix-blend-screen pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/70 to-[#0d0d0d]/30" />
+        {/* Tiled noise grid — compact repeating pattern */}
+        <div className="absolute inset-0 opacity-[0.025] mix-blend-screen pointer-events-none"
+          style={{ backgroundImage: 'url(/noise.gif)', backgroundSize: '200px 200px', backgroundRepeat: 'repeat' }}
+        />
       </div>
 
       {/* Foreground Content — pushed below logo+menu with generous top padding on mobile */}

@@ -7,8 +7,13 @@ import SectionReveal from '@/components/dashboard/SectionReveal'
 import ScrollProgress from '@/components/dashboard/ScrollProgress'
 
 export const metadata: Metadata = {
-  title: 'War Room | $BRAIN Token',
-  description: 'Live treasury analytics and portfolio tracking for the $BRAIN token fund.',
+  title: 'War Room | Pinky and The Brain $BRAIN Fund',
+  description: 'Live treasury analytics, portfolio P&L tracking, and on-chain intelligence for the $BRAIN deflationary Solana token fund.',
+  openGraph: {
+    title: 'War Room | $BRAIN Fund Intelligence Dashboard',
+    description: 'Live treasury analytics, portfolio P&L tracking, and on-chain intelligence for the $BRAIN deflationary Solana token fund.',
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+  },
 }
 
 export default function WarRoomPage() {
@@ -70,7 +75,7 @@ export default function WarRoomPage() {
 
         {/* Scroll indicator */}
         <div className="flex flex-col items-center py-4 wr-scroll-hint md:py-5">
-          <span className="font-mono text-[7px] uppercase tracking-[0.35em] text-[#888]/60 mb-1.5">SCROLL TO EXPLORE</span>
+          <span className="font-mono text-[11px] uppercase tracking-[0.35em] text-[#888]/60 mb-1.5">SCROLL TO EXPLORE</span>
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#d4f000]/45">
             <path d="M12 5v14" />
             <path d="M5 12l7 7 7-7" />
@@ -84,7 +89,7 @@ export default function WarRoomPage() {
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-5 flex items-center gap-2.5">
             <div className="w-5 h-px bg-[#d4f000]/10" />
             <div className="wr-divider-dot text-[#d4f000]" style={{ animationDelay: '0s' }} />
-            <span className="font-mono text-[7px] uppercase tracking-[0.5em] text-[#d4f000]/70 font-bold wr-divider-label drop-shadow-[0_0_8px_rgba(212,240,0,0.15)]">▼ INTEL</span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#d4f000]/70 font-bold wr-divider-label drop-shadow-[0_0_8px_rgba(212,240,0,0.15)]">▼ INTEL</span>
             <div className="wr-divider-dot text-[#d4f000]" style={{ animationDelay: '1.5s' }} />
             <div className="w-5 h-px bg-[#d4f000]/10" />
           </div>
@@ -111,7 +116,7 @@ export default function WarRoomPage() {
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-6 flex items-center gap-3">
             <div className="w-6 h-px bg-gradient-to-r from-transparent to-[#ff6b35]/20" />
             <div className="wr-divider-dot text-[#ff6b35]" />
-            <span className="font-mono text-[7px] uppercase tracking-[0.5em] text-[#ff6b35]/75 font-bold wr-divider-label drop-shadow-[0_0_8px_rgba(255,107,53,0.2)]">INCINERATION ZONE</span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#ff6b35]/75 font-bold wr-divider-label drop-shadow-[0_0_8px_rgba(255,107,53,0.2)]">INCINERATION ZONE</span>
             <div className="wr-divider-dot text-[#ff6b35]" />
             <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#ff6b35]/20" />
           </div>
@@ -129,7 +134,7 @@ export default function WarRoomPage() {
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] px-6 flex items-center gap-3">
             <div className="w-6 h-px bg-gradient-to-r from-transparent to-[#333]/30" />
             <div className="wr-divider-dot text-[#555]" />
-            <span className="font-mono text-[7px] uppercase tracking-[0.5em] text-[#888]/70 font-bold wr-divider-label">CLASSIFIED ZONE</span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#888]/70 font-bold wr-divider-label">CLASSIFIED ZONE</span>
             <div className="wr-divider-dot text-[#555]" />
             <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#333]/30" />
           </div>
@@ -178,15 +183,15 @@ export default function WarRoomPage() {
             </div>
 
             {/* Registration marks */}
-            <div className="absolute top-4 left-4 text-[#333]/35 text-[7px] font-mono select-none pointer-events-none transition-colors duration-700">+</div>
-            <div className="absolute top-4 right-4 text-[#333]/35 text-[7px] font-mono select-none pointer-events-none transition-colors duration-700">+</div>
-            <div className="absolute bottom-4 left-4 text-[#333]/35 text-[7px] font-mono select-none pointer-events-none transition-colors duration-700">+</div>
-            <div className="absolute bottom-4 right-4 text-[#333]/35 text-[7px] font-mono select-none pointer-events-none transition-colors duration-700">+</div>
+            <div className="absolute top-4 left-4 text-[#333]/35 text-[11px] font-mono select-none pointer-events-none transition-colors duration-700">+</div>
+            <div className="absolute top-4 right-4 text-[#333]/35 text-[11px] font-mono select-none pointer-events-none transition-colors duration-700">+</div>
+            <div className="absolute bottom-4 left-4 text-[#333]/35 text-[11px] font-mono select-none pointer-events-none transition-colors duration-700">+</div>
+            <div className="absolute bottom-4 right-4 text-[#333]/35 text-[11px] font-mono select-none pointer-events-none transition-colors duration-700">+</div>
 
             <div className="relative flex flex-col items-center justify-center gap-6 wr-brackets" style={{ padding: '2.5rem 2rem' }}>
               <div className="flex items-center gap-3">
                 <div className="w-8 h-px bg-[#333]/40" />
-                <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#888]/80 font-bold wr-section-num">
+                <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-[#888]/80 font-bold wr-section-num">
                   SECTION 03 — PHASE 2
                 </div>
                 <div className="w-8 h-px bg-[#333]/40" />
@@ -210,7 +215,7 @@ export default function WarRoomPage() {
                 {['STAKING', 'GOVERNANCE', 'YIELD MECHANICS'].map((item, i) => (
                   <div key={item} className="flex items-center gap-3">
                     {i > 0 && <div className="hidden md:block w-px h-3 bg-[#444]" />}
-                    <span className="font-mono text-[7px] md:text-[8px] uppercase tracking-[0.2em] text-[#666] font-black flex items-center gap-1.5">
+                    <span className="font-mono text-[11px] md:text-[12px] uppercase tracking-[0.2em] text-[#666] font-black flex items-center gap-1.5">
                       <span className="w-1 h-1 bg-[#555]/40 rounded-full wr-breathe" style={{ animationDuration: `${4 + i}s` }} />
                       {item}
                     </span>
@@ -221,15 +226,15 @@ export default function WarRoomPage() {
               <div className="mt-4 wr-burn-bar w-36" style={{ height: '3px' }}>
                 <div className="wr-burn-bar-fill" style={{ width: '0%' }} />
               </div>
-              <div className="font-mono text-[7px] uppercase tracking-[0.35em] text-[#888]/80 mb-2 wr-cursor">
+              <div className="font-mono text-[11px] uppercase tracking-[0.35em] text-[#888]/80 mb-2 wr-cursor">
                 DEPLOYMENT PROGRESS: 0%
               </div>
-              <div className="font-mono text-[8px] uppercase tracking-[0.25em] text-[#666] flex items-center gap-2">
+              <div className="font-mono text-[12px] uppercase tracking-[0.25em] text-[#666] flex items-center gap-2">
                 <span className="text-[#d4f000]/25 wr-breathe" style={{ animationDuration: '6s' }}>◆</span>
                 <span className="text-[#666]/60">ETA:</span>
                 <span className="tabular-nums text-[#555] wr-classified-glitch" style={{ animationDuration: '3s' }}>██:██:██</span>
               </div>
-              <div className="mt-3 flex items-center gap-5 font-mono text-[7px] text-[#555] tracking-[0.1em]">
+              <div className="mt-3 flex items-center gap-5 font-mono text-[11px] text-[#555] tracking-[0.1em]">
                 <span className="flex items-center gap-1.5"><span className="w-1 h-1 bg-[#d4f000]/20 rounded-full" /> AUTH REQUIRED</span>
                 <span className="flex items-center gap-1.5"><span className="w-1 h-1 bg-[#ff9e9e]/15 rounded-full" /> PENDING REVIEW</span>
               </div>
@@ -250,8 +255,8 @@ export default function WarRoomPage() {
             <div className="ticker-track">
               {['WAR ROOM v2.0', '$BRAIN INTELLIGENCE COMMAND', 'ALL DATA LIVE ON-CHAIN', 'NARF!', 'DEFLATIONARY SPL TOKEN', 'COMMUNITY GOVERNED',
                 'WAR ROOM v2.0', '$BRAIN INTELLIGENCE COMMAND', 'ALL DATA LIVE ON-CHAIN', 'NARF!', 'DEFLATIONARY SPL TOKEN', 'COMMUNITY GOVERNED'].map((item, i) => (
-                <span key={i} className="font-mono text-[6px] md:text-[7px] uppercase tracking-[0.3em] text-[#666] mx-5 md:mx-7 whitespace-nowrap group/ticker-item">
-                  <span className="text-[#d4f000]/12 mr-2.5 inline-block transition-transform duration-300 group-hover/ticker-item:rotate-45 text-[5px]">◆</span>
+                <span key={i} className="font-mono text-[12px] md:text-[11px] uppercase tracking-[0.3em] text-[#666] mx-5 md:mx-7 whitespace-nowrap group/ticker-item">
+                  <span className="text-[#d4f000]/12 mr-2.5 inline-block transition-transform duration-300 group-hover/ticker-item:rotate-45 text-[11px]">◆</span>
                   {item}
                 </span>
               ))}
@@ -270,7 +275,7 @@ export default function WarRoomPage() {
             {/* Disclaimer */}
             <div className="text-center mb-4 relative">
               <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-24 h-px bg-gradient-to-r from-transparent via-[#333]/10 to-transparent" />
-              <span className="font-mono text-[6px] uppercase tracking-[0.3em] text-[#555]/80 font-bold">
+              <span className="font-mono text-[12px] uppercase tracking-[0.3em] text-[#555]/80 font-bold">
                 NOT FINANCIAL ADVICE — DYOR — ALL DATA FOR INFORMATIONAL PURPOSES ONLY
               </span>
             </div>
@@ -279,11 +284,11 @@ export default function WarRoomPage() {
               <div className="flex items-center gap-4">
                 <div className="w-1 h-4 bg-[#d4f000]/20" />
                 <div>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#444] font-bold flex items-center gap-2">
+                  <div className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#444] font-bold flex items-center gap-2">
                     $BRAIN INTELLIGENCE COMMAND
                     <span className="w-1.5 h-1.5 bg-[#d4f000]/10 rounded-full" />
                   </div>
-                  <div className="font-mono text-[8px] uppercase tracking-[0.15em] text-[#555] mt-0.5">
+                  <div className="font-mono text-[12px] uppercase tracking-[0.15em] text-[#555] mt-0.5">
                     WAR ROOM — LIVE TREASURY ANALYTICS
                   </div>
                 </div>
@@ -293,23 +298,23 @@ export default function WarRoomPage() {
                   href="https://pinkyandthebrain.fun"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-[9px] uppercase tracking-[0.15em] text-[#444] hover:text-[#d4f000] transition-colors wr-glitch-hover wr-footer-link wr-footer-link-grow"
+                  className="font-mono text-[11px] uppercase tracking-[0.15em] text-[#444] hover:text-[#d4f000] transition-colors wr-glitch-hover wr-footer-link wr-footer-link-grow"
                 >
                   PINKYANDTHEBRAIN.FUN <span className="inline-block transition-transform duration-200 group-hover/footer-links:translate-x-0.5">↗</span>
                 </a>
                 <span className="w-px h-3.5 bg-[#333]/25 hidden md:block" />
-                <span className="font-mono text-[7px] uppercase tracking-[0.15em] text-[#555] flex items-center gap-1.5 hover:text-[#888] transition-colors duration-300 cursor-default">
-                  <span className="text-[#d4f000]/25 text-[9px] transition-all duration-300 group-hover/footer-links:text-[#d4f000]/40">◎</span> BUILT ON SOLANA
+                <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-[#555] flex items-center gap-1.5 hover:text-[#888] transition-colors duration-300 cursor-default">
+                  <span className="text-[#d4f000]/25 text-[11px] transition-all duration-300 group-hover/footer-links:text-[#d4f000]/40">◎</span> BUILT ON SOLANA
                 </span>
                 <span className="w-px h-3.5 bg-[#333]/25 hidden md:block" />
-                <span className="font-mono text-[7px] uppercase tracking-[0.15em] text-[#555]">
+                <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-[#555]">
                   ALL DATA LIVE ON-CHAIN
                 </span>
                 <span className="w-px h-3.5 bg-[#333]/25 hidden md:block" />
-                <span className="font-mono text-[7px] uppercase tracking-[0.1em] text-[#555] hover:text-[#888] transition-colors duration-300 flex items-center gap-1.5">
+                <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-[#555] hover:text-[#888] transition-colors duration-300 flex items-center gap-1.5">
                   © 2025–2026 $BRAIN
-                  <span className="text-[5px] text-[#333]/50">·</span>
-                  <span className="text-[6px] text-[#555]/80">v2.0.389</span>
+                  <span className="text-[11px] text-[#333]/50">·</span>
+                  <span className="text-[12px] text-[#555]/80">v2.0.389</span>
                 </span>
               </div>
             </div>

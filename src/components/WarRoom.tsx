@@ -20,17 +20,24 @@ export default function WarRoom() {
     return Math.max(1, Math.floor((now - start) / (1000 * 60 * 60 * 24)));
   };
 
-  const [stats, setStats] = useState({ treasury: 4291.55, tps: 1204, holders: 12492 });
+  const [stats, setStats] = useState({ treasury: 0, tps: 1204, holders: 0 });
 
   useEffect(() => {
-    // Fetch live stats from Solscan via internal API route
+    // Fetch real treasury total value in SOL
     fetch('/api/treasury')
       .then(res => res.json())
       .then(data => {
-        if (data.treasury != null) setStats(s => ({ ...s, treasury: data.treasury }));
-        if (data.holders != null) setStats(s => ({ ...s, holders: data.holders }));
+        if (data.totalValueSol != null) setStats(s => ({ ...s, treasury: data.totalValueSol }));
       })
       .catch(err => console.error("Treasury API Error", err));
+
+    // Fetch real holder count
+    fetch('/api/holders')
+      .then(res => res.json())
+      .then(data => {
+        if (data.total != null) setStats(s => ({ ...s, holders: data.total }));
+      })
+      .catch(err => console.error("Holders API Error", err));
   }, []);
 
 
@@ -42,7 +49,7 @@ export default function WarRoom() {
       gsap.fromTo(barRef.current,
         { width: "0%" },
         {
-          width: "98%",
+          width: "5%",
           duration: 2,
           ease: "power2.out",
           scrollTrigger: {
@@ -106,7 +113,7 @@ export default function WarRoom() {
       <div className="absolute inset-0 z-0 pointer-events-none">
          <div className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] max-w-3xl max-h-3xl bg-[#d4f000] rounded-full mix-blend-screen filter blur-[120px] opacity-10 animate-pulse" />
          <div className="absolute bottom-1/4 right-1/4 w-[30vw] h-[30vw] max-w-2xl max-h-2xl bg-[#ff9e9e] rounded-full mix-blend-screen filter blur-[150px] opacity-10" />
-         <div className="absolute inset-0 bg-[url('/noise.gif')] opacity-[0.04] mix-blend-screen" />
+         <div className="absolute inset-0 opacity-[0.03] mix-blend-screen" style={{ backgroundImage: 'url(/noise.gif)', backgroundSize: '200px 200px', backgroundRepeat: 'repeat' }} />
       </div>
 
       <div className="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-12 flex flex-col h-full">
@@ -137,7 +144,7 @@ export default function WarRoom() {
              </div>
              <div className="flex justify-between mt-4 text-sm font-mono text-white tracking-wide font-bold">
                <span>Acquisition Progress</span>
-               <span className="text-[#d4f000]">98% to Global Domination</span>
+               <span className="text-[#d4f000]">5% to Global Domination</span>
              </div>
           </div>
 
