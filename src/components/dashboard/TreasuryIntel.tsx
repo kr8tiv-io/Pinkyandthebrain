@@ -423,7 +423,7 @@ function TreasuryValueChart({
         </span>
       </div>
 
-      <div ref={chartRef} className="h-[280px] relative border border-[#333]/8 bg-[#0a0a0a]/50 p-4 rounded wr-chart-frame">
+      <div ref={chartRef} className="h-[280px] relative border border-[#333]/8 bg-[#0a0a0a]/50 p-4 rounded wr-chart-frame" style={{ touchAction: 'pan-y' }}>
         {/* Corner brackets */}
         <div className="wr-chart-corner wr-chart-corner--tl" />
         <div className="wr-chart-corner wr-chart-corner--tr" />

@@ -1701,3 +1701,8 @@ section:hover > .wr-section-badge-fire {
   z-index: 2;
   will-change: transform;
 }
+
+/* ─── Recharts scroll fix ───────────────────────────────────────────────── */
+/* Prevent Recharts overlay from capturing scroll/wheel events */
+.wr-chart-frame .recharts-surface { touch-action: pan-y !important; }
+.wr-chart-frame .recharts-tooltip-wrapper { pointer-events: none; }
