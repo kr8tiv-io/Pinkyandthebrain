@@ -80,7 +80,7 @@ function LiveIndicator({ status }: { status: 'live' | 'connecting' | 'offline' }
 
   const textColorMap = {
     live: 'text-[#d4f000]',
-    connecting: 'text-[#cccccc]',
+    connecting: 'text-[#e0e0e0]',
     offline: 'text-[#ff9e9e]',
   }
 
@@ -124,14 +124,14 @@ function DataCell({
       {/* Hover accent line at top */}
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-[#d4f000]/60 to-[#d4f000]/12 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
       {/* Corner index indicator */}
-      <div className="absolute top-1.5 right-2 font-mono text-[12px] text-[#555]/40 tabular-nums opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <div className="absolute top-1.5 right-2 font-mono text-[12px] text-[#bbb]/40 tabular-nums opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         {String(index + 1).padStart(2, '0')}
       </div>
 
       {/* Subtle bottom glow on hover */}
       <div className="absolute bottom-0 left-[10%] right-[10%] h-px bg-[#d4f000]/0 group-hover:bg-[#d4f000]/[0.04] transition-colors duration-500" />
 
-      <div className="font-mono text-[12px] uppercase tracking-[0.22em] text-[#ccc] mb-2 font-bold group-hover:text-[#d4f000] transition-colors duration-300 flex items-center gap-1.5">
+      <div className="font-mono text-[12px] uppercase tracking-[0.22em] text-[#e0e0e0] mb-2 font-bold group-hover:text-[#d4f000] transition-colors duration-300 flex items-center gap-1.5">
         <span className="text-[#d4f000]/70 text-[11px] group-hover:text-[#d4f000] transition-colors">◆</span>
         {label}
       </div>
@@ -163,11 +163,11 @@ function LiveClock() {
 
   return (
     <div className="flex items-center gap-2">
-      <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#aaa] tabular-nums hidden md:inline">
+      <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#ccc] tabular-nums hidden md:inline">
         {date}
       </span>
-      <span className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#bbb] tabular-nums">
-        {parts[0]}<span className="wr-colon-blink">:</span>{parts[1]}<span className="wr-colon-blink">:</span>{parts[2]} <span className="text-[#999]">UTC</span>
+      <span className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#ddd] tabular-nums">
+        {parts[0]}<span className="wr-colon-blink">:</span>{parts[1]}<span className="wr-colon-blink">:</span>{parts[2]} <span className="text-[#bbb]">UTC</span>
       </span>
     </div>
   )
@@ -244,7 +244,7 @@ export default function CommandHeader() {
   useCountUp(changeRef, data?.priceChange24h ?? 0, fmtChange, isReady)
 
   const changeColor =
-    !data ? 'text-[#cccccc]'
+    !data ? 'text-[#e0e0e0]'
     : data.priceChange24h > 0 ? 'text-[#d4f000]'
     : data.priceChange24h < 0 ? 'text-[#ff9e9e]'
     : 'text-white'
@@ -265,7 +265,7 @@ export default function CommandHeader() {
         <div className="flex items-center gap-4">
           <Link
             href="/"
-            className="flex items-center gap-1.5 px-2.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-[#aaa] hover:text-[#d4f000] border border-[#333]/30 hover:border-[#d4f000]/40 transition-all duration-300 rounded-sm group/back hover:bg-[#d4f000]/[0.05]"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-[#ccc] hover:text-[#d4f000] border border-[#555]/40 hover:border-[#d4f000]/40 transition-all duration-300 rounded-sm group/back hover:bg-[#d4f000]/[0.05]"
           >
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="group-hover/back:drop-shadow-[0_0_4px_rgba(212,240,0,0.3)] transition-all">
               <path d="M19 12H5" />
@@ -281,12 +281,12 @@ export default function CommandHeader() {
             </div>
           </div>
           <div className="w-px h-3 bg-gradient-to-b from-transparent via-[#333]/50 to-transparent" />
-          <div className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#bbb] font-medium flex items-center gap-2">
+          <div className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#ddd] font-medium flex items-center gap-2">
             <span>War Room</span>
             <span className="w-1 h-1 bg-[#d4f000]/30 rounded-full hidden sm:block" />
           </div>
           <div className="hidden md:block w-px h-3 bg-[#333]/40" />
-          <div className="hidden md:flex md:items-center md:gap-2 font-mono text-[12px] uppercase tracking-[0.2em] text-[#aaa]">
+          <div className="hidden md:flex md:items-center md:gap-2 font-mono text-[12px] uppercase tracking-[0.2em] text-[#ccc]">
             <span>Intelligence Dashboard</span>
             <span className="text-[#d4f000]/40 font-black px-1.5 py-0.5 bg-[#d4f000]/[0.06] border border-[#d4f000]/[0.12] text-[11px] tracking-[0.1em]">v2.0</span>
           </div>
@@ -337,7 +337,7 @@ export default function CommandHeader() {
           ) : data?.marketCap != null ? (
             formatUsd(data.marketCap)
           ) : (
-            <span className="wr-tag border-[#333]/60 text-[#888]">CLASSIFIED</span>
+            <span className="wr-tag border-[#333]/60 text-[#bbb]">CLASSIFIED</span>
           )}
         </DataCell>
 
@@ -347,7 +347,7 @@ export default function CommandHeader() {
           ) : data?.volume24h != null ? (
             formatUsd(data.volume24h)
           ) : (
-            <span className="wr-tag border-[#333]/60 text-[#888]">CLASSIFIED</span>
+            <span className="wr-tag border-[#333]/60 text-[#bbb]">CLASSIFIED</span>
           )}
         </DataCell>
       </div>
