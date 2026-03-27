@@ -274,7 +274,7 @@ function DistributionHistory({
         </div>
       ) : (
         <>
-          <div className="overflow-x-auto">
+          <div>
             <table className="w-full font-mono text-[12px]">
               <thead>
                 <tr className="text-left text-[#bbb] uppercase tracking-wider border-b border-[#333]/15">
@@ -383,7 +383,7 @@ function FeatureCards({
           return (
             <div
               key={card.key}
-              className="relative p-[1px] overflow-hidden rounded-sm group/feature"
+              className="relative p-[1px] overflow-clip rounded-sm group/feature"
             >
               {/* Border gradient */}
               <div
