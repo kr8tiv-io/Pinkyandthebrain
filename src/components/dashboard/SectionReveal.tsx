@@ -2,9 +2,6 @@
 
 import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
 
 export default function SectionReveal({
   children,
@@ -20,7 +17,7 @@ export default function SectionReveal({
     if (!sectionRef.current) return
 
     const ctx = gsap.context(() => {
-      // Main content reveal — subtle scale + blur + fade + clip
+      // Animate on mount (fires on every tab switch due to key={activeTab} remount)
       gsap.fromTo(
         sectionRef.current,
         {
@@ -36,14 +33,9 @@ export default function SectionReveal({
           scale: 1,
           filter: 'blur(0px)',
           clipPath: 'inset(0% 0% 0% 0%)',
-          duration: 1,
+          duration: 0.8,
           ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 88%',
-            end: 'top 50%',
-            toggleActions: 'play none none none',
-          },
+          delay: 0.1,
         }
       )
 
@@ -54,13 +46,9 @@ export default function SectionReveal({
           { scaleX: 0 },
           {
             scaleX: 1,
-            duration: 0.8,
+            duration: 0.6,
             ease: 'power2.inOut',
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: 'top 85%',
-              toggleActions: 'play none none none',
-            },
+            delay: 0.2,
           }
         )
       }

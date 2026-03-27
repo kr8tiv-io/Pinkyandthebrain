@@ -1,30 +1,25 @@
 import { NextResponse } from 'next/server'
 import {
-  getLpFeeInflows,
-  getReflectionDistributions,
-  getLpWalletBalance,
+  getFeeShareData,
+  getClaimHistory,
   getFeeDistribution,
 } from '@/lib/api/reflections'
 import { getTokenPrice } from '@/lib/api/birdeye'
 import { SOL_MINT, PAYOUT_THRESHOLD_SOL } from '@/lib/constants'
 import type { ReflectionsDashboardResponse } from '@/lib/api/types'
 
-export const revalidate = 300
+export const revalidate = 120
 
 export async function GET() {
   // Fetch each source independently so one failure doesn't kill all data
-  const [feeData, reflectionData, accruedSol, solPrice] = await Promise.all([
-    getLpFeeInflows().catch((e) => {
-      console.warn('[reflections] Solscan inflows failed:', e?.message)
-      return { totalFeeSol: 0, inflows: [] as Array<{ txHash: string; timestamp: number; amountSol: number; fromAddress: string }> }
+  const [feeShareData, claimEvents, solPrice] = await Promise.all([
+    getFeeShareData().catch((e) => {
+      console.warn('[reflections] PDA read failed:', e?.message)
+      return { totalAccumulatedSol: 0, totalClaimedSol: 0, currentUnclaimedSol: 0 }
     }),
-    getReflectionDistributions().catch((e) => {
-      console.warn('[reflections] Solscan distributions failed:', e?.message)
-      return { totalDistributedSol: 0, distributions: [] as Array<{ txHash: string; timestamp: number; amountSol: number; toAddress: string }> }
-    }),
-    getLpWalletBalance().catch((e) => {
-      console.warn('[reflections] RPC balance failed:', e?.message)
-      return 0
+    getClaimHistory().catch((e) => {
+      console.warn('[reflections] Claim history failed:', e?.message)
+      return [] as Array<{ txHash: string; timestamp: number; amountSol: number; toAddress: string }>
     }),
     getTokenPrice(SOL_MINT).catch((e) => {
       console.warn('[reflections] Birdeye price failed:', e?.message)
@@ -33,20 +28,22 @@ export async function GET() {
   ])
 
   const solPriceUsd = solPrice.value ?? 0
-  const totalFeeSol = feeData.totalFeeSol
+  const totalFeeSol = feeShareData.totalAccumulatedSol
   const feeBreakdown = getFeeDistribution(totalFeeSol)
 
-  // Estimate trading volume from fees (1% creator fee)
-  const estimatedVolumeSol = totalFeeSol / 0.01
+  // Reflections = 20% of total claimed (claimer 0 gets 20% for holder distributions)
+  const totalReflectedSol = feeShareData.totalClaimedSol * 0.20
 
-  // Last payout timestamp from most recent distribution
+  // Estimate trading volume from fees (1% creator fee on bags.fm)
+  const estimatedVolumeSol = totalFeeSol > 0 ? totalFeeSol / 0.01 : 0
+
+  // Last claim timestamp from most recent event
   const lastPayoutTimestamp =
-    reflectionData.distributions.length > 0
-      ? reflectionData.distributions[0].timestamp
-      : null
+    claimEvents.length > 0 ? claimEvents[0].timestamp : null
 
-  // Estimate next payout based on accrual rate
+  // Estimate next payout based on accrual toward threshold
   let nextPayoutEstimate: number | null = null
+  const accruedSol = feeShareData.currentUnclaimedSol
   if (lastPayoutTimestamp && accruedSol > 0 && accruedSol < PAYOUT_THRESHOLD_SOL) {
     const now = Math.floor(Date.now() / 1000)
     const timeSinceLastPayout = now - lastPayoutTimestamp
@@ -60,7 +57,7 @@ export async function GET() {
 
   const data: ReflectionsDashboardResponse = {
     totalFeesLifetimeSol: totalFeeSol,
-    totalReflectedSol: reflectionData.totalDistributedSol,
+    totalReflectedSol,
     currentAccruedSol: accruedSol,
     payoutThresholdSol: PAYOUT_THRESHOLD_SOL,
     estimatedVolumeSol,
@@ -68,7 +65,7 @@ export async function GET() {
     lastPayoutTimestamp,
     nextPayoutEstimate,
     feeBreakdown,
-    distributions: reflectionData.distributions.slice(0, 50),
+    distributions: claimEvents.slice(0, 50),
   }
 
   return NextResponse.json(data)

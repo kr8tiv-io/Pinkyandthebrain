@@ -1,117 +1,174 @@
 // src/lib/api/reflections.ts
 // Server-side only — do NOT import in client components
-// Composite reflections module: LP wallet inflows (fee income) and outflows (distributions),
-// plus pure fee split computation for the 10/20/30/10/5/5/20 breakdown.
-// Combines solscan (paginated account transfers) foundational wrapper.
+// Reads fee data directly from the Fee Share V2 on-chain PDA accounts
+// and claim event history from Helius parsed transactions API.
 
-import { getAllAccountTransfers } from './solscan'
-import { LP_WALLET, SOL_RPC } from '@/lib/constants'
+import {
+  HELIUS_RPC_URL,
+  HELIUS_API_URL,
+  FEE_SHARE_AUTHORITY_PDA,
+} from '@/lib/constants'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-export interface ReflectionDistribution {
+export interface FeeShareData {
+  totalAccumulatedSol: number
+  totalClaimedSol: number
+  currentUnclaimedSol: number
+}
+
+export interface ClaimEvent {
   txHash: string
   timestamp: number
   amountSol: number
   toAddress: string
 }
 
-export interface ReflectionSummary {
-  totalDistributedSol: number
-  distributions: ReflectionDistribution[]
-}
-
-// ─── Exports ──────────────────────────────────────────────────────────────────
+// ─── On-chain PDA Reads ────────────────────────────────────────────────────────
 
 /**
- * Fetches all outbound SOL transfers from the LP wallet — these are the SOL
- * reflection distributions sent to holders.
+ * Reads the fee_share_authority PDA to get total accumulated/claimed fees,
+ * and queries the PDA balance for current unclaimed SOL.
  *
- * Uses getAllAccountTransfers (paginated, up to 10 pages) to capture full history.
- * Converts lamports to SOL by dividing by 1_000_000_000.
- * Returns distributions sorted most recent first.
+ * PDA account layout (Anchor/Borsh):
+ *   [0..8]   discriminator
+ *   [8..40]  feeShareConfig pubkey
+ *   [40..48] totalAccumulatedFees u64 LE (lamports)
+ *   [48..56] (internal counter)
+ *   [56..64] totalClaimedFees u64 LE (lamports)
+ *   [64..72] (internal counter)
+ *   [72..80] totalLifetimeAccFees u64 LE (lamports)
  */
-export async function getReflectionDistributions(): Promise<ReflectionSummary> {
-  const transfers = await getAllAccountTransfers(LP_WALLET, { flow: 'out' })
+export async function getFeeShareData(): Promise<FeeShareData> {
+  const SOL_MINT = 'So11111111111111111111111111111111111111112'
 
-  const distributions: ReflectionDistribution[] = transfers.map((t) => ({
-    txHash: t.trans_id,
-    timestamp: t.block_time,
-    amountSol: t.amount / 1_000_000_000, // lamports to SOL
-    toAddress: t.to_address,
-  }))
+  const [accountRes, wsolRes] = await Promise.all([
+    // Read PDA account data for accumulated/claimed totals
+    fetch(HELIUS_RPC_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        jsonrpc: '2.0',
+        id: 1,
+        method: 'getAccountInfo',
+        params: [FEE_SHARE_AUTHORITY_PDA, { encoding: 'base64' }],
+      }),
+      next: { revalidate: 120 },
+    }),
+    // Read WSOL token balance of the PDA (unclaimed fees held as wrapped SOL)
+    fetch(HELIUS_RPC_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        jsonrpc: '2.0',
+        id: 2,
+        method: 'getTokenAccountsByOwner',
+        params: [
+          FEE_SHARE_AUTHORITY_PDA,
+          { mint: SOL_MINT },
+          { encoding: 'jsonParsed' },
+        ],
+      }),
+      next: { revalidate: 60 },
+    }),
+  ])
 
-  // Sort most recent first
-  distributions.sort((a, b) => b.timestamp - a.timestamp)
+  const accountJson = (await accountRes.json()) as {
+    result?: { value?: { data?: [string, string] } }
+  }
+  const wsolJson = (await wsolRes.json()) as {
+    result?: {
+      value: { account: { data: { parsed: { info: { tokenAmount: { uiAmount: number | null } } } } } }[]
+    }
+  }
 
-  const totalDistributedSol = distributions.reduce((sum, d) => sum + d.amountSol, 0)
+  let totalAccumulatedSol = 0
+  let totalClaimedSol = 0
 
-  return {
-    totalDistributedSol,
-    distributions,
+  const rawData = accountJson.result?.value?.data
+  if (rawData && rawData[0]) {
+    const data = Buffer.from(rawData[0], 'base64')
+    // Read u64 LE values at verified on-chain offsets
+    if (data.length >= 80) {
+      const accumulatedLamports = data.readBigUInt64LE(40) // totalAccumulatedFees
+      const claimedLamports = data.readBigUInt64LE(56)     // totalClaimedFees
+      totalAccumulatedSol = Number(accumulatedLamports) / 1_000_000_000
+      totalClaimedSol = Number(claimedLamports) / 1_000_000_000
+    }
+  }
+
+  // WSOL token balance = unclaimed fees sitting in the authority PDA
+  let currentUnclaimedSol = 0
+  const wsolAccounts = wsolJson.result?.value ?? []
+  if (wsolAccounts.length > 0) {
+    currentUnclaimedSol = wsolAccounts[0].account.data.parsed.info.tokenAmount.uiAmount ?? 0
+  }
+
+  return { totalAccumulatedSol, totalClaimedSol, currentUnclaimedSol }
+}
+
+// ─── Claim Event History ──────────────────────────────────────────────────────
+
+/**
+ * Fetches parsed transaction history from Helius for the fee_share_authority PDA.
+ * Extracts SOL transfers out of the PDA (claim events by fee recipients).
+ */
+export async function getClaimHistory(): Promise<ClaimEvent[]> {
+  const apiKey = process.env.HELIUS_API_KEY
+  if (!apiKey) return []
+
+  try {
+    const url = `${HELIUS_API_URL}/addresses/${FEE_SHARE_AUTHORITY_PDA}/transactions?api-key=${apiKey}&limit=50`
+    const res = await fetch(url, { next: { revalidate: 300 } })
+    if (!res.ok) return []
+
+    const txs = (await res.json()) as Array<{
+      signature: string
+      timestamp: number
+      tokenTransfers?: Array<{
+        fromUserAccount: string
+        toUserAccount: string
+        tokenAmount: number
+        mint: string
+      }>
+    }>
+
+    const events: ClaimEvent[] = []
+    const SOL_MINT = 'So11111111111111111111111111111111111111112'
+
+    for (const tx of txs) {
+      if (!tx.tokenTransfers) continue
+      // Claims are WSOL token transfers from the authority PDA to claimers
+      for (const transfer of tx.tokenTransfers) {
+        if (
+          transfer.fromUserAccount === FEE_SHARE_AUTHORITY_PDA &&
+          transfer.mint === SOL_MINT &&
+          transfer.tokenAmount > 0
+        ) {
+          events.push({
+            txHash: tx.signature,
+            timestamp: tx.timestamp,
+            amountSol: transfer.tokenAmount,
+            toAddress: transfer.toUserAccount,
+          })
+        }
+      }
+    }
+
+    // Sort most recent first, deduplicate by txHash+toAddress
+    events.sort((a, b) => b.timestamp - a.timestamp)
+    return events
+  } catch (e) {
+    console.warn('[reflections] Helius claim history failed:', (e as Error)?.message)
+    return []
   }
 }
 
-/**
- * Fetches all inbound SOL transfers to the LP wallet — these are the fee inflows
- * earned by the LP position over time.
- *
- * Supports R8 (LP Fees) — total fees earned and fee inflow chart data.
- * Returns sorted most recent first.
- */
-export async function getLpFeeInflows(): Promise<{
-  totalFeeSol: number
-  inflows: Array<{
-    txHash: string
-    timestamp: number
-    amountSol: number
-    fromAddress: string
-  }>
-}> {
-  const transfers = await getAllAccountTransfers(LP_WALLET, { flow: 'in' })
-
-  const inflows = transfers.map((t) => ({
-    txHash: t.trans_id,
-    timestamp: t.block_time,
-    amountSol: t.amount / 1_000_000_000, // lamports to SOL
-    fromAddress: t.from_address,
-  }))
-
-  // Sort most recent first
-  inflows.sort((a, b) => b.timestamp - a.timestamp)
-
-  const totalFeeSol = inflows.reduce((sum, i) => sum + i.amountSol, 0)
-
-  return { totalFeeSol, inflows }
-}
-
-/**
- * Fetches the current SOL balance of the LP wallet via Solana RPC.
- * This represents how much SOL has accrued toward the next payout.
- */
-export async function getLpWalletBalance(): Promise<number> {
-  const res = await fetch(SOL_RPC, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      jsonrpc: '2.0',
-      id: 1,
-      method: 'getBalance',
-      params: [LP_WALLET],
-    }),
-    next: { revalidate: 60 },
-  })
-  const json = (await res.json()) as { result?: { value?: number } }
-  return (json.result?.value ?? 0) / 1_000_000_000
-}
+// ─── Fee Distribution Computation ────────────────────────────────────────────
 
 /**
  * Pure computation: breaks down a total fee amount by the protocol's
  * 10/20/30/10/5/5/20 split across recipient categories.
- *
- * Supports R4 (Fee Distribution Ledger).
- *
- * No API calls — takes totalFeeSol input and returns computed breakdowns.
  */
 export function getFeeDistribution(
   totalFeeSol: number

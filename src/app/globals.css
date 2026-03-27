@@ -1706,3 +1706,7 @@ section:hover > .wr-section-badge-fire {
 /* Prevent Recharts overlay from capturing scroll/wheel events */
 .wr-chart-frame .recharts-surface { touch-action: pan-y !important; }
 .wr-chart-frame .recharts-tooltip-wrapper { pointer-events: none; }
+
+/* ─── War Room Tab Bar ─────────────────────────────────────────────────── */
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }

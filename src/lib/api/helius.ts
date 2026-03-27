@@ -144,3 +144,84 @@ export async function getTokenLargestAccounts(
     uiAmount: acct.uiAmount ?? 0,
   }))
 }
+
+/**
+ * Resolves wallet owners for a batch of token account addresses.
+ * Calls getMultipleAccounts with jsonParsed encoding and extracts the owner field.
+ */
+export async function resolveTokenAccountOwners(
+  tokenAccounts: string[]
+): Promise<Record<string, string>> {
+  if (tokenAccounts.length === 0) return {}
+
+  const result = await rpc<{
+    value: (null | {
+      data: { parsed: { info: { owner: string } } }
+    })[]
+  }>('getMultipleAccounts', [tokenAccounts, { encoding: 'jsonParsed' }])
+
+  const owners: Record<string, string> = {}
+  result.value.forEach((acct, i) => {
+    if (acct?.data?.parsed?.info?.owner) {
+      owners[tokenAccounts[i]] = acct.data.parsed.info.owner
+    }
+  })
+  return owners
+}
+
+/**
+ * Fetches token holders using Helius DAS getTokenAccounts method.
+ * Returns paginated results with owner wallet addresses.
+ */
+export async function getTokenHoldersDAS(
+  mint: string,
+  page: number = 1,
+  limit: number = 100
+): Promise<{
+  holders: { address: string; owner: string; amount: number; decimals: number }[]
+  total: number
+}> {
+  // Helius DAS methods use params as a direct object, not an array
+  const res = await fetch(HELIUS_RPC_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      jsonrpc: '2.0',
+      id: 'das-holders',
+      method: 'getTokenAccounts',
+      params: { page, limit, mint },
+    }),
+    next: { revalidate: 300 },
+  })
+  if (!res.ok) {
+    throw new Error(`Helius DAS getTokenAccounts failed: ${res.status}`)
+  }
+  const json = (await res.json()) as {
+    result?: {
+      total: number
+      token_accounts: {
+        address: string
+        mint: string
+        owner: string
+        amount: number
+        delegated_amount: number
+        frozen: boolean
+      }[]
+    }
+    error?: { message: string }
+  }
+  if (json.error) {
+    throw new Error(`Helius DAS error: ${json.error.message}`)
+  }
+  const result = json.result
+
+  return {
+    total: result?.total ?? 0,
+    holders: (result?.token_accounts ?? []).map((acct) => ({
+      address: acct.address,
+      owner: acct.owner,
+      amount: acct.amount,
+      decimals: 9,
+    })),
+  }
+}

@@ -6,17 +6,9 @@ import Lenis from "lenis";
 export default function SmoothScrolling({ children }: { children: ReactNode }) {
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.1,
-      duration: 1.2,
+      lerp: 0.12,
+      duration: 1.0,
       smoothWheel: true,
-      prevent: (node: HTMLElement) => {
-        // Let nested scrollable containers (terminals, charts, tables) scroll natively
-        if (node.classList.contains('custom-scrollbar')) return true;
-        if (node.classList.contains('wr-scroll')) return true;
-        if (node.closest('.custom-scrollbar')) return true;
-        if (node.closest('.wr-scroll')) return true;
-        return false;
-      },
     });
 
     function raf(time: number) {
