@@ -27,6 +27,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .noise-overlay {

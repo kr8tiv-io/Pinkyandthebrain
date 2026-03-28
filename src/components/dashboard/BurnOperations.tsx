@@ -356,6 +356,103 @@ function TransactionRow({
   )
 }
 
+// ─── Burn Projections ─────────────────────────────────────────────────────────
+
+interface BurnMilestone {
+  pct: number
+  reached: boolean
+  date: number | null
+}
+
+function computeBurnProjections(
+  totalBurned: number,
+  totalSupply: number,
+  transactions: Array<{ timestamp: number; amount: number }>
+): BurnMilestone[] {
+  if (transactions.length < 2) return []
+  const sorted = [...transactions].sort((a, b) => a.timestamp - b.timestamp)
+  const first = sorted[0]
+  const last = sorted[sorted.length - 1]
+  const timeSpan = last.timestamp - first.timestamp
+  if (timeSpan <= 0) return []
+
+  const originalSupply = totalBurned + totalSupply
+  const burnRate = totalBurned / timeSpan
+
+  return [25, 50, 75].map(pct => {
+    const targetBurned = (pct / 100) * originalSupply
+    if (totalBurned >= targetBurned) {
+      return { pct, reached: true, date: null }
+    }
+    const remaining = targetBurned - totalBurned
+    const secondsToTarget = remaining / burnRate
+    return { pct, reached: false, date: Math.floor(last.timestamp + secondsToTarget) }
+  })
+}
+
+function BurnProjections({
+  totalBurned,
+  totalSupply,
+  transactions,
+  isLoading,
+}: {
+  totalBurned: number
+  totalSupply: number
+  transactions: Array<{ timestamp: number; amount: number }>
+  isLoading: boolean
+}) {
+  const milestones = computeBurnProjections(totalBurned, totalSupply, transactions)
+
+  if (isLoading || milestones.length === 0) return null
+
+  return (
+    <div className="px-5 lg:px-8 py-6 border-b border-[#333]/12">
+      <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-5 flex items-center gap-3 wr-sub-header">
+        <span className="text-[#ff6b35]/70 text-[12px] wr-sub-diamond">◆</span>
+        <span>BURN PROJECTIONS</span>
+        <div className="flex-1 h-px bg-gradient-to-r from-[#ff6b35]/55 to-transparent" />
+        <span className="text-[#bbb]">LINEAR ESTIMATE</span>
+      </div>
+
+      {/* Timeline */}
+      <div className="relative">
+        {/* Progress line */}
+        <div className="absolute top-4 left-0 right-0 h-px bg-[#333]/30" />
+
+        <div className="flex justify-between items-start">
+          {milestones.map((m) => (
+            <div key={m.pct} className="flex flex-col items-center gap-2 relative">
+              {/* Dot */}
+              <div
+                className={`w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-mono font-black z-10 ${
+                  m.reached
+                    ? 'bg-[#ff6b35]/20 text-[#ff6b35] border border-[#ff6b35]/40'
+                    : 'bg-[#1a1a1a] text-[#bbb] border border-[#333]/40'
+                }`}
+                style={m.reached ? { boxShadow: '0 0 12px rgba(255,107,53,0.3)' } : {}}
+              >
+                {m.pct}%
+              </div>
+              {/* Label */}
+              <div className="text-center">
+                {m.reached ? (
+                  <span className="font-mono text-[11px] text-[#ff6b35] font-bold tracking-wider wr-fire-text">REACHED</span>
+                ) : m.date ? (
+                  <span className="font-mono text-[11px] text-[#bbb] tabular-nums">
+                    {format(fromUnixTime(m.date), 'MMM yyyy')}
+                  </span>
+                ) : (
+                  <span className="font-mono text-[11px] text-[#555]">—</span>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 // ─── Burn Transactions Table ──────────────────────────────────────────────────
 
 function BurnTransactionsTable({
@@ -609,6 +706,14 @@ export default function BurnOperations() {
           <span className="font-mono text-[11px] text-[#bbb] uppercase tracking-[0.15em]">100%</span>
         </div>
       </div>
+
+      {/* Burn projections */}
+      <BurnProjections
+        totalBurned={data?.totalBurned ?? 0}
+        totalSupply={data?.totalSupply ?? 0}
+        transactions={data?.transactions ?? []}
+        isLoading={isLoading}
+      />
 
       {/* Transactions table */}
       <div className="relative">

@@ -36,6 +36,15 @@ export interface TreasuryResponse {
   }>
   totalValueUsd: number
   totalValueSol: number
+  recentTransactions: Array<{
+    timestamp: number
+    txHash: string
+    mint: string
+    action: 'BUY' | 'SELL'
+    tokenAmount: number
+    solAmount: number
+    symbol?: string
+  }>
 }
 
 // ─── Burns ────────────────────────────────────────────────────────────────────
@@ -110,6 +119,7 @@ export interface ReflectionsDashboardResponse {
   solPriceUsd: number
   lastPayoutTimestamp: number | null
   nextPayoutEstimate: number | null
+  totalSupply: number
   feeBreakdown: Record<string, { pct: number; sol: number }>
   distributions: Array<{
     txHash: string

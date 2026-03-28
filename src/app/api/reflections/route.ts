@@ -5,14 +5,15 @@ import {
   getFeeDistribution,
 } from '@/lib/api/reflections'
 import { getTokenPrice } from '@/lib/api/birdeye'
-import { SOL_MINT, PAYOUT_THRESHOLD_SOL } from '@/lib/constants'
+import { getTokenSupply } from '@/lib/api/helius'
+import { SOL_MINT, PAYOUT_THRESHOLD_SOL, BRAIN_TOKEN_MINT } from '@/lib/constants'
 import type { ReflectionsDashboardResponse } from '@/lib/api/types'
 
 export const revalidate = 120
 
 export async function GET() {
   // Fetch each source independently so one failure doesn't kill all data
-  const [feeShareData, claimEvents, solPrice] = await Promise.all([
+  const [feeShareData, claimEvents, solPrice, tokenSupply] = await Promise.all([
     getFeeShareData().catch((e) => {
       console.warn('[reflections] PDA read failed:', e?.message)
       return { totalAccumulatedSol: 0, totalClaimedSol: 0, currentUnclaimedSol: 0 }
@@ -24,6 +25,10 @@ export async function GET() {
     getTokenPrice(SOL_MINT).catch((e) => {
       console.warn('[reflections] Birdeye price failed:', e?.message)
       return { value: 0 }
+    }),
+    getTokenSupply(BRAIN_TOKEN_MINT).catch((e) => {
+      console.warn('[reflections] Token supply failed:', e?.message)
+      return { uiAmount: 0, amount: '0', decimals: 9 }
     }),
   ])
 
@@ -66,6 +71,7 @@ export async function GET() {
     solPriceUsd,
     lastPayoutTimestamp,
     nextPayoutEstimate,
+    totalSupply: tokenSupply.uiAmount,
     feeBreakdown,
     distributions: claimEvents.slice(0, 50),
   }

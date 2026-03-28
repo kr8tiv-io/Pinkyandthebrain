@@ -15,6 +15,7 @@ import gsap from 'gsap'
 import { useTreasury } from '@/hooks/useTreasury'
 import { TREASURY_HOLDINGS } from '@/lib/investments.config'
 import type { TreasuryResponse } from '@/lib/api/types'
+import HolderAnalytics from './HolderAnalytics'
 
 // ─── Utility formatters ───────────────────────────────────────────────────────
 
@@ -343,6 +344,18 @@ function computePortfolioPnL(holdings: TreasuryResponse['holdings']) {
   const pnlUsd = totalCurrent - totalCost
   const pnlPct = totalCost > 0 ? (pnlUsd / totalCost) * 100 : 0
   return { totalCost, totalCurrent, pnlUsd, pnlPct, wins, losses }
+}
+
+function computePortfolioMetrics(holdings: TreasuryResponse['holdings']) {
+  const base = computePortfolioPnL(holdings)
+  const withPnL = holdings.filter(h => h.gainLossPct !== undefined)
+  const best = withPnL.length > 0
+    ? withPnL.reduce((a, b) => (a.gainLossPct! > b.gainLossPct! ? a : b))
+    : null
+  const worst = withPnL.length > 0
+    ? withPnL.reduce((a, b) => (a.gainLossPct! < b.gainLossPct! ? a : b))
+    : null
+  return { ...base, best, worst }
 }
 
 // ─── Treasury Value Over Time Chart ──────────────────────────────────────────
@@ -848,6 +861,105 @@ function HoldingCard({
 
 // ─── Divested Assets Section ──────────────────────────────────────────────────
 
+// ─── Transaction Feed ──────────────────────────────────────────────────────
+
+function TransactionFeed({
+  transactions,
+  isLoading,
+}: {
+  transactions: TreasuryResponse['recentTransactions']
+  isLoading: boolean
+}) {
+  const [showAll, setShowAll] = useState(false)
+  const visible = showAll ? transactions : transactions.slice(0, 10)
+
+  return (
+    <div className="px-5 lg:px-8 py-6 border-t border-[#444]/20">
+      <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-4 flex items-center gap-3 wr-sub-header">
+        <span className="text-[#d4f000]/70 text-[12px] wr-sub-diamond">◆</span>
+        <span>TRANSACTION FEED</span>
+        <div className="flex-1 h-px bg-gradient-to-r from-[#888]/50 to-transparent" />
+        {!isLoading && transactions.length > 0 && (
+          <span className="text-[#bbb] tabular-nums">{transactions.length} TXS</span>
+        )}
+      </div>
+
+      {isLoading ? (
+        <div className="space-y-2">
+          {[1, 2, 3].map(i => <div key={i} className="wr-skeleton h-10 w-full" />)}
+        </div>
+      ) : transactions.length === 0 ? (
+        <div className="py-6 text-center font-mono text-[12px] text-[#bbb] tracking-[0.2em]">
+          NO TRANSACTIONS RECORDED
+        </div>
+      ) : (
+        <>
+          <table className="w-full font-mono text-[12px]">
+            <thead>
+              <tr className="text-left text-[#bbb] uppercase tracking-wider border-b border-[#333]/15">
+                <th className="py-2 pr-4">Date</th>
+                <th className="py-2 pr-4">Action</th>
+                <th className="py-2 pr-4">Token</th>
+                <th className="py-2 pr-4 text-right hidden md:table-cell">Amount</th>
+                <th className="py-2 pr-4 text-right hidden md:table-cell">SOL</th>
+                <th className="py-2">Tx</th>
+              </tr>
+            </thead>
+            <tbody>
+              {visible.map((tx, i) => (
+                <tr
+                  key={tx.txHash + i}
+                  className="border-b border-[#333]/8 hover:bg-[#d4f000]/[0.015] transition-colors"
+                >
+                  <td className="py-2.5 pr-4 text-[#ccc] whitespace-nowrap tabular-nums">
+                    {format(fromUnixTime(tx.timestamp), 'MMM d, HH:mm')}
+                  </td>
+                  <td className="py-2.5 pr-4">
+                    <span className={`font-bold px-2 py-0.5 rounded-sm text-[11px] ${
+                      tx.action === 'BUY'
+                        ? 'text-[#d4f000] bg-[#d4f000]/[0.06]'
+                        : 'text-[#ff9e9e] bg-[#ff9e9e]/[0.06]'
+                    }`}>
+                      {tx.action}
+                    </span>
+                  </td>
+                  <td className="py-2.5 pr-4 text-white font-bold">
+                    {tx.symbol ?? tx.mint.slice(0, 6) + '…'}
+                  </td>
+                  <td className="py-2.5 pr-4 text-right text-[#ccc] tabular-nums hidden md:table-cell">
+                    {tx.tokenAmount.toLocaleString(undefined, { maximumFractionDigits: 2 })}
+                  </td>
+                  <td className="py-2.5 pr-4 text-right text-[#bbb] tabular-nums hidden md:table-cell">
+                    {tx.solAmount > 0 ? `${tx.solAmount.toFixed(4)} ◎` : '—'}
+                  </td>
+                  <td className="py-2.5">
+                    <a
+                      href={`https://solscan.io/tx/${tx.txHash}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#d4f000]/70 hover:text-[#d4f000] transition-colors"
+                    >
+                      ↗
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {transactions.length > 10 && (
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="mt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-[#d4f000]/70 hover:text-[#d4f000] transition-colors"
+            >
+              {showAll ? '▲ SHOW LESS' : `▼ SHOW ALL (${transactions.length})`}
+            </button>
+          )}
+        </>
+      )}
+    </div>
+  )
+}
+
 function DivestedSection() {
   const soldTokens = TREASURY_HOLDINGS.filter(h => h.soldDate !== undefined)
 
@@ -990,10 +1102,10 @@ export default function TreasuryIntel() {
 
       {/* Summary bar */}
       {(() => {
-        const pnl = data ? computePortfolioPnL(data.holdings) : null
+        const pnl = data ? computePortfolioMetrics(data.holdings) : null
         const isUp = pnl ? pnl.pnlUsd >= 0 : true
         return (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 divide-x divide-[#333]/20 border-b border-[#555]/30 wr-summary-accent wr-summary-glow-divider" role="region" aria-label="Treasury summary statistics">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 divide-x divide-[#333]/20 border-b border-[#555]/30 wr-summary-accent wr-summary-glow-divider" role="region" aria-label="Treasury summary statistics">
             <SummaryCell label="Total Value (USD)" isLoading={isLoading} isError={isError}>
               <span className="flex items-center">
                 {formatUsd(data?.totalValueUsd ?? 0)}
@@ -1031,6 +1143,27 @@ export default function TreasuryIntel() {
                 )}
               </span>
             </SummaryCell>
+            <SummaryCell label="Total ROI" isLoading={isLoading} isError={isError}>
+              <span className={pnl && pnl.pnlPct >= 0 ? 'text-[#d4f000]' : 'text-[#ff9e9e]'}>
+                {pnl ? `${pnl.pnlPct >= 0 ? '+' : ''}${pnl.pnlPct.toFixed(1)}%` : '—'}
+              </span>
+            </SummaryCell>
+            <SummaryCell label="Best Performer" isLoading={isLoading} isError={isError}>
+              {pnl?.best ? (
+                <span className="text-[#d4f000] flex items-baseline gap-1.5">
+                  <span className="text-[14px]">{pnl.best.symbol}</span>
+                  <span className="text-[13px]">{formatGainLoss(pnl.best.gainLossPct).text}</span>
+                </span>
+              ) : '—'}
+            </SummaryCell>
+            <SummaryCell label="Worst Performer" isLoading={isLoading} isError={isError}>
+              {pnl?.worst ? (
+                <span className="text-[#ff9e9e] flex items-baseline gap-1.5">
+                  <span className="text-[14px]">{pnl.worst.symbol}</span>
+                  <span className="text-[13px]">{formatGainLoss(pnl.worst.gainLossPct).text}</span>
+                </span>
+              ) : '—'}
+            </SummaryCell>
           </div>
         )
       })()}
@@ -1061,6 +1194,15 @@ export default function TreasuryIntel() {
 
       {/* Treasury value over time chart */}
       <TreasuryValueChart holdings={data?.holdings ?? []} isLoading={isLoading} />
+
+      {/* Transaction feed */}
+      <TransactionFeed
+        transactions={data?.recentTransactions ?? []}
+        isLoading={isLoading}
+      />
+
+      {/* Holder analytics */}
+      <HolderAnalytics />
 
       {/* Divested assets */}
       <DivestedSection />

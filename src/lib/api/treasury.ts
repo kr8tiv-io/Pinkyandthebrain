@@ -32,12 +32,23 @@ export interface HoldingValuation {
   category: string
 }
 
+export interface RecentTransaction {
+  timestamp: number
+  txHash: string
+  mint: string
+  action: 'BUY' | 'SELL'
+  tokenAmount: number
+  solAmount: number
+  symbol?: string
+}
+
 export interface TreasuryResponse {
   solBalance: number
   solPriceUsd: number
   holdings: HoldingValuation[]
   totalValueUsd: number
   totalValueSol: number
+  recentTransactions: RecentTransaction[]
 }
 
 // ─── Helius Parsed Transaction History ───────────────────────────────────────
@@ -279,6 +290,49 @@ function enrichHolding(
   return base
 }
 
+// ─── Recent Transactions ─────────────────────────────────────────────────────
+
+function buildRecentTransactions(
+  txHistory: HeliusParsedTx[],
+  dexMetadata: Record<string, DexTokenMeta>
+): RecentTransaction[] {
+  const transactions: RecentTransaction[] = []
+
+  for (const tx of txHistory) {
+    if (!tx.tokenTransfers) continue
+    for (const transfer of tx.tokenTransfers) {
+      const isBuy = transfer.toUserAccount === TREASURY_WALLET && transfer.tokenAmount > 0
+      const isSell = transfer.fromUserAccount === TREASURY_WALLET && transfer.tokenAmount > 0
+      if (!isBuy && !isSell) continue
+
+      let solAmount = 0
+      if (tx.nativeTransfers) {
+        for (const nt of tx.nativeTransfers) {
+          if (isBuy && nt.fromUserAccount === TREASURY_WALLET && nt.amount > 0) {
+            solAmount += nt.amount / 1_000_000_000
+          }
+          if (isSell && nt.toUserAccount === TREASURY_WALLET && nt.amount > 0) {
+            solAmount += nt.amount / 1_000_000_000
+          }
+        }
+      }
+
+      const meta = dexMetadata[transfer.mint]
+      transactions.push({
+        timestamp: tx.timestamp,
+        txHash: tx.signature,
+        mint: transfer.mint,
+        action: isBuy ? 'BUY' : 'SELL',
+        tokenAmount: transfer.tokenAmount,
+        solAmount,
+        symbol: HOLDINGS_BY_MINT[transfer.mint]?.symbol ?? meta?.symbol,
+      })
+    }
+  }
+
+  return transactions.sort((a, b) => b.timestamp - a.timestamp).slice(0, 20)
+}
+
 // ─── Exports ──────────────────────────────────────────────────────────────────
 
 /**
@@ -336,11 +390,15 @@ export async function getTreasuryValuations(): Promise<TreasuryResponse> {
   const totalValueUsd = solValueUsd + holdingsValueUsd
   const totalValueSol = solPriceUsd > 0 ? totalValueUsd / solPriceUsd : 0
 
+  // Step 8: Build recent transaction feed from existing tx history
+  const recentTransactions = buildRecentTransactions(txHistory, dexMetadata)
+
   return {
     solBalance,
     solPriceUsd,
     holdings,
     totalValueUsd,
     totalValueSol,
+    recentTransactions,
   }
 }

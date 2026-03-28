@@ -5,6 +5,8 @@ import { format, fromUnixTime } from 'date-fns'
 import gsap from 'gsap'
 import { useReflections } from '@/hooks/useReflections'
 import { BRAIN_TOKEN_MINT, LP_WALLET, BAGS_FEE_SHARE_V2 } from '@/lib/constants'
+import ReflectionsCalculator from './ReflectionsCalculator'
+import WalletChecker from './WalletChecker'
 
 // ─── Utility formatters ───────────────────────────────────────────────────────
 
@@ -563,7 +565,7 @@ export default function ReflectionsIntel() {
 
       {/* Summary stats */}
       <div
-        className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[#333]/20 border-b border-[#555]/30 wr-summary-accent wr-summary-glow-divider"
+        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 divide-x divide-[#333]/20 border-b border-[#555]/30 wr-summary-accent wr-summary-glow-divider"
         role="region"
         aria-label="Reflections summary"
       >
@@ -588,6 +590,31 @@ export default function ReflectionsIntel() {
             {(data?.currentAccruedSol ?? 0).toFixed(2)}
             <span className="text-[13px] text-[#bbb]">/ {data?.payoutThresholdSol ?? 10} SOL</span>
           </span>
+        </SummaryCell>
+        <SummaryCell label="Daily Accrual" isLoading={isLoading} isError={isError}>
+          {(() => {
+            const now = Math.floor(Date.now() / 1000)
+            const timeSince = data?.lastPayoutTimestamp ? now - data.lastPayoutTimestamp : 0
+            const daily = timeSince > 0 ? ((data?.currentAccruedSol ?? 0) / timeSince) * 86400 : 0
+            const dists = data?.distributions ?? []
+            const trendUp = dists.length >= 2 ? dists[0].amountSol >= dists[1].amountSol : true
+            return (
+              <span className="flex items-baseline gap-1.5">
+                {daily.toFixed(4)} SOL
+                <span className={`text-[13px] ${trendUp ? 'text-[#d4f000]' : 'text-[#ff9e9e]'}`}>
+                  {trendUp ? '▲' : '▼'}
+                </span>
+              </span>
+            )
+          })()}
+        </SummaryCell>
+        <SummaryCell label="Weekly Avg" isLoading={isLoading} isError={isError}>
+          {(() => {
+            const now = Math.floor(Date.now() / 1000)
+            const timeSince = data?.lastPayoutTimestamp ? now - data.lastPayoutTimestamp : 0
+            const daily = timeSince > 0 ? ((data?.currentAccruedSol ?? 0) / timeSince) * 86400 : 0
+            return `${(daily * 7).toFixed(2)} SOL`
+          })()}
         </SummaryCell>
       </div>
 
@@ -618,6 +645,22 @@ export default function ReflectionsIntel() {
         distributions={data?.distributions ?? []}
         solPriceUsd={data?.solPriceUsd ?? 0}
         isLoading={isLoading}
+      />
+
+      {/* Reflections calculator */}
+      <ReflectionsCalculator
+        currentAccruedSol={data?.currentAccruedSol ?? 0}
+        lastPayoutTimestamp={data?.lastPayoutTimestamp ?? null}
+        solPriceUsd={data?.solPriceUsd ?? 0}
+        holdersSharePct={data?.feeBreakdown?.holders?.pct ?? 20}
+        totalSupply={data?.totalSupply ?? 0}
+        isLoading={isLoading}
+      />
+
+      {/* Wallet eligibility checker */}
+      <WalletChecker
+        solPriceUsd={data?.solPriceUsd ?? 0}
+        payoutThresholdSol={data?.payoutThresholdSol ?? 7}
       />
 
       {/* Contract info footer */}
