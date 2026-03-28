@@ -4,6 +4,7 @@ import Tokenomics from "@/components/Tokenomics";
 import Roadmap from "@/components/Roadmap";
 import HowToBuy from "@/components/HowToBuy";
 import WarRoom from "@/components/WarRoom";
+import EcosystemVenture from "@/components/EcosystemVenture";
 import Footer from "@/components/Footer";
 import HallOfFame from "@/components/HallOfFame";
 import RedactedDoc from "@/components/RedactedDoc";
@@ -16,6 +17,7 @@ export default function Home() {
       <VideoSection />
       <RedactedDoc />
       <WarRoom />
+      <EcosystemVenture />
       <Tokenomics />
       <RedactedAssets />
       <HowToBuy />
