@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import SmoothScrolling from "@/components/SmoothScrolling";
 import { QueryProvider } from "@/providers/query-client";
 import { SolanaWalletProvider } from "@/providers/wallet-provider";
 
@@ -65,7 +64,7 @@ export default function RootLayout({
         <QueryProvider>
           <SolanaWalletProvider>
             <div className="noise-overlay"></div>
-            <SmoothScrolling>{children}</SmoothScrolling>
+            {children}
           </SolanaWalletProvider>
         </QueryProvider>
       </body>

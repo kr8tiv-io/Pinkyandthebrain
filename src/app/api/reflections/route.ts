@@ -34,8 +34,10 @@ export async function GET() {
   // Reflections = 20% of total claimed (claimer 0 gets 20% for holder distributions)
   const totalReflectedSol = feeShareData.totalClaimedSol * 0.20
 
-  // Estimate trading volume from fees (1% creator fee on bags.fm)
-  const estimatedVolumeSol = totalFeeSol > 0 ? totalFeeSol / 0.01 : 0
+  // Estimate trading volume from fees
+  // bags.fm charges 1% total fee; Meteora takes 20% of that (0.20% of volume)
+  // PDA receives remaining 80% (0.80% of volume), so volume = fees / 0.008
+  const estimatedVolumeSol = totalFeeSol > 0 ? totalFeeSol / 0.008 : 0
 
   // Last claim timestamp from most recent event
   const lastPayoutTimestamp =
