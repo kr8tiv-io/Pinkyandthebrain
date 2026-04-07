@@ -15,7 +15,6 @@ export default function EcosystemVenture() {
   const pinkbrainCardRef = useRef<HTMLDivElement>(null)
   const routerCardRef = useRef<HTMLDivElement>(null)
   const alvaraCardRef = useRef<HTMLDivElement>(null)
-  const infraRef = useRef<HTMLDivElement>(null)
   const connectorRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -126,24 +125,6 @@ export default function EcosystemVenture() {
           ease: 'back.out(1.2)',
           scrollTrigger: {
             trigger: alvaraCardRef.current,
-            start: 'top 85%',
-            toggleActions: 'play none none none',
-          },
-        }
-      )
-
-      // Infrastructure section
-      gsap.fromTo(
-        infraRef.current,
-        { y: 60, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          delay: 0.3,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: infraRef.current,
             start: 'top 85%',
             toggleActions: 'play none none none',
           },
@@ -505,56 +486,6 @@ export default function EcosystemVenture() {
                 </a>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* ─── Infrastructure & Governance ─── */}
-        <div ref={infraRef} className="mt-6 mb-10">
-          <p className="text-[#e4ff57] font-mono tracking-[0.3em] text-xs uppercase mb-6 text-center">
-            // Supporting Infrastructure
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {[
-              {
-                name: 'DLMM Staking',
-                desc: 'Automated DLMM position manager — sells LP assets and stakes proceeds into Solana validator contracts',
-                href: 'https://github.com/kr8tiv-ai/DLMM-auto-sell-assets-into-staking-contract',
-                color: '#c084fc',
-              },
-              {
-                name: 'Mission Control',
-                desc: 'AI agent governance dashboard with Task Mode, evaluation pipelines, and multi-agent orchestration',
-                href: 'https://github.com/kr8tiv-ai/kr8tiv-mission-control',
-                color: '#ff9e9e',
-              },
-              {
-                name: 'Runtime Contracts',
-                desc: 'Schema-first runtime contracts for multi-agent governance, behavioral shaping, and auditable drift detection',
-                href: 'https://github.com/kr8tiv-ai/kr8tiv-runtime-truth-contracts',
-                color: '#e4ff57',
-              },
-            ].map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block rounded-xl border border-[#222] bg-[#111]/60 p-5 transition-all duration-300 hover:border-opacity-40 hover:bg-[#111]/90"
-                style={{ ['--accent' as string]: item.color }}
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-1.5 h-6 rounded-full" style={{ backgroundColor: item.color, boxShadow: `0 0 8px ${item.color}40` }} />
-                  <h4 className="font-mono text-sm font-bold uppercase tracking-wider text-white group-hover:text-[var(--accent)] transition-colors">
-                    {item.name}
-                  </h4>
-                </div>
-                <p className="text-[#888] font-mono text-[11px] leading-relaxed">{item.desc}</p>
-                <div className="mt-3 flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.15em] text-[#666] group-hover:text-[var(--accent)] transition-colors">
-                  View on GitHub
-                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                </div>
-              </a>
-            ))}
           </div>
         </div>
 

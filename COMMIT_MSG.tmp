@@ -1,1 +1,7 @@
-feat: add PinkBrain Router and Alvara app cards, infrastructure section with DLMM staking, mission control, and runtime contracts
+Remove Infrastructure section + add Router and Alvara cards 
+ 
+- Removed Mission Control and Runtime Contracts cards from EcosystemVenture 
+- Added PinkBrain Router (App #002) and PinkBrain Alvara (App #003) cards 
+- Cleaned up orphaned infraRef and GSAP animation code 
+ 
+Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com> 
