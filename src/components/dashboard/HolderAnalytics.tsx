@@ -125,15 +125,15 @@ export default function HolderAnalytics() {
   const whaleConcentration = tiers.length > 0 ? tiers[0].pct : 0
 
   return (
-    <div className="px-5 lg:px-8 py-6 border-t border-[#444]/20">
-      <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-5 flex items-center gap-3 wr-sub-header">
+    <div className="px-4 lg:px-6 py-4 border-t border-[#444]/20">
+      <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-4 flex items-center gap-3 wr-sub-header">
         <span className="text-[#d4f000]/70 text-[12px] wr-sub-diamond">◆</span>
         <span>HOLDER ANALYTICS</span>
         <div className="flex-1 h-px bg-gradient-to-r from-[#888]/50 to-transparent" />
         <span className="text-[#bbb]">{totalHolders} HOLDERS</span>
       </div>
 
-      <div className="flex flex-col md:flex-row items-center gap-8">
+      <div className="flex flex-col md:flex-row items-center gap-6">
         {/* Donut */}
         <div className="relative flex-shrink-0">
           <svg ref={ringRef} width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
@@ -165,7 +165,7 @@ export default function HolderAnalytics() {
         </div>
 
         {/* Tier breakdown */}
-        <div className="flex-1 space-y-3 w-full">
+        <div className="flex-1 space-y-3 w-full max-w-lg">
           {tiers.map((tier) => (
             <div key={tier.label} className="flex items-center gap-3">
               <div

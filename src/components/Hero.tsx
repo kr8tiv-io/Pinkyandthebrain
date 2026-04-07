@@ -10,7 +10,7 @@ export default function Hero() {
   const title1Ref = useRef<HTMLHeadingElement>(null);
   const title2Ref = useRef<HTMLHeadingElement>(null);
   const btn1Ref = useRef<HTMLButtonElement>(null);
-  const btn2Ref = useRef<HTMLButtonElement>(null);
+  const btn2Ref = useRef<HTMLAnchorElement>(null);
   const nightRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
@@ -139,12 +139,9 @@ export default function Hero() {
           <button ref={btn1Ref} className="bg-[#d4f000] text-[#0d0d0d] uppercase tracking-tighter font-black text-base sm:text-xl px-6 sm:px-10 py-4 sm:py-5 hover:bg-white transition-colors duration-300 shadow-[4px_4px_0px_#ff9e9e] sm:shadow-[6px_6px_0px_#ff9e9e] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] sm:active:translate-x-[6px] sm:active:translate-y-[6px]">
             View The Blueprint
           </button>
-          <div className="flex flex-col items-center">
-            <button ref={btn2Ref} className="text-xs sm:text-sm font-mono tracking-widest uppercase text-[#ff9e9e] hover:text-white transition-colors duration-200 border border-[#ff9e9e]/50 hover:border-white px-5 sm:px-6 py-4 sm:py-5 bg-[#1a1a1a]/50 backdrop-blur-sm">
+          <a href="/docs" ref={btn2Ref} className="text-xs sm:text-sm font-mono tracking-widest uppercase text-[#ff9e9e] hover:text-white transition-colors duration-200 border border-[#ff9e9e]/50 hover:border-white px-5 sm:px-6 py-4 sm:py-5 bg-[#1a1a1a]/50 backdrop-blur-sm">
               Read Docs -&gt;
-            </button>
-            <span className="text-[10px] text-[#ff9e9e] font-mono mt-2 tracking-widest uppercase opacity-70">Coming Soon</span>
-          </div>
+          </a>
         </div>
       </div>
     </section>

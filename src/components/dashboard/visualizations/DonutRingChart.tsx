@@ -95,7 +95,7 @@ export default function DonutRingChart({
   }
 
   return (
-    <div className="flex flex-col lg:flex-row items-center gap-8">
+    <div className="flex flex-col lg:flex-row items-center gap-5">
       {/* Ring */}
       <div className="relative flex-shrink-0">
         <svg

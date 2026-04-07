@@ -97,11 +97,12 @@ export default function BrandPage() {
             <span className="text-[#d4f000]">Playbook</span>
           </h1>
           <p className="mt-8 text-lg md:text-xl text-[#999] max-w-2xl leading-relaxed">
-            Everything you need to write authentically human content about $BRAIN.
+            The complete guide to the $BRAIN universe. From cartoon mice to crypto mechanics.
             Feed this to your LLM. Or read it yourself. We don&apos;t judge.
           </p>
           <div className="mt-8">
             <CopyBrandButton />
+            <a href="/docs" className="inline-block ml-4 text-[#d4f000] font-mono text-xs uppercase tracking-widest hover:text-white transition-colors border border-[#d4f000]/30 px-4 py-2 rounded-full">Read Full Docs &rarr;</a>
           </div>
         </header>
 
@@ -211,10 +212,522 @@ export default function BrandPage() {
 
 
         {/* ══════════════════════════════════════════════════════════════
-            SECTION 2: THE VOCABULARY KILL LIST
+            SECTION 2: THE CARTOON LEGACY
            ══════════════════════════════════════════════════════════════ */}
         <section className={S.sectionWrap}>
           <p className={S.sectionNum}>02</p>
+          <h2 className={S.sectionTitle}>The Cartoon Legacy</h2>
+          <GradientLine />
+
+          <h3 className={S.subheading}>The Show</h3>
+          <p className={S.body + ' mb-6'}>
+            <em>Pinky and the Brain</em> ran from 1995 to 1998 on Warner Bros. Animation. The premise was
+            simple and perfect: two genetically enhanced lab mice live in Acme Labs. Every single night,
+            Brain hatches an elaborate plan to take over the world. Every single night, it fails. Every
+            single morning, he wakes up and tries again.
+          </p>
+          <p className={S.body + ' mb-6'}>
+            That&apos;s it. That&apos;s the whole show. And somehow it won an Emmy.
+          </p>
+
+          <h3 className={S.subheading}>The Characters</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div className="bg-[#111] border border-[#222] rounded-lg p-6">
+              <p className="text-[#d4f000] font-mono text-sm uppercase tracking-widest mb-3">Brain</p>
+              <p className="text-[#aaa] text-sm leading-relaxed mb-3">
+                Genius-level intellect. Megalomaniac tendencies. Speaks in complete sentences with
+                impeccable diction. His plans are genuinely brilliant &mdash; multi-step, well-researched,
+                technically sound. They just never work. Not because they&apos;re bad plans, but because the
+                universe has a sense of humor.
+              </p>
+              <p className="text-[#ccc] text-sm italic">
+                &quot;The same thing we do every night, Pinky &mdash; try to take over the world.&quot;
+              </p>
+            </div>
+            <div className="bg-[#111] border border-[#222] rounded-lg p-6">
+              <p className="text-[#ffadad] font-mono text-sm uppercase tracking-widest mb-3">Pinky</p>
+              <p className="text-[#aaa] text-sm leading-relaxed mb-3">
+                Lovable chaos agent. Says &quot;NARF&quot; and &quot;POIT&quot; and &quot;ZORT&quot; for no discernible reason.
+                Appears to be a complete idiot. Accidentally saves the day more often than Brain would
+                like to admit. His random observations sometimes contain accidental genius that Brain
+                ignores at his own peril.
+              </p>
+              <p className="text-[#ccc] text-sm italic">
+                &quot;NARF! I think so, Brain, but where are we going to find rubber pants our size?&quot;
+              </p>
+            </div>
+          </div>
+
+          <h3 className={S.subheading}>Why It Resonates</h3>
+          <p className={S.body + ' mb-4'}>
+            Every night Brain has a new plan. Every night it fails. Every morning he tries again.
+          </p>
+          <p className={S.body + ' mb-6'}>
+            If that doesn&apos;t describe building in crypto, nothing does.
+          </p>
+          <p className={S.body + ' mb-8'}>
+            You write the smart contract. It gets exploited. You redesign the tokenomics. The market
+            dumps anyway. You build the dashboard. Nobody uses it for three weeks. And then one day
+            someone does, and they tell a friend, and suddenly you&apos;re a &quot;community.&quot; But you were
+            always just two mice in a lab with a whiteboard and too much ambition.
+          </p>
+
+          <h3 className={S.subheading}>The Three Pillars</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <div className="bg-[#111] border border-[#222] rounded-lg p-5">
+              <p className="text-[#d4f000] font-mono text-[10px] uppercase tracking-widest mb-2">Brain&apos;s Plans</p>
+              <p className="text-[#aaa] text-sm leading-relaxed">
+                Elaborate tokenomics. Fee engineering. On-chain governance. Auto-compounding LP strategies.
+                The fancy stuff &mdash; the stuff that makes you squint at a whiteboard at 2am. This is the
+                substance. The architecture. The reason any of it works at all.
+              </p>
+            </div>
+            <div className="bg-[#111] border border-[#222] rounded-lg p-5">
+              <p className="text-[#ffadad] font-mono text-[10px] uppercase tracking-widest mb-2">Pinky&apos;s Energy</p>
+              <p className="text-[#aaa] text-sm leading-relaxed">
+                Memes. NARF. Community vibes. The soul of the thing. The reason people stick around
+                when the chart is red and the timeline is quiet. You can&apos;t engineer community. You can
+                only create a space weird enough that the right people show up.
+              </p>
+            </div>
+            <div className="bg-[#111] border border-[#222] rounded-lg p-5">
+              <p className="text-[#e4ff57] font-mono text-[10px] uppercase tracking-widest mb-2">The Lab</p>
+              <p className="text-[#aaa] text-sm leading-relaxed">
+                Where they cook. Our GitHub. Our war room. Our code. The place where plans become
+                deployments and ideas become transactions. It&apos;s messy in there. Good labs always are.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-[#111] border-l-4 border-[#ffadad] rounded-r-lg p-6">
+            <p className="text-[#ccc] leading-relaxed">
+              We&apos;re not pretending to be something we aren&apos;t. We are cartoon mice on a blockchain.
+              The plans are real though.
+            </p>
+          </div>
+        </section>
+
+
+        {/* ══════════════════════════════════════════════════════════════
+            SECTION 3: CRYPTO IS WEIRD (AND THAT'S THE POINT)
+           ══════════════════════════════════════════════════════════════ */}
+        <section className={S.sectionWrap}>
+          <p className={S.sectionNum}>03</p>
+          <h2 className={S.sectionTitle}>Crypto Is Weird (And That&apos;s The Point)</h2>
+          <GradientLine />
+
+          <p className={S.body + ' mb-6'}>
+            Let&apos;s be honest: crypto is weird. It takes a bizarre cocktail of skills &mdash; you need to read
+            smart contracts, understand market psychology, survive rugpulls, learn to use a block explorer,
+            and somehow still have a sense of humor about it.
+          </p>
+
+          <p className={S.body + ' mb-6'}>
+            Most projects take themselves way too seriously. White papers written like PhD theses.
+            &quot;Revolutionary&quot; tokenomics that are just ponzis with extra steps. Roadmaps that read like
+            corporate quarterly reports. Everyone pretending they&apos;re building the next global financial
+            infrastructure when they&apos;re really just trying to get their token listed on a CEX.
+          </p>
+
+          <p className={S.body + ' mb-8'}>
+            We went the other direction. The project is themed after cartoon mice. The dashboard is
+            styled like a military command center. The treasury literally buys helicopter JPEGs.
+            And somehow &mdash; the tokenomics actually work.
+          </p>
+
+          <h3 className={S.subheading}>What Actually Takes Skill in Crypto</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            {[
+              { label: 'Reading a Fee Contract', desc: 'Knowing where the money actually goes. Not the marketing version — the on-chain version. The BPS allocations. The claimer wallets. The stuff nobody reads.' },
+              { label: 'Understanding LP Mechanics', desc: 'Impermanent loss isn\'t just a buzzword. Knowing when to add liquidity, how concentration affects slippage, why DAMM v2 behaves differently than Uniswap v3.' },
+              { label: 'Spotting a Rugpull from the Contract', desc: 'Mint authority still enabled? Freeze authority active? Suspiciously large insider wallets? These are the things that save your bags. Not vibes. Not "trust me bro."' },
+              { label: 'Building an On-Chain Treasury', desc: 'Public wallets. Verifiable transactions. Real-time dashboards. The opposite of "we\'ll share financials next quarter." Every SOL accounted for, every investment trackable.' },
+              { label: 'Governance That Isn\'t Theater', desc: 'Actual on-chain proposals. Wallet-connected voting. Results that get executed. Not a Discord poll that the team ignores when the answer is inconvenient.' },
+              { label: 'Knowing When to DLMM Out', desc: 'Instead of market dumping and cratering the chart, using concentrated liquidity to exit positions gradually. It\'s harder. It takes patience. But it doesn\'t nuke the floor for everyone else.' },
+            ].map((item) => (
+              <div key={item.label} className="bg-[#111] border border-[#222] rounded-lg p-5">
+                <p className="text-[#d4f000] font-mono text-[10px] uppercase tracking-widest mb-2">{item.label}</p>
+                <p className="text-[#ccc] text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="bg-[#111] border-l-4 border-[#d4f000] rounded-r-lg p-6">
+            <p className="text-[#ccc] leading-relaxed">
+              We don&apos;t have all the answers. We&apos;re learning as we go, building in public, and trying
+              not to take ourselves too seriously while taking the work very seriously.
+            </p>
+          </div>
+        </section>
+
+
+        {/* ══════════════════════════════════════════════════════════════
+            SECTION 4: PROJECT CONTEXT
+           ══════════════════════════════════════════════════════════════ */}
+        <section className={S.sectionWrap}>
+          <p className={S.sectionNum}>04</p>
+          <h2 className={S.sectionTitle}>Project Context</h2>
+          <GradientLine />
+
+          <h3 className={S.subheading}>What is $BRAIN</h3>
+          <p className={S.body + ' mb-6'}>
+            $BRAIN is a highly deflationary Solana-based reflecting investment token built on{' '}
+            <a href="https://bags.fm" target="_blank" rel="noopener noreferrer" className="text-[#d4f000] hover:text-white underline underline-offset-4 decoration-[#d4f000]/30">bags.fm</a>.
+            It is themed around the animated series <em>Pinky and the Brain</em> and operates as a
+            decentralized venture capital mechanism for the bags.fm ecosystem.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <div className="bg-[#111] border border-[#222] rounded-lg p-5">
+              <p className="text-[#d4f000] font-mono text-[10px] uppercase tracking-widest mb-2">Contract Address</p>
+              <p className="text-[#ccc] font-mono text-xs break-all">7r9RJw6gWbj6s1N9pGKrdzzd5H7oK1sauuwkUDVKBAGS</p>
+            </div>
+            <div className="bg-[#111] border border-[#222] rounded-lg p-5">
+              <p className="text-[#d4f000] font-mono text-[10px] uppercase tracking-widest mb-2">Website</p>
+              <a href="https://pinkyandthebrain.fun" target="_blank" rel="noopener noreferrer" className="text-[#ccc] font-mono text-xs hover:text-[#d4f000] transition-colors">pinkyandthebrain.fun</a>
+            </div>
+            <div className="bg-[#111] border border-[#222] rounded-lg p-5">
+              <p className="text-[#d4f000] font-mono text-[10px] uppercase tracking-widest mb-2">Twitter / X</p>
+              <a href="https://x.com/BrainOnBags" target="_blank" rel="noopener noreferrer" className="text-[#ccc] font-mono text-xs hover:text-[#d4f000] transition-colors">@BrainOnBags</a>
+            </div>
+          </div>
+
+          <h3 className={S.subheading}>Core Concept</h3>
+          <p className={S.body + ' mb-4'}>
+            The project exists at the intersection of meme culture and real financial infrastructure.
+            It is a meme token that actually does things &mdash; invests in other projects, builds apps,
+            manages a public treasury, and distributes SOL reflections to holders.
+          </p>
+
+          <div className="bg-[#111] border-l-4 border-[#d4f000] rounded-r-lg p-6 mb-6 space-y-4">
+            <p className="text-[#ccc] italic leading-relaxed">
+              &quot;A totally rational accumulation of capital designed to fund the acquisition of all global cheese reserves.&quot;
+            </p>
+            <p className="text-[#ccc] italic leading-relaxed">
+              &quot;Same thing we do every night, Pinky. Try to take over the world.&quot;
+            </p>
+            <p className="text-[#ccc] italic leading-relaxed">
+              &quot;A highly deflationary Solana reflecting mouse ponzi investment token.&quot;
+            </p>
+          </div>
+
+          <h3 className={S.subheading}>Decentralized VC for bags.fm</h3>
+          <p className={S.body + ' mb-4'}>
+            $BRAIN is not just another token on the bags.fm platform. It is the venture capital arm.
+            The treasury actively invests in other bags.fm projects, builds applications for the ecosystem
+            (PinkBrain LP, PinkBrain Router), and creates revenue streams that feed back to holders.
+            The &quot;decentralized VC&quot; framing is core to the messaging &mdash; this is a community-owned fund
+            that builds and invests, not just a token that goes up and down.
+          </p>
+
+          <div className="bg-[#0d0d0d] border border-[#d4f000]/20 rounded-lg p-5 mt-6">
+            <p className="text-[#d4f000] font-mono text-[10px] uppercase tracking-widest mb-2">Treasury Dashboard</p>
+            <p className="text-[#aaa] text-sm">
+              All treasury operations are visible in real-time at{' '}
+              <a href="https://pinkyandthebrain.fun/war-room" target="_blank" rel="noopener noreferrer" className="text-[#d4f000] hover:text-white underline underline-offset-4 decoration-[#d4f000]/30">
+                pinkyandthebrain.fun/war-room
+              </a>
+            </p>
+          </div>
+        </section>
+
+
+        {/* ══════════════════════════════════════════════════════════════
+            SECTION 5: THE WAR ROOM
+           ══════════════════════════════════════════════════════════════ */}
+        <section className={S.sectionWrap}>
+          <p className={S.sectionNum}>05</p>
+          <h2 className={S.sectionTitle}>The War Room</h2>
+          <GradientLine />
+
+          <p className={S.body + ' mb-6'}>
+            The War Room is the live intelligence dashboard at{' '}
+            <a href="https://pinkyandthebrain.fun/war-room" target="_blank" rel="noopener noreferrer" className="text-[#d4f000] hover:text-white underline underline-offset-4 decoration-[#d4f000]/30">
+              pinkyandthebrain.fun/war-room
+            </a>. It is styled like a military command center because we are cartoon mice planning world domination
+            and aesthetics matter.
+          </p>
+
+          <h3 className={S.subheading}>Dashboard Features</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            {[
+              { title: 'Treasury Intel', desc: 'Real-time SOL balance, token holdings, investment P&L tracking with live price feeds from Jupiter and Birdeye.' },
+              { title: 'Burn Operations', desc: 'Complete burn history, total tokens destroyed, deflationary progress tracking. Every burn is on-chain verifiable.' },
+              { title: 'Reflections Intel', desc: 'SOL distribution history to top 100 holders. Per-wallet breakdown. Running totals.' },
+              { title: 'Holder Analytics', desc: 'Distribution charts, whale tracking, concentration metrics. Know exactly who holds what.' },
+              { title: 'Governance', desc: 'On-chain proposal creation, voting (wallet-connected), results tracking. Real community governance, not theater.' },
+              { title: 'Wallet Checker', desc: 'Connect or paste any wallet to check $BRAIN balance, reflection eligibility, holder rank.' },
+            ].map((f) => (
+              <div key={f.title} className="bg-[#111] border border-[#222] rounded-lg p-5">
+                <p className="text-[#d4f000] font-mono text-[10px] uppercase tracking-widest mb-2">{f.title}</p>
+                <p className="text-[#aaa] text-sm leading-relaxed">{f.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className={S.subheading}>The Terminal Aesthetic</h3>
+          <p className={S.body + ' mb-4'}>
+            The War Room uses a fake terminal / command-center design language. Lime green on black.
+            Monospace fonts. Scan lines. Animated orbs. It is deeply unnecessary and deeply on-brand.
+          </p>
+          <div className={S.code + ' mb-6'}>
+            <p className="text-[#d4f000]">&gt; INITIALIZING WAR ROOM...</p>
+            <p className="text-[#555]">&gt; CONNECTING TO SOLANA MAINNET...</p>
+            <p className="text-[#d4f000]">&gt; TREASURY STATUS: OPERATIONAL</p>
+            <p className="text-[#ffadad]">&gt; WORLD DOMINATION: 23.7% COMPLETE</p>
+            <p className="text-[#555]">&gt; CHEESE RESERVES: SECURED</p>
+          </div>
+
+          <h3 className={S.subheading}>Hall of Fame / Hall of Shame</h3>
+          <p className={S.body}>
+            The War Room includes a Hall of Fame for top contributors and significant milestones,
+            and a Hall of Shame for notable fails. Both are displayed with the same military
+            terminal aesthetic. This reinforces the building-in-public ethos &mdash; we celebrate
+            wins and acknowledge losses publicly.
+          </p>
+        </section>
+
+
+        {/* ══════════════════════════════════════════════════════════════
+            SECTION 6: PINKBRAIN LP
+           ══════════════════════════════════════════════════════════════ */}
+        <section className={S.sectionWrap}>
+          <p className={S.sectionNum}>06</p>
+          <h2 className={S.sectionTitle}>PinkBrain LP</h2>
+          <GradientLine />
+
+          <div className="flex items-center gap-3 mb-6">
+            <span className={S.limePill}>App #001</span>
+            <span className="inline-block bg-[#ffadad]/10 border border-[#ffadad]/20 text-[#ffadad] font-mono text-[10px] uppercase tracking-wider px-3 py-1 rounded-full">Active</span>
+          </div>
+
+          <h3 className={S.subheading}>What It Does</h3>
+          <p className={S.body + ' mb-6'}>
+            PinkBrain LP is an auto-compounding liquidity engine built for the bags.fm ecosystem.
+            It manages liquidity positions automatically, compounds fees back into the pool,
+            and generates revenue that feeds into the $BRAIN treasury. Think of it as a robot
+            that tends the garden so the treasury grows even when no one is watching.
+          </p>
+
+          <h3 className={S.subheading}>Why DAMM v2</h3>
+          <p className={S.body + ' mb-6'}>
+            bags.fm uses DAMM v2 (Dynamic Automated Market Making) for its AMM. PinkBrain LP is purpose-built
+            to work with DAMM v2&apos;s unique fee structure and liquidity mechanics. It is not a generic LP
+            manager ported from Uniswap &mdash; it is built from scratch for this specific ecosystem.
+          </p>
+
+          <h3 className={S.subheading}>The Flow</h3>
+          <div className={S.code + ' mb-6'}>
+            <p className="text-[#555]">{'// PinkBrain LP Auto-Compound Flow'}</p>
+            <p className="text-[#ccc]">&nbsp;</p>
+            <p className="text-[#d4f000]">{'  [Trading Activity on bags.fm]'}</p>
+            <p className="text-[#555]">{'          |'}</p>
+            <p className="text-[#555]">{'          v'}</p>
+            <p className="text-[#d4f000]">{'  [Fees Generated (DAMM v2)]'}</p>
+            <p className="text-[#555]">{'          |'}</p>
+            <p className="text-[#555]">{'          v'}</p>
+            <p className="text-[#ffadad]">{'  [PinkBrain LP Collects Fees]'}</p>
+            <p className="text-[#555]">{'          |'}</p>
+            <p className="text-[#555]">{'     +---------+'}</p>
+            <p className="text-[#555]">{'     |         |'}</p>
+            <p className="text-[#555]">{'     v         v'}</p>
+            <p className="text-[#d4f000]">{'  [Re-add to]  [Send to $BRAIN]'}</p>
+            <p className="text-[#d4f000]">{'  [Liquidity]  [Treasury]'}</p>
+            <p className="text-[#555]">{'     |         |'}</p>
+            <p className="text-[#555]">{'     v         v'}</p>
+            <p className="text-[#ccc]">{'  Deeper LP    Investments,'}</p>
+            <p className="text-[#ccc]">{'  Less Slip    Burns, Reflections'}</p>
+          </div>
+
+          <h3 className={S.subheading}>Technical Stack</h3>
+          <div className="flex flex-wrap gap-2 mb-6">
+            {['Solana / SPL', 'DAMM v2 SDK', 'Anchor Framework', 'TypeScript', 'Cron-based Execution'].map((tag) => (
+              <span key={tag} className={S.limePill}>{tag}</span>
+            ))}
+          </div>
+
+          <div className="bg-[#0d0d0d] border border-[#222] rounded-lg p-5">
+            <p className="text-[#d4f000] font-mono text-[10px] uppercase tracking-widest mb-2">GitHub</p>
+            <a
+              href="https://github.com/kr8tiv-ai/PinkBrain-lp"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#ccc] font-mono text-sm hover:text-[#d4f000] underline underline-offset-4 decoration-[#333] transition-colors"
+            >
+              github.com/kr8tiv-ai/PinkBrain-lp
+            </a>
+          </div>
+        </section>
+
+
+        {/* ══════════════════════════════════════════════════════════════
+            SECTION 7: PINKBRAIN ROUTER
+           ══════════════════════════════════════════════════════════════ */}
+        <section className={S.sectionWrap}>
+          <p className={S.sectionNum}>07</p>
+          <h2 className={S.sectionTitle}>PinkBrain Router</h2>
+          <GradientLine />
+
+          <div className="flex items-center gap-3 mb-6">
+            <span className={S.limePill}>App #002</span>
+            <span className="inline-block bg-[#e4ff57]/10 border border-[#e4ff57]/20 text-[#e4ff57] font-mono text-[10px] uppercase tracking-wider px-3 py-1 rounded-full">In Development</span>
+          </div>
+
+          <h3 className={S.subheading}>What It Does</h3>
+          <p className={S.body + ' mb-6'}>
+            PinkBrain Router converts DeFi fees into AI API credits. It takes revenue generated
+            by the $BRAIN ecosystem and routes it into API access for AI services &mdash;
+            effectively turning trading activity into compute power. DeFi fees in, AI capabilities out.
+          </p>
+
+          <h3 className={S.subheading}>Distribution Modes</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <div className="bg-[#111] border border-[#222] rounded-lg p-5">
+              <p className="text-[#d4f000] font-mono text-[10px] uppercase tracking-widest mb-2">Direct Conversion</p>
+              <p className="text-[#aaa] text-sm leading-relaxed">
+                SOL fees are swapped to stablecoins and used to purchase API credits directly.
+                Straightforward. Predictable. The Brain approach.
+              </p>
+            </div>
+            <div className="bg-[#111] border border-[#222] rounded-lg p-5">
+              <p className="text-[#ffadad] font-mono text-[10px] uppercase tracking-widest mb-2">Pooled Access</p>
+              <p className="text-[#aaa] text-sm leading-relaxed">
+                Multiple ecosystem participants pool their fee allocations for bulk API pricing.
+                Economies of scale. The Pinky approach (accidentally genius).
+              </p>
+            </div>
+          </div>
+
+          <h3 className={S.subheading}>Technical Architecture</h3>
+          <div className={S.code + ' mb-6'}>
+            <p className="text-[#555]">{'// PinkBrain Router Architecture'}</p>
+            <p className="text-[#ccc]">&nbsp;</p>
+            <p className="text-[#d4f000]">{'  [DeFi Fee Revenue (SOL)]'}</p>
+            <p className="text-[#555]">{'          |'}</p>
+            <p className="text-[#555]">{'          v'}</p>
+            <p className="text-[#ffadad]">{'  [PinkBrain Router]'}</p>
+            <p className="text-[#555]">{'          |'}</p>
+            <p className="text-[#555]">{'     +---------+---------+'}</p>
+            <p className="text-[#555]">{'     |         |         |'}</p>
+            <p className="text-[#555]">{'     v         v         v'}</p>
+            <p className="text-[#ccc]">{'  Swap to    Credit     Usage'}</p>
+            <p className="text-[#ccc]">{'  USDC       Purchase   Tracking'}</p>
+            <p className="text-[#555]">{'     |         |         |'}</p>
+            <p className="text-[#555]">{'     v         v         v'}</p>
+            <p className="text-[#d4f000]">{'  [AI API Credits Pool]'}</p>
+            <p className="text-[#555]">{'          |'}</p>
+            <p className="text-[#555]">{'          v'}</p>
+            <p className="text-[#ccc]">{'  Distributed to ecosystem apps'}</p>
+          </div>
+
+          <div className="bg-[#111] border-l-4 border-[#e4ff57] rounded-r-lg p-6">
+            <p className="text-white font-bold text-sm uppercase tracking-wider mb-2">Status</p>
+            <p className="text-[#ccc] leading-relaxed">
+              PinkBrain Router is currently in active development. Architecture is finalized,
+              core contracts are being written. Expected to integrate with PinkBrain LP for
+              automated fee routing once live.
+            </p>
+          </div>
+        </section>
+
+
+        {/* ══════════════════════════════════════════════════════════════
+            SECTION 8: TOKENOMICS
+           ══════════════════════════════════════════════════════════════ */}
+        <section className={S.sectionWrap}>
+          <p className={S.sectionNum}>08</p>
+          <h2 className={S.sectionTitle}>Tokenomics</h2>
+          <GradientLine />
+
+          <p className={S.body + ' mb-8'}>
+            Every fee generated by $BRAIN trading is distributed according to a fixed on-chain allocation.
+            No hidden wallets. No discretionary &quot;team fund&quot; that quietly grows.
+            Here is exactly where every fraction of a SOL goes.
+          </p>
+
+          {/* Fee Distribution Bar */}
+          <div className="mb-10">
+            <p className="text-white font-bold text-sm uppercase tracking-wider mb-4">Fee Distribution Breakdown</p>
+            <div className="w-full h-10 rounded-lg overflow-hidden flex">
+              <div className="bg-[#d4f000] h-full flex items-center justify-center" style={{ width: '30%' }}>
+                <span className="text-[#0a0a0a] font-mono text-[10px] font-black">30% Invest</span>
+              </div>
+              <div className="bg-[#ffadad] h-full flex items-center justify-center" style={{ width: '20%' }}>
+                <span className="text-[#0a0a0a] font-mono text-[10px] font-black">20% Holders</span>
+              </div>
+              <div className="bg-[#ff6b35] h-full flex items-center justify-center" style={{ width: '20%' }}>
+                <span className="text-[#0a0a0a] font-mono text-[10px] font-black">20% Dev</span>
+              </div>
+              <div className="bg-[#e4ff57]/60 h-full flex items-center justify-center" style={{ width: '10%' }}>
+                <span className="text-[#0a0a0a] font-mono text-[9px] font-black">10% Burn</span>
+              </div>
+              <div className="bg-[#4a90e2] h-full flex items-center justify-center" style={{ width: '10%' }}>
+                <span className="text-[#0a0a0a] font-mono text-[9px] font-black">10% LP</span>
+              </div>
+              <div className="bg-[#ccc] h-full flex items-center justify-center" style={{ width: '10%' }}>
+                <span className="text-[#0a0a0a] font-mono text-[9px] font-black">10% Mkt</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Fee details */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+            {[
+              { pct: '30%', label: 'Investments', color: '#d4f000', desc: 'Treasury actively invests in bags.fm ecosystem projects.' },
+              { pct: '20%', label: 'Top 100 Holders', color: '#ffadad', desc: 'SOL reflections distributed to the top 100 holders by balance.' },
+              { pct: '20%', label: 'Dev Discretion', color: '#ff6b35', desc: 'Development costs, infrastructure, and operational expenses.' },
+              { pct: '10%', label: 'Burned', color: '#e4ff57', desc: 'Permanently removed from supply. Deflationary pressure.' },
+              { pct: '10%', label: 'Liquidity', color: '#4a90e2', desc: 'Compounding liquidity for deeper pools and less slippage.' },
+              { pct: '10%', label: 'Marketing & Boosts', color: '#cccccc', desc: '5% marketing, 5% Dexscreener boosts. Visibility matters.' },
+            ].map((item) => (
+              <div key={item.label} className="bg-[#111] border border-[#222] rounded-lg p-5">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-3xl font-black tracking-tighter" style={{ color: item.color }}>{item.pct}</span>
+                  <span className="text-white font-bold text-sm uppercase tracking-wider">{item.label}</span>
+                </div>
+                <p className="text-[#aaa] text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className={S.subheading}>On-Chain Actions</h3>
+          <p className={S.body + ' mb-4'}>
+            All fee distributions are executed on-chain via the bags.fm Fee Share V2 program.
+            Each claimer wallet has a fixed BPS (basis points) allocation that cannot be changed
+            without a program upgrade. The distribution is automatic and verifiable.
+          </p>
+          <div className={S.code}>
+            <p className="text-[#555]">{'// Fee Share V2 On-Chain Allocations (BPS)'}</p>
+            <p className="text-[#ccc]">Investments &nbsp;&nbsp;&nbsp; 3000 BPS &nbsp; (30%)</p>
+            <p className="text-[#ccc]">Holders &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2000 BPS &nbsp; (20%)</p>
+            <p className="text-[#ccc]">Dev &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2000 BPS &nbsp; (20%)</p>
+            <p className="text-[#ccc]">Burned &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1000 BPS &nbsp; (10%)</p>
+            <p className="text-[#ccc]">Liquidity &nbsp;&nbsp;&nbsp;&nbsp; 1000 BPS &nbsp; (10%)</p>
+            <p className="text-[#ccc]">Marketing &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 500 BPS &nbsp; &nbsp;(5%)</p>
+            <p className="text-[#ccc]">DexBoosts &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 500 BPS &nbsp; &nbsp;(5%)</p>
+            <p className="text-[#555]">{'// ─────────────────────────'}</p>
+            <p className="text-[#d4f000]">Total &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10000 BPS &nbsp; (100%)</p>
+          </div>
+        </section>
+
+
+        {/* APPENDIX */}
+        <div className="py-20 text-center">
+          <div className="h-[2px] w-full mb-12 bg-gradient-to-r from-transparent via-[#ffadad]/40 to-transparent rounded-full" />
+          <p className="text-[#ffadad] font-mono text-xs tracking-[0.3em] uppercase mb-4">// Appendix</p>
+          <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-white mb-4">The Writing Tool</h2>
+          <p className="text-[#666] max-w-xl mx-auto leading-relaxed">
+            Everything below is a toolkit for writing authentic $BRAIN content.
+            Feed it to your LLM. Use it as a reference. Or just enjoy the vocabulary kill list.
+          </p>
+        </div>
+
+
+        {/* ══════════════════════════════════════════════════════════════
+            SECTION A1: THE VOCABULARY KILL LIST
+           ══════════════════════════════════════════════════════════════ */}
+        <section className={S.sectionWrap}>
+          <p className={S.sectionNum}>A1</p>
           <h2 className={S.sectionTitle}>The Vocabulary Kill List</h2>
           <GradientLine />
 
@@ -379,10 +892,10 @@ export default function BrandPage() {
 
 
         {/* ══════════════════════════════════════════════════════════════
-            SECTION 3: HOW AI DETECTION WORKS
+            SECTION A2: HOW AI DETECTION WORKS
            ══════════════════════════════════════════════════════════════ */}
         <section className={S.sectionWrap}>
-          <p className={S.sectionNum}>03</p>
+          <p className={S.sectionNum}>A2</p>
           <h2 className={S.sectionTitle}>How AI Detection Works</h2>
           <GradientLine />
 
@@ -437,10 +950,10 @@ export default function BrandPage() {
 
 
         {/* ══════════════════════════════════════════════════════════════
-            SECTION 4: STRUCTURAL PATTERNS TO AVOID
+            SECTION A3: STRUCTURAL PATTERNS TO AVOID
            ══════════════════════════════════════════════════════════════ */}
         <section className={S.sectionWrap}>
-          <p className={S.sectionNum}>04</p>
+          <p className={S.sectionNum}>A3</p>
           <h2 className={S.sectionTitle}>Structural Patterns to Avoid</h2>
           <GradientLine />
 
@@ -529,10 +1042,10 @@ export default function BrandPage() {
 
 
         {/* ══════════════════════════════════════════════════════════════
-            SECTION 5: THE HUMANIZATION PLAYBOOK
+            SECTION A4: THE HUMANIZATION PLAYBOOK
            ══════════════════════════════════════════════════════════════ */}
         <section className={S.sectionWrap}>
-          <p className={S.sectionNum}>05</p>
+          <p className={S.sectionNum}>A4</p>
           <h2 className={S.sectionTitle}>The Humanization Playbook</h2>
           <GradientLine />
 
@@ -617,360 +1130,10 @@ export default function BrandPage() {
 
 
         {/* ══════════════════════════════════════════════════════════════
-            SECTION 6: PROJECT CONTEXT
+            SECTION A5: CONTENT CHECKLIST
            ══════════════════════════════════════════════════════════════ */}
         <section className={S.sectionWrap}>
-          <p className={S.sectionNum}>06</p>
-          <h2 className={S.sectionTitle}>Project Context</h2>
-          <GradientLine />
-
-          <h3 className={S.subheading}>What is $BRAIN</h3>
-          <p className={S.body + ' mb-6'}>
-            $BRAIN is a highly deflationary Solana-based reflecting investment token built on{' '}
-            <a href="https://bags.fm" target="_blank" rel="noopener noreferrer" className="text-[#d4f000] hover:text-white underline underline-offset-4 decoration-[#d4f000]/30">bags.fm</a>.
-            It is themed around the animated series <em>Pinky and the Brain</em> and operates as a
-            decentralized venture capital mechanism for the bags.fm ecosystem.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-            <div className="bg-[#111] border border-[#222] rounded-lg p-5">
-              <p className="text-[#d4f000] font-mono text-[10px] uppercase tracking-widest mb-2">Contract Address</p>
-              <p className="text-[#ccc] font-mono text-xs break-all">7r9RJw6gWbj6s1N9pGKrdzzd5H7oK1sauuwkUDVKBAGS</p>
-            </div>
-            <div className="bg-[#111] border border-[#222] rounded-lg p-5">
-              <p className="text-[#d4f000] font-mono text-[10px] uppercase tracking-widest mb-2">Website</p>
-              <a href="https://pinkyandthebrain.fun" target="_blank" rel="noopener noreferrer" className="text-[#ccc] font-mono text-xs hover:text-[#d4f000] transition-colors">pinkyandthebrain.fun</a>
-            </div>
-            <div className="bg-[#111] border border-[#222] rounded-lg p-5">
-              <p className="text-[#d4f000] font-mono text-[10px] uppercase tracking-widest mb-2">Twitter / X</p>
-              <a href="https://x.com/BrainOnBags" target="_blank" rel="noopener noreferrer" className="text-[#ccc] font-mono text-xs hover:text-[#d4f000] transition-colors">@BrainOnBags</a>
-            </div>
-          </div>
-
-          <h3 className={S.subheading}>Core Concept</h3>
-          <p className={S.body + ' mb-4'}>
-            The project exists at the intersection of meme culture and real financial infrastructure.
-            It is a meme token that actually does things &mdash; invests in other projects, builds apps,
-            manages a public treasury, and distributes SOL reflections to holders.
-          </p>
-
-          <div className="bg-[#111] border-l-4 border-[#d4f000] rounded-r-lg p-6 mb-6 space-y-4">
-            <p className="text-[#ccc] italic leading-relaxed">
-              &quot;A totally rational accumulation of capital designed to fund the acquisition of all global cheese reserves.&quot;
-            </p>
-            <p className="text-[#ccc] italic leading-relaxed">
-              &quot;Same thing we do every night, Pinky. Try to take over the world.&quot;
-            </p>
-            <p className="text-[#ccc] italic leading-relaxed">
-              &quot;A highly deflationary Solana reflecting mouse ponzi investment token.&quot;
-            </p>
-          </div>
-
-          <h3 className={S.subheading}>Decentralized VC for bags.fm</h3>
-          <p className={S.body + ' mb-4'}>
-            $BRAIN is not just another token on the bags.fm platform. It is the venture capital arm.
-            The treasury actively invests in other bags.fm projects, builds applications for the ecosystem
-            (PinkBrain LP, PinkBrain Router), and creates revenue streams that feed back to holders.
-            The &quot;decentralized VC&quot; framing is core to the messaging &mdash; this is a community-owned fund
-            that builds and invests, not just a token that goes up and down.
-          </p>
-
-          <div className="bg-[#0d0d0d] border border-[#d4f000]/20 rounded-lg p-5 mt-6">
-            <p className="text-[#d4f000] font-mono text-[10px] uppercase tracking-widest mb-2">Treasury Dashboard</p>
-            <p className="text-[#aaa] text-sm">
-              All treasury operations are visible in real-time at{' '}
-              <a href="https://pinkyandthebrain.fun/war-room" target="_blank" rel="noopener noreferrer" className="text-[#d4f000] hover:text-white underline underline-offset-4 decoration-[#d4f000]/30">
-                pinkyandthebrain.fun/war-room
-              </a>
-            </p>
-          </div>
-        </section>
-
-
-        {/* ══════════════════════════════════════════════════════════════
-            SECTION 7: THE WAR ROOM
-           ══════════════════════════════════════════════════════════════ */}
-        <section className={S.sectionWrap}>
-          <p className={S.sectionNum}>07</p>
-          <h2 className={S.sectionTitle}>The War Room</h2>
-          <GradientLine />
-
-          <p className={S.body + ' mb-6'}>
-            The War Room is the live intelligence dashboard at{' '}
-            <a href="https://pinkyandthebrain.fun/war-room" target="_blank" rel="noopener noreferrer" className="text-[#d4f000] hover:text-white underline underline-offset-4 decoration-[#d4f000]/30">
-              pinkyandthebrain.fun/war-room
-            </a>. It is styled like a military command center because we are cartoon mice planning world domination
-            and aesthetics matter.
-          </p>
-
-          <h3 className={S.subheading}>Dashboard Features</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            {[
-              { title: 'Treasury Intel', desc: 'Real-time SOL balance, token holdings, investment P&L tracking with live price feeds from Jupiter and Birdeye.' },
-              { title: 'Burn Operations', desc: 'Complete burn history, total tokens destroyed, deflationary progress tracking. Every burn is on-chain verifiable.' },
-              { title: 'Reflections Intel', desc: 'SOL distribution history to top 100 holders. Per-wallet breakdown. Running totals.' },
-              { title: 'Holder Analytics', desc: 'Distribution charts, whale tracking, concentration metrics. Know exactly who holds what.' },
-              { title: 'Governance', desc: 'On-chain proposal creation, voting (wallet-connected), results tracking. Real community governance, not theater.' },
-              { title: 'Wallet Checker', desc: 'Connect or paste any wallet to check $BRAIN balance, reflection eligibility, holder rank.' },
-            ].map((f) => (
-              <div key={f.title} className="bg-[#111] border border-[#222] rounded-lg p-5">
-                <p className="text-[#d4f000] font-mono text-[10px] uppercase tracking-widest mb-2">{f.title}</p>
-                <p className="text-[#aaa] text-sm leading-relaxed">{f.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <h3 className={S.subheading}>The Terminal Aesthetic</h3>
-          <p className={S.body + ' mb-4'}>
-            The War Room uses a fake terminal / command-center design language. Lime green on black.
-            Monospace fonts. Scan lines. Animated orbs. It is deeply unnecessary and deeply on-brand.
-          </p>
-          <div className={S.code + ' mb-6'}>
-            <p className="text-[#d4f000]">&gt; INITIALIZING WAR ROOM...</p>
-            <p className="text-[#555]">&gt; CONNECTING TO SOLANA MAINNET...</p>
-            <p className="text-[#d4f000]">&gt; TREASURY STATUS: OPERATIONAL</p>
-            <p className="text-[#ffadad]">&gt; WORLD DOMINATION: 23.7% COMPLETE</p>
-            <p className="text-[#555]">&gt; CHEESE RESERVES: SECURED</p>
-          </div>
-
-          <h3 className={S.subheading}>Hall of Fame / Hall of Shame</h3>
-          <p className={S.body}>
-            The War Room includes a Hall of Fame for top contributors and significant milestones,
-            and a Hall of Shame for notable fails. Both are displayed with the same military
-            terminal aesthetic. This reinforces the building-in-public ethos &mdash; we celebrate
-            wins and acknowledge losses publicly.
-          </p>
-        </section>
-
-
-        {/* ══════════════════════════════════════════════════════════════
-            SECTION 8: PINKBRAIN LP
-           ══════════════════════════════════════════════════════════════ */}
-        <section className={S.sectionWrap}>
-          <p className={S.sectionNum}>08</p>
-          <h2 className={S.sectionTitle}>PinkBrain LP</h2>
-          <GradientLine />
-
-          <div className="flex items-center gap-3 mb-6">
-            <span className={S.limePill}>App #001</span>
-            <span className="inline-block bg-[#ffadad]/10 border border-[#ffadad]/20 text-[#ffadad] font-mono text-[10px] uppercase tracking-wider px-3 py-1 rounded-full">Active</span>
-          </div>
-
-          <h3 className={S.subheading}>What It Does</h3>
-          <p className={S.body + ' mb-6'}>
-            PinkBrain LP is an auto-compounding liquidity engine built for the bags.fm ecosystem.
-            It manages liquidity positions automatically, compounds fees back into the pool,
-            and generates revenue that feeds into the $BRAIN treasury. Think of it as a robot
-            that tends the garden so the treasury grows even when no one is watching.
-          </p>
-
-          <h3 className={S.subheading}>Why DAMM v2</h3>
-          <p className={S.body + ' mb-6'}>
-            bags.fm uses DAMM v2 (Dynamic Automated Market Making) for its AMM. PinkBrain LP is purpose-built
-            to work with DAMM v2&apos;s unique fee structure and liquidity mechanics. It is not a generic LP
-            manager ported from Uniswap &mdash; it is built from scratch for this specific ecosystem.
-          </p>
-
-          <h3 className={S.subheading}>The Flow</h3>
-          <div className={S.code + ' mb-6'}>
-            <p className="text-[#555]">{'// PinkBrain LP Auto-Compound Flow'}</p>
-            <p className="text-[#ccc]">&nbsp;</p>
-            <p className="text-[#d4f000]">{'  [Trading Activity on bags.fm]'}</p>
-            <p className="text-[#555]">{'          |'}</p>
-            <p className="text-[#555]">{'          v'}</p>
-            <p className="text-[#d4f000]">{'  [Fees Generated (DAMM v2)]'}</p>
-            <p className="text-[#555]">{'          |'}</p>
-            <p className="text-[#555]">{'          v'}</p>
-            <p className="text-[#ffadad]">{'  [PinkBrain LP Collects Fees]'}</p>
-            <p className="text-[#555]">{'          |'}</p>
-            <p className="text-[#555]">{'     +---------+'}</p>
-            <p className="text-[#555]">{'     |         |'}</p>
-            <p className="text-[#555]">{'     v         v'}</p>
-            <p className="text-[#d4f000]">{'  [Re-add to]  [Send to $BRAIN]'}</p>
-            <p className="text-[#d4f000]">{'  [Liquidity]  [Treasury]'}</p>
-            <p className="text-[#555]">{'     |         |'}</p>
-            <p className="text-[#555]">{'     v         v'}</p>
-            <p className="text-[#ccc]">{'  Deeper LP    Investments,'}</p>
-            <p className="text-[#ccc]">{'  Less Slip    Burns, Reflections'}</p>
-          </div>
-
-          <h3 className={S.subheading}>Technical Stack</h3>
-          <div className="flex flex-wrap gap-2 mb-6">
-            {['Solana / SPL', 'DAMM v2 SDK', 'Anchor Framework', 'TypeScript', 'Cron-based Execution'].map((tag) => (
-              <span key={tag} className={S.limePill}>{tag}</span>
-            ))}
-          </div>
-
-          <div className="bg-[#0d0d0d] border border-[#222] rounded-lg p-5">
-            <p className="text-[#d4f000] font-mono text-[10px] uppercase tracking-widest mb-2">GitHub</p>
-            <a
-              href="https://github.com/kr8tiv-ai/PinkBrain-lp"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#ccc] font-mono text-sm hover:text-[#d4f000] underline underline-offset-4 decoration-[#333] transition-colors"
-            >
-              github.com/kr8tiv-ai/PinkBrain-lp
-            </a>
-          </div>
-        </section>
-
-
-        {/* ══════════════════════════════════════════════════════════════
-            SECTION 9: PINKBRAIN ROUTER
-           ══════════════════════════════════════════════════════════════ */}
-        <section className={S.sectionWrap}>
-          <p className={S.sectionNum}>09</p>
-          <h2 className={S.sectionTitle}>PinkBrain Router</h2>
-          <GradientLine />
-
-          <div className="flex items-center gap-3 mb-6">
-            <span className={S.limePill}>App #002</span>
-            <span className="inline-block bg-[#e4ff57]/10 border border-[#e4ff57]/20 text-[#e4ff57] font-mono text-[10px] uppercase tracking-wider px-3 py-1 rounded-full">In Development</span>
-          </div>
-
-          <h3 className={S.subheading}>What It Does</h3>
-          <p className={S.body + ' mb-6'}>
-            PinkBrain Router converts DeFi fees into AI API credits. It takes revenue generated
-            by the $BRAIN ecosystem and routes it into API access for AI services &mdash;
-            effectively turning trading activity into compute power. DeFi fees in, AI capabilities out.
-          </p>
-
-          <h3 className={S.subheading}>Distribution Modes</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            <div className="bg-[#111] border border-[#222] rounded-lg p-5">
-              <p className="text-[#d4f000] font-mono text-[10px] uppercase tracking-widest mb-2">Direct Conversion</p>
-              <p className="text-[#aaa] text-sm leading-relaxed">
-                SOL fees are swapped to stablecoins and used to purchase API credits directly.
-                Straightforward. Predictable. The Brain approach.
-              </p>
-            </div>
-            <div className="bg-[#111] border border-[#222] rounded-lg p-5">
-              <p className="text-[#ffadad] font-mono text-[10px] uppercase tracking-widest mb-2">Pooled Access</p>
-              <p className="text-[#aaa] text-sm leading-relaxed">
-                Multiple ecosystem participants pool their fee allocations for bulk API pricing.
-                Economies of scale. The Pinky approach (accidentally genius).
-              </p>
-            </div>
-          </div>
-
-          <h3 className={S.subheading}>Technical Architecture</h3>
-          <div className={S.code + ' mb-6'}>
-            <p className="text-[#555]">{'// PinkBrain Router Architecture'}</p>
-            <p className="text-[#ccc]">&nbsp;</p>
-            <p className="text-[#d4f000]">{'  [DeFi Fee Revenue (SOL)]'}</p>
-            <p className="text-[#555]">{'          |'}</p>
-            <p className="text-[#555]">{'          v'}</p>
-            <p className="text-[#ffadad]">{'  [PinkBrain Router]'}</p>
-            <p className="text-[#555]">{'          |'}</p>
-            <p className="text-[#555]">{'     +---------+---------+'}</p>
-            <p className="text-[#555]">{'     |         |         |'}</p>
-            <p className="text-[#555]">{'     v         v         v'}</p>
-            <p className="text-[#ccc]">{'  Swap to    Credit     Usage'}</p>
-            <p className="text-[#ccc]">{'  USDC       Purchase   Tracking'}</p>
-            <p className="text-[#555]">{'     |         |         |'}</p>
-            <p className="text-[#555]">{'     v         v         v'}</p>
-            <p className="text-[#d4f000]">{'  [AI API Credits Pool]'}</p>
-            <p className="text-[#555]">{'          |'}</p>
-            <p className="text-[#555]">{'          v'}</p>
-            <p className="text-[#ccc]">{'  Distributed to ecosystem apps'}</p>
-          </div>
-
-          <div className="bg-[#111] border-l-4 border-[#e4ff57] rounded-r-lg p-6">
-            <p className="text-white font-bold text-sm uppercase tracking-wider mb-2">Status</p>
-            <p className="text-[#ccc] leading-relaxed">
-              PinkBrain Router is currently in active development. Architecture is finalized,
-              core contracts are being written. Expected to integrate with PinkBrain LP for
-              automated fee routing once live.
-            </p>
-          </div>
-        </section>
-
-
-        {/* ══════════════════════════════════════════════════════════════
-            SECTION 10: TOKENOMICS
-           ══════════════════════════════════════════════════════════════ */}
-        <section className={S.sectionWrap}>
-          <p className={S.sectionNum}>10</p>
-          <h2 className={S.sectionTitle}>Tokenomics</h2>
-          <GradientLine />
-
-          <p className={S.body + ' mb-8'}>
-            Every fee generated by $BRAIN trading is distributed according to a fixed on-chain allocation.
-            No hidden wallets. No discretionary &quot;team fund&quot; that quietly grows.
-            Here is exactly where every fraction of a SOL goes.
-          </p>
-
-          {/* Fee Distribution Bar */}
-          <div className="mb-10">
-            <p className="text-white font-bold text-sm uppercase tracking-wider mb-4">Fee Distribution Breakdown</p>
-            <div className="w-full h-10 rounded-lg overflow-hidden flex">
-              <div className="bg-[#d4f000] h-full flex items-center justify-center" style={{ width: '30%' }}>
-                <span className="text-[#0a0a0a] font-mono text-[10px] font-black">30% Invest</span>
-              </div>
-              <div className="bg-[#ffadad] h-full flex items-center justify-center" style={{ width: '20%' }}>
-                <span className="text-[#0a0a0a] font-mono text-[10px] font-black">20% Holders</span>
-              </div>
-              <div className="bg-[#ff6b35] h-full flex items-center justify-center" style={{ width: '20%' }}>
-                <span className="text-[#0a0a0a] font-mono text-[10px] font-black">20% Dev</span>
-              </div>
-              <div className="bg-[#e4ff57]/60 h-full flex items-center justify-center" style={{ width: '10%' }}>
-                <span className="text-[#0a0a0a] font-mono text-[9px] font-black">10% Burn</span>
-              </div>
-              <div className="bg-[#4a90e2] h-full flex items-center justify-center" style={{ width: '10%' }}>
-                <span className="text-[#0a0a0a] font-mono text-[9px] font-black">10% LP</span>
-              </div>
-              <div className="bg-[#ccc] h-full flex items-center justify-center" style={{ width: '10%' }}>
-                <span className="text-[#0a0a0a] font-mono text-[9px] font-black">10% Mkt</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Fee details */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-            {[
-              { pct: '30%', label: 'Investments', color: '#d4f000', desc: 'Treasury actively invests in bags.fm ecosystem projects.' },
-              { pct: '20%', label: 'Top 100 Holders', color: '#ffadad', desc: 'SOL reflections distributed to the top 100 holders by balance.' },
-              { pct: '20%', label: 'Dev Discretion', color: '#ff6b35', desc: 'Development costs, infrastructure, and operational expenses.' },
-              { pct: '10%', label: 'Burned', color: '#e4ff57', desc: 'Permanently removed from supply. Deflationary pressure.' },
-              { pct: '10%', label: 'Liquidity', color: '#4a90e2', desc: 'Compounding liquidity for deeper pools and less slippage.' },
-              { pct: '10%', label: 'Marketing & Boosts', color: '#cccccc', desc: '5% marketing, 5% Dexscreener boosts. Visibility matters.' },
-            ].map((item) => (
-              <div key={item.label} className="bg-[#111] border border-[#222] rounded-lg p-5">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-3xl font-black tracking-tighter" style={{ color: item.color }}>{item.pct}</span>
-                  <span className="text-white font-bold text-sm uppercase tracking-wider">{item.label}</span>
-                </div>
-                <p className="text-[#aaa] text-sm leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <h3 className={S.subheading}>On-Chain Actions</h3>
-          <p className={S.body + ' mb-4'}>
-            All fee distributions are executed on-chain via the bags.fm Fee Share V2 program.
-            Each claimer wallet has a fixed BPS (basis points) allocation that cannot be changed
-            without a program upgrade. The distribution is automatic and verifiable.
-          </p>
-          <div className={S.code}>
-            <p className="text-[#555]">{'// Fee Share V2 On-Chain Allocations (BPS)'}</p>
-            <p className="text-[#ccc]">Investments &nbsp;&nbsp;&nbsp; 3000 BPS &nbsp; (30%)</p>
-            <p className="text-[#ccc]">Holders &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2000 BPS &nbsp; (20%)</p>
-            <p className="text-[#ccc]">Dev &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2000 BPS &nbsp; (20%)</p>
-            <p className="text-[#ccc]">Burned &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1000 BPS &nbsp; (10%)</p>
-            <p className="text-[#ccc]">Liquidity &nbsp;&nbsp;&nbsp;&nbsp; 1000 BPS &nbsp; (10%)</p>
-            <p className="text-[#ccc]">Marketing &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 500 BPS &nbsp; &nbsp;(5%)</p>
-            <p className="text-[#ccc]">DexBoosts &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 500 BPS &nbsp; &nbsp;(5%)</p>
-            <p className="text-[#555]">{'// ─────────────────────────'}</p>
-            <p className="text-[#d4f000]">Total &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10000 BPS &nbsp; (100%)</p>
-          </div>
-        </section>
-
-
-        {/* ══════════════════════════════════════════════════════════════
-            SECTION 11: CONTENT CHECKLIST
-           ══════════════════════════════════════════════════════════════ */}
-        <section className={S.sectionWrap}>
-          <p className={S.sectionNum}>11</p>
+          <p className={S.sectionNum}>A5</p>
           <h2 className={S.sectionTitle}>Content Checklist</h2>
           <GradientLine />
 
@@ -1027,10 +1190,10 @@ export default function BrandPage() {
 
 
         {/* ══════════════════════════════════════════════════════════════
-            SECTION 12: THE ASSIGNMENT TEMPLATE
+            SECTION A6: THE ASSIGNMENT TEMPLATE
            ══════════════════════════════════════════════════════════════ */}
         <section className="py-16 md:py-20">
-          <p className={S.sectionNum}>12</p>
+          <p className={S.sectionNum}>A6</p>
           <h2 className={S.sectionTitle}>The Assignment Template</h2>
           <GradientLine />
 

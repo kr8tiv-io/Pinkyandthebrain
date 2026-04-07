@@ -204,11 +204,11 @@ function PortfolioAllocationRing({
   })
 
   return (
-    <div className="px-5 lg:px-8 py-8 relative">
+    <div className="px-4 lg:px-6 py-5 relative">
       {/* Subtle glow behind chart */}
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_50%_at_50%_60%,rgba(212,240,0,0.015),transparent_70%)]" />
 
-      <div className="relative font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-6 flex items-center gap-3 wr-sub-header">
+      <div className="relative font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-4 flex items-center gap-3 wr-sub-header">
         <span className="text-[#d4f000]/70 text-[12px] wr-sub-diamond">◆</span>
         <span>PORTFOLIO ALLOCATION</span>
         <div className="flex-1 h-px bg-gradient-to-r from-[#888]/50 to-transparent" />
@@ -224,7 +224,7 @@ function PortfolioAllocationRing({
           <span className="text-[#ccc] font-mono text-[12px] tracking-[0.2em]">NO HOLDINGS DATA</span>
         </div>
       ) : (
-        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+        <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-8">
           {/* SVG Donut Ring */}
           <div className="relative shrink-0">
             <svg ref={ringRef} width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="drop-shadow-[0_0_30px_rgba(212,240,0,0.08)]">
@@ -423,10 +423,10 @@ function TreasuryValueChart({
   const isUp = pnl.pnlUsd >= 0
 
   return (
-    <div className="px-5 lg:px-8 py-6 relative border-t border-[#444]/20">
+    <div className="px-4 lg:px-6 py-4 relative border-t border-[#444]/20">
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_50%_at_50%_60%,rgba(212,240,0,0.01),transparent_70%)]" />
 
-      <div className="relative font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-5 flex items-center gap-3 wr-sub-header">
+      <div className="relative font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-4 flex items-center gap-3 wr-sub-header">
         <span className="text-[#d4f000]/70 text-[12px] wr-sub-diamond">◆</span>
         <span>TREASURY VALUE OVER TIME</span>
         <div className="flex-1 h-px bg-gradient-to-r from-[#888]/50 to-transparent" />
@@ -549,7 +549,7 @@ function SummaryCell({
   }, [isLoading, isError])
 
   return (
-    <div className="px-5 lg:px-6 py-5 group/cell relative transition-colors duration-300 hover:bg-[#d4f000]/[0.02] wr-stat-scale">
+    <div className="px-4 lg:px-5 py-3.5 group/cell relative transition-colors duration-300 hover:bg-[#d4f000]/[0.02] wr-stat-scale">
       {/* Hover accent top */}
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#d4f000]/0 group-hover/cell:bg-[#d4f000]/15 transition-colors duration-300" />
       {/* Hover accent bottom gradient */}
@@ -874,8 +874,8 @@ function TransactionFeed({
   const visible = showAll ? transactions : transactions.slice(0, 10)
 
   return (
-    <div className="px-5 lg:px-8 py-6 border-t border-[#444]/20">
-      <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-4 flex items-center gap-3 wr-sub-header">
+    <div className="px-4 lg:px-6 py-4 border-t border-[#444]/20">
+      <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-3 flex items-center gap-3 wr-sub-header">
         <span className="text-[#d4f000]/70 text-[12px] wr-sub-diamond">◆</span>
         <span>TRANSACTION FEED</span>
         <div className="flex-1 h-px bg-gradient-to-r from-[#888]/50 to-transparent" />
@@ -964,8 +964,8 @@ function DivestedSection() {
   const soldTokens = TREASURY_HOLDINGS.filter(h => h.soldDate !== undefined)
 
   return (
-    <div className="px-5 lg:px-8 py-6 border-t border-[#444]/20 wr-divested-gradient">
-      <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#ccc] font-bold mb-4 flex items-center gap-3 wr-sub-header">
+    <div className="px-4 lg:px-6 py-4 border-t border-[#444]/20 wr-divested-gradient">
+      <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#ccc] font-bold mb-3 flex items-center gap-3 wr-sub-header">
         <span className="text-[#ff9e9e]/55 text-[12px] wr-sub-diamond">◆</span>
         <span className="text-[#ff9e9e]/80">DIVESTED ASSETS</span>
         <div className="flex-1 h-px bg-gradient-to-r from-[#ff9e9e]/10 to-transparent" />
@@ -1073,7 +1073,7 @@ export default function TreasuryIntel() {
       </div>
 
       {/* Section header */}
-      <div className="px-5 lg:px-8 py-6 border-b border-[#d4f000]/40 wr-brackets wr-header-line text-[#d4f000] wr-glass">
+      <div className="px-4 lg:px-6 py-4 border-b border-[#d4f000]/40 wr-brackets wr-header-line text-[#d4f000] wr-glass">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-4">
             <div className="w-1.5 bg-[#d4f000] wr-accent-bar wr-accent-bar-pulse" style={{ boxShadow: '0 0 8px rgba(212,240,0,0.5)' }} />
@@ -1169,8 +1169,8 @@ export default function TreasuryIntel() {
       })()}
 
       {/* Holdings grid */}
-      <div className="px-5 lg:px-8 py-6">
-        <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-5 flex items-center gap-3 wr-sub-header">
+      <div className="px-4 lg:px-6 py-4">
+        <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-4 flex items-center gap-3 wr-sub-header">
           <span className="text-[#d4f000]/70 text-[12px] wr-sub-diamond">◆</span>
           <span>ACTIVE POSITIONS</span>
           <div className="flex-1 h-px bg-gradient-to-r from-[#888]/50 to-transparent" />

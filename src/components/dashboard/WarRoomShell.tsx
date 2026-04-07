@@ -117,7 +117,7 @@ export default function WarRoomShell() {
         <WarRoomTabBar tabs={TABS} activeTab={activeTab} onTabChange={handleTabChange} />
 
         {/* Tab content — key forces remount for entrance animation */}
-        <div ref={contentRef} key={activeTab} className="min-h-[60vh]" role="tabpanel" id={`tabpanel-${activeTab}`}>
+        <div ref={contentRef} key={activeTab} className="min-h-[60vh] max-w-[1200px] mx-auto" role="tabpanel" id={`tabpanel-${activeTab}`}>
           <SectionReveal>
             {activeTab === 'governance' && <GovernanceTab />}
             {activeTab === 'treasury' && <TreasuryIntel />}

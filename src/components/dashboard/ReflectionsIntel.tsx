@@ -65,9 +65,9 @@ function SummaryCell({
   }, [isLoading, isError])
 
   return (
-    <div className="px-5 lg:px-6 py-5 group/cell relative transition-colors duration-300 hover:bg-[#d4f000]/[0.02] wr-stat-scale">
+    <div className="px-4 lg:px-5 py-3.5 group/cell relative transition-colors duration-300 hover:bg-[#d4f000]/[0.02] wr-stat-scale">
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#d4f000]/0 group-hover/cell:bg-[#d4f000]/15 transition-colors duration-300" />
-      <div className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#e0e0e0] mb-2 font-bold group-hover/cell:text-[#d4f000] transition-colors flex items-center gap-1.5">
+      <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#e0e0e0] mb-1.5 font-bold group-hover/cell:text-[#d4f000] transition-colors flex items-center gap-1.5">
         <span className="text-[#d4f000]/70 text-[11px] group-hover/cell:text-[#d4f000] transition-colors" aria-hidden="true">◆</span>
         {label}
       </div>
@@ -372,8 +372,8 @@ function FeatureCards({
   ]
 
   return (
-    <div className="px-5 lg:px-8 py-6 border-t border-[#333]/15">
-      <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-4 flex items-center gap-3 wr-sub-header">
+    <div className="px-4 lg:px-6 py-4 border-t border-[#333]/15">
+      <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-3 flex items-center gap-3 wr-sub-header">
         <span className="text-[#d4f000]/70 text-[12px] wr-sub-diamond">◆</span>
         <span>AUTOMATED FEATURES</span>
         <div className="flex-1 h-px bg-gradient-to-r from-[#d4f000]/30 to-transparent" />
@@ -550,7 +550,7 @@ export default function ReflectionsIntel() {
       </div>
 
       {/* Section header */}
-      <div className="px-5 lg:px-8 py-6 border-b border-[#d4f000]/40 wr-brackets wr-header-line text-[#d4f000] wr-glass">
+      <div className="px-4 lg:px-6 py-4 border-b border-[#d4f000]/40 wr-brackets wr-header-line text-[#d4f000] wr-glass">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-4">
             <div
@@ -645,8 +645,8 @@ export default function ReflectionsIntel() {
       </div>
 
       {/* Accrual arc gauge */}
-      <div className="px-5 lg:px-8 py-6">
-        <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-4 flex items-center gap-3 wr-sub-header">
+      <div className="px-4 lg:px-6 py-4">
+        <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-3 flex items-center gap-3 wr-sub-header">
           <span className="text-[#d4f000]/70 text-[12px] wr-sub-diamond">◆</span>
           <span>PAYOUT ACCRUAL</span>
           <div className="flex-1 h-px bg-gradient-to-r from-[#d4f000]/30 to-transparent" />
@@ -662,7 +662,7 @@ export default function ReflectionsIntel() {
               value={data?.currentAccruedSol ?? 0}
               max={data?.payoutThresholdSol ?? 10}
               unit="SOL"
-              size={260}
+              size={200}
             />
           )}
           {data?.nextPayoutEstimate && (
@@ -674,8 +674,8 @@ export default function ReflectionsIntel() {
       </div>
 
       {/* Fee distribution donut ring */}
-      <div className="px-5 lg:px-8 py-6 border-t border-[#333]/15">
-        <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-5 flex items-center gap-3 wr-sub-header">
+      <div className="px-4 lg:px-6 py-4 border-t border-[#333]/15">
+        <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-3 flex items-center gap-3 wr-sub-header">
           <span className="text-[#d4f000]/70 text-[12px] wr-sub-diamond">◆</span>
           <span>FEE DISTRIBUTION</span>
           <div className="flex-1 h-px bg-gradient-to-r from-[#d4f000]/30 to-transparent" />
@@ -685,6 +685,8 @@ export default function ReflectionsIntel() {
           segments={donutSegments}
           totalLabel="FEES"
           totalValue={`${(Object.values(data?.feeBreakdown ?? {}).reduce((s, e) => s + e.sol, 0)).toFixed(1)} SOL`}
+          size={190}
+          strokeWidth={18}
           isLoading={isLoading}
         />
       </div>
@@ -697,8 +699,8 @@ export default function ReflectionsIntel() {
       />
 
       {/* Distribution flame timeline */}
-      <div className="px-5 lg:px-8 py-6 border-t border-[#333]/15">
-        <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-4 flex items-center gap-3 wr-sub-header">
+      <div className="px-4 lg:px-6 py-4 border-t border-[#333]/15">
+        <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-3 flex items-center gap-3 wr-sub-header">
           <span className="text-[#d4f000]/70 text-[12px] wr-sub-diamond">◆</span>
           <span>REFLECTION HISTORY</span>
           <div className="flex-1 h-px bg-gradient-to-r from-[#d4f000]/30 to-transparent" />

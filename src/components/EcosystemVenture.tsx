@@ -502,8 +502,65 @@ export default function EcosystemVenture() {
           </div>
         </div>
 
+        {/* ─── Staking + DLMM Exit callout ─── */}
+        <div className="max-w-2xl mx-auto mt-16 relative group/stake">
+          {/* Subtle border glow */}
+          <div className="absolute -inset-[1px] rounded-xl bg-gradient-to-r from-[#d4f000]/20 via-[#4a90e2]/15 to-[#d4f000]/20 opacity-40 group-hover/stake:opacity-70 transition-opacity duration-500 blur-[1px]" />
+
+          <div className="relative rounded-xl bg-[#0d0d0d]/90 border border-[#333]/30 backdrop-blur-sm p-6 md:p-8 overflow-hidden">
+            {/* Corner accents */}
+            <div className="absolute top-0 left-0 w-8 h-[2px] bg-gradient-to-r from-[#d4f000]/60 to-transparent" />
+            <div className="absolute top-0 left-0 w-[2px] h-8 bg-gradient-to-b from-[#d4f000]/60 to-transparent" />
+            <div className="absolute bottom-0 right-0 w-8 h-[2px] bg-gradient-to-l from-[#d4f000]/60 to-transparent" />
+            <div className="absolute bottom-0 right-0 w-[2px] h-8 bg-gradient-to-t from-[#d4f000]/60 to-transparent" />
+
+            {/* Header */}
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-1 h-6 bg-gradient-to-b from-[#d4f000] to-[#d4f000]/30 rounded-full" />
+              <h3 className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#d4f000] font-bold">
+                Stake $BRAIN &middot; Earn SOL
+              </h3>
+              <div className="flex-1 h-px bg-gradient-to-r from-[#d4f000]/20 to-transparent" />
+              <a
+                href="/war-room?tab=staking"
+                className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-[#d4f000]/70 hover:text-[#d4f000] border border-[#d4f000]/25 hover:border-[#d4f000]/50 px-3 py-1.5 rounded-sm transition-all duration-300 hover:bg-[#d4f000]/[0.04] hover:shadow-[0_0_12px_rgba(212,240,0,0.1)]"
+              >
+                Enter Staking
+                <span className="text-[9px]">&rarr;</span>
+              </a>
+            </div>
+
+            {/* Description */}
+            <p className="font-mono text-[12px] leading-relaxed text-[#bbb] mb-5">
+              Lock $BRAIN tokens to earn SOL reflections with time-weighted multipliers.
+              <span className="text-white font-bold"> 7d = 1x</span>,
+              <span className="text-white font-bold"> 30d = 2x</span>,
+              <span className="text-white font-bold"> 90d = 3x</span> rewards.
+              Minimum stake: 100,000 $BRAIN.
+            </p>
+
+            {/* DLMM exit highlight */}
+            <div className="rounded-lg bg-[#4a90e2]/[0.04] border border-[#4a90e2]/15 p-4">
+              <div className="flex items-start gap-3">
+                <div className="mt-0.5 w-2 h-2 rounded-full bg-[#4a90e2] shadow-[0_0_8px_rgba(74,144,226,0.4)] shrink-0" />
+                <div>
+                  <p className="font-mono text-[11px] text-[#4a90e2] font-bold uppercase tracking-[0.15em] mb-1.5">
+                    Zero Chart Damage &mdash; DLMM Exits Only
+                  </p>
+                  <p className="font-mono text-[11px] text-[#999] leading-relaxed">
+                    When we take profit on treasury investments, we never market sell.
+                    Every exit uses <span className="text-[#ccc]">Meteora DLMM limit orders</span> &mdash;
+                    positions are placed above market and filled by buyers, not dumps.
+                    Your chart stays clean. Always.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* ─── Bottom tagline ─── */}
-        <p className="text-center mt-16 text-[#555] font-mono text-xs tracking-[0.25em] uppercase">
+        <p className="text-center mt-12 text-[#555] font-mono text-xs tracking-[0.25em] uppercase">
           The machine never stops &mdash; volume or no volume
         </p>
       </div>

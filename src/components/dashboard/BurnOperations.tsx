@@ -69,7 +69,7 @@ function SupplyComparisonRing({
   const circumference = 2 * Math.PI * 54
 
   return (
-    <div className="px-5 lg:px-8 py-6 border-b border-[#333]/12">
+    <div className="px-4 lg:px-6 py-6 border-b border-[#333]/12">
       <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-5 flex items-center gap-3 wr-sub-header">
         <span className="text-[#ff6b35]/70 text-[12px] wr-sub-diamond">◆</span>
         <span>SUPPLY INCINERATION MAP</span>
@@ -407,7 +407,7 @@ function BurnProjections({
   if (isLoading || milestones.length === 0) return null
 
   return (
-    <div className="px-5 lg:px-8 py-6 border-b border-[#333]/12">
+    <div className="px-4 lg:px-6 py-6 border-b border-[#333]/12">
       <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-5 flex items-center gap-3 wr-sub-header">
         <span className="text-[#ff6b35]/70 text-[12px] wr-sub-diamond">◆</span>
         <span>BURN PROJECTIONS</span>
@@ -466,7 +466,7 @@ function BurnTransactionsTable({
   isError: boolean
 }) {
   return (
-    <div className="px-5 lg:px-8 py-6">
+    <div className="px-4 lg:px-6 py-6">
       <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-4 flex items-center gap-3 wr-sub-header">
         <span className="text-[#ff6b35]/70 text-[12px] wr-sub-diamond">◆</span>
         <span>BURN LEDGER</span>
@@ -606,7 +606,7 @@ export default function BurnOperations() {
       <div className="h-[2px] wr-fire-line" aria-hidden="true" />
 
       {/* Section header */}
-      <div className="relative flex justify-between items-center px-5 lg:px-8 py-6 border-b border-[#ff6b35]/40 wr-brackets wr-brackets-fire wr-header-line text-[#ff6b35] wr-glass">
+      <div className="relative flex justify-between items-center px-4 lg:px-6 py-6 border-b border-[#ff6b35]/40 wr-brackets wr-brackets-fire wr-header-line text-[#ff6b35] wr-glass">
         <div className="flex items-center gap-4">
           <div className="w-1.5 bg-[#ff6b35] wr-accent-bar wr-accent-bar-pulse" style={{ boxShadow: '0 0 8px rgba(255,107,53,0.5)' }} />
           <div>
@@ -659,7 +659,7 @@ export default function BurnOperations() {
       />
 
       {/* Burn progress visualization */}
-      <div className="px-5 lg:px-8 py-6 border-b border-[#555]/30">
+      <div className="px-4 lg:px-6 py-6 border-b border-[#555]/30">
         <div className="flex items-center justify-between mb-3 wr-sub-header">
           <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold flex items-center gap-3">
             <span className="text-[#ff6b35]/70 text-[12px] wr-sub-diamond">◆</span>
@@ -717,7 +717,7 @@ export default function BurnOperations() {
       />
 
       {/* Burn flame timeline */}
-      <div className="px-5 lg:px-8 py-6">
+      <div className="px-4 lg:px-6 py-6">
         <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#e0e0e0] font-bold mb-4 flex items-center gap-3 wr-sub-header">
           <span className="text-[#ff6b35]/70 text-[12px] wr-sub-diamond">◆</span>
           <span>BURN LEDGER</span>
