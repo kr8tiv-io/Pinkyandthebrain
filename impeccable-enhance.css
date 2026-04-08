@@ -1,0 +1,624 @@
+/**
+ * Impeccable Design System Enhancement
+ * matthaynes.fun - CSS Enhancement Layer
+ * 
+ * This file provides visual refinements based on Impeccable design principles:
+ * - Enhanced typography with fluid sizing and improved hierarchy
+ * - OKLCH color palette with tinted neutrals and tropical warmth
+ * - Varied spacing creating visual rhythm instead of uniformity
+ * - Refined glass effects used selectively and with subtlety
+ * - Improved micro-interactions and motion curves
+ * 
+ * IMPORTANT: This file loads AFTER existing CSS and only overrides specific styles.
+ * It does NOT modify video elements, canvas, or parallax components.
+ */
+
+/* ===================================================================
+   ROOT VARIABLES & COLOR PALETTE
+   =================================================================== */
+
+:root {
+  /* Typography Scale - Fluid sizing with clamp() */
+  --type-xs: clamp(0.75rem, 1vw, 0.875rem);
+  --type-sm: clamp(0.875rem, 1.2vw, 1rem);
+  --type-base: clamp(1rem, 1.5vw, 1.125rem);
+  --type-lg: clamp(1.25rem, 2vw, 1.5rem);
+  --type-xl: clamp(1.5rem, 2.5vw, 2rem);
+  --type-2xl: clamp(2rem, 3.5vw, 2.5rem);
+  --type-3xl: clamp(2.5rem, 5vw, 3.5rem);
+  --type-4xl: clamp(3rem, 6vw, 4.5rem);
+
+  /* OKLCH Color Palette - Perceptually uniform */
+  --color-accent: oklch(51% 0.22 186); /* Bold teal #0ea685 equivalent */
+  --color-accent-light: oklch(70% 0.15 186); /* Lighter teal for backgrounds */
+  --color-accent-dark: oklch(35% 0.25 186); /* Darker teal for depth */
+  
+  /* Tinted Neutrals - Warm toward brand hue */
+  --color-neutral-50: oklch(98% 0.01 186); /* Almost white, teal-tinted */
+  --color-neutral-100: oklch(95% 0.02 186);
+  --color-neutral-200: oklch(88% 0.03 186);
+  --color-neutral-300: oklch(80% 0.04 186);
+  --color-neutral-400: oklch(65% 0.05 186);
+  --color-neutral-500: oklch(50% 0.06 186);
+  --color-neutral-600: oklch(40% 0.07 186);
+  --color-neutral-700: oklch(25% 0.06 186);
+  --color-neutral-800: oklch(15% 0.04 186);
+  
+  /* Tropical Accent - Warm sand tones for Costa Rica feel */
+  --color-warm-sand: oklch(78% 0.12 70); /* Warm sand/gold */
+  --color-warm-terra: oklch(60% 0.15 30); /* Terracotta/rust accent */
+  
+  /* Spacing Rhythm - Varied for visual interest */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+  
+  /* Typography Metrics */
+  --leading-tight: 1.1;
+  --leading-snug: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+  
+  --letter-base: 0;
+  --letter-tight: -0.015em;
+  --letter-wide: 0.025em;
+  
+  /* Motion - Refined easing and timing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-circ: cubic-bezier(0, 0.55, 0.45, 1);
+  --ease-in-out-cubic: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 500ms;
+}
+
+/* ===================================================================
+   TYPOGRAPHY - Improved Hierarchy & Readability
+   =================================================================== */
+
+body {
+  font-family: "Plus Jakarta Sans", "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: var(--type-base);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--letter-base);
+  color: var(--color-neutral-700);
+  background-color: var(--color-neutral-50);
+}
+
+/* Display headings - Tighter line height, stronger hierarchy */
+h1 {
+  font-family: "Sora", sans-serif;
+  font-size: var(--type-4xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--letter-tight);
+  font-weight: 700;
+  color: var(--color-neutral-800);
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-md);
+}
+
+h2 {
+  font-family: "Sora", sans-serif;
+  font-size: var(--type-3xl);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--letter-tight);
+  font-weight: 700;
+  color: var(--color-neutral-800);
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-md);
+}
+
+h3 {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: var(--type-xl);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--letter-tight);
+  font-weight: 700;
+  color: var(--color-neutral-800);
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+h4, h5, h6 {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  line-height: var(--leading-snug);
+  letter-spacing: var(--letter-tight);
+  font-weight: 600;
+  color: var(--color-neutral-800);
+}
+
+h4 {
+  font-size: var(--type-lg);
+}
+
+h5 {
+  font-size: var(--type-base);
+}
+
+h6 {
+  font-size: var(--type-sm);
+}
+
+/* Body text refinement */
+p {
+  line-height: var(--leading-normal);
+  margin-bottom: var(--space-md);
+  color: var(--color-neutral-700);
+}
+
+small, .text-sm {
+  font-size: var(--type-sm);
+  line-height: var(--leading-snug);
+  color: var(--color-neutral-600);
+}
+
+/* Improve contrast for better readability */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out-circ);
+}
+
+a:hover, a:focus {
+  color: var(--color-accent-dark);
+}
+
+/* ===================================================================
+   GLASS EFFECTS - Refined & Selective
+   =================================================================== */
+
+/* Reduce glass blur intensity - more elegant, less heavy */
+.glass-premium {
+  backdrop-filter: blur(8px) !important;
+  background: rgba(255, 255, 255, 0.65) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Subtle copy scrim - less aggressive overlay */
+.copy-scrim {
+  backdrop-filter: blur(6px) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.35) 100%
+  ) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* ===================================================================
+   CARDS & CONTAINERS - Visual Differentiation
+   =================================================================== */
+
+/* Base card improvements */
+.card {
+  border: 1px solid var(--color-neutral-200);
+  border-radius: 8px;
+  background: var(--color-neutral-50);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: all var(--duration-base) var(--ease-out-circ);
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  border-color: var(--color-neutral-300);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Add subtle accent left border for visual interest */
+.card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--color-accent) 0%, var(--color-warm-sand) 100%);
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-out-circ);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* System card stack - Better differentiation */
+.system-card-stack {
+  padding: var(--space-lg);
+  border-radius: 8px;
+  background: var(--color-neutral-50);
+  border: 1px solid var(--color-neutral-200);
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.system-card-stack:nth-child(odd) {
+  background: linear-gradient(135deg, var(--color-neutral-50) 0%, var(--color-accent-light) 100%);
+}
+
+.system-card-stack:nth-child(even) {
+  background: linear-gradient(135deg, var(--color-neutral-50) 0%, rgba(78, 205, 196, 0.05) 100%);
+}
+
+/* ===================================================================
+   BADGES & KICKERS - Refined Visual Treatment
+   =================================================================== */
+
+.kicker {
+  font-size: var(--type-xs);
+  font-weight: 700;
+  letter-spacing: var(--letter-wide);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 0.375rem 0.75rem;
+  background: linear-gradient(135deg, rgba(14, 166, 133, 0.1) 0%, rgba(78, 205, 196, 0.08) 100%);
+  border: 1px solid rgba(14, 166, 133, 0.2);
+  border-radius: 4px;
+  margin-bottom: var(--space-sm);
+  transition: all var(--duration-fast) var(--ease-out-circ);
+}
+
+.kicker:hover {
+  background: linear-gradient(135deg, rgba(14, 166, 133, 0.15) 0%, rgba(78, 205, 196, 0.12) 100%);
+  border-color: rgba(14, 166, 133, 0.3);
+  color: var(--color-accent-dark);
+}
+
+/* ===================================================================
+   BUTTONS - Enhanced Hover States & Motion
+   =================================================================== */
+
+.btn, button, [role="button"] {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 600;
+  letter-spacing: var(--letter-tight);
+  border-radius: 6px;
+  padding: 0.875rem 1.75rem;
+  font-size: var(--type-sm);
+  transition: all var(--duration-base) var(--ease-out-expo);
+  cursor: pointer;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Primary button */
+.btn-primary, .btn.btn-primary {
+  background: var(--color-accent);
+  color: white;
+  box-shadow: 0 4px 12px rgba(14, 166, 133, 0.2);
+}
+
+.btn-primary:hover, .btn.btn-primary:hover {
+  background: var(--color-accent-dark);
+  box-shadow: 0 8px 20px rgba(14, 166, 133, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active, .btn.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(14, 166, 133, 0.2);
+}
+
+/* Secondary button */
+.btn-secondary, .btn.btn-secondary {
+  background: var(--color-neutral-100);
+  color: var(--color-accent);
+  border: 1px solid var(--color-neutral-300);
+}
+
+.btn-secondary:hover, .btn.btn-secondary:hover {
+  background: var(--color-neutral-200);
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* Tertiary/outline button */
+.btn-tertiary, .btn.btn-outline {
+  background: transparent;
+  color: var(--color-accent);
+  border: 1.5px solid var(--color-accent);
+}
+
+.btn-tertiary:hover, .btn.btn-outline:hover {
+  background: rgba(14, 166, 133, 0.08);
+  border-color: var(--color-accent-dark);
+  color: var(--color-accent-dark);
+}
+
+/* ===================================================================
+   FORM ELEMENTS - Refined Inputs & Controls
+   =================================================================== */
+
+input, textarea, select {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: var(--type-sm);
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--color-neutral-300);
+  border-radius: 6px;
+  background: var(--color-neutral-50);
+  color: var(--color-neutral-800);
+  transition: all var(--duration-base) var(--ease-out-circ);
+  letter-spacing: var(--letter-base);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(14, 166, 133, 0.1);
+  background: white;
+}
+
+input::placeholder {
+  color: var(--color-neutral-400);
+  font-style: italic;
+  opacity: 1;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: var(--leading-normal);
+}
+
+/* ===================================================================
+   MANIFESTO LINES - Dramatic Presence
+   =================================================================== */
+
+.manifesto-line {
+  font-family: "Sora", sans-serif;
+  font-size: var(--type-2xl);
+  font-weight: 700;
+  line-height: var(--leading-snug);
+  color: var(--color-neutral-800);
+  position: relative;
+  margin: var(--space-xl) 0;
+  padding: var(--space-lg) 0;
+  letter-spacing: var(--letter-tight);
+  
+  /* Add subtle background accent */
+  background: linear-gradient(
+    90deg,
+    var(--color-accent-light) 0%,
+    transparent 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-color: var(--color-neutral-800);
+  -webkit-text-fill-color: var(--color-neutral-800);
+  transition: all var(--duration-slow) var(--ease-out-expo);
+}
+
+.manifesto-line::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 4px;
+  height: 60%;
+  background: linear-gradient(180deg, var(--color-accent) 0%, var(--color-warm-sand) 100%);
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity var(--duration-slow) var(--ease-out-expo);
+}
+
+.manifesto-line:hover::before {
+  opacity: 1;
+}
+
+/* ===================================================================
+   MAINTAINER CARDS & SOCIAL LINKS
+   =================================================================== */
+
+.maintainer-card {
+  padding: var(--space-lg);
+  border-radius: 8px;
+  background: var(--color-neutral-50);
+  border: 1px solid var(--color-neutral-200);
+  transition: all var(--duration-base) var(--ease-out-circ);
+}
+
+.maintainer-card:hover {
+  border-color: var(--color-accent-light);
+  box-shadow: 0 8px 24px rgba(14, 166, 133, 0.12);
+  transform: translateY(-4px);
+}
+
+/* Social links refinement */
+.social-links a, [class*="social"] a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 6px;
+  background: var(--color-neutral-100);
+  color: var(--color-accent);
+  margin-right: var(--space-sm);
+  transition: all var(--duration-base) var(--ease-out-expo);
+  border: 1px solid var(--color-neutral-300);
+}
+
+.social-links a:hover, [class*="social"] a:hover {
+  background: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(14, 166, 133, 0.2);
+}
+
+/* ===================================================================
+   SPACING & LAYOUT - Visual Rhythm
+   =================================================================== */
+
+/* Sections with varied spacing for rhythm */
+section {
+  padding: var(--space-xl) var(--space-lg);
+}
+
+section:nth-child(odd) {
+  padding: var(--space-2xl) var(--space-lg) var(--space-xl);
+}
+
+section:nth-child(even) {
+  padding: var(--space-xl) var(--space-lg) var(--space-2xl);
+}
+
+/* Container improvements */
+.container, [class*="container"] {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+}
+
+/* Grid with better gaps */
+.grid, [class*="grid"] {
+  gap: var(--space-lg) !important;
+}
+
+/* ===================================================================
+   FOOTER - Increased Presence
+   =================================================================== */
+
+footer, [role="contentinfo"] {
+  padding: var(--space-2xl) var(--space-lg);
+  border-top: 2px solid var(--color-neutral-200);
+  background: linear-gradient(
+    135deg,
+    var(--color-neutral-50) 0%,
+    rgba(14, 166, 133, 0.03) 100%
+  );
+  margin-top: var(--space-2xl);
+}
+
+footer p {
+  font-size: var(--type-sm);
+  color: var(--color-neutral-600);
+  line-height: var(--leading-relaxed);
+}
+
+footer a {
+  color: var(--color-accent);
+  font-weight: 500;
+  transition: color var(--duration-fast) var(--ease-out-circ);
+}
+
+footer a:hover {
+  color: var(--color-accent-dark);
+  text-decoration: underline;
+}
+
+/* ===================================================================
+   MOTION & TRANSITIONS - Refined Animation
+   =================================================================== */
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===================================================================
+   UTILITY & ENHANCEMENT CLASSES
+   =================================================================== */
+
+/* Better focus states for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Text selection styling */
+::selection {
+  background: var(--color-accent);
+  color: white;
+  text-decoration: none;
+}
+
+/* Smooth transitions on all interactive elements */
+a, button, input, textarea, select, [role="button"] {
+  transition: all var(--duration-base) var(--ease-out-circ);
+}
+
+/* Link underlines - remove by default, add on hover */
+a {
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--duration-fast) var(--ease-out-circ);
+}
+
+a:hover {
+  border-bottom-color: var(--color-accent-dark);
+}
+
+/* ===================================================================
+   RESPONSIVE ADJUSTMENTS
+   =================================================================== */
+
+@media (max-width: 768px) {
+  :root {
+    --space-xl: 2.5rem;
+    --space-2xl: 3.5rem;
+  }
+
+  h1 {
+    margin-top: var(--space-lg);
+  }
+
+  section {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  section:nth-child(odd) {
+    padding: var(--space-xl) var(--space-md) var(--space-lg);
+  }
+
+  section:nth-child(even) {
+    padding: var(--space-lg) var(--space-md) var(--space-xl);
+  }
+
+  .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: var(--type-xs);
+  }
+
+  footer {
+    padding: var(--space-lg) var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+  }
+
+  .manifesto-line {
+    font-size: var(--type-xl);
+  }
+
+  .grid {
+    gap: var(--space-md) !important;
+  }
+}
