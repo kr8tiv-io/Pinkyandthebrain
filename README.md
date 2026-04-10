@@ -104,7 +104,7 @@ The War Room ships with custom data visualizations — no off-the-shelf dashboar
 
 | Route | What's There |
 |:------|:-------------|
-| `/` | Landing page — cinematic hero with video background, particle effects, tokenomics breakdown with spinning card borders, live treasury stats, Hall of Fame, How to Buy, Roadmap |
+| `/` | Landing page — cinematic glitch-title hero with video background, night counter, redacted document reveal, 3D blueprint scene, particle effects, tokenomics breakdown with spinning card borders, ecosystem venture cards, video section with custom controls, live treasury stats, Hall of Fame, How to Buy, Roadmap |
 | `/war-room` | Full intelligence dashboard (see above) |
 | `/docs` | Interactive documentation — everything you need to know about $BRAIN mechanics |
 | `/brand` | Brand guidelines and assets — logos, colors, usage rules |
@@ -122,6 +122,97 @@ The visual identity draws from three aesthetics fused into one:
 **3. Retro Terminal** — JetBrains Mono, neon accents (`#d4f000` lime, `#ff9e9e` coral), noise textures, CRT glow
 
 Every element breathes. Subtle pulse animations, mouse-tracking spotlight effects, and GSAP-powered entrance reveals give the interface a living, operational feel. This isn't a website. It's a command center.
+
+---
+
+## Interactive Effects & Micro-Animations
+
+The UI is loaded with bespoke motion design. Nothing off the shelf, everything hand-tuned.
+
+### Magnetic Hover Cursor
+
+Buttons and interactive elements track the mouse position within their bounding box, pulling toward the cursor with elastic GSAP interpolation. On mouse-out, the element snaps back with a spring return. Every CTA on the site feels alive.
+
+### Animated Title Glitch — "Decrypted Transmission"
+
+The hero title doesn't just fade in — it arrives like a corrupted signal locking on. On load, text undergoes randomized skew transforms, directional blur, and scale stretches before resolving into clarity. The effect reads like a classified transmission being decoded in real time.
+
+### Night Counter Animation
+
+The hero counter increments by 17 each animation frame, cycling through values until it hits 4444 and resets. A relentless, ambient pulse that reinforces the "fund that never sleeps" narrative.
+
+### Section Reveal Animation
+
+A reusable `<SectionReveal>` wrapper applied to every major content block. Elements enter viewport with a blur-to-clear transition, subtle scale shift, and y-offset slide. An animated decorative line sweeps in alongside each section. Powered by GSAP ScrollTrigger with configurable thresholds.
+
+### Smooth Scrolling (Lenis)
+
+Global smooth scroll wrapper with configurable lerp (interpolation factor) and duration. Eliminates native scroll jank and gives the entire site a polished, cinematic feel. Integrated at the layout level so every page benefits.
+
+### Scroll Progress Bar
+
+Fixed to the top of the viewport. A thin bar tracks scroll depth with a `lime-to-coral` gradient (`#d4f000` to `#ff9e9e`) and a layered glow reflection underneath. Subtle but satisfying — you always know where you are.
+
+---
+
+## Signature Components
+
+### Scrollable Redacted Document (`RedactedDoc.tsx`)
+
+A classified document UI where black redaction bars animate away on scroll, revealing hidden content line by line. Built with GSAP ScrollTrigger — each redaction bar slides laterally or fades to expose the text beneath. The effect sells the "declassified intel" theme harder than anything else on the site.
+
+### 3D Blueprint Scene (`BlueprintScene.tsx`)
+
+A WebGL-style floating document visualization. Classified file cards hover in a grid formation with subtle depth parallax. The entire scene responds to mouse position — tilt, drift, and depth shift based on cursor coordinates. Pure CSS transforms, no Three.js dependency.
+
+### Ecosystem Venture Cards
+
+Four partner/investment cards that stagger in from different directions — left, right, top, bottom — as they enter the viewport. Each card has its own entrance vector and timing offset, creating a satisfying cascade on scroll. GSAP stagger with directional `x`/`y` offsets.
+
+### Video Section with Custom Controls
+
+Full-width video player with a custom control bar — play/pause toggle, mute/unmute, and a live progress bar with scrub support. No browser-default controls. Styled to match the classified-ops aesthetic with monospace timestamps and lime accent indicators.
+
+### Reflections Calculator (`ReflectionsCalculator.tsx`)
+
+Interactive tool in the War Room. Enter your $BRAIN holdings and get projected daily, weekly, and monthly SOL reflection estimates based on current treasury yield data. Inputs are reactive — calculations update on every keystroke. Styled as a military field calculator with grid lines and readout displays.
+
+### Rolling Digit Counter
+
+Airport departures board energy. Each digit in a number animates independently — rolling through intermediate values before landing on the target. Used across the War Room for treasury totals, burn counts, and holder stats. Per-digit stagger with configurable roll speed.
+
+### Radial Vote Wheel
+
+Governance voting visualized as concentric arc segments on a radial gauge. Each proposal option gets a proportional arc. The winning option pulses with a glow animation. Vote weight is stake-proportional and rendered in real time as votes land on-chain.
+
+### Data Flow Particles (`Canvas`)
+
+A canvas-rendered ambient particle stream overlaid on key sections. Particles flow directionally to simulate money/data movement through the treasury system. Lightweight — runs on `requestAnimationFrame` with particle pooling to keep frame rates high.
+
+---
+
+## On-Chain Infrastructure
+
+### Staking Admin Panel
+
+Administrative controls for the staking program, gated behind wallet signature verification:
+
+- **Emergency Halt / Resume** — Freeze all staking operations instantly, resume when safe
+- **Pool Pause / Unpause** — Granular per-pool pause controls for maintenance windows
+- **DLMM Exit Controls** — Manage liquidity exits from Meteora DLMM positions with tracking
+
+### On-Chain Governance APIs
+
+Full governance lifecycle managed through API routes:
+
+- **Admin Round Management** — Create, configure, and close voting rounds
+- **Proposal Creation** — Submit proposals with wallet signature verification and on-chain anchoring
+- **Stake-Weighted Voting** — Vote weight derived from staked $BRAIN balance with tier multipliers
+- **Results Dashboard** — Real-time tallying with radial vote wheel visualization
+
+### Staking Pool PDA Derivation
+
+Server-side Program Derived Address resolution using Coral Anchor. The staking pool state, user stake accounts, and reward vaults are all fetched via PDA seeds and deserialized against the Anchor IDL. Results are cached with ISR (Incremental Static Regeneration) and Upstash Redis for sub-second reads without hammering the RPC.
 
 ---
 
@@ -185,12 +276,20 @@ src/
 │       ├── treasury/route.ts       # Portfolio positions + P&L
 │       └── wallet-check/route.ts   # Wallet lookup
 ├── components/
-│   ├── Hero.tsx                    # Cinematic landing hero
+│   ├── Hero.tsx                    # Cinematic landing hero + glitch title + night counter
 │   ├── Tokenomics.tsx              # Fee distribution breakdown
 │   ├── HallOfFame.tsx              # Top holders + Hall of Shame
 │   ├── WarRoom.tsx                 # Landing page War Room preview
 │   ├── Roadmap.tsx                 # Project roadmap
 │   ├── HowToBuy.tsx                # Purchase guide
+│   ├── EcosystemVentures.tsx       # Staggered partner/venture cards
+│   ├── VideoSection.tsx            # Full video player with custom controls
+│   ├── RedactedDoc.tsx             # Scroll-reveal redacted document
+│   ├── BlueprintScene.tsx          # 3D floating classified documents
+│   ├── SectionReveal.tsx           # Reusable scroll-triggered reveal wrapper
+│   ├── ScrollProgressBar.tsx       # Fixed top gradient progress bar
+│   ├── MagneticButton.tsx          # Mouse-tracking elastic hover buttons
+│   ├── SmoothScroll.tsx            # Lenis smooth scroll provider
 │   ├── Footer.tsx                  # Site footer
 │   ├── docs/DocsPage.tsx           # Documentation content
 │   └── dashboard/
@@ -203,9 +302,15 @@ src/
 │       ├── Governance.tsx           # Proposal + voting UI
 │       ├── WalletChecker.tsx        # Wallet lookup tool
 │       ├── StakingSection.tsx       # Staking interface
+│       ├── StakingAdmin.tsx         # Emergency halt, pool pause, DLMM exit controls
+│       ├── ReflectionsCalculator.tsx # SOL reflections projection tool
 │       ├── staking/                 # Stake forms, rewards, multipliers
 │       ├── governance/              # Proposal creation, voting, results
-│       └── visualizations/          # Custom chart components
+│       └── visualizations/
+│           ├── RollingDigits.tsx    # Per-digit airport-board counter
+│           ├── RadialVoteWheel.tsx  # Concentric arc vote gauge
+│           ├── DataFlowParticles.tsx # Canvas particle stream
+│           └── ...                  # Donut ring, flame timeline, etc.
 └── lib/
     ├── constants.ts                # Addresses, API config, colors
     ├── investments.config.ts       # Treasury holding metadata
